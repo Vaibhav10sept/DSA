@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int friendsPairing(int n) {
+int friendsPairingDP(int n) {
 	//please refer to the video link below for better understanding.
 
 	vector<int> dp(n + 1);
@@ -15,7 +15,7 @@ int friendsPairing(int n) {
 	return dp[n];
 }
 
-vector<string> printFriendsPairing(string n) {
+vector<string> printFriendsPairingRecursion(string n) {
 	if (n.size() == 0) {
 		vector<string> bc;
 		bc.push_back("");
@@ -32,7 +32,7 @@ vector<string> printFriendsPairing(string n) {
 
 	char ch = n[0];
 	string removedFirst = n.substr(1);
-	vector<string> singleAns = printFriendsPairing(removedFirst);
+	vector<string> singleAns = printFriendsPairingRecursion(removedFirst);
 
 	for (string str : singleAns) {
 		string s(1, ch);
@@ -46,7 +46,7 @@ vector<string> printFriendsPairing(string n) {
 		string removedPair = n;
 		removedPair.erase(removedPair.begin() + i);
 		removedPair.erase(removedPair.begin());
-		vector<string> pairAns = printFriendsPairing(removedPair);
+		vector<string> pairAns = printFriendsPairingRecursion(removedPair);
 		for (string str : pairAns) {
 			currAns.push_back(suffix + "-" + str);
 		}
@@ -65,8 +65,8 @@ int main()
 	// int n = 2;
 	string n = "123";
 	int count = 3;
-	cout << "no of ways in which n friends can be paired: " << friendsPairing(count);
+	cout << "no of ways in which n friends can be paired: " << friendsPairingDP(count);
 	cout << endl;
-	vector<string> ans = printFriendsPairing(n);
+	vector<string> ans = printFriendsPairingRecursion(n);
 	for (auto ele : ans) cout << ele << endl;
 }
