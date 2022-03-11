@@ -6,32 +6,21 @@ void print(vector<int> arr) {
 	cout << endl;
 }
 
-void reverseArray(vector<int> &arr) {
-	int li = 0;
-	int ri = arr.size() - 1;
-	while (li < ri) {
-		int temp = arr[li];
-		arr[li] = arr[ri];
-		arr[ri] = temp;
-		li++;
-		ri--;
-	}
-}
-
 void rotateArray(vector<int> &arr, int r) {
 	// handling negative rotations
 	if (r < 0) {
 		r += arr.size();
 	}
 
+	// handling rotations more than the size of array.
 	r = r % arr.size();
 
 
 	// 3 step process
 	// divide array in two parts
-	// reverse first part
-	// reverse second part
-	// reverse the whole array
+	// 1. reverse first part
+	// 2. reverse second part
+	// 3. reverse the whole array
 
 	std::reverse(arr.begin(), arr.end() - r);
 	std::reverse(arr.end() - r, arr.end());

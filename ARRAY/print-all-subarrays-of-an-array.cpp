@@ -6,17 +6,6 @@ void print(vector<int> arr) {
 	cout << endl;
 }
 
-void reverseArray(vector<int> &arr) {
-	int li = 0;
-	int ri = arr.size() - 1;
-	while (li < ri) {
-		int temp = arr[li];
-		arr[li] = arr[ri];
-		arr[ri] = temp;
-		li++;
-		ri--;
-	}
-}
 
 void printSubarrays(vector<int> arr) {
 	for (int i = 0; i < arr.size(); i++) {
@@ -27,7 +16,6 @@ void printSubarrays(vector<int> arr) {
 			cout << endl;
 		}
 	}
-
 }
 
 int main()

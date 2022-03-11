@@ -6,18 +6,6 @@ void print(vector<int> arr) {
 	cout << endl;
 }
 
-void reverseArray(vector<int> &arr) {
-	int li = 0;
-	int ri = arr.size() - 1;
-	while (li < ri) {
-		int temp = arr[li];
-		arr[li] = arr[ri];
-		arr[ri] = temp;
-		li++;
-		ri--;
-	}
-}
-
 void firstIndex(vector<int> arr, int data) {
 	int left = 0;
 	int right = arr.size() - 1;

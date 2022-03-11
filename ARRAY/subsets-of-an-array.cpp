@@ -15,7 +15,7 @@ void printSubsets(vector<int> arr) {
 			if (r == 0) {
 				set = "_ " + set;
 			}
-			else {
+			else { // r == 1
 				set = to_string(arr[j]) + " " + set;
 			}
 		}

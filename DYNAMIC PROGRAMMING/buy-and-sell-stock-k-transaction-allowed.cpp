@@ -1,41 +1,53 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int buyAndSellStockTwoTransactionsAllowed(vector<int> arr) {
-	vector<int> dp(arr.size());
-
-	//left to right traversal
-	int maxProfit = 0;
-	int leastSoFar = arr[0];
-	for (int i = 1; i < dp.size(); i++) {
-		leastSoFar = std::min(leastSoFar, arr[i]);
-		maxProfit = std::max(maxProfit, arr[i] - leastSoFar);
-		dp[i] = maxProfit;
+void displayMatrix(vector<vector<int>> arr) {
+	for (int i = 0; i < arr.size(); i++) {
+		for (int j = 0; j < arr[i].size(); j++) {
+			cout << arr[i][j] << " ";
+		}
+		cout << endl;
 	}
+}
 
-	//right to left traversal
-	int largestSoFar = arr[arr.size() - 1];
-	maxProfit = 0;
-	for (int i = dp.size() - 2; i >= 0; i--) {
-		largestSoFar = std::max(largestSoFar, arr[i]);
-		maxProfit = std::max(maxProfit, largestSoFar - arr[i]);
-		dp[i] += maxProfit;
+int buyAndSellStockKTransactionsAllowed(vector<int> arr, int k) {
+	vector<vector<int>> dp(k + 1, vector<int>(arr.size()));
+	// row -> no of transactions(k)
+	// col -> no of days
+	// cell -> max profit
+
+	for (int i = 0; i < dp.size(); i++) {
+		for (int j = 0; j < dp[0].size(); j++) {
+			if (i == 0 || j == 0) { //initialization
+				dp[i][j] = 0;
+			}
+			else {
+				dp[i][j] = dp[i][j - 1];
+				int currPrice = arr[j];
+				int maxResult = INT_MIN; //for i-1 candidates
+				for (int k = j - 1; k >= 0; k--) {
+					maxResult = std::max(maxResult, dp[i - 1][k] + currPrice - arr[k]);
+				}
+				dp[i][j] = std::max(dp[i][j], maxResult);
+			}
+		}
 	}
-
-	return *max_element(dp.begin(), dp.end());
+	displayMatrix(dp);
+	return dp[k][arr.size() - 1];
 }
 
 int main()
 {
 	//***************************
-	// VIDEO LINK: https://www.youtube.com/watch?v=wuzTpONbd-0&list=PL-Jc9J83PIiFj7YSPl2ulcpwy-mwj1SSk&index=519
+	// VIDEO LINK: https://www.youtube.com/watch?v=3YILP-PdEJA&list=PL-Jc9J83PIiFj7YSPl2ulcpwy-mwj1SSk&index=520
+	// NOTE: this has n^3 complexity other optimized solution has n^2 complexity
 	// NOTE: this is a hard level ques, watch video and think
 	// NOTE: this question is part of 6 questions series "buy and sell stock"
-	// this is 5th question in the series
-	// similar/prerequisite to "buyAndSellStockOneTransactionAllowed"
+	// this is 6th question in the series
+	// approach to solve this question is similar to "knapsack"
 	//**************************************************
 	// vector<int> stock = {10, 15, 17, 20, 16, 18, 22, 20, 22, 20, 23, 25};
-	vector<int> stock =	{11, 6 , 7 , 19 , 4 , 1, 6, 18, 4};
-	cout << "answer " << buyAndSellStockTwoTransactionsAllowed(stock);
-
+	vector<int> stock =	{9, 6, 7, 6, 3, 8};
+	int k = 3; //no of transactions
+	cout << "answer " << buyAndSellStockKTransactionsAllowed(stock, k);
 }
