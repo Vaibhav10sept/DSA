@@ -83,10 +83,8 @@ int main()
 	ceilAndFloor(root, 50, &ceil, &floor);
 	if (ceil != INT_MAX) {
 		cout << "ceil " << ceil << endl;
-
 	}
 	if (floor != INT_MIN) {
-		cout << "floor " << floor << endl;
-
+		cout << "floor " << floor << endl; s
 	}
 }

@@ -7,7 +7,6 @@ int calculatePowerLogarithmic(int n, int p) {
 	int ans = res * res;
 	if (n % 2 == 1) { // n is odd
 		ans *= n;
-
 	}
 	return ans;
 }

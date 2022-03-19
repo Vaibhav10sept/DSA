@@ -35,8 +35,6 @@ void knightTour(vector<vector<int>> chess, int row, int col, int move) {
 
 	//backtrack
 	chess[row][col] = 0;
-
-
 }
 
 

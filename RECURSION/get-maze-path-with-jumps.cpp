@@ -51,54 +51,6 @@ vector<string> getMazePathWithJumps(int startRow, int startCol, int endRow, int 
 		}
 	}
 	return myResult;
-
-
-	// vector<string> h1 = getMazePathWithJumps(startRow, startCol + 1, endRow, endCol);
-	// vector<string> h2 = getMazePathWithJumps(startRow, startCol + 2, endRow, endCol);
-	// vector<string> h3 = getMazePathWithJumps(startRow, startCol + 3, endRow, endCol);
-
-	// vector<string> v1 = getMazePathWithJumps(startRow + 1, startCol, endRow, endCol);
-	// vector<string> v2 = getMazePathWithJumps(startRow + 2, startCol, endRow, endCol);
-	// vector<string> v3 = getMazePathWithJumps(startRow + 3, startCol, endRow, endCol);
-
-	// vector<string> d1 = getMazePathWithJumps(startRow + 1, startCol + 1, endRow, endCol);
-	// vector<string> d2 = getMazePathWithJumps(startRow + 2, startCol + 2, endRow, endCol);
-	// vector<string> d3 = getMazePathWithJumps(startRow + 3, startCol + 3, endRow, endCol);
-
-
-
-
-	// vector<string> myResult;
-	// for (string val : h1) {
-	// 	myResult.push_back("h1" + val);
-	// }
-	// for (string val : h2) {
-	// 	myResult.push_back("h1" + val);
-	// }
-	// for (string val : h3) {
-	// 	myResult.push_back("h1" + val);
-	// }
-
-	// for (string val : v1) {
-	// 	myResult.push_back("v1" + val);
-	// }
-	// for (string val : v2) {
-	// 	myResult.push_back("v2" + val);
-	// }
-	// for (string val : v3) {
-	// 	myResult.push_back("v3" + val);
-	// }
-
-	// for (string val : d1) {
-	// 	myResult.push_back("d1" + val);
-	// }
-	// for (string val : d2) {
-	// 	myResult.push_back("d2" + val);
-	// }
-	// for (string val : d3) {
-	// 	myResult.push_back("d3" + val);
-	// }
-
 }
 
 

@@ -109,16 +109,9 @@ void display(Node* node) {
 	display(node->right);
 }
 
-void printklevelsdown(Node* node, int k, Node* blocker) {
-	if (node == NULL || node == blocker) return;
-	if (k == 0) cout << node->data << " ";
-	printklevelsdown(node->left, k - 1, blocker);
-	printklevelsdown(node->right, k - 1, blocker);
-
-}
-
 bool nodeToRootPath(Node* node, vector<Node*> *ans, int data) {
 	if (node == NULL) return false;
+
 	if (data == node->data) {
 		ans->push_back(node);
 		return true;
@@ -131,7 +124,16 @@ bool nodeToRootPath(Node* node, vector<Node*> *ans, int data) {
 		ans->push_back(node);
 		return true;
 	}
+
 	return false;
+}
+
+void printklevelsdown(Node* node, int k, Node* blocker) {
+	if (node == NULL || node == blocker) return;
+	if (k == 0) cout << node->data << " ";
+
+	printklevelsdown(node->left, k - 1, blocker);
+	printklevelsdown(node->right, k - 1, blocker);
 }
 
 void printKNodesFar(Node* node, int data, int k) {
@@ -149,8 +151,8 @@ int main()
 	vector<int> arr = {50, 25, 12, -1, -1, 37, 30, -1, -1, -1, 75, 62, -1, 70, -1, -1, 87, -1, -1};
 	Node* root = construct(arr);
 	//*************************
-	// LOGIC: WE ARE USING TWO BEFORE FUNCTIONS(WITH SOME MODIFICATIONS) HERE "NOTE TO ROOT PATH"
-	// AND "PRINT K DOWN"
+	// LOGIC: WE ARE USING TWO BEFORE FUNCTIONS(WITH SOME MODIFICATIONS) HERE "NODE TO ROOT PATH"
+	// AND "PRINT K LEVEL DOWN"
 	//****************************************
 	printKNodesFar(root, 75, 2);
 

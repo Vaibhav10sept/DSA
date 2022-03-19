@@ -35,6 +35,8 @@ void printSubsequencesOfTheFormABCRecursive(string ans, string ques) {
 		if (pass and b and c) cout << ans << endl;
 		return;
 	}
+	// bc ends
+
 	int ch = ques[0];
 	//remove 0th from ques
 	string restOfQuestion = ques.substr(1);// bc

@@ -32,6 +32,7 @@ vector<string> printFriendsPairing(string n) {
 
 	char ch = n[0];
 	string removedFirst = n.substr(1);
+
 	vector<string> singleAns = printFriendsPairing(removedFirst);
 
 	for (string str : singleAns) {

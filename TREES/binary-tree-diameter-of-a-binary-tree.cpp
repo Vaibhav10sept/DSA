@@ -111,16 +111,13 @@ void display(Node* node) {
 
 int returnHeightCalculateDiameter(Node* node, int *dia, int depth) {
 	if (node == NULL) return -1;
-	int ht = -1;
 
 	int lht = returnHeightCalculateDiameter(node->left, dia, depth + 1);
 	int rht = returnHeightCalculateDiameter(node->right, dia, depth + 1);
-	ht++;
 
 	if (lht + rht + 2 > *dia) {
 		*dia = lht + rht + 2;
 	}
-	ht = lht + rht;
 	return std::max(lht, rht) + 1;
 }
 

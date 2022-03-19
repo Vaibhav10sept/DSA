@@ -10,8 +10,8 @@ vector<string> getSubsequence(string str) {
 		baseResult.push_back("_");
 		baseResult.push_back(s );
 		return baseResult;
-
 	}
+
 	char currentChar = str[0];// a
 	string restOfString = str.substr(1);// bc
 	vector<string> recursionResult = getSubsequence(restOfString);

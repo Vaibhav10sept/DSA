@@ -4,7 +4,7 @@ using namespace std;
 int firstIndex(vector<int> arr, int i, int data) {
 	if (i == arr.size()) return 0;
 	if (arr[i] == data) return i;
-	else return firstIndex(arr, i + 1, data);
+	return firstIndex(arr, i + 1, data);
 }
 
 

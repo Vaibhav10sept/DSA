@@ -54,10 +54,8 @@ int size(Node* root) {
 }
 
 int depth(Node* root) {
-	int ans = 0;
-	if (root->children.size() == 0) {
-		return 0;
-	}
+	int ans = -1; // -1 coz in terms of edges, for height in terms of nodes use 0
+
 	for (Node* child : root->children) {
 		ans = std::max(ans, depth(child));
 	}

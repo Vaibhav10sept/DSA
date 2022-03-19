@@ -65,8 +65,6 @@ void multiSolver(Node* root, int* max, int* min, int* height, int* size, int dep
 	for (Node* child : root->children) {
 		multiSolver(child, max, min, height, size, depth + 1);
 	}
-
-
 }
 
 int main()

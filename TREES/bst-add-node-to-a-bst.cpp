@@ -72,7 +72,6 @@ Node* addNode(Node* node, int data) {
 		//nothing to do
 	}
 
-
 	return node;
 }
 

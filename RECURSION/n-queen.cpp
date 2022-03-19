@@ -32,6 +32,8 @@ void nQueen(vector<vector<int>> chess, string ans, int row) {
 		{
 			chess[row][col] = 1;
 			nQueen(chess, ans + to_string(row) + "-" + to_string(col) + ", ", row + 1);
+
+			//backtrack
 			chess[row][col] = 0;
 		}
 	}

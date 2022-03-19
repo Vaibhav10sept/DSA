@@ -140,7 +140,6 @@ utilData isBinarySearchTree(Node* node) {
 	currAns.isBST = isCurrNodeBST && leftAns.isBST && rightAns.isBST;
 
 	return currAns;
-
 }
 
 int main()

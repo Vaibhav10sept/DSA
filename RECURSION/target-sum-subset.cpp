@@ -5,7 +5,6 @@ void targetSumSubset(vector<int> arr, int target, int sum, int idx, string set) 
 	if (idx == arr.size()) {
 		if (sum == target) {
 			cout << set << endl;
-
 		}
 		return;
 	}

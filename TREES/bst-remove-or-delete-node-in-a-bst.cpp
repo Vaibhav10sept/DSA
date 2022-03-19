@@ -80,11 +80,11 @@ Node* removeNode(Node* node, int data) {
 		if (node->left == NULL and node->right == NULL) {
 			return NULL;
 		}
-		//case 2. the node that we are gonna remove have left child
+		//case 2. the node that we are gonna remove have only left child
 		else if (node->left != NULL and node->right == NULL) {
 			return node->left;
 		}
-		//case 3. the node that we are gonna remove have right child
+		//case 3. the node that we are gonna remove have only right child
 		else if (node->left == NULL and node->right != NULL) {
 			return node->right;
 		}

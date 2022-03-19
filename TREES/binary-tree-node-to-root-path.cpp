@@ -111,6 +111,7 @@ void display(Node* node) {
 
 bool nodeToRootPath(Node* node, vector<int> *ans, int data) {
 	if (node == NULL) return false;
+
 	if (data == node->data) {
 		ans->push_back(node->data);
 		return true;

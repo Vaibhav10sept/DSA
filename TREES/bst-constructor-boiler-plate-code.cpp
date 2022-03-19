@@ -25,6 +25,7 @@ public:
 
 Node* constructBSTFromSortedArray(vector<int> arr, int low, int high) {
 	if (low > high) return NULL;
+
 	int mid = (low + high) / 2;
 
 	Node* leftChild = constructBSTFromSortedArray(arr, low, mid - 1);

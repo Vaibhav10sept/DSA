@@ -57,7 +57,6 @@ void createMirror(Node* root) {
 	for (Node* child : root->children) {
 		createMirror(child);
 	}
-	// std::reverse(root->children);
 	reverse(root->children.begin(), root->children.end());
 }
 

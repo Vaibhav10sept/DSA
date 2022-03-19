@@ -63,4 +63,5 @@ int main()
 	                   40, -1, -1
 	                  };
 	Node* root = construct(arr);
+	display(root);
 }

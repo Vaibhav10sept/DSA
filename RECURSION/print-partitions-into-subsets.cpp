@@ -105,9 +105,9 @@ int main()
 	// the approach used to solve it is similar to knapsack problem.
 	// NOTE: there is also a DP ques "partitionIntoSubsetsDP" similar to this one
 	//**************************************************
-	string n = "12345"; //no of people for recursive code
-	int count = 5; //no of people
-	int k = 4; //no of teams
+	string n = "123"; //no of people for recursive code
+	int count = n.size(); //no of people
+	int k = 2; //no of teams
 	cout << "no of ways in which " << k << " teams can be formed using " << count << " people: " << partitionIntoSubsetsDP(count, k);
 	cout << endl;
 	vector<vector<string>> ans = printPartitionsIntoSubsetsRecursion(n, k);

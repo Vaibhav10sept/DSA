@@ -8,7 +8,7 @@ void PrintEncoding(string ques, string ans) {
 	}
 	else if (ques.size() == 1) {
 		char ch = ques[0];
-		int chv = ch - '0';// chv = character value
+		int chv = ch - '0';// chv = character value; character to int conversion
 		if (chv == 0) return;
 		else {
 			char code = (char)('a' + chv - 1); // ex: converts '1' to 'a'
@@ -17,9 +17,10 @@ void PrintEncoding(string ques, string ans) {
 		}
 	}
 	//basecases over
+
 	else {
 		char ch = ques[0];
-		int chv = ch - '0';// chv = character value
+		int chv = ch - '0';// chv = character value; character to int conversion
 		string restOfString = ques.substr(1);
 		if (chv == 0) return;
 		else {
@@ -46,5 +47,5 @@ int main()
 	//********************************
 	//QUESTION LINK: https://www.youtube.com/watch?v=jUo0Qis4FKU&list=PL-Jc9J83PIiFj7YSPl2ulcpwy-mwj1SSk&index=415
 	//***********************************
-	PrintEncoding("123", "");
+	PrintEncoding("1012", "");
 }

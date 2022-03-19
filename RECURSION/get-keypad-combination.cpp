@@ -4,12 +4,6 @@ using namespace std;
 vector<string> getKeypadCombination(string str, vector<string> codes) {
 	if (str.size() == 0) {
 		vector<string> baseResult;
-		// char code = str[0];
-		// int IntCode = code - '0';
-		// string pattern = codes[IntCode];
-		// for (char val : pattern) {
-		// 	baseResult.push_back(string(1, val));
-		// }
 		baseResult.push_back("");
 		return baseResult;
 	}
@@ -40,6 +34,6 @@ int main()
 	//***********************************
 	vector<string> ans;
 	vector<string> codes = {".;", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tu", "vws", "yz"};
-	ans = getKeypadCombination("73", codes);
+	ans = getKeypadCombination("735", codes);
 	for (auto val : ans) cout << val << endl;
 }

@@ -140,7 +140,6 @@ UtilPairBST largestBSTSubtree(Node* node, string &ans, int &maxSum) {
 	               && leftAns.isBST && rightAns.isBST);
 
 	myAns.sum = leftAns.sum + rightAns.sum + node->data;
-	// cout << "sum " << node->data << " " << myAns.isBST << " " << myAns.sum << endl;
 
 	if (myAns.isBST && myAns.sum > maxSum) {
 		maxSum = myAns.sum;

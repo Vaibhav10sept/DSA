@@ -121,7 +121,7 @@ void levelTraversal1(Node* node) {
 			if (temp->left) q.push(temp->left);
 			if (temp->right) q.push(temp->right);
 		}
-		else {
+		else { // temp == NULL
 			if (q.size() > 0) {
 				cout << endl;
 				q.push(NULL);

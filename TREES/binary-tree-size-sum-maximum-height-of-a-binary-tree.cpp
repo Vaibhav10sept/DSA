@@ -129,12 +129,12 @@ int sum(Node* node) {
 	ans += node->data;
 	return ans;
 }
-int height(Node* node, int depth) {
+int height(Node* node) {
 	if (node == NULL) return -1; // in terms of edges so -1, if we want in terms of nodes then return 0.
 
 	int ans = INT_MIN;
-	ans = std::max(height(node->left, depth + 1), ans);
-	ans = std::max(height(node->right, depth + 1), ans);
+	ans = std::max(height(node->left), ans);
+	ans = std::max(height(node->right), ans);
 	return ans + 1;
 }
 
@@ -147,6 +147,6 @@ int main()
 	cout << "size " << size(root) << endl;
 	cout << "sum " << sum(root) << endl;
 	cout << "max " << maximum(root) << endl;
-	cout << "height " << height(root, 0) << endl;
+	cout << "height " << height(root) << endl;
 
 }

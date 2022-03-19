@@ -120,8 +120,9 @@ void pathFromRootToLeaf(Node* node, int low, int high, int sum, string path) {
 			cout << path << endl;
 		}
 		return;
-
 	}
+	// bc ends
+
 	pathFromRootToLeaf(node->left, low, high, sum + node->data, path + " " + to_string(node->data));
 	pathFromRootToLeaf(node->right, low, high, sum + node->data, path + " " + to_string(node->data));
 }

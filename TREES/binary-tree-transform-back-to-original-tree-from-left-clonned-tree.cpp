@@ -122,7 +122,7 @@ void transformToLeftClonedTree(Node* node) {
 }
 
 Node* transformBackToOriginalTree(Node* node) {
-	if (node == NULL) NULL;
+	if (node == NULL) return NULL;
 
 	Node* leftNormalRoot = transformBackToOriginalTree(node->left->left);
 	Node* rightNormalRoot = transformBackToOriginalTree(node->right);

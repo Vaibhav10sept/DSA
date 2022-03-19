@@ -56,7 +56,7 @@ int size(Node* root) {
 class UtilPair {
 public:
 	Node* node;
-	int state;
+	int state; // state will hold the index of children vector
 	UtilPair(Node* node, int state) {
 		this->state = state;
 		this->node = node;
@@ -73,7 +73,7 @@ void iterativePrePostTraversal(Node* root) {
 
 	while (!st.empty()) {
 		UtilPair temp = st.top();
-		if (temp.state == -1) {
+		if (temp.state == -1) { // state will hold the index of children vector
 			// print preorder
 			st.pop();
 			pre += to_string(temp.node->data) + " ";
@@ -82,11 +82,11 @@ void iterativePrePostTraversal(Node* root) {
 		}
 		else if (temp.state >= 0 && temp.state < temp.node->children.size()) {
 			st.top().state = temp.state + 1;
-			UtilPair newEntry(st.top().node->children[temp.state], -1);
+			UtilPair newEntry(temp.node->children[temp.state], -1);
 			st.push(newEntry);
 		}
 		else {
-			// print postorder
+			// print postorder and remove from stack
 			post += to_string(temp.node->data) + " ";
 			st.pop();
 		}
