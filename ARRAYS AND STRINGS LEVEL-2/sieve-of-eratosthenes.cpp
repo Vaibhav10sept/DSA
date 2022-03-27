@@ -25,7 +25,7 @@ int main() {
 	//********************************
 	// PREREQUISITE: print-all-prime-no-in-a-range.
 	// COMPLEXITY: n(log(log(n)))
-	// VIDEO LINK: https://www.youtube.com/watch?v=z-Ct00cFYpU&list=PL-Jc9J83PIiE-TR27GB7V5TBLQRT5RnSl&index=19
+	// VIDEO LINK: https://www.youtube.com/watch?v=MY0fXk-3BVQ
 	// QUESTION:
 	// 1. Given an Integer 'n'.
 	// 2. Print all primes from 2 to 'n'.

@@ -1,31 +1,55 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void segmentedSieve(int low, int high) {
-	int range = high - low + 1;
-	vector<bool> isPrime(range, true);
+vector<int> sieveOfEratosthenes(int n) {
+	vector<bool> isPrime(n + 1, true);
 
 	for (int i = 2; i * i < isPrime.size(); i++) {
 		if (isPrime[i] == true) {
 			//making the multiples of i false(not prime)
-			int actualNumber = i + low;
-			for (int j = actualNumber + actualNumber; j < isPrime.size(); j += actualNumber) {
-				cout << "j " << j << endl;
-				isPrime[j - actualNumber] = false;
+			for (int j = i + i; j < isPrime.size(); j += i) {
+				isPrime[j] = false;
 			}
 		}
 	}
 
-	//printing all the prime no using isPrime array.
+	vector<int> res;
 	for (int i = 2; i < isPrime.size(); i++) {
 		if (isPrime[i] == true) {
-			cout << i << endl;
+			res.push_back(i);
+		}
+	}
+	return res;
+}
+
+void segmentedSieve(int low, int high) {
+	//step:1
+	vector<int> primes = sieveOfEratosthenes(sqrt(high));
+	// for (auto ele : primes) cout << ele << " ";
+	//step:2
+	vector<bool> isPrime(high - low + 1, true);
+	//step:3(logic)
+	for (auto prime : primes) {
+		int firstMultiple = ((low / prime) * prime);
+		if (firstMultiple < low) firstMultiple += prime;
+
+		for (int i = max(firstMultiple, prime * prime); i <= high; i += prime) {
+			isPrime[i - low] = false;
+		}
+	}
+	for (int i = 2; i < isPrime.size(); i++) {
+		if (isPrime[i]) {
+			cout << i + low << endl;
 		}
 	}
 }
 
 int main() {
 	//********************************
+	// STEPS:
+	// 1. find primes till sqrt(high) using before "SieveOfEratosthenes".
+	// 2. create a dummy array of size high - low + 1.
+	// 3. mark the dummy array's elements as not prime using the multiple of primes array
 	// PREREQUISITE: sieve-of-eratosthenes.
 	// COMPLEXITY: n(log(log(n)))
 	// VIDEO LINK: https://www.youtube.com/watch?v=htxM60E98Bk&list=PL-Jc9J83PIiE-TR27GB7V5TBLQRT5RnSl&index=20
