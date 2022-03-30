@@ -1,27 +1,47 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int FindPalindromeWithFixedLength(vector<int> queries, int intLength) {
-	int countOfNumberDeleted  = 0;
-	for (int i = 0; i < arr.size() - 1; i++) {
-		if ((i - countOfNumberDeleted) % 2 == 0 and arr[i] == arr[i + 1]) {
-			countOfNumberDeleted++;
-		}
+int helperFunction(int q, int n) {
+	long long len = 0, pre = 0;
+	if (n % 2 == 0) len = n / 2 - 1;
+	else len = (n / 2);
+	pre = (int)pow(10, len);
+
+	if (pre % 10 == 9) pre++; //this is for this compiler only, i think something is wrong with this(sublime text) compiler
+	// cout << pre << " pre" << endl;
+	pre += (q - 1);
+
+
+	int orig = pre;
+	if (n % 2 != 0) { //if odd
+		pre /= 10;
 	}
-	//check for array size after deletion, it should be even as per question
-	if ((arr.size() - countOfNumberDeleted) % 2 != 0) { //if its odd
-		countOfNumberDeleted++;
+	string rev = to_string(pre);
+	reverse(rev.begin(), rev.end());
+	string ans = to_string(orig);
+	if (rev != "0")
+		ans += rev;
+
+	return stoi(ans);
+}
+
+vector<int> findPallindromeWithFixedLength(vector<int> queries, int intLength) {
+	vector<int> ans;
+	for (int ele : queries) {
+		ans.push_back(helperFunction(ele, intLength));
 	}
-	return countOfNumberDeleted;
+	return ans;
 }
 
 
 int main() {
 	//*********************************
-	// VIDEO LINK:
+	// VIDEO LINK: https://www.youtube.com/watch?v=W8bpOKpPtPA
 	// LINK: https://leetcode.com/contest/weekly-contest-286/problems/find-palindrome-with-fixed-length/
 	//*********************************
-	vector<int> queries = {1, 2, 3, 4, 5, 90};
-	int intLength = 3;
-	cout << FindPalindromeWithFixedLength(queries, intLength);
+	vector<int> queries = {2, 4, 6};
+	int intLength = 4;
+	vector<int> ans = findPallindromeWithFixedLength(queries, intLength);
+	for (auto ele : ans) cout << ele << " ";
+
 }
