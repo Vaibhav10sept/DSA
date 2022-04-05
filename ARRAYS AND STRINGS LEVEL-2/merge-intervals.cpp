@@ -20,8 +20,6 @@ vector<vector<int>> mergeIntervals(vector<vector<int>> &arr) {
 	st.push({arr[0][0], arr[0][1]});
 	int i = 1;
 	while (i < arr.size()) {
-
-		// cout << st.top().second << endl;
 		if (!st.empty() and st.top().second >= arr[i][0]) {
 			st.top().second = max(st.top().second, arr[i][1]);
 		}
@@ -31,6 +29,7 @@ vector<vector<int>> mergeIntervals(vector<vector<int>> &arr) {
 		i++;
 	}
 
+	//filling up the ans array
 	vector<vector<int>> ans;
 	while (!st.empty()) {
 		pair<int, int> p = st.top();

@@ -1,11 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
-bool isPallindrome(string str, int i, int j) {
-	while (i < j) {
-		if (str[i] != str[j]) return false;
+
+bool isPalindrome(string s, int i, int j) {
+	while (i <= j) {
+		if (s[i] == s[j]) {
+			i++;
+			j--;
+		}
+		else return false;
 	}
 	return true;
 }
+
 
 bool validPallindrome2(string str) {
 	int i = 0;
@@ -20,7 +26,7 @@ bool validPallindrome2(string str) {
 			// case1. skip the left one(i++).
 			// case2. skip the right one(j--).
 			// agr inn dono me se koi bhi true hoga(pallindrome hoga). toh ham true return krege.
-			return isPallindrome(str, i + 1, j) || isPallindrome(str, i, j - 1);
+			return isPalindrome(str, i + 1, j) || isPalindrome(str, i, j - 1);
 		}
 	}
 

@@ -7,7 +7,7 @@ int CantainerWithMaxWater(vector<int> heights) {
 	int maxCapacity = INT_MIN;
 
 	while (i < j) {
-		// jiski height kam hogi vo ++ hoga(think)
+		// jiski height kam hogi vo ++/-- hoga(think)
 		// j-i => width
 		if (heights[i] < heights[j]) {
 			maxCapacity = std::max(maxCapacity, (j - i) * heights[i]);
