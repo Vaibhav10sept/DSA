@@ -2,18 +2,13 @@
 using namespace std;
 
 void printAllPallindromeOfN(int n) {
-	// if (n == 1) {
-	// 	for (int i = 0; i < 10; i++)
-	// 		cout << i << endl;
-	// 	return;
-	// }
+
 	long long len = 0, pre = 0;
-	if (n % 2 == 0) len = n / 2 - 1;
-	else len = (n / 2);
+	if (n % 2 == 0) len = n / 2 - 1; // n is even
+	else len = (n / 2); // n is odd
 	pre = (int)pow(10, len);
 
 	if (pre % 10 == 9) pre++; //this is for this compiler only, i think something is wrong with this(sublime text) compiler
-	// cout << pre << " pre" << endl;
 
 	int end = pow(10, len + 1);
 	if (end % 10 == 9) end++; //this is for this compiler only, i think something is wrong with this(sublime text) compiler
@@ -21,7 +16,7 @@ void printAllPallindromeOfN(int n) {
 
 	for (int i = pre; i < end; i++) {
 		int temp = i;
-		if (n % 2 != 0) {
+		if (n % 2 != 0) { //agr odd hai toh temp se last digit hata do(logic)
 			temp /= 10;
 		}
 		string rev = to_string(temp);

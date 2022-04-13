@@ -10,6 +10,7 @@ int farthestBuildingYouCanReach(vector<int> heights, int bricks, int ladders) {
 			pq.push(diff);
 		}
 		if (pq.size() > ladders) {
+			//ham bricks minimum height diff ke lie hi use krege(logic)
 			bricks -= pq.top();
 			pq.pop();
 		}
@@ -22,6 +23,7 @@ int farthestBuildingYouCanReach(vector<int> heights, int bricks, int ladders) {
 
 int main() {
 	//*********************************
+	//NOTE: priority queue is used here.
 	// VIDEO LINK: https://www.youtube.com/watch?v=7LmgzOCnZQk&list=PL-Jc9J83PIiE-TR27GB7V5TBLQRT5RnSl&index=53
 	// QUESTION:
 // You are given an integer array heights representing the heights of buildings, some bricks, and some ladders.

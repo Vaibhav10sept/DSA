@@ -25,9 +25,7 @@ bool carPooling(vector<vector<int>> arr, int capacity) {
 	for (int i = 1; i < highway.size(); i++) {
 		highway[i] += highway[i - 1];
 	}
-	cout << "presu" << endl;
-	for (auto ele : highway) cout << ele << " ";
-	cout << endl;
+
 
 	//now, checking if the entries in highway exceed the given capacity or not
 	for (auto ele : highway) {

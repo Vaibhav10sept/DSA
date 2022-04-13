@@ -3,7 +3,7 @@ using namespace std;
 
 
 int findUnsortedSubarray(vector<int> arr) {
-	int end = arr.size() - 1;
+	int end = -1;
 	// for getting end, travel from left to right
 	int max = arr[0];
 	for (int i = 1; i < arr.size(); i++) {

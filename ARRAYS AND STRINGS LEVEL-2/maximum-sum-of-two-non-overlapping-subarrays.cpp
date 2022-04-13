@@ -22,7 +22,7 @@ int maximumsumoftwononoverlappingsubarrays(vector<int> arr, int x, int y) {
 	}
 
 	//right to left to fill dp2
-	//dp2[i]: holds the max sum of x size subarray till ith index.
+	//dp2[i]: holds the max sum of y size subarray till ith index.
 	currsum = 0;
 	for (int i = n - 1; i >= 0; i--) {
 		if (i + y >= n) {
@@ -41,7 +41,7 @@ int maximumsumoftwononoverlappingsubarrays(vector<int> arr, int x, int y) {
 	}
 
 
-	// CASE2: y length the subarray pehle aa jae or x lenght ka subarray baad me.just coppy paste the above code and replace x and y
+	// CASE2: y length ka subarray pehle aa jae or x lenght ka subarray baad me.just coppy paste the above code and replace x and y
 	dp1.clear();
 	dp2.clear();
 	currsum = 0;

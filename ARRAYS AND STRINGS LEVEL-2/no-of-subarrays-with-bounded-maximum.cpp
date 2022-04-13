@@ -7,11 +7,11 @@ int noOfSubarrayWithBoundedMaximum(vector<int> arr, int left, int right) {
 	int endIdx = 0;
 
 	int totalCount = 0;
-	int prevCount = 0;
+	int prevCount = 0; //no. of subarray ending at endIdx
 	while (endIdx < arr.size()) {
 		//there can be 3 cases.
 		if (left <= arr[endIdx] and right >= arr[endIdx]) {
-			prevCount = startIdx - endIdx + 1;
+			prevCount = startIdx - endIdx + 1; //no. of element in between two indexes(logic)
 			totalCount += prevCount;
 		}
 		else if (left > arr[endIdx]) {

@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void multiplyStrings(string n1, string n2) {
+string multiplyStrings(string n1, string n2) {
 	vector<int> res(n1.size() + n2.size());
 	int powerFactor = 0;
 	int k = res.size() - 1 - powerFactor;
@@ -25,7 +25,10 @@ void multiplyStrings(string n1, string n2) {
 	//we don't want to print leading zeros
 	int i = 0;
 	while (res[i] == 0) i++;
-	for (; i < res.size(); i++) cout << res[i] << " ";
+	string ans = "";
+
+	for (; i < res.size(); i++) ans += to_string(res[i]);
+	return ans;
 }
 
 int main() {
@@ -38,5 +41,5 @@ int main() {
 	//*********************************
 	string	n1 = "10";
 	string n2 = "2";
-	multiplyStrings(n1, n2);
+	cout << multiplyStrings(n1, n2);
 }

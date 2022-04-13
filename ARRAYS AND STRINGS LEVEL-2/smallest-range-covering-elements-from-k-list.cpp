@@ -12,25 +12,26 @@ public:
 	}
 };
 
-struct CompareAge {
-	bool operator()(Util const & p1, Util const & p2) {
-		// return "true" if "p1" is ordered before "p2", for example:
-		return p1.minRange > p2.minRange;
-	}
-};
+// struct CompareAge {
+// 	bool operator()(Util const & p1, Util const & p2) {
+// 		// return "true" if "p1" is ordered before "p2", for example:
+// 		return p1.minRange > p2.minRange;
+// 	}
+// };
 
-//opertor overloading for priority queue
-//this is minimum priority queue(min heap)
-// bool operator< (const Util &first, const Util &second) {
-// 	return first.minRange > second.minRange;
-// }
+// operator overloading for priority queue
+// this is minimum priority queue(min heap)
+bool operator< (const Util &first, const Util &second) {
+	return first.minRange > second.minRange;
+}
 
 vector<int> smallestRangeInKLists(vector<vector<int>> arr) {
 	vector<int> ans = { -100000, 100000};
 	int k = arr.size();
 	int maxRange = INT_MIN;
-	priority_queue<Util, vector<Util>, CompareAge> pq;
-	//insert an object for every vector in arr
+	// priority_queue<Util, vector<Util>, CompareAge> pq;
+	priority_queue<Util> pq; //this is min heap
+	//insert an object for every vector in array of vector
 	for (int i = 0; i < k; i++) {
 		pq.push(Util(arr[i][0], i, 0));
 		maxRange = max(maxRange, arr[i][0]);

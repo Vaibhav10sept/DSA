@@ -27,7 +27,7 @@ void reverseVowelsOfAString(string &str) {
 
 int main() {
 	//*********************************
-	// NOTE: tow pointers approach is used here.
+	// NOTE: two pointers approach is used here.
 	// VIDEO LINK: https://www.youtube.com/watch?v=hgtH9FIZrOE&list=PL-Jc9J83PIiE-TR27GB7V5TBLQRT5RnSl&index=25
 	// QUESTION:
 	// 1. Given a string 's'.

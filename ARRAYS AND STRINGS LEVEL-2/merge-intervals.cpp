@@ -43,7 +43,7 @@ vector<vector<int>> mergeIntervals(vector<vector<int>> &arr) {
 
 int main() {
 	//*********************************
-	// we use stack here
+	// NOTE: we use stack here
 	// VIDEO LINK: https://www.youtube.com/watch?v=2JzRBPFYbKE
 	// LEETCODE LINK: https://leetcode.com/problems/merge-intervals/
 	//*********************************

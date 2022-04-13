@@ -3,8 +3,8 @@ using namespace std;
 
 int helperFunction(int q, int n) {
 	long long len = 0, pre = 0;
-	if (n % 2 == 0) len = n / 2 - 1;
-	else len = (n / 2);
+	if (n % 2 == 0) len = n / 2 - 1; //even
+	else len = (n / 2); //odd
 	pre = (int)pow(10, len);
 
 	if (pre % 10 == 9) pre++; //this is for this compiler only, i think something is wrong with this(sublime text) compiler
@@ -19,7 +19,7 @@ int helperFunction(int q, int n) {
 	string rev = to_string(pre);
 	reverse(rev.begin(), rev.end());
 	string ans = to_string(orig);
-	if (rev != "0")
+	if (rev != "0") //edge case
 		ans += rev;
 
 	return stoi(ans);

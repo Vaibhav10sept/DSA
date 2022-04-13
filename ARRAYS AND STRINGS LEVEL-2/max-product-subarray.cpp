@@ -2,7 +2,7 @@
 using namespace std;
 
 int maxProductSubarray(vector<int> arr) {
-	//clain max product vala subarray ya to starting vala hoga
+	//claim max product vala subarray ya to starting vala hoga
 	//ya ending vala subarray hoga..beech ka subarray nhi ho skta
 	//watch video for proof.
 	int ans = INT_MIN;

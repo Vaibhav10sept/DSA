@@ -26,26 +26,40 @@ void segmentedSieve(int low, int high) {
 	//step:1
 	vector<int> primes = sieveOfEratosthenes(sqrt(high));
 	// for (auto ele : primes) cout << ele << " ";
+	// cout << endl;
 	//step:2
 	vector<bool> isPrime(high - low + 1, true);
 	//step:3(logic)
 	for (auto prime : primes) {
 		int firstMultiple = ((low / prime) * prime);
 		if (firstMultiple < low) firstMultiple += prime;
+		// cout << "first " << firstMultiple << " " << prime << endl;
 
 		for (int i = max(firstMultiple, prime * prime); i <= high; i += prime) {
+			// cout << "i low " << i - low << endl;
 			isPrime[i - low] = false;
 		}
 	}
-	for (int i = 2; i < isPrime.size(); i++) {
+	// for (int i = 0; i < isPrime.size(); i++) {
+	// 	if (isPrime[i]) {
+	// 		cout << i + low << endl;
+	// 	}
+	// }
+	//get all the primes using the already filled isPrime vector
+	cout << "answer " << endl;
+	// cout << "is prime" << endl;
+	// for (auto ele : isPrime)cout << ele << " ";
+	// cout << endl;
+	for (int i = 0; i <= isPrime.size(); i++) {
 		if (isPrime[i]) {
-			cout << i + low << endl;
+			cout << i + low  << endl;
 		}
 	}
 }
 
 int main() {
 	//********************************
+	//PREREQUISITE: "sieve of eratosthenes"
 	// STEPS:
 	// 1. find primes till sqrt(high) using before "SieveOfEratosthenes".
 	// 2. create a dummy array of size high - low + 1.

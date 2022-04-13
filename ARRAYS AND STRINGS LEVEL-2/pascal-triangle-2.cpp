@@ -1,9 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void pascalTriangle2(int n) {
+void pascalTriangle2(int i) {
 	//*********FORMULA*************
-	//don't memorize formula,calculate it
+	// don't memorize formula,calculate it
 	// ncr = factor * ncr-1
 	// after putting the ncr formula and solving for factor we get,
 	// FACTOR = n-r/r+1
@@ -11,7 +11,6 @@ void pascalTriangle2(int n) {
 	// FACTOR = i-j/j+1
 	// ncr = n!/(n-r)!*r!
 
-	int i = n;
 	int val = 1;
 	for (int j = 0; j <= i; j++) {
 		cout << val << " ";

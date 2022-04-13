@@ -4,6 +4,8 @@ using namespace std;
 vector<int> partitionLabels(string str) {
 	map<char, int> mp;
 	vector<int> ans;
+
+	//filling up the map(which contains the last index of every character)
 	for (int i = 0; i < str.size(); i++) {
 		mp[str[i]] = i;
 	}
@@ -14,7 +16,7 @@ vector<int> partitionLabels(string str) {
 		maxImpact = max(maxImpact, mp[str[i]]);
 
 		if (maxImpact == i) {
-			ans.push_back(i - prevMaxImpact);
+			ans.push_back(i - prevMaxImpact); // "i - prevMaxImpact" will give the size of the partition
 			prevMaxImpact = i;
 		}
 	}
@@ -23,7 +25,7 @@ vector<int> partitionLabels(string str) {
 
 int main() {
 	//*********************************
-	// NOTE: prerequisite is "max-chunk-to-make-an-array-sorted" and "max-chunk-to-make-an-array-sorted-2"
+	// NOTE: prerequisite is "max-chunk-to-make-an-array-sorted" and "max-chunk-to-make-an-array-sorted-2" and "Partition Array Into Disjoint Intervals"
 	// VIDEO LINK: https://www.youtube.com/watch?v=_I9di3CUOx4&list=PL-Jc9J83PIiE-TR27GB7V5TBLQRT5RnSl&index=10
 	// QUESTION:
 	// 1. A string 's' of lowercase English letters is given.

@@ -32,7 +32,7 @@ int waysToMakeAFairArray(vector<int> arr) {
 			if (newOddSum == newEvenSum)
 				ans++;
 		}
-		else {
+		else { // i != 0
 			// logic: i se pehle sare index same rhege, i ke baad ke interchange ho jaege
 			int newEvenSum = prefixEvenSum[i - 1] + (prefixOddSum[n - 1] - prefixOddSum[i]); // bracket vala part tumhe i+1 se n-1 tak ka sum dege(think)
 			int newOddSum = prefixOddSum[i - 1] + (prefixEvenSum[n - 1] - prefixEvenSum[i]);

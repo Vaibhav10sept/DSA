@@ -2,7 +2,7 @@
 using namespace std;
 
 void wiggleSort1(vector<int> &arr) {
-	//LOGIC:
+	// LOGIC:
 	// even indexes are less than or equal to odd indexes
 	// odd indexes are greater than or equal to even indexes
 	for (int i = 0; i < arr.size() - 1; i++) {
@@ -21,7 +21,7 @@ void wiggleSort1(vector<int> &arr) {
 
 int main() {
 	//*********************************
-	// VIDEO LINK: https://www.youtube.com/watch?v=eOlp2q08EDU&list=PL-Jc9J83PIiE-TR27GB7V5TBLQRT5RnSl&index=26
+	// VIDEO LINK: https://www.youtube.com/watch?v=mwsjU6CHOb4&list=PL-Jc9J83PIiE-TR27GB7V5TBLQRT5RnSl&index=27
 	// QUESTION:
 	// 1. Given an unsorted array 'arr'.
 	// 2. Reorder it in-place such that :  arr[0] <= arr[1] >= arr[2] <= arr[3] . . . .

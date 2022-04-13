@@ -26,6 +26,7 @@ int islandPerimeter(vector<vector<int>> arr) {
 
 int main() {
 	//*********************************
+	// SIMILAR: battleship in a board
 	// VIDEO LINK: https://www.youtube.com/watch?v=Umnh9qUnZas&list=PL-Jc9J83PIiE-TR27GB7V5TBLQRT5RnSl&index=63
 	// LEETCODE LINK: https://leetcode.com/problems/island-perimeter/
 	//*********************************

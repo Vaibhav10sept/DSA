@@ -4,6 +4,7 @@ using namespace std;
 int MinimumDeletionstoMakeArrayBeautiful (vector<int> arr) {
 	int countOfNumberDeleted  = 0;
 	for (int i = 0; i < arr.size() - 1; i++) {
+		//i- countOfNumberDeleted --> virtual index after deletion as shifting happens on right hand side
 		if ((i - countOfNumberDeleted) % 2 == 0 and arr[i] == arr[i + 1]) {
 			countOfNumberDeleted++;
 		}

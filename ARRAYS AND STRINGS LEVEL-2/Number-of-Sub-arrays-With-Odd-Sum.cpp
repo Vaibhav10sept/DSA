@@ -19,6 +19,7 @@ int noOfSubarrayWithOddSum(vector<int> arr) {
 			ans += 1 + evenCount; // +1 coz odd sum hoga agr kisi ko remove nhi kroge, or even vale ko remove kroge toh odd sum hoga
 			oddCount++;
 		}
+		//ye question me dia tha ki mod lena hai.
 		ans %= (1000000000 + 7);
 	}
 

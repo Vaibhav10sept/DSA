@@ -4,6 +4,7 @@ using namespace std;
 vector<vector<int>> TargetSumUniquePair(vector<int> arr, int left, int right, int target) {
 	sort(arr.begin(), arr.end());
 	vector<vector<int>> ans;
+
 	while (left < right) {
 		//this will ensure that the pair are unique(think)(remember)
 		if (left != 0 and arr[left - 1] == arr[left]) {
@@ -33,6 +34,7 @@ vector<vector<int>> TargetSumUniquePair(vector<int> arr, int left, int right, in
 void targetSumUniqueTriplet(vector<int> arr, int target) {
 	vector<vector<int>> ans;
 	int n = arr.size();
+	//edge case
 	if (n < 3) return;
 	sort(arr.begin(), arr.end());
 

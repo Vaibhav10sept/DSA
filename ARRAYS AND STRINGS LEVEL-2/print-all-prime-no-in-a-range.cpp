@@ -8,6 +8,7 @@ void printAllPrimeInARange(int low, int high) {
 		for (int j = 2; j * j <= i; j++) {
 			if (i % j == 0) {
 				isPrime = false;
+				break;
 			}
 		}
 
@@ -19,6 +20,6 @@ void printAllPrimeInARange(int low, int high) {
 
 int main() {
 	int low = 2;
-	int high = 43;
+	int high = 10;
 	printAllPrimeInARange(low, high);
 }

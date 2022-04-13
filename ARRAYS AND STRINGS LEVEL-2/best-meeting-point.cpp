@@ -57,7 +57,8 @@ int main() {
 	// QUESTION:
 	// 1. A group of two or more people wants to meet and minimize the total travel distance.
 	// 2. You are given a 2D grid of values 0 or 1, where each 1 marks the home of someone in the group.
-	// 3. Return min distance where distance is calculated using 'Manhattan Distance', where distance(p1, p2) = |p2.x - p1.x| + |p2.y - p1.y|.
+	// 3. Return min distance where distance is calculated using 'Manhattan Distance',
+	// where distance(p1, p2) = |p2.x - p1.x| + |p2.y - p1.y|.
 	//*********************************
 	vector<vector<int>> arr = {
 		{1, 0, 0, 0, 1},

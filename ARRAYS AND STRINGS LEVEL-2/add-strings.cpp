@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-string addStrings(string n1, string n2) {
+string (string n1, string n2) {
 	int i1 = n1.size() - 1;
 	int i2 = n2.size() - 1;
 	int carry = 0;

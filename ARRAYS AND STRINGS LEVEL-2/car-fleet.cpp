@@ -10,11 +10,15 @@ int carFleet(vector<int> position, vector<int> speed, int target) {
 		fleet.push_back({position[i], speed[i]});
 	}
 
+	//sorting in increasing order of position.
 	sort(fleet.begin(), fleet.end());
 	stack<double> st;
 
 	for (int i = n - 1; i >= 0; i--) {
 		//int also works IDK why they used double maybe because of int overflow.
+		//fleet.first --> position
+		//fleet.second --> speed.
+		//using time = distance/speed
 		double time = (double)(target - fleet[i].first) / (double)fleet[i].second;
 		if (st.empty() or time > st.top())
 			st.push(time);
@@ -25,6 +29,7 @@ int carFleet(vector<int> position, vector<int> speed, int target) {
 
 int main() {
 	//*********************************
+	// NOTE: kinda similar logic as in "merge intervals"
 	// VIDEO LINK: https://www.youtube.com/watch?v=PemeYPadst4&list=PL-Jc9J83PIiE-TR27GB7V5TBLQRT5RnSl&index=32
 	// QUESTION:
 	// There are n cars going to the same destination along a one-lane road. The destination is target miles away.

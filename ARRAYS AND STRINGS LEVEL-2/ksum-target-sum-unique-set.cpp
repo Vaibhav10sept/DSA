@@ -7,7 +7,7 @@ vector<vector<int>> TargetSumUniquePair(vector<int> arr, int target , int left) 
 
 	int n = arr.size();
 	int right = n - 1;
-	if (n - left < 2) return ans;
+	if (n - left < 2) return ans; //edge case
 	while (left < right) {
 		//this will ensure that the pair are unique(think)(remember)
 		if (left != 0 and arr[left - 1] == arr[left]) {

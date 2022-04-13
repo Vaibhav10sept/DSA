@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void nextGreaterElement3(string str) {
+int nextGreaterElement3(string str) {
 	int minDigit = INT_MAX;
 	int minIdx = str.size() - 1;
 	int dipIdx = -1;
@@ -16,9 +16,9 @@ void nextGreaterElement3(string str) {
 		i--;
 	}
 	if (dipIdx == -1) {
-		cout << str << endl;
-		return;
+		return stoi(str);
 	}
+
 	//find the just greater element(ceil) for dip element.
 	int ceil = INT_MAX;
 	int ceilIdx;
@@ -38,12 +38,12 @@ void nextGreaterElement3(string str) {
 	if (i > 0)
 		reverse(str.begin() + i, str.end());
 
-	cout << str << endl;
+	return stoi(str);
 }
 
 int main() {
 	//*********************************
-	// VIDEO LINK: https://www.youtube.com/watch?v=ChK9pQDhIrk&list=PL-Jc9J83PIiE-TR27GB7V5TBLQRT5RnSl&index=7
+	// VIDEO LINK: https://www.youtube.com/watch?v=eAfJJyaAmes
 	// QUESTION:
 	// 1. Given a positive number 'n' in form of String.
 	// 2. Find the smallest number which has exactly the same digits existing in the number 'n' and is greater in value than 'n'.
@@ -51,5 +51,5 @@ int main() {
 	//*********************************
 	string num = "34";
 
-	nextGreaterElement3(num);
+	cout << nextGreaterElement3(num);
 }

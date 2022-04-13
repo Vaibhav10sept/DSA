@@ -15,10 +15,13 @@ string maximumSwaps(string str) {
 		rightMaxIdx[i] = rightMax;
 	}
 
-	// for (auto ele : rightMaxIdx) cout << ele << " ";
+	for (auto ele : rightMaxIdx) cout << ele << " ";
+	cout << endl;
 	for (int i = 0; i < str.size(); i++) {
 		if (str[i] != str[rightMaxIdx[i]]) {
 			swap(str[i], str[rightMaxIdx[i]]);
+			//coz at most one swap is allowed, so we are returning after the first swap.
+			return str;
 		}
 	}
 	return str;
@@ -33,7 +36,7 @@ int main() {
 	// 2. You can swap two digits at most once to get the maximum valued number in that string.
 	// 3. Return the maximum valued number you can get in form of string.
 	//*********************************
-	string str = "98368";
+	string str = "2736";
 	// string str = "98765";
 	cout << "max value no. after at most one swap is: " << maximumSwaps(str);
 }

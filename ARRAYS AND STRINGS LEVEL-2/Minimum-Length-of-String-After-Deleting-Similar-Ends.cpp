@@ -25,7 +25,7 @@ int main() {
 	// LEETCODE LINK: https://leetcode.com/problems/minimum-length-of-string-after-deleting-similar-ends/
 	// VIDEO LINK: https://www.youtube.com/watch?v=PIs1EArGpIQ&list=PL-Jc9J83PIiE-TR27GB7V5TBLQRT5RnSl&index=76
 	//*********************************
-	string str = "cabaabac";
-	// string str = "bbbbbbbbbbbbbbbbbbbbbbbbbbbabbbbbbbbbbbbbbbccbcbcbccbbabbb";
+	// string str = "cabaabac";
+	string str = "bbbbbbbbbbbbbbbbbbbbbbbbbbbabbbbbbbbbbbbbbbccbcbcbccbbabbb";
 	cout << MinimumLengthofStringAfterDeletingSimilarEnds(str);
 }

@@ -7,8 +7,8 @@ void wiggleSort2(vector<int> &arr) {
 	// odd indexes are greater than even indexes
 	vector<int> res(arr);
 	sort(res.begin(), res.end());
-	int j = arr.size() - 1;
-	int i = 1;
+	int j = arr.size() - 1; // j decrement hoga 1 se.
+	int i = 1; // i +2 se aage bdega
 	while (j >= 0) {
 		arr[i] = res[j];
 		j--;

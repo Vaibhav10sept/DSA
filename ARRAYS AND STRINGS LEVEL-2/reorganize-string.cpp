@@ -12,6 +12,7 @@ public:
 };
 
 bool operator< (const Util one, const Util two) {
+	//always <(less than operator) hi overload krna.
 	// this is max heap
 	return one.freq < two.freq;
 }
@@ -32,7 +33,7 @@ string reorganizeString(string str) {
 
 	//finding answer
 	string ans = "";
-	Util block = pq.top();
+	Util block = pq.top(); //pq is max heap
 	pq.pop();
 	ans += block.ch;
 	block.freq--;
@@ -59,7 +60,7 @@ int main() {
 	// VIDEO LINK: https://www.youtube.com/watch?v=D_jE64CJ5UE&list=PL-Jc9J83PIiE-TR27GB7V5TBLQRT5RnSl&index=58
 	// LEETCODE LINK: https://leetcode.com/problems/reorganize-string/
 	//*********************************
-	string str = "aaab";
+	string str = "aab";
 	cout << reorganizeString(str);
 
 }

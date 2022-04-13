@@ -5,7 +5,7 @@ void complexNumberMultiplication(string n1, string n2) {
 	//getting a and b
 	int a = stoi(n1.substr(0, n1.find('+')));
 	auto found = n1.find('+');
-	found++;
+	oufnd++;
 	int b = stoi(n1.substr(found));
 
 	//getting c and d

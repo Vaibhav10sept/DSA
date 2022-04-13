@@ -5,8 +5,8 @@ bool faultyKeyboard(string name, string typed) {
 	//edge case
 	if (name.size() > typed.size()) return false;
 
-	int i = 0;
-	int j = 0;
+	int i = 0; // for name
+	int j = 0; // for typed
 	while (i < name.size() and j < typed.size()) {
 		if (name[i] == typed[j]) {
 			i++;
@@ -21,13 +21,13 @@ bool faultyKeyboard(string name, string typed) {
 	}
 
 	//ab ham check krege ki while ka breakout "i" se hua ya "j" se
-	// if "i" se while loop toota
+	// if "i" se while loop toota, means "j"(typed) bcha hua hai
 	while (j < typed.size()) {
 		if (typed[j] != name[i - 1]) return false;
 		j++;
 	}
 
-	//if "j" se while loop toota means "i" bacha hua hai, return false(think)
+	//if "j" se while loop toota means "i"(name) bacha hua hai, return false(think)
 	if (i < name.size()) return false;
 
 	return true;
@@ -43,7 +43,7 @@ int main() {
 	// 3. You examine the typed characters of the keyboard. Return 'True' if it is possible that it was your friends name, with some characters (possibly none) being long pressed.
 	//*********************************
 
-	string name = "shree";
+	string name = "shhree";
 	string typed = "sshhreeee";
 	if (faultyKeyboard(name, typed)) {
 		cout << "Yes, it is faulty keyboard" << endl;

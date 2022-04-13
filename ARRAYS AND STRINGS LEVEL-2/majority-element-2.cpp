@@ -75,7 +75,7 @@ int main() {
 	// 2. Find all elements that appear more than n / 3 times and return it in an arraylist.
 	// 3. Note : solve the problem in linear time and in O(1) space.
 	//*********************************
-	vector<int> arr = {3, 2, 3};
+	vector<int> arr = {3, 2, 3, 2, 1};
 	vector<int> majorityElement2Ans = majorityElement2(arr);
 	if (majorityElement2Ans.size() != 0) {
 		cout << "majority element is: " << endl;

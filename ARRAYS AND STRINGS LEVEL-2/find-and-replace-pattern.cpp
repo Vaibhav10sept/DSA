@@ -18,8 +18,10 @@ bool isMatching(string word, string pattern) {
 		else { //not found
 			//here is check for the uniqueness of word
 			if (isWordAlreadyUsed.find(word[j]) != isWordAlreadyUsed.end()) {
+				//means the word[j] is already used.
 				return false;
 			}
+			//else map or set me word and pattern ko add krdo
 			mp[pattern[i]] = word[j];
 			isWordAlreadyUsed.insert(word[j]);
 		}
@@ -45,7 +47,7 @@ int main() {
 	//*********************************
 	// VIDEO LINK: https://www.youtube.com/watch?v=4Ze_vLq5tPQ&list=PL-Jc9J83PIiE-TR27GB7V5TBLQRT5RnSl&index=46
 	// QUESTION:
-	// 	1. Given a list of strings words and a string pattern.
+	// 1. Given a list of strings words and a string pattern.
 	// 2. Return a list of words[i] that match pattern. You may return the answer in any order.
 	// 3. A word matches the pattern if there exists a permutation of letters p so that after replacing every letter x in the pattern with p(x), we get the desired word.
 	// 4. Recall that a permutation of letters is a bijection from letters to letters: every letter maps to another letter, and no two letters map to the same letter.

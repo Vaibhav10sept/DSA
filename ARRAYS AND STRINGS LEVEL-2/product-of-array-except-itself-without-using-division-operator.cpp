@@ -5,7 +5,7 @@ vector<int> productOfArrayExceptItself(vector<int> arr) {
 	vector<int> rightProduct(arr.size());
 	vector<int> ans(arr.size());
 
-	// filling right product array
+	// filling up the right product array
 	rightProduct[arr.size() - 1] = arr[arr.size() - 1];
 	for (int i = arr.size() - 2; i >= 0; i--) {
 		rightProduct[i] = rightProduct[i + 1] * arr[i];

@@ -14,16 +14,17 @@ void countSort(vector<vector<int>> &arr, int r, int c) {
 	int n = arr.size();
 	int m = arr[0].size();
 
-	vector<int> freq(101, 0);
+	vector<int> freq(101, 0); //given in question, value in matrix does not exceed 100.
 	int i = r;
 	int j = c;
-	//fill freq
+	//fill freq vector
 	while (i < n and j < m) {
 		freq[arr[i][j]]++;
 		i++;
 		j++;
 	}
 
+	//sorting using count sort logic.
 	i = r;
 	j = c;
 	for (int k = 1; k < freq.size(); k++) {
@@ -43,13 +44,12 @@ void sortMatrixDiagonally(vector<vector<int>> arr) {
 		countSort(arr, 0, j);
 	}
 
-	// for 0th column
+	// for 0th column, leaving the 0th, "i" is starting from 1 (think)
 	for (int i = 1; i < n; i++) {
 		countSort(arr, i, 0);
 	}
 
 	displayMatrix(arr);
-
 }
 
 int main() {

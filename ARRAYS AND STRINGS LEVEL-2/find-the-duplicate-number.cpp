@@ -19,6 +19,6 @@ int main() {
 	// VIDEO LINK: https://www.youtube.com/watch?v=32Ll35mhWg0
 	// LEETCODE LINK: https://leetcode.com/problems/find-the-duplicate-number/
 	//*********************************
-	vector<int> arr = {1, 3, 4, 2, 2};
+	vector<int> arr = {1, 3, 4, 2, 2, 2, 2};
 	cout << findTheDuplicateNumber(arr) << endl;
 }

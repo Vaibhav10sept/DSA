@@ -15,7 +15,7 @@ int sumOfSubsequenceWidth(vector<int> arr) {
 	}
 
 	for (int i = 0; i < arr.size(); i++) {
-		ans = (ans + ( arr[i] * pow[i]) - (arr[i] * pow[n - i - 1])) % mod;
+		ans = (ans + (arr[i] * pow[i]) - (arr[i] * pow[n - i - 1])) % mod;
 	}
 	return ans;
 }

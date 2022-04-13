@@ -70,9 +70,9 @@ int main() {
 //     Input : [[1,3],[5,8],[10,19],[15,20],[9,9]]
 //     Output : 2.
 	//*********************************
-	// vector<vector<int>> arr = {{1, 3}, {2, 4}, {6, 8}, {10, 14}, {7, 9}};
+	vector<vector<int>> arr = {{1, 3}, {2, 4}, {6, 8}, {10, 14}, {7, 9}};
 	// vector<vector<int>> arr = {{1, 3}, {3, 10}, {12, 20}};
-	vector<vector<int>> arr = {{1, 3}, {5, 8}, {10, 19}, {15, 20}, {9, 9}};
+	// vector<vector<int>> arr = {{1, 3}, {5, 8}, {10, 19}, {15, 20}};
 	sort(arr.begin(), arr.end(), comparator);
 	displayMatrix(arr);
 	cout << "min no of rooms required are: " << meetingRoom2(arr) << endl;

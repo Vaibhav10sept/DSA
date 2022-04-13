@@ -19,11 +19,10 @@ void solveConfiguration(vector<char> &arr, int i, int j) {
 		//nothing to do
 	}
 	else { //(arr[i] == 'R' and arr[j] == 'L')
-		// cout << "gsd";
 		//solve accordingly, for odd and even.
-		int diff = j - i - 1; //logic
+		int diff = j - i - 1; //logic, "-1" coz we need dots in between i and j(think)
 		int mid = (j + i) / 2;
-		if (diff % 2 == 0) { //even dots
+		if (diff % 2 == 0) { //even number dots
 			//i+1 to mid --> 'R'
 			//mid+1 to j-1 --> 'L'
 			for (int k = i + 1; k <= mid; k++) {
@@ -33,7 +32,7 @@ void solveConfiguration(vector<char> &arr, int i, int j) {
 				arr[k] = 'L';
 			}
 		}
-		else { //odd dots
+		else { //odd number dots
 			//i+1 to mid -1 --> 'R'
 			//mid+1 to j-1 --> 'L'
 			for (int k = i + 1; k <= mid - 1; k++) {
@@ -57,8 +56,6 @@ string pushDonimos(string str) {
 	for (int i = 1; i < arr.size() - 1; i++) {
 		arr[i] = str[i - 1];
 	}
-
-
 
 	//finding out the segments and solving each segment
 	int j = 0;

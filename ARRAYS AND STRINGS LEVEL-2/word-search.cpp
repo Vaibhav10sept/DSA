@@ -18,10 +18,12 @@ bool recursiveExplore(vector<vector<char>> arr, int i, int j, int idx, string wo
 	for (int d = 0; d < 4; d++) {
 		bool res = recursiveExplore(arr, i + di[d], j + dj[d], idx + 1, word);
 		if (res) {
+			//backtrack
 			arr[i][j] = myChar;
 			return true;
 		}
 	}
+	//backtrack
 	arr[i][j] = myChar;
 	return false;
 }

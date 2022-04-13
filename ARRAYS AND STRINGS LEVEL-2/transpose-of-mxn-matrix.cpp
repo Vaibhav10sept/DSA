@@ -23,15 +23,15 @@ void displayMatrix(vector<vector<int>> arr) {
 }
 
 void transposeOfMXNMatrix(vector<vector<int>> arr) {
-	vector<vector<int>> trasnsposeMatrix(arr[0].size(), vector<int>(arr.size()));
+	vector<vector<int>> transposedMatrix(arr[0].size(), vector<int>(arr.size()));
 
 	for (int i = 0; i < arr.size(); i++) {
 		for (int j = 0; j < arr[0].size(); j++) {
-			trasnsposeMatrix[j][i] = arr[i][j];
+			transposedMatrix[j][i] = arr[i][j];
 		}
 	}
 	cout << "after transpose: " << endl;
-	displayMatrix(trasnsposeMatrix);
+	displayMatrix(transposedMatrix);
 }
 
 int main() {

@@ -62,7 +62,8 @@ int minimumDominoRotationForEqualRow(vector<int> tops, vector<int> bottoms) {
 				count4 = INT_MAX;
 			}
 		}
-	}//if ends
+	}//for ends
+
 	int ans = min(min(count1, count2), min(count3, count4));
 	if (ans != INT_MAX) {
 		return ans;

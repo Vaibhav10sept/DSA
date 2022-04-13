@@ -7,7 +7,6 @@ bool comparator(vector<int> v1, vector<int> v2) {
 }
 
 vector<int> topKFreqElement(vector<int> arr, int k) {
-	//this is my own solution
 
 	map<int, int> mp;
 	vector<vector<int>> freqVec;

@@ -9,16 +9,16 @@ int minDeletion(string str) {
 	}
 	sort(freq.begin(), freq.end(), greater<int>()); // sort in decreasing order
 	int maxAllowedFrequency = freq[0];
-	for (int ele : freq) {
-		if (ele > maxAllowedFrequency) {
+	for (int frequency : freq) {
+		if (frequency > maxAllowedFrequency) {
 			if (maxAllowedFrequency > 0) {
-				ans += (ele - maxAllowedFrequency);
+				ans += (frequency - maxAllowedFrequency);
 			}
 			else {
-				ans += ele;
+				ans += frequency;
 			}
 		}
-		maxAllowedFrequency = min(maxAllowedFrequency - 1, ele - 1);
+		maxAllowedFrequency = min(maxAllowedFrequency - 1, frequency - 1);
 	}
 	return ans;
 }

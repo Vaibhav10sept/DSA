@@ -11,7 +11,7 @@ int sortArrayByParity(vector<int> &arr) {
 			i++;
 			j++;
 		}
-		else { // odd hai
+		else { // arr[i] is odd
 			i++;
 		}
 	}

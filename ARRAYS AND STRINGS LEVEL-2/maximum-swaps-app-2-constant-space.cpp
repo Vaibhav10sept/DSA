@@ -9,6 +9,9 @@ string maximumSwapsConstSpaceApproach(string str) {
 		lastIndex[digit] = i;
 	}
 
+	for (auto ele : lastIndex) cout << ele << " ";
+	cout << endl;
+
 	for (int i = 0; i < str.size(); i++) {
 		int digit = str[i] - '0';
 		int larger = 9;
