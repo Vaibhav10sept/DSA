@@ -13,13 +13,13 @@ vector<int> productOfArrayExceptItself(vector<int> arr) {
 
 	int leftProd = 1;
 	for (int i = 0; i < ans.size(); i++) {
-		if (i == 0) {
+		if (i == 0) { //first index
 			ans[i] = rightProduct[i + 1];
 		}
-		else if (i == ans.size() - 1) {
+		else if (i == ans.size() - 1) { //last index
 			ans[i] = leftProd;
 		}
-		else {
+		else { //other than first and last index
 			ans[i] = leftProd * rightProduct[i + 1];
 		}
 		leftProd *= arr[i];

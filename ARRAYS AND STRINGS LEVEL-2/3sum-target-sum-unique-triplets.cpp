@@ -1,55 +1,59 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<vector<int>> TargetSumUniquePair(vector<int> arr, int left, int right, int target) {
-	sort(arr.begin(), arr.end());
-	vector<vector<int>> ans;
-
-	while (left < right) {
-		//this will ensure that the pair are unique(think)(remember)
-		if (left != 0 and arr[left - 1] == arr[left]) {
-			left++;
-			continue;
+void displayMatrix(vector<vector<int>> arr) {
+	for (int i = 0; i < arr.size(); i++) {
+		for (int j = 0; j < arr[i].size(); j++) {
+			cout << arr[i][j] << " ";
 		}
-
-		//now, there would be 3 cases same as in "target sum pair"
-		int sum = arr[left] + arr[right];
-		if (target == sum) {
-			//pair found
-			vector<int> vec = {arr[left], arr[right]};
-			ans.push_back(vec);
-			left++;
-			right--;
-		}
-		else if (target > sum) {
-			left++;
-		}
-		else { //target < sum
-			right--;
-		}
+		cout << endl;
 	}
-	return ans;
 }
 
-void targetSumUniqueTriplet(vector<int> arr, int target) {
-	vector<vector<int>> ans;
-	int n = arr.size();
-	//edge case
-	if (n < 3) return;
-	sort(arr.begin(), arr.end());
+vector<vector<int>> targetSumUniqueTriplet(vector<int> num) {
+	vector<vector<int> > res;
 
-	for (int i = 0; i <= n - 3; i++) {
-		//this will ensure that the triplet are unique(think)(before "2sum-target-sum-unique-pair")
-		if (i != 0 and arr[i] == arr[i - 1]) continue;
+	std::sort(num.begin(), num.end());
 
-		int val1 = arr[i];
-		int newTarget = target - val1;
-		vector<vector<int>> currAns = TargetSumUniquePair(arr, i , n - 1, newTarget);
-		//printing the answer
-		for (vector<int> vec : currAns) {
-			cout << val1 << " " << vec[0] << " " << vec[1] << endl;
+	for (int i = 0; i < num.size(); i++) {
+
+		int target = -num[i];
+		int front = i + 1;
+		int back = num.size() - 1;
+
+		while (front < back) {
+
+			int sum = num[front] + num[back];
+
+			// Finding answer which start from number num[i]
+			if (sum < target)
+				front++;
+
+			else if (sum > target)
+				back--;
+
+			else {
+				vector<int> triplet = {num[i], num[front], num[back]};
+				res.push_back(triplet);
+
+				// Processing duplicates of Number 2
+				// Rolling the front pointer to the next different number forwards
+				while (front < back && num[front] == triplet[1]) front++;
+
+				// Processing duplicates of Number 3
+				// Rolling the back pointer to the next different number backwards
+				while (front < back && num[back] == triplet[2]) back--;
+			}
+
 		}
+
+		// Processing duplicates of Number 1
+		while (i + 1 < num.size() && num[i + 1] == num[i])
+			i++;
+
 	}
+
+	return res;
 
 }
 
@@ -62,7 +66,10 @@ int main() {
 	// 2. Another thing is nums[i] + nums[j] + nums[k] == target.
 	// 3. Notice that the solution set must not contain duplicate triplets.
 	//*********************************
-	vector<int> arr = { -1, 0, 1 , 2 , -1, -4};
-	int target = 0;
-	targetSumUniqueTriplet(arr, target);
+	// vector<int> arr = { -2, -1, 1, 2};
+	vector<int> arr = { -1, 0, 1, 2, -1, -4};
+	// vector<int> arr = {0, 0, 0};
+	vector<vector<int>> ans = targetSumUniqueTriplet(arr);
+	cout << "ans" << endl;
+	displayMatrix(ans);
 }

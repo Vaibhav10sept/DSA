@@ -17,6 +17,7 @@ int maxProductSubarray(vector<int> arr) {
 	}
 
 	//loop for ending vala subarray
+	currProduct = 1;
 	for (int i = arr.size() - 1; i >= 0; i--) {
 		currProduct *= arr[i];
 		ans = max(currProduct, ans);
@@ -35,6 +36,6 @@ int main() {
 // 2. You have to find maximum subarray sum in the given array.
 // 3. The subarray must have at least one element.
 	//*********************************
-	vector<int> arr = {6, -3, -10, 0, 2};
+	vector<int> arr = { -2, 3, 0};
 	cout << maxProductSubarray(arr);
 }

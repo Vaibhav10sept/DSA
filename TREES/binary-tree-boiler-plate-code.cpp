@@ -87,6 +87,55 @@ Node* construct(vector<int> arr) {
 
 }
 
+Node* constructorForLeetcode(vector<int> arr) {
+	// state = 1 means left me node add krna hai
+	// state = 2 means right me node add krna hai
+	// state = 3 means stack se node ko pop krna hai
+	queue<UtilPair> q;
+	Node* root = new Node(arr[0]);
+	UtilPair newPair(root, 1);
+	q.push(newPair);
+
+	int i = 1;
+	while (!q.empty() and i < arr.size()) {
+		UtilPair front = q.front();
+
+		if (front.state == 1) {
+			// means left me node add krni hai
+			q.front().state++;
+			if (arr[i] != -1) {
+				Node* newNode = new Node(arr[i]);
+				q.front().node->left = newNode;
+				UtilPair newPair(newNode, 1);
+				q.push(newPair);
+			}
+			else {
+				q.front().node->left = NULL;
+			}
+			i++;
+		}
+		else if (front.state == 2) {
+			// means right me node add krna hai
+			q.front().state++;
+			if (arr[i] != -1) {
+				Node* newNode = new Node(arr[i]);
+				q.front().node->right = newNode;
+				UtilPair newPair(newNode, 1);
+				q.push(newPair);
+			}
+			else {
+				q.front().node->right = NULL;
+			}
+			i++;
+		}
+		else {
+			// state = 3 --> means queue se node ko pop krna hai
+			q.pop();
+		}
+	}
+	return root;
+}
+
 int size(Node* node) {
 	if (node == NULL) return 0;
 

@@ -164,7 +164,6 @@ void iterativeTraversal(Node* node) {
 	cout << "preorder " << pre << endl;
 	cout << "postorder " << post << endl;
 	cout << "inorder " << in << endl;
-
 }
 
 int main()
