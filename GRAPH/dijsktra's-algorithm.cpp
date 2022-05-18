@@ -96,10 +96,8 @@ int main() {
 	// 5 6 3
 	// 4 6 8
 	// 2 5 5
-	// 0
 
 	vector<vector<Edge>> graph = constructGraphFromInput();
-	int src;
-	cin >> src;
+	int src = 0;
 	dijsktrasAlgorithm(graph, src);
 }

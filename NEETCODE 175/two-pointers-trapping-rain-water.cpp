@@ -1,8 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
-
 int trappingRainWater(vector<int> arr) {
 	//creating the right max array
 	vector<int> rightMax(arr.size());

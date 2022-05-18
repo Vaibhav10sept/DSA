@@ -4,8 +4,7 @@ void fun(vector<int> arr) {
 	stack<pair<int, int> > st;
 	vector<int> ans;
 	int n = arr.size();
-	// ans[0] = 0;
-	// st.push(0);
+
 	for (auto price : arr) {
 		int day = 1;
 

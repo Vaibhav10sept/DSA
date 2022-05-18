@@ -15,7 +15,7 @@ vector<int> twoSum(vector<int> arr, int target) {
 			return ans;
 		}
 
-		//number was not found. Put it in the map.
+		//number is not found. Put it in the map.
 		mp[arr[i]] = i;
 	}
 	return ans;

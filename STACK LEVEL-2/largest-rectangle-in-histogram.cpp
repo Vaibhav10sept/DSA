@@ -1,7 +1,5 @@
-
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-
 
 vector<int> leftnextsmallerindex(vector<int> arr) {
 	vector<int> ans(arr.size());
@@ -40,15 +38,26 @@ vector<int> rightnextsmallerindex(vector<int> arr) {
 
 }
 
-int main() {
-	vector<int> arr = {6, 2, 5, 4, 5, 1, 6};
+int largestRectangleHistogram(vector<int> arr) {
+
 	vector<int> left = leftnextsmallerindex(arr);
 	vector<int> right = rightnextsmallerindex(arr);
 	int ans = INT_MIN;
+
 	for (int i = 0; i < arr.size(); i++) {
 		int height = arr[i];
 		int width = right[i] - left[i] - 1;
 		ans = max(ans, height * width);
 	}
-	cout << ans << endl;
+	return ans;
+}
+
+int main() {
+	/*
+	PREREQUISITE:
+	VIDEO LINK: https://www.youtube.com/watch?v=41VuLYR0btE&list=PL-Jc9J83PIiE1_SifBEWRsD-fzxrvkja9&index=6
+	LEETCODE LINK: https://leetcode.com/problems/largest-rectangle-in-histogram/submissions/
+	*/
+	vector<int> arr = {2, 1, 5, 6, 2, 3};
+	cout << largestRectangleHistogram(arr);
 }
