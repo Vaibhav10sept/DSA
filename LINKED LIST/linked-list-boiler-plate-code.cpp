@@ -27,7 +27,7 @@ public:
 	int getSize() {
 		Node* temp = head;
 		int res = 0;
-		while (temp) {
+		while (temp != NULL) {
 			temp = temp->next;
 			res++;
 		}
@@ -86,7 +86,6 @@ public:
 			}
 			return temp->data;
 		}
-
 	}
 
 	void addLast(int data) {
@@ -123,6 +122,7 @@ public:
 		Node* newNode = new Node();
 		newNode->data = data;
 		newNode->next = NULL;
+
 		if (idx < 0 || idx >= size) {
 			cout << "not a valid index" << endl;
 			return;
@@ -158,9 +158,7 @@ public:
 			temp->next = NULL;
 			tail = temp;
 		}
-
 		size--;
-
 	}
 
 	void removeAtIdx(int idx) {
@@ -207,14 +205,8 @@ public:
 int main()
 {
 	LinkedList ll;
-	ll.addFirst(5);
-	ll.addFirst(4);
 	ll.addFirst(3);
 	ll.addFirst(2);
 	ll.addFirst(1);
-	ll.addFirst(0);
 	ll.printLinkedList();
-	ll.removeLast();
-	ll.printLinkedList();
-
 }

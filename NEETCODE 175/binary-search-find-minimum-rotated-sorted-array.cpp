@@ -17,6 +17,7 @@ int findMinInRotatedSortedArray(vector<int> &arr) {
 
 		int mid = (start + end) / 2;
 		ans = min(ans, arr[mid]);
+
 		//kidhar jana hai?
 		//check if we are in left sorted portion
 		if (arr[start] <= arr[mid]) {

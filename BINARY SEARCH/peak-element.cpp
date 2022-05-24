@@ -17,16 +17,15 @@ int peakElement(vector<int> &arr) {
 	return start;
 }
 
+
 int main() {
 
 	/*
+	PREREQUITE: same code as in question: no of times arrays is rotated
 	NOTE: given arr is unsorted, So here we are using a concept "binary search on answer"
-	VIDEO LINK: https://www.youtube.com/watch?v=B4t3NB0478k   w
+	VIDEO LINK: https://www.youtube.com/watch?v=B4t3NB0478k
 	NOTE: watch the above video at 1hr 19min
 	*/
-
-	// vector<int> arr = {1, 2, 1, 3, 5, 6, 4};
 	vector<int> arr = {1, 2, 3, 1};
-
 	cout << peakElement(arr) << endl;
 }
