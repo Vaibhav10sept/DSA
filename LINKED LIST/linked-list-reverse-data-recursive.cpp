@@ -208,6 +208,7 @@ public:
 	void utilReverse(Node* head, int flr) {
 		static Node* left = head;
 
+		// BASE CONDITION
 		if (head == NULL) return;
 
 		utilReverse(head->next, flr + 1);
@@ -217,8 +218,8 @@ public:
 			left->data = temp;
 		}
 		left = left->next;
-
 	}
+
 	void reverseRecursiveData() {
 		utilReverse(head, 0);
 	}

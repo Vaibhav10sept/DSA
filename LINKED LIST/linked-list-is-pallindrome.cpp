@@ -205,13 +205,19 @@ public:
 	 * LINKED LIST BOILER PLATE CODE ENDS
 	 * *******************************************/
 	bool utilIsPallindrome(Node * head, int flr) {
+		//static variable
 		static Node* left = head;
+
+		//base case
 		if (head == NULL) return true;
+
 		bool ans = utilIsPallindrome(head->next, flr + 1);
+
+		//POST RECURSION PHASE
 		if (ans == false) {
 			return false;
 		}
-		else {
+		else { //ans false nhi hai, toh check kro
 			if (flr >= size / 2) {
 				if (head->data != left->data) {
 					return false;

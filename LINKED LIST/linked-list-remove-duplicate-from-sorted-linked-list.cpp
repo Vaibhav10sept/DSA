@@ -217,8 +217,6 @@ public:
 			if (last != val) {
 				res.addLast(val);
 			}
-			else {
-			}
 			last = val;
 		}
 		this->head = res.head;
@@ -231,9 +229,11 @@ public:
 		Node* temp = this->head;
 		while (temp) {
 			if (temp->next and temp->data == temp->next->data) {
+				//skip the node having duplicate data.
 				temp->next = temp->next->next;
 			}
 			else {
+				//simple move by one step
 				temp = temp->next;
 			}
 		}
@@ -264,7 +264,7 @@ int main()
 	ll.addFirst(0);
 
 	ll.printLinkedList();
-	ll.removeDuplicate();
+	ll.removeDuplicate2();
 	cout << "After removing duplicates:" << endl;
 	ll.printLinkedList();
 }

@@ -207,7 +207,6 @@ public:
 	void oddEven() {
 		LinkedList odd;
 		LinkedList even;
-		int s = size;
 		while (this->size) {
 			int val = this->getFirst();
 			this->removeFirst();
@@ -221,14 +220,12 @@ public:
 			}
 		}
 		if (even.size != 0 && odd.size != 0) {
-
 			this->head = odd.head;
 			this->tail = even.tail;
 			odd.tail->next = even.head;
 			this->size = even.size + odd.size;
 		}
 		else if (even.size == 0) {
-
 			this->head = odd.head;
 			this->tail = odd.tail;
 			this->size = odd.size;
@@ -244,6 +241,9 @@ public:
 
 int main()
 {
+	/*
+	SPACE: constant(think,logic)(watch pepcoding video)
+	*/
 	LinkedList ll;
 	ll.addFirst(6);
 	ll.addFirst(4);
@@ -253,6 +253,7 @@ int main()
 	ll.addFirst(3);
 	ll.printLinkedList();
 	ll.oddEven();
+	cout << "after" << endl;
 	ll.printLinkedList();
 
 }

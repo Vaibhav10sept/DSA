@@ -8,220 +8,40 @@ public:
 	int data;
 };
 
-class LinkedList
-{
-	/*********************************************
-	 * LINKED LIST BOILER PLATE CODE STARTS
-	 * *******************************************/
-public:
-	Node* head;
-	Node* tail;
-	int size;
-
-	LinkedList() {
-		head = NULL;
-		tail = NULL;
-		size = 0;
+int getSize(Node* head) {
+	int count = 0;
+	Node* temp = head;
+	while (temp) {
+		count++;
+		temp = temp->next;
 	}
+	return count;
+}
 
-	int getSize() {
-		Node* temp = head;
-		int res = 0;
-		while (temp) {
-			temp = temp->next;
-			res++;
-		}
-		return res;
-	}
+int getIntesectionNode(Node* head1, Node* head2) {
+	/*
+	STEP:
+	1. pehle first and second ko barabar le aao, means jiska size jyada hai usko diff jitna chla do
+	2. fir, first and second ke ek step chlao jab tak dono equal nhi ho jate, equal hone par answer mil jaega
+	*/
+	Node* first = head1;
+	Node* second = head2;
+	int size1 = getSize(head1);
+	int size2 = getSize(head2);
 
-	void removeFirst() {
-		if (size == 0) {
-			cout << "list is empty" << endl;
-			return;
-		}
-		else if (size == 1) {
-			free(head);
-			head = tail = NULL;
-		}
-		else {
-			Node* temp = head;
-			head = head->next;
-			free(temp);
-		}
-		size--;
-	}
-
-	int getFirst() {
-		if (size == 0 || head == NULL) {
-			cout << "list is empty" << endl;
-			return -1;
-		}
-		else {
-			return head->data;
-		}
-	}
-
-	int getLast() {
-		if (size == 0 || head == NULL) {
-			cout << "list is empty" << endl;
-			return -1;
-		}
-		else {
-			return tail->data;
-		}
-	}
-
-	int getAtIdx(int idx) {
-		if (idx < 0 || idx >= size) {
-			cout << "not a valid index" << endl;
-			return -1;
-		}
-		else if (size == 0 || head == NULL) {
-			cout << "list is empty" << endl;
-		}
-		else if ( idx == 0 ) {
-			return getFirst();
-		}
-		else {
-			Node* temp = head;
-			for (int i = 0; i < idx; i++) {
-				temp = temp->next;
-			}
-			return temp->data;
-		}
-
-	}
-
-	void addLast(int data) {
-		Node* newNode = new Node();
-		newNode->data = data;
-		newNode->next = NULL;
-
-		if (size == 0) {
-			head = tail = newNode;
-		}
-		else {
-			tail->next = newNode;
-			tail = newNode;
-		}
-		size++;
-	}
-
-	void addFirst(int data) {
-		Node* newNode = new Node();
-		newNode->data = data;
-		newNode->next = NULL;
-
-		if (size == 0) {
-			head = tail = newNode;
-		}
-		else {
-			newNode->next = head;
-			head = newNode;
-		}
-		size++;
-	}
-
-	void addAtIdx(int data, int idx) {
-		Node* newNode = new Node();
-		newNode->data = data;
-		newNode->next = NULL;
-		if (idx < 0 || idx >= size) {
-			cout << "not a valid index" << endl;
-			return;
-		}
-		else if (idx == 0) {
-			addFirst(data);
-		}
-		else {
-			Node* temp = head;
-			for (int i = 0; i < idx - 1; i++) {
-				temp = temp->next;
-			}
-			newNode->next = temp->next;
-			temp->next = newNode;
-		}
-		size++;
-	}
-
-	void removeLast() {
-		if (size == 0) {
-			cout << "nothing to be removed" << endl;
-			return;
-		}
-		else if (size == 1) {
-			head = tail = NULL;
-		}
-		else {
-			Node* temp = head;
-			for (int i = 0; i < size - 2; i++) {
-				temp = temp->next;
-			}
-			free(tail);
-			temp->next = NULL;
-			tail = temp;
-		}
-
-		size--;
-
-	}
-
-	void removeAtIdx(int idx) {
-		if (idx < 0 || idx >= size) {
-			cout << "not a valid index" << endl;
-			return;
-		}
-		else if (size == 0) {
-			cout << "nothing to be removed" << endl;
-			return;
-		}
-		else if (size == 1) {
-			head = tail = NULL;
-		}
-		else if (idx == 0) {
-			head = head->next;
-		}
-		else {
-			Node* temp = head;
-			for (int i = 0; i < idx - 1; i++) {
-				temp = temp->next;
-			}
-			Node* tobefreed = temp->next;
-			temp->next = temp->next ? temp->next->next : NULL;
-			free(tobefreed);
-		}
-		size--;
-	}
-
-	void printLinkedList() {
-		Node* temp = head;
-		while (temp) {
-			cout << temp->data << " ";
-			temp = temp->next;
-		}
-		cout << endl;
-	}
-	/*********************************************
-	 * LINKED LIST BOILER PLATE CODE ENDS
-	 * *******************************************/
-};
-
-int findIntersection(LinkedList l1, LinkedList l2) {
-	Node* first = l1.head;
-	Node* second = l2.head;
-
-	if (l1.size > l2.size) {
-		int diff = l1.size - l2.size;
+	if (size1 > size2) {
+		int diff = size1 - size2;
 		for (int i = 0; i < diff; i++) {
 			first = first->next;
 		}
 	}
-	else if (l2.size > l1.size) {
-		int diff = l2.size - l1.size;
+	else if (size2 > size1) {
+		int diff = size2 - size1;
 		for (int i = 0; i < diff; i++) {
 			second = second->next;
 		}
 	}
+
 	Node* ans = NULL;
 
 	while (first && second) {
@@ -233,8 +53,8 @@ int findIntersection(LinkedList l1, LinkedList l2) {
 		second = second->next;
 	}
 	return ans->data;
-
 }
+
 int main()
 {
 	//*********************************
@@ -242,12 +62,42 @@ int main()
 	// DON'T RUN IT CAUSE THE CODE TO RUN THIS FUNCTION IS
 	// NOT WRITTEN.
 	//************************************
-	LinkedList ll;
-	ll.addFirst(5);
-	ll.addFirst(4);
-	ll.addFirst(3);
-	ll.addFirst(2);
-	ll.addFirst(1);
-	ll.addFirst(0);
-	ll.printLinkedList();
+	/*
+	    Create two linked lists
+
+	    1st 3->6->9->15->30
+	    2nd 10->15->30
+
+	    15 is the intersection point
+	*/
+
+	Node* newNode;
+
+	// Addition of new nodes
+	Node* head1 = new Node();
+	head1->data = 10;
+
+	Node* head2 = new Node();
+	head2->data = 3;
+
+	newNode = new Node();
+	newNode->data = 6;
+	head2->next = newNode;
+
+	newNode = new Node();
+	newNode->data = 9;
+	head2->next->next = newNode;
+
+	newNode = new Node();
+	newNode->data = 15;
+	head1->next = newNode;
+	head2->next->next->next = newNode;
+
+	newNode = new Node();
+	newNode->data = 30;
+	head1->next->next = newNode;
+
+	head1->next->next->next = NULL;
+
+	cout << "The node of intersection is " << getIntesectionNode(head1, head2);
 }

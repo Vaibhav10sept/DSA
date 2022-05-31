@@ -219,6 +219,7 @@ public:
 			Node* newNode = new Node;
 			newNode->data = info;
 			newNode->next = next;
+
 			temp->next = newNode;
 			temp = next;
 		}
@@ -240,5 +241,6 @@ int main()
 	ll.addFirst(1);
 	ll.printLinkedList();
 	ll.fold();
+	cout << "after folding" << endl;
 	ll.printLinkedList();
 }

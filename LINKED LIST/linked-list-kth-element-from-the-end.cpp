@@ -205,15 +205,15 @@ public:
 	 * LINKED LIST BOILER PLATE CODE ENDS
 	 * *******************************************/
 	int kthElementFromEnd(int k) {
+		//using slow, fast pointer approach
 		Node* slow = head;
 		Node* fast = head;
 
-		// while (k-- && fast) fast = fast->next;
-		for (int i = 0; i < k - 1; i++) fast = fast->next;
-		while (fast->next != NULL) {
+		//dry run krne for ki values nikallo jaese pehle krte the, no need to memorize anything
+		for (int i = 0; i < k; i++) fast = fast->next;
+		while (fast != NULL) {
 			fast = fast->next;
 			slow = slow->next;
-
 		}
 		return slow->data;
 	}

@@ -244,6 +244,7 @@ LinkedList merge(LinkedList left, LinkedList right) {
 
 
 LinkedList mergeSort(Node * head, Node * tail) {
+	//base condition
 	if (head == tail ) {
 		LinkedList newll;
 		newll.addLast(head->data);

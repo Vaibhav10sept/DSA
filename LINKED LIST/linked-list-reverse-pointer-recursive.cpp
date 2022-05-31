@@ -205,9 +205,12 @@ public:
 	 * LINKED LIST BOILER PLATE CODE ENDS
 	 * *******************************************/
 	void utilReverseRecursive(Node* head) {
-		if (!head) return;
+		if (!head) return; //BASE COND
 
 		utilReverseRecursive(head->next);
+
+		//POST RECURSIVE PHASE
+		//REM: this head->next->next = head; (think, logic)
 		if (head == tail) {
 
 		}
@@ -218,7 +221,8 @@ public:
 	}
 	void reverseRecursive() {
 		utilReverseRecursive(this->head);
-		head->next = NULL;
+		head->next = NULL; //kyoki ab head, tail bn chuki hai or tail ka next NULL hota hai
+		//swap head and tail
 		Node* temp = head;
 		head = tail;
 		tail = temp;
@@ -239,5 +243,6 @@ int main()
 	ll.addFirst(0);
 	ll.printLinkedList();
 	ll.reverseRecursive();
+	cout << "after reverse" << endl;
 	ll.printLinkedList();
 }

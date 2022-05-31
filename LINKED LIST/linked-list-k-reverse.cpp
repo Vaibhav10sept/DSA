@@ -229,8 +229,9 @@ Node* reverseRecursive(Node* head, int k) {
 	/* next is now a pointer to (k+1)th node
 	Recursively call for the list starting from current.
 	And make rest of the list as next of first node */
-	if (next != NULL)
+	if (next != NULL) {
 		head->next = reverseRecursive(next, k);
+	}
 
 	/* prev is new head of the input list */
 	return prev;
@@ -240,7 +241,6 @@ Node* reverseIterative(Node* node, int rev) {
 	// this is written by me.
 	LinkedList res;
 	while (node) {
-		Node* temp = node;
 		stack<Node*> st;
 
 		for (int i = 1; i <= rev && node; i++) {
@@ -252,7 +252,6 @@ Node* reverseIterative(Node* node, int rev) {
 			res.addLast(st.top()->data);
 			st.pop();
 		}
-
 	}
 	return res.head;
 }
@@ -261,6 +260,7 @@ int main()
 {
 	cout << "original linked list:" << endl;
 	LinkedList ll;
+	ll.addFirst(7);
 	ll.addFirst(6);
 	ll.addFirst(5);
 	ll.addFirst(4);
@@ -272,7 +272,6 @@ int main()
 	ll.head = reverseRecursive(ll.head, 2);
 	cout << "recursive reverse result:" << endl;
 	ll.printLinkedList();
-
 	LinkedList ll2;
 	ll2.addFirst(6);
 	ll2.addFirst(5);

@@ -229,5 +229,6 @@ int main()
 	ll.addFirst(1);
 	ll.addFirst(0);
 	ll.printLinkedList();
+	cout << "print in reverse linked order iterative" << endl;
 	ll.printReverse();
 }

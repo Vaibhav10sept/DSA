@@ -209,6 +209,7 @@ public:
 void printReverse(Node* head) {
 	if (!head) return;
 	printReverse(head->next);
+	//POST ORDER PHASE of recursion me print krdo
 	cout << head->data << " ";
 }
 
@@ -222,5 +223,6 @@ int main()
 	ll.addFirst(1);
 	ll.addFirst(0);
 	ll.printLinkedList();
+	cout << "print in reverse linked order recursive" << endl;
 	printReverse(ll.head);
 }
