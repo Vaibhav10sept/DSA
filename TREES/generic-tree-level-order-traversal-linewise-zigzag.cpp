@@ -87,7 +87,6 @@ void traversalLevelOrderLineWiseZigzag(Node* root) {
 			}
 			else {
 				printq.push(mtemp->data);
-
 			}
 			for (Node* child : mtemp->children) {
 				cq.push(child);

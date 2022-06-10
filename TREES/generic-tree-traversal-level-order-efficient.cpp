@@ -55,7 +55,6 @@ int size(Node* root) {
 
 void levelOrderTraversalLineWise(Node* root) {
 	queue<Node*> mq;
-	queue<Node*> cq;
 	mq.push(root);
 	mq.push(NULL);
 	while (mq.size() > 0) {

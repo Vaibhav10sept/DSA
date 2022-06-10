@@ -123,12 +123,15 @@ public:
 		newNode->data = data;
 		newNode->next = NULL;
 
-		if (idx < 0 || idx >= size) {
+		if (idx < 0 || idx > size) {
 			cout << "not a valid index" << endl;
 			return;
 		}
 		else if (idx == 0) {
 			addFirst(data);
+		}
+		else if (idx == size) {
+			addLast(data);
 		}
 		else {
 			Node* temp = head;

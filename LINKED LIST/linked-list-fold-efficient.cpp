@@ -224,6 +224,8 @@ public:
 	}
 
 	void foldRecursive() {
+		// Edge cases
+		if ((!head) || (!head->next) || (!head->next->next)) return;
 		foldRecursiveHelper(head, 0);
 	}
 };

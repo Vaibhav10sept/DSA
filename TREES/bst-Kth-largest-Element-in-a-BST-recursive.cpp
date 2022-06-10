@@ -109,7 +109,7 @@ void display(Node* node) {
 	display(node->right);
 }
 
-int solve(Node* node, int &k) {
+int solve(Node* node, int k) {
 	if (node == NULL) return 0; //here we are assuming that 0 is not a data in any node
 
 	//right call

@@ -69,13 +69,13 @@ void levelOrderTraversal(Node* root) {
 
 int main()
 {
-	// vector<int> arr  = {10, 20, 50, -1, 60, -1, -1, 30,
-	//                     70, -1, 80, 110, -1, 120, -1, -1,
-	//                     90, -1, -1, 40, 100, -1, -1, -1
-	//                    };
-	vector<int> arr = {10,  20, -1, 30, 50, -1, 60, -1, -1,
-	                   40, -1, -1
-	                  };
+	vector<int> arr  = {10, 20, 50, -1, 60, -1, -1, 30,
+	                    70, -1, 80, 110, -1, 120, -1, -1,
+	                    90, -1, -1, 40, 100, -1, -1, -1
+	                   };
+	// vector<int> arr = {10,  20, -1, 30, 50, -1, 60, -1, -1,
+	//                    40, -1, -1
+	//                   };
 	Node* root = construct(arr);
 	// display(root);
 	levelOrderTraversal(root);

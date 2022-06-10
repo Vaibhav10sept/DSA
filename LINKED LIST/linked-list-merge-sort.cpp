@@ -231,6 +231,7 @@ LinkedList merge(LinkedList left, LinkedList right) {
 			r = r->next;
 		}
 	}
+
 	while (l) {
 		res.addLast(l->data);
 		l = l->next;
@@ -245,10 +246,10 @@ LinkedList merge(LinkedList left, LinkedList right) {
 
 LinkedList mergeSort(Node * head, Node * tail) {
 	//base condition
-	if (head == tail ) {
+	if (head == tail ) { //one size linked list, this is the base condition
 		LinkedList newll;
 		newll.addLast(head->data);
-		return newll;
+		return newll; //single linked list ko return kia hai
 	}
 
 	Node* mid = midNode(head, tail);

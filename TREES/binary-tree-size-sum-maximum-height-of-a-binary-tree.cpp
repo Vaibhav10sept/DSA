@@ -148,5 +148,4 @@ int main()
 	cout << "sum " << sum(root) << endl;
 	cout << "max " << maximum(root) << endl;
 	cout << "height " << height(root) << endl;
-
 }

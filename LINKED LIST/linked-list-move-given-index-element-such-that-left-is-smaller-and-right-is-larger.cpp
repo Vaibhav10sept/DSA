@@ -103,6 +103,26 @@ public:
 
 	}
 
+	Node* getNodeAtIdx(int idx) {
+		if (idx < 0 || idx >= size) {
+			cout << "not a valid index" << endl;
+			return NULL;
+		}
+		else if (size == 0 || head == NULL) {
+			cout << "list is empty" << endl;
+		}
+		else if ( idx == 0 ) {
+			return head;
+		}
+		else {
+			Node* temp = head;
+			for (int i = 0; i < idx; i++) {
+				temp = temp->next;
+			}
+			return temp;
+		}
+	}
+
 	void addLast(int data) {
 		Node* newNode = new Node();
 		newNode->data = data;
@@ -216,18 +236,11 @@ public:
 	/*********************************************
 	 * LINKED LIST BOILER PLATE CODE ENDS
 	 * *******************************************/
-	void print(Node* head) {
-		Node* temp = head;
-		while (temp) {
-			cout << temp->data << " ";
-			temp = temp->next;
-		}
-		cout << endl;
-	}
-	void segregate01LinkedList() {
-		if (head == NULL or head->next == NULL) return head; //edge case--> empty list or 1 size list
-		int pivot = this->getLast(); //coz, last index vali value ko hi pivot bna rhe
-		// this->removeLast();
+
+	void segregate01LinkedListOverGivenPivotIndex(int idx) {
+		if (head == NULL or head->next == NULL) return; //edge case--> empty list or 1 size list
+		Node* pivotNode = this->getNodeAtIdx(idx);
+		int pivot = pivotNode->data;
 
 		Node* curr = head;
 		Node* smaller = NULL;
@@ -236,6 +249,10 @@ public:
 		Node* largerHead = NULL;
 
 		while (curr) {
+			if (curr == pivotNode) {
+				curr = curr->next;
+				continue; //pivot node ko ham baad me link krege
+			}
 			if (curr->data <= pivot) {
 				if (smaller == NULL) {
 					smaller = curr;
@@ -259,12 +276,9 @@ public:
 			curr = curr->next;
 		}
 
-		smaller != NULL ? smaller->next = largerHead : NULL;
+		smaller != NULL ? smaller->next = pivotNode : NULL;
+		pivotNode->next = largerHead;
 		larger != NULL ? larger->next = NULL : NULL;
-		// cout << "print " << endl;
-		// print(smallerHead);
-		// print(largerHead);
-		//edge cases/ linking prevzerohead and prevonehead.
 
 		if (smallerHead != NULL) {
 			head = smallerHead;
@@ -279,9 +293,9 @@ public:
 int main()
 {
 	/*
-	NOTE: this is partition in quick sort isme ham last index vali value ko uski correct position in sorted list me laege.
-	VIDEO LINK: https://www.youtube.com/watch?v=R9ak6JgWMAw&list=PL-Jc9J83PIiGRqcfZxxgOKovgLVd3znnq&index=30
-	PREREQUISITE: "segregate 0 and 1 linked list"
+	NOTE: this is partition in quick sort isme ham given index vali value ko uski correct position in sorted list me laege.
+	VIDEO LINK: https://www.youtube.com/watch?v=sJhUy4ixASE&list=PL-Jc9J83PIiGRqcfZxxgOKovgLVd3znnq&index=31
+	PREREQUISITE: "segregate 0 and 1 linked list" and "linked-list-move-last-index-element-such-that-left-is-smaller-and-right-is-larger"
 	*/
 	LinkedList ll;
 	ll.addLast(1);
@@ -298,6 +312,7 @@ int main()
 	ll.addLast(3);
 	ll.printLinkedList();
 	cout << "after partition as per quick sort: " << endl;
-	ll.segregate01LinkedList();
+	int idx = 3;
+	ll.segregate01LinkedListOverGivenPivotIndex(idx);
 	ll.printLinkedList();
 }

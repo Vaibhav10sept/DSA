@@ -225,8 +225,8 @@ public:
 		cout << endl;
 	}
 	void segregate01LinkedList() {
+		if (head == NULL or head->next == NULL) return; //edge case--> empty list or 1 size list
 		int pivot = this->getLast(); //coz, last index vali value ko hi pivot bna rhe
-		// this->removeLast();
 
 		Node* curr = head;
 		Node* smaller = NULL;

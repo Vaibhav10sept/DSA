@@ -53,13 +53,13 @@ int size(Node* root) {
 	return ans;
 }
 
-bool nodeToRootPath(Node* root, int node, vector<int> *ans) {
-	if (root->data == node) {
+bool nodeToRootPath(Node* root, int data, vector<int> *ans) {
+	if (root->data == data) {
 		ans->push_back(root->data);
 		return true;
 	}
 	for (Node* child : root->children) {
-		bool cans = nodeToRootPath(child, node, ans);
+		bool cans = nodeToRootPath(child, data, ans);
 		if (cans) {
 			ans->push_back(root->data);
 			return true;
@@ -102,7 +102,6 @@ int distanceBetweenNodes(int node1, int node2, Node* root) {
 	i++;
 	j++;
 	return i + j;
-
 }
 
 int main()

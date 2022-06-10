@@ -225,7 +225,7 @@ LinkedList MergeKSortedLinkedList(vector<LinkedList> lists) {
 	}
 
 	while (!pq.empty()) {
-		Node* temp = pq.top();
+		Node* temp = pq.top(); //min value top me hogi
 		pq.pop();
 		res.addLast(temp->data);
 
@@ -239,6 +239,7 @@ int main()
 {
 	/*
 	NOTE: here are using user defined priority queue(min)
+	SIMILAR QUESTION: merge sort linked list using divide and conquer
 	PREREQUISITE:
 	VIDEO LINK: https://www.youtube.com/watch?v=jhWT8qal1SI&list=PL-Jc9J83PIiGRqcfZxxgOKovgLVd3znnq&index=8
 	*/

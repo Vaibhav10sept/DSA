@@ -109,16 +109,16 @@ void display(Node* node) {
 	display(node->right);
 }
 
-int returnHeightCalculateDiameter(Node* node, int *dia, int depth) {
+int returnHeightCalculateDiameter(Node* node, int *dia) {
 	if (node == NULL) return -1;
 
-	int lht = returnHeightCalculateDiameter(node->left, dia, depth + 1);
-	int rht = returnHeightCalculateDiameter(node->right, dia, depth + 1);
+	int lht = returnHeightCalculateDiameter(node->left, dia);
+	int rht = returnHeightCalculateDiameter(node->right, dia);
 
 	if (lht + rht + 2 > *dia) {
 		*dia = lht + rht + 2;
 	}
-	return std::max(lht, rht) + 1;
+	return std::max(lht, rht) + 1; //+1 coz, node bhi ek height contribute krega
 }
 
 int main()
@@ -126,6 +126,6 @@ int main()
 	vector<int> arr = {50, 25, 12, -1, -1, 37, 30, -1, -1, -1, 75, 62, -1, 70, -1, -1, 87, -1, -1};
 	Node* root = construct(arr);
 	int ans = 0;
-	cout << returnHeightCalculateDiameter(root, &ans, 0) << endl;
+	cout << returnHeightCalculateDiameter(root, &ans) << endl;
 	cout << "diameter of a binary tree: " << ans;
 }

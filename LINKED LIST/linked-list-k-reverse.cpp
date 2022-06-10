@@ -209,8 +209,17 @@ public:
 
 Node* reverseRecursive(Node* head, int k) {
 	// base case
-	if (!head)
-		return NULL;
+	if (head == NULL) return NULL;
+
+	//check if there are "k" nodes to be reversed
+	Node* temp = head;
+	int nodeCount = 0;
+	while (temp) {
+		temp = temp->next;
+		nodeCount++;
+	}
+
+	if (nodeCount < k) return head; //no need to reverse.
 
 	Node* current = head;
 	Node* next = NULL;
@@ -230,6 +239,7 @@ Node* reverseRecursive(Node* head, int k) {
 	Recursively call for the list starting from current.
 	And make rest of the list as next of first node */
 	if (next != NULL) {
+		//head will be the new last so, head->next pe jo result aega recursize call ke baad
 		head->next = reverseRecursive(next, k);
 	}
 
@@ -237,20 +247,35 @@ Node* reverseRecursive(Node* head, int k) {
 	return prev;
 }
 
-Node* reverseIterative(Node* node, int rev) {
+Node* reverseIterative(Node* node, int k) {
 	// this is written by me.
 	LinkedList res;
 	while (node) {
 		stack<Node*> st;
 
-		for (int i = 1; i <= rev && node; i++) {
+		for (int i = 1; i <= k && node; i++) {
 			st.push(node);
 			node = node->next;
 		}
 
-		while (!st.empty()) {
-			res.addLast(st.top()->data);
-			st.pop();
+		//if there are "k" nodes then only reverse them
+		if (st.size() == k) {
+			while (!st.empty()) {
+				res.addLast(st.top()->data);
+				st.pop();
+			}
+		}
+		//else, if there are not "k" nodes in the stack then add then in there original sequence no need to reverse.
+		else {
+			vector<int> temp;
+			while (!st.empty()) {
+				temp.push_back(st.top()->data);
+				st.pop();
+			}
+			reverse(temp.begin(), temp.end());
+			for (auto ele : temp) {
+				res.addLast(ele);
+			}
 		}
 	}
 	return res.head;
@@ -258,6 +283,7 @@ Node* reverseIterative(Node* node, int rev) {
 
 int main()
 {
+	int k = 3;
 	cout << "original linked list:" << endl;
 	LinkedList ll;
 	ll.addFirst(7);
@@ -269,10 +295,11 @@ int main()
 	ll.addFirst(1);
 	ll.addFirst(0);
 	ll.printLinkedList();
-	ll.head = reverseRecursive(ll.head, 2);
-	cout << "recursive reverse result:" << endl;
+	ll.head = reverseRecursive(ll.head, k);
+	cout << "recursive reverse k result:" << endl;
 	ll.printLinkedList();
 	LinkedList ll2;
+	ll2.addFirst(7);
 	ll2.addFirst(6);
 	ll2.addFirst(5);
 	ll2.addFirst(4);
@@ -280,7 +307,7 @@ int main()
 	ll2.addFirst(2);
 	ll2.addFirst(1);
 	ll2.addFirst(0);
-	ll2.head = reverseIterative(ll2.head, 2);
-	cout << "iterative reverse result:" << endl;
+	ll2.head = reverseIterative(ll2.head, k);
+	cout << "iterative reverse k result:" << endl;
 	ll2.printLinkedList();
 }

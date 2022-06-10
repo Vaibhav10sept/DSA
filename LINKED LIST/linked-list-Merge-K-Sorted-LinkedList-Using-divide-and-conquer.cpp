@@ -234,10 +234,6 @@ LinkedList MergeTwoSortedLinkedList(LinkedList left, LinkedList right) {
 
 LinkedList MergeKSortedLinkedListHelper(vector<LinkedList> lists, int startIdx, int endIdx) {
 	//BASE COND
-	// if (startIdx > endIdx) {
-	// 	LinkedList empty;
-	// 	return empty;
-	// }
 	if (startIdx == endIdx) return lists[startIdx];
 
 	int mid = (startIdx + endIdx) / 2;

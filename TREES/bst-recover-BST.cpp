@@ -128,8 +128,8 @@ void inorder(Node* root) {
 void recoverBST(Node* node) {
 	//we do inorder traversal and identify the node which is affecting the sorted order, coz inorder traversal give nodes in sorted fashion
 	pre = new Node(INT_MIN);
-	firstMistake = NULL;
-	secondMistake = NULL;
+	// firstMistake = NULL;
+	// secondMistake = NULL;
 	inorder(node); //this will fill up firstMistake and secondMistake
 	//now, swap the data of firstMistake and secondMistake.
 	swap(firstMistake->data, secondMistake->data);

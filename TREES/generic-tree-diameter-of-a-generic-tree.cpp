@@ -71,7 +71,7 @@ int calculateDiaReturnHeight(Node* root, int* dia) {
 	if (sdch + dch + 2 > *dia) {
 		*dia = sdch + dch + 2;
 	}
-	dch++;
+	dch++; //coz, deepest child height(dch) hi height hoti hai.
 	return dch;
 }
 

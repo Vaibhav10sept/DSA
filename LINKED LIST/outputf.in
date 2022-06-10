@@ -1,3 +1,6 @@
-1 5 2 9 5 14 11 1 10 10 1 3 
-after partition as per quick sort: 
-1 2 1 1 3 5 9 5 14 11 10 10 
+original linked list:
+0 1 2 3 4 5 6 7 
+recursive reverse k result:
+2 1 0 5 4 3 6 7 
+iterative reverse k result:
+2 1 0 5 4 3 6 7 
