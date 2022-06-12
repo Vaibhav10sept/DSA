@@ -160,6 +160,7 @@ void display(Node* node) {
 
 int cameraInBinaryTree(Node* node, int &cameraCount) {
 	/*
+	watch video recommended
 	LOGIC: ye sab kuch post order me hoga.
 		if you need camera : return -1
 		if you have camera : return 0
@@ -183,6 +184,7 @@ int cameraInBinaryTree(Node* node, int &cameraCount) {
 		return 1; // I am covered
 	}
 
+	//if dono left and right are 1(means covered) then also I need camera(-1)(think)
 	return -1; //I need camera
 }
 

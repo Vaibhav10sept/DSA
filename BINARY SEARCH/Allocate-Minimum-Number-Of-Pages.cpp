@@ -23,7 +23,7 @@ int AllocateMinimumNumberOfPages(vector<int> arr, int k) {
 	//start --> max in array(for some optimization, we can start with 0 also)
 	//end --> sum of all element
 	int n = arr.size();
-	int start = *max_element(arr.begin(), arr.end());
+	int start = 0;
 	int sum = 0;
 	for (auto ele : arr) sum += ele;
 	int end = sum;
@@ -59,7 +59,13 @@ int main() {
 	VIDEO LINK: https://www.youtube.com/watch?v=2JSQIhPcHQg&list=PL_z_8CaSLPWeYfhtuKHj-9MpYb6XQJ_f2&index=21
 	*/
 
-	vector<int> pages = {12, 34, 67, 90};
-	int k = 2; //no of students
+	// vector<int> pages = {12, 34, 67, 90};
+	// int k = 2; //no of students
+
+	vector<int> pages = {8, 15, 10, 20, 8};
+	int k = 2;
+
+	// vector<int> pages = {6, 1, 3, 2, 2, 4, 1, 2};
+	// int k = 3;
 	cout << AllocateMinimumNumberOfPages(pages, k);
 }

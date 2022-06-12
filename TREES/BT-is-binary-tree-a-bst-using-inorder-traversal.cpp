@@ -158,60 +158,61 @@ void display(Node* node) {
 	display(node->right);
 }
 
-Node* getRightMostNode(Node* leftNode, Node* curr) {
-	while (leftNode->right != NULL and leftNode->right != curr) {
-		//think for, leftNode->right != curr, watch video
-		leftNode = leftNode->right;
+int cameraInBinaryTree(Node* node, int &cameraCount) {
+	/*
+	watch video recommended
+	LOGIC: ye sab kuch post order me hoga.
+		if you need camera : return -1
+		if you have camera : return 0
+		if you are covered by a camera : return 1
+	*/
+	if (node == NULL) return 1; //i am covered
+	if (node->left == NULL and node->right == NULL) {
+		//leaf node, I need camera
+		return -1;
 	}
-	return leftNode;
+
+	int leftInfo = cameraInBinaryTree(node->left, cameraCount);
+	int rightInfo = cameraInBinaryTree(node->right, cameraCount);
+
+	//post order phase
+	if (leftInfo == -1 or rightInfo == -1) { //left or right me se kisi ko bhi camera ki need hogi toh camera lgana pdega
+		cameraCount++;
+		return 0; //means I am have camera, ye baat maene apne parent ko btae
+	}
+	if (leftInfo == 0 or rightInfo == 0) { //left or right me se kisi ek ke paas bhi camera hai to mae to covered ho gya
+		return 1; // I am covered
+	}
+
+	//if dono left and right are 1(means covered) then also I need camera(-1)(think)
+	return -1; //I need camera
 }
 
-bool isBSTUsingMorrisInorderTraversal(Node* root) {
-	//watch video recommended.
-	Node* curr = root;
-	Node* prev = NULL;
-	while (curr) {
-		Node* leftNode = curr->left;
-		if (leftNode == NULL) {
-			//inorder phase pe check krna hai ki sorted hai ya nhi
-			if (prev != NULL and prev->data > curr->data) return false;
-			prev = curr;
 
-			curr = curr->right;
-		}
-		else { //node.left != NULL
-			//now, find the right most node.
-			Node* rightMostNode = getRightMostNode(leftNode, curr);
-			if (rightMostNode->right == NULL) { //create thread.
-				rightMostNode->right = curr;
-				curr = curr->left;
-			}
-			else { //rightMostNode->right != NULL, means right most node ka right curr ko point krra hoga, toh ye link break kro
-				// break the thread.
-				rightMostNode->right = NULL;
-				//inorder phase pe check krna hai ki sorted hai ya nhi
-				if (prev != NULL and prev->data > curr->data) return false;
-				prev = curr;
-				//this indicates that left subtree is processed so move to right.
-				curr = curr->right; //move curr to right
-			}
-		}
-	}
+bool isBSTUsingInorder(Node* node) {
+	static Node* prev = NULL;
+
+	//BASE CASE
+	if (node == NULL) return true;
+
+	if (!isBSTUsingInorder(node->left)) return false;
+
+	//inorder phase
+	if (prev != NULL and prev->data > node->data) return false;
+	prev = node;
+
+	if (!isBSTUsingInorder(node->right)) return false;
+
 	return true;
 }
 
 int main()
-{
-	/*
-	NOTE: inorder me sab kuch hoga.
-	PREREQUISITE: morris traversal inorder.
-	SPACE: constant.
-	TIME: O(3n), coz on an average har node 3 baar visit hoti hai, watch video
-	NOTE: using morris traversal means we can traverse BT without using any extra space(stack or recursive stack).
-	VIDEO LINK: https://www.youtube.com/watch?v=HynyqbY-mPM&list=PL-Jc9J83PIiHgjQ9wfJ8w-rXU368xNX4L&index=8
+{	/*
+	NOTE: inorder me sara kaam hoga.
+	VIDEO LINK: https://www.youtube.com/watch?v=klXjnz8zn2E&list=PL-Jc9J83PIiHgjQ9wfJ8w-rXU368xNX4L&index=8
 	*/
 	vector<int> arr = {50, 25, 12, -1, -1, 37, 30, -1, -1, -1, 75, 62, -1, 70, -1, -1, 87, -1, -1};
 	Node* root = construct(arr);
 	display(root);
-	cout << isBSTUsingMorrisInorderTraversal(root);
+	cout << isBSTUsingInorder(root);
 }

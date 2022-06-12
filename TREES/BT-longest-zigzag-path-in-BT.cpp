@@ -158,60 +158,56 @@ void display(Node* node) {
 	display(node->right);
 }
 
-Node* getRightMostNode(Node* leftNode, Node* curr) {
-	while (leftNode->right != NULL and leftNode->right != curr) {
-		//think for, leftNode->right != curr, watch video
-		leftNode = leftNode->right;
+class UtilClass {
+public:
+	int forwardSlope;
+	int backwardSlope;
+	int maxLen;
+	UtilClass() {
+		forwardSlope = -1; //-1, coz edge ke terms me nikaal rhe hai
+		backwardSlope = -1;
+		maxLen = 0;
 	}
-	return leftNode;
+};
+
+UtilClass longestZigZagPathInBTHelper(Node* node) {
+	/*
+	watch video recommended
+	*/
+	//BASE CASES
+	if (node == NULL) return UtilClass();
+
+	//apne aap ko starting point mante hue forward, backward slope ke sath sbse bada zigzag path
+	UtilClass leftInfo = longestZigZagPathInBTHelper(node->left);
+	UtilClass rightInfo = longestZigZagPathInBTHelper(node->right);
+
+	UtilClass myAns;
+	//NOTE: left ke sath backslope use hoga, or right ke sath forward slope, tbhi to zigzag path bnega(think, watch video)
+
+	//CHECK: ki left/right subtree me sbse bada zigzag path hai, ya mujhe include krke sbse bda zigzag path bn rha, vo hme myans.maxlen me store krna h
+	myAns.maxLen = max(max(leftInfo.maxLen, rightInfo.maxLen), max(leftInfo.backwardSlope, rightInfo.forwardSlope) + 1);
+	//mereko starting node mante hue forward slope ke sath sbse bada path
+	myAns.forwardSlope = leftInfo.backwardSlope + 1;
+	//mereko starting node mante hue backward slope ke sath sbse bada path
+	myAns.backwardSlope = rightInfo.forwardSlope + 1;
+
+	return myAns;
 }
 
-bool isBSTUsingMorrisInorderTraversal(Node* root) {
-	//watch video recommended.
-	Node* curr = root;
-	Node* prev = NULL;
-	while (curr) {
-		Node* leftNode = curr->left;
-		if (leftNode == NULL) {
-			//inorder phase pe check krna hai ki sorted hai ya nhi
-			if (prev != NULL and prev->data > curr->data) return false;
-			prev = curr;
-
-			curr = curr->right;
-		}
-		else { //node.left != NULL
-			//now, find the right most node.
-			Node* rightMostNode = getRightMostNode(leftNode, curr);
-			if (rightMostNode->right == NULL) { //create thread.
-				rightMostNode->right = curr;
-				curr = curr->left;
-			}
-			else { //rightMostNode->right != NULL, means right most node ka right curr ko point krra hoga, toh ye link break kro
-				// break the thread.
-				rightMostNode->right = NULL;
-				//inorder phase pe check krna hai ki sorted hai ya nhi
-				if (prev != NULL and prev->data > curr->data) return false;
-				prev = curr;
-				//this indicates that left subtree is processed so move to right.
-				curr = curr->right; //move curr to right
-			}
-		}
-	}
-	return true;
+int longestZigZagPathInBT(Node* root) {
+	UtilClass res = longestZigZagPathInBTHelper(root);
+	return res.maxLen;
 }
 
 int main()
-{
-	/*
-	NOTE: inorder me sab kuch hoga.
-	PREREQUISITE: morris traversal inorder.
-	SPACE: constant.
-	TIME: O(3n), coz on an average har node 3 baar visit hoti hai, watch video
-	NOTE: using morris traversal means we can traverse BT without using any extra space(stack or recursive stack).
-	VIDEO LINK: https://www.youtube.com/watch?v=HynyqbY-mPM&list=PL-Jc9J83PIiHgjQ9wfJ8w-rXU368xNX4L&index=8
+{	/*
+	NOTE: postorder me sara kaam hoga.
+	PREREQUISITE: return is similar to "house robbery".
+	VIDEO LINK: https://www.youtube.com/watch?v=7aqHhENUbkQ&list=PL-Jc9J83PIiHgjQ9wfJ8w-rXU368xNX4L&index=7
+	LEETCODE LINK: https://leetcode.com/problems/longest-zigzag-path-in-a-binary-tree/
 	*/
-	vector<int> arr = {50, 25, 12, -1, -1, 37, 30, -1, -1, -1, 75, 62, -1, 70, -1, -1, 87, -1, -1};
-	Node* root = construct(arr);
+	vector<int> arr = {1, -1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1};
+	Node* root = constructorForLeetcode(arr);
 	display(root);
-	cout << isBSTUsingMorrisInorderTraversal(root);
+	cout << "answer " << longestZigZagPathInBT(root);
 }

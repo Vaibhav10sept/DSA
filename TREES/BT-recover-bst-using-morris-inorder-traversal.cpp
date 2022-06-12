@@ -166,15 +166,20 @@ Node* getRightMostNode(Node* leftNode, Node* curr) {
 	return leftNode;
 }
 
-bool isBSTUsingMorrisInorderTraversal(Node* root) {
+void recoverBSTUsingMorrisInorderTraversal(Node* root) {
 	//watch video recommended.
 	Node* curr = root;
+	Node* firstMistake = NULL;
+	Node* secondMistake = NULL;
 	Node* prev = NULL;
 	while (curr) {
 		Node* leftNode = curr->left;
 		if (leftNode == NULL) {
 			//inorder phase pe check krna hai ki sorted hai ya nhi
-			if (prev != NULL and prev->data > curr->data) return false;
+			if (prev != NULL and prev->data > curr->data) {
+				if (firstMistake == NULL) firstMistake = prev; //think, watch video
+				secondMistake = curr;
+			}
 			prev = curr;
 
 			curr = curr->right;
@@ -190,14 +195,22 @@ bool isBSTUsingMorrisInorderTraversal(Node* root) {
 				// break the thread.
 				rightMostNode->right = NULL;
 				//inorder phase pe check krna hai ki sorted hai ya nhi
-				if (prev != NULL and prev->data > curr->data) return false;
-				prev = curr;
+				if (prev != NULL and prev->data > curr->data) {
+					if (firstMistake == NULL) firstMistake = prev; //think, watch video
+					secondMistake = curr;
+				}
+				prev = curr; //move prev
 				//this indicates that left subtree is processed so move to right.
 				curr = curr->right; //move curr to right
 			}
 		}
 	}
-	return true;
+	//now, swap the data at first mistake and second mistake
+	// int temp = firstMistake->data;
+	if (firstMistake != NULL) {
+		swap(firstMistake->data, secondMistake->data);
+	}
+
 }
 
 int main()
@@ -208,10 +221,12 @@ int main()
 	SPACE: constant.
 	TIME: O(3n), coz on an average har node 3 baar visit hoti hai, watch video
 	NOTE: using morris traversal means we can traverse BT without using any extra space(stack or recursive stack).
-	VIDEO LINK: https://www.youtube.com/watch?v=HynyqbY-mPM&list=PL-Jc9J83PIiHgjQ9wfJ8w-rXU368xNX4L&index=8
+	VIDEO LINK: https://www.youtube.com/watch?v=XLFGcZxn0PM&list=PL-Jc9J83PIiHgjQ9wfJ8w-rXU368xNX4L&index=10
 	*/
-	vector<int> arr = {50, 25, 12, -1, -1, 37, 30, -1, -1, -1, 75, 62, -1, 70, -1, -1, 87, -1, -1};
+	vector<int> arr = {50, 75, 12, -1, -1, 37, 30, -1, -1, -1, 25, 62, -1, 70, -1, -1, 87, -1, -1};
 	Node* root = construct(arr);
 	display(root);
-	cout << isBSTUsingMorrisInorderTraversal(root);
+	cout << "after recovery " << endl;
+	recoverBSTUsingMorrisInorderTraversal(root);
+	display(root);
 }

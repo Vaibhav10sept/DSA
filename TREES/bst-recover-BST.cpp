@@ -116,6 +116,7 @@ void inorder(Node* root) {
 
 	if (firstMistake == nullptr and root->data < pre->data) {
 		firstMistake = pre;
+		secondMistake = root; //coz, agr consecutive node swap kie hoge, to else if kbhi hit nhi hoga(think)
 	}
 	else if (firstMistake != nullptr and root->data < pre->data) {
 		secondMistake = root;

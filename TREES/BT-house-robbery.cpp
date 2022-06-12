@@ -158,60 +158,55 @@ void display(Node* node) {
 	display(node->right);
 }
 
-Node* getRightMostNode(Node* leftNode, Node* curr) {
-	while (leftNode->right != NULL and leftNode->right != curr) {
-		//think for, leftNode->right != curr, watch video
-		leftNode = leftNode->right;
+class UtilClass {
+public:
+	int choriNaKarnePar;
+	int choriKarnePar;
+	UtilClass(int first, int second) {
+		choriNaKarnePar = first;
+		choriKarnePar = second;
 	}
-	return leftNode;
+	UtilClass() {
+
+	}
+};
+
+UtilClass houseRobberyHelper(Node* node) {
+	/*
+	watch video recommended
+	LOGIC: har node 2 cheeze return krega
+	1. merepe chori na krne par kitna max paesa generate hota hai
+	2. merepe chori krne par kitna max paesa generate hota hai
+	*/
+	//BASE CASES
+	if (node == NULL) return UtilClass(0, 0);
+
+	UtilClass leftInfo = houseRobberyHelper(node->left);
+	UtilClass rightInfo = houseRobberyHelper(node->right);
+
+	UtilClass myAns;
+	//agr mae chori kruga toh left or right chori nhi krege or + mera data bhi add hoga
+	myAns.choriKarnePar = leftInfo.choriNaKarnePar + rightInfo.choriNaKarnePar + node->data;
+	//age mae chori nhi kruga toh left or right chori kre ya na kre matter nhi krta toh ham left or right me with or without robbery ka max value lelege
+	myAns.choriNaKarnePar = max(leftInfo.choriNaKarnePar, leftInfo.choriKarnePar) + max(rightInfo.choriNaKarnePar, rightInfo.choriKarnePar);
+
+	return myAns;
+
 }
 
-bool isBSTUsingMorrisInorderTraversal(Node* root) {
-	//watch video recommended.
-	Node* curr = root;
-	Node* prev = NULL;
-	while (curr) {
-		Node* leftNode = curr->left;
-		if (leftNode == NULL) {
-			//inorder phase pe check krna hai ki sorted hai ya nhi
-			if (prev != NULL and prev->data > curr->data) return false;
-			prev = curr;
-
-			curr = curr->right;
-		}
-		else { //node.left != NULL
-			//now, find the right most node.
-			Node* rightMostNode = getRightMostNode(leftNode, curr);
-			if (rightMostNode->right == NULL) { //create thread.
-				rightMostNode->right = curr;
-				curr = curr->left;
-			}
-			else { //rightMostNode->right != NULL, means right most node ka right curr ko point krra hoga, toh ye link break kro
-				// break the thread.
-				rightMostNode->right = NULL;
-				//inorder phase pe check krna hai ki sorted hai ya nhi
-				if (prev != NULL and prev->data > curr->data) return false;
-				prev = curr;
-				//this indicates that left subtree is processed so move to right.
-				curr = curr->right; //move curr to right
-			}
-		}
-	}
-	return true;
+int houseRobbery(Node* root) {
+	UtilClass res = houseRobberyHelper(root);
+	return max(res.choriKarnePar, res.choriNaKarnePar);
 }
 
 int main()
-{
-	/*
-	NOTE: inorder me sab kuch hoga.
-	PREREQUISITE: morris traversal inorder.
-	SPACE: constant.
-	TIME: O(3n), coz on an average har node 3 baar visit hoti hai, watch video
-	NOTE: using morris traversal means we can traverse BT without using any extra space(stack or recursive stack).
-	VIDEO LINK: https://www.youtube.com/watch?v=HynyqbY-mPM&list=PL-Jc9J83PIiHgjQ9wfJ8w-rXU368xNX4L&index=8
+{	/*
+	NOTE: postorder me sara kaam hoga.
+	VIDEO LINK: youtube.com/watch?v=kTL5LhCTL1c&list=PL-Jc9J83PIiHgjQ9wfJ8w-rXU368xNX4L&index=6
+	LEETCODE LINK: https://leetcode.com/problems/house-robber-iii/
 	*/
-	vector<int> arr = {50, 25, 12, -1, -1, 37, 30, -1, -1, -1, 75, 62, -1, 70, -1, -1, 87, -1, -1};
-	Node* root = construct(arr);
+	vector<int> arr = {3, 4, 5, 1, 3, -1, 1};
+	Node* root = constructorForLeetcode(arr);
 	display(root);
-	cout << isBSTUsingMorrisInorderTraversal(root);
+	cout << "answer " << houseRobbery(root);
 }
