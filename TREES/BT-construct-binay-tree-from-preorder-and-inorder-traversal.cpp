@@ -158,74 +158,36 @@ void display(Node* node) {
 	display(node->right);
 }
 
-Node* getRightMostNode(Node* leftNode, Node* curr) {
-	while (leftNode->right != NULL and leftNode->right != curr) {
-		//think for, leftNode->right != curr, watch video
-		leftNode = leftNode->right;
-	}
-	return leftNode;
+Node* HelperFunction(vector<int> preorder, int preorderStartIdx, int preorderEndIdx,
+                     vector<int> inorder, int inorderStartIdx, int inorderEndIdx) {
+	if (inorderStartIdx > inorderEndIdx) return NULL;
+
+	int idx = inorderStartIdx; //coz, pre ka start idx hi root hota hai, so we are searching for root in order array
+	//here, we are searching for inorder start val in preorder array
+	while (inorder[idx] != preorder[preorderStartIdx]) idx++;
+	int countOfElements = idx - inorderStartIdx;
+
+	Node* node = new Node(preorder[preorderStartIdx]);
+
+	//recursive calls
+	node->left = HelperFunction(preorder, preorderStartIdx + 1, preorderStartIdx + countOfElements, inorder, inorderStartIdx, idx - 1);
+	node->right = HelperFunction(preorder, preorderStartIdx + countOfElements + 1, preorderEndIdx, inorder, idx + 1, inorderEndIdx);
+
+	return node;
 }
 
-void recoverBSTUsingMorrisInorderTraversal(Node* root) {
-	//watch video recommended.
-	Node* curr = root;
-	Node* firstMistake = NULL;
-	Node* secondMistake = NULL;
-	Node* prev = NULL;
-	while (curr) {
-		Node* leftNode = curr->left;
-		if (leftNode == NULL) {
-			//inorder phase pe check krna hai ki sorted hai ya nhi
-			if (prev != NULL and prev->data > curr->data) {
-				if (firstMistake == NULL) firstMistake = prev; //think, watch video
-				secondMistake = curr;
-			}
-			prev = curr;
-
-			curr = curr->right;
-		}
-		else { //node.left != NULL
-			//now, find the right most node.
-			Node* rightMostNode = getRightMostNode(leftNode, curr);
-			if (rightMostNode->right == NULL) { //create thread.
-				rightMostNode->right = curr;
-				curr = curr->left;
-			}
-			else { //rightMostNode->right != NULL, means right most node ka right curr ko point krra hoga, toh ye link break kro
-				// break the thread.
-				rightMostNode->right = NULL;
-				//inorder phase pe check krna hai ki sorted hai ya nhi
-				if (prev != NULL and prev->data > curr->data) {
-					if (firstMistake == NULL) firstMistake = prev; //think, watch video
-					secondMistake = curr;
-				}
-				prev = curr; //move prev
-				//this indicates that left subtree is processed so move to right.
-				curr = curr->right; //move curr to right
-			}
-		}
-	}
-	//now, swap the data at first mistake and second mistake
-	// int temp = firstMistake->data;
-	if (firstMistake != NULL) {
-		swap(firstMistake->data, secondMistake->data);
-	}
+Node* constructBTFromPreorderAndInorder(vector<int> preorder, vector<int> inorder) {
+	int n = inorder.size();
+	return HelperFunction(preorder, 0, n - 1, inorder, 0 , n - 1);
 }
 
 int main()
 {
 	/*
-	NOTE: inorder me sab kuch hoga.
-	PREREQUISITE: morris traversal inorder.
-	SPACE: constant.
-	TIME: O(3n), coz on an average har node 3 baar visit hoti hai, watch video
-	NOTE: using morris traversal means we can traverse BT without using any extra space(stack or recursive stack).
-	VIDEO LINK: https://www.youtube.com/watch?v=XLFGcZxn0PM&list=PL-Jc9J83PIiHgjQ9wfJ8w-rXU368xNX4L&index=10
+	VIDEO LINK: https://www.youtube.com/watch?v=oAbSNJ35qAs&list=PL-Jc9J83PIiHgjQ9wfJ8w-rXU368xNX4L&index=11
 	*/
-	vector<int> arr = {50, 75, 12, -1, -1, 37, 30, -1, -1, -1, 25, 62, -1, 70, -1, -1, 87, -1, -1};
-	Node* root = construct(arr);
-	display(root);
-	cout << "after recovery " << endl;
-	recoverBSTUsingMorrisInorderTraversal(root);
+	vector<int> preorder = {3, 9, 20, 15, 7};
+	vector<int> inorder = {9, 3, 15, 20, 7};
+	Node* root = constructBTFromPreorderAndInorder(preorder, inorder);
 	display(root);
 }

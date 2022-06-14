@@ -158,74 +158,34 @@ void display(Node* node) {
 	display(node->right);
 }
 
-Node* getRightMostNode(Node* leftNode, Node* curr) {
-	while (leftNode->right != NULL and leftNode->right != curr) {
-		//think for, leftNode->right != curr, watch video
-		leftNode = leftNode->right;
-	}
-	return leftNode;
+Node* HelperFunction(vector<int> postorder, int leftRange, int rightRange) {
+	static int idx = postorder.size() - 1;
+	//BASE CASE:
+	if (idx < 0 or postorder[idx] < leftRange or postorder[idx] > rightRange) return NULL;
+
+	Node* node = new Node(postorder[idx]);
+	idx--;
+	//recursive calls
+	//NOTE: isme pehli call right ki hoti fir left ki, preorder me pehli call left ki hoti hai fir right ki
+	node->right = HelperFunction(postorder, node->data, rightRange);
+	node->left = HelperFunction(postorder, leftRange, node->data);
+
+	return node;
 }
 
-void recoverBSTUsingMorrisInorderTraversal(Node* root) {
-	//watch video recommended.
-	Node* curr = root;
-	Node* firstMistake = NULL;
-	Node* secondMistake = NULL;
-	Node* prev = NULL;
-	while (curr) {
-		Node* leftNode = curr->left;
-		if (leftNode == NULL) {
-			//inorder phase pe check krna hai ki sorted hai ya nhi
-			if (prev != NULL and prev->data > curr->data) {
-				if (firstMistake == NULL) firstMistake = prev; //think, watch video
-				secondMistake = curr;
-			}
-			prev = curr;
-
-			curr = curr->right;
-		}
-		else { //node.left != NULL
-			//now, find the right most node.
-			Node* rightMostNode = getRightMostNode(leftNode, curr);
-			if (rightMostNode->right == NULL) { //create thread.
-				rightMostNode->right = curr;
-				curr = curr->left;
-			}
-			else { //rightMostNode->right != NULL, means right most node ka right curr ko point krra hoga, toh ye link break kro
-				// break the thread.
-				rightMostNode->right = NULL;
-				//inorder phase pe check krna hai ki sorted hai ya nhi
-				if (prev != NULL and prev->data > curr->data) {
-					if (firstMistake == NULL) firstMistake = prev; //think, watch video
-					secondMistake = curr;
-				}
-				prev = curr; //move prev
-				//this indicates that left subtree is processed so move to right.
-				curr = curr->right; //move curr to right
-			}
-		}
-	}
-	//now, swap the data at first mistake and second mistake
-	// int temp = firstMistake->data;
-	if (firstMistake != NULL) {
-		swap(firstMistake->data, secondMistake->data);
-	}
+Node* constructBSTFrompostorderTraversal(vector<int> postorder) {
+	int leftRange = INT_MIN;
+	int rightRange = INT_MAX;
+	return HelperFunction(postorder, leftRange, rightRange);
 }
 
 int main()
 {
 	/*
-	NOTE: inorder me sab kuch hoga.
-	PREREQUISITE: morris traversal inorder.
-	SPACE: constant.
-	TIME: O(3n), coz on an average har node 3 baar visit hoti hai, watch video
-	NOTE: using morris traversal means we can traverse BT without using any extra space(stack or recursive stack).
-	VIDEO LINK: https://www.youtube.com/watch?v=XLFGcZxn0PM&list=PL-Jc9J83PIiHgjQ9wfJ8w-rXU368xNX4L&index=10
+	PREREQUISITE: construct BST from preorder traversal
+	VIDEO LINK: https://www.youtube.com/watch?v=KsGXE7_y2Nw&list=PL-Jc9J83PIiHgjQ9wfJ8w-rXU368xNX4L&index=18
 	*/
-	vector<int> arr = {50, 75, 12, -1, -1, 37, 30, -1, -1, -1, 25, 62, -1, 70, -1, -1, 87, -1, -1};
-	Node* root = construct(arr);
-	display(root);
-	cout << "after recovery " << endl;
-	recoverBSTUsingMorrisInorderTraversal(root);
+	vector<int> postorder = {1, 7, 5, 50, 40, 10};
+	Node* root = constructBSTFrompostorderTraversal(postorder);
 	display(root);
 }

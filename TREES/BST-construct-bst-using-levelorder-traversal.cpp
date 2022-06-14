@@ -158,74 +158,63 @@ void display(Node* node) {
 	display(node->right);
 }
 
-Node* getRightMostNode(Node* leftNode, Node* curr) {
-	while (leftNode->right != NULL and leftNode->right != curr) {
-		//think for, leftNode->right != curr, watch video
-		leftNode = leftNode->right;
-	}
-	return leftNode;
-}
+class UtilClass {
+public:
+	Node* parent;
+	int leftBoundary;
+	int rightBoundary;
 
-void recoverBSTUsingMorrisInorderTraversal(Node* root) {
-	//watch video recommended.
-	Node* curr = root;
-	Node* firstMistake = NULL;
-	Node* secondMistake = NULL;
-	Node* prev = NULL;
-	while (curr) {
-		Node* leftNode = curr->left;
-		if (leftNode == NULL) {
-			//inorder phase pe check krna hai ki sorted hai ya nhi
-			if (prev != NULL and prev->data > curr->data) {
-				if (firstMistake == NULL) firstMistake = prev; //think, watch video
-				secondMistake = curr;
-			}
-			prev = curr;
+	UtilClass(Node* parent, int leftBoundary, int rightBoundary) {
+		this->parent = parent;
+		this->leftBoundary = leftBoundary;
+		this->rightBoundary = rightBoundary;
+	}
+	UtilClass() {
+		parent = NULL;
+		leftBoundary = INT_MIN;
+		rightBoundary = INT_MAX;
+	}
+};
 
-			curr = curr->right;
+Node* constructBSTFromlevelorderTraversal(vector<int> levelorder) {
+	queue<UtilClass> q;
+	q.push(UtilClass());
+	Node* root = NULL;
+
+	int idx = 0;
+	while (!q.empty() and idx < levelorder.size()) {
+		UtilClass removedObj = q.front();
+		q.pop();
+
+		int val = levelorder[idx];
+		if (val < removedObj.leftBoundary or val > removedObj.rightBoundary) continue;
+
+		Node* node = new Node(val);
+		idx++;
+
+		if (removedObj.parent == NULL) root = node;
+		else {
+			//linking
+			Node* parent = removedObj.parent;
+			if (val <= parent->data) parent->left = node;
+			else parent->right = node;
 		}
-		else { //node.left != NULL
-			//now, find the right most node.
-			Node* rightMostNode = getRightMostNode(leftNode, curr);
-			if (rightMostNode->right == NULL) { //create thread.
-				rightMostNode->right = curr;
-				curr = curr->left;
-			}
-			else { //rightMostNode->right != NULL, means right most node ka right curr ko point krra hoga, toh ye link break kro
-				// break the thread.
-				rightMostNode->right = NULL;
-				//inorder phase pe check krna hai ki sorted hai ya nhi
-				if (prev != NULL and prev->data > curr->data) {
-					if (firstMistake == NULL) firstMistake = prev; //think, watch video
-					secondMistake = curr;
-				}
-				prev = curr; //move prev
-				//this indicates that left subtree is processed so move to right.
-				curr = curr->right; //move curr to right
-			}
-		}
+
+		//add krna new node ke potential left and right child in queue.
+		q.push(UtilClass(node, removedObj.leftBoundary, node->data)); //left child
+		q.push(UtilClass(node, node->data, removedObj.rightBoundary)); //right child
 	}
-	//now, swap the data at first mistake and second mistake
-	// int temp = firstMistake->data;
-	if (firstMistake != NULL) {
-		swap(firstMistake->data, secondMistake->data);
-	}
+	return root;
 }
 
 int main()
 {
 	/*
-	NOTE: inorder me sab kuch hoga.
-	PREREQUISITE: morris traversal inorder.
-	SPACE: constant.
-	TIME: O(3n), coz on an average har node 3 baar visit hoti hai, watch video
-	NOTE: using morris traversal means we can traverse BT without using any extra space(stack or recursive stack).
-	VIDEO LINK: https://www.youtube.com/watch?v=XLFGcZxn0PM&list=PL-Jc9J83PIiHgjQ9wfJ8w-rXU368xNX4L&index=10
+	NOTE: we are using queue here.
+	PREREQUISITE: construct BST from preorder traversal and construct bst from postorder traversal
+	VIDEO LINK: https://www.youtube.com/watch?v=8w_NSKo9e74&list=PL-Jc9J83PIiHgjQ9wfJ8w-rXU368xNX4L&index=19
 	*/
-	vector<int> arr = {50, 75, 12, -1, -1, 37, 30, -1, -1, -1, 25, 62, -1, 70, -1, -1, 87, -1, -1};
-	Node* root = construct(arr);
-	display(root);
-	cout << "after recovery " << endl;
-	recoverBSTUsingMorrisInorderTraversal(root);
+	vector<int> levelorder = {7, 4, 12, 3, 6, 8, 1, 5, 10};
+	Node* root = constructBSTFromlevelorderTraversal(levelorder);
 	display(root);
 }
