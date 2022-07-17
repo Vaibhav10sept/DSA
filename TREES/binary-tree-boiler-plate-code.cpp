@@ -160,6 +160,9 @@ void display(Node* node) {
 
 int main()
 {
+	/*
+	VIDEO LINK:
+	*/
 	vector<int> arr = {50, 25, 12, -1, -1, 37, 30, -1, -1, -1, 75, 62, -1, 70, -1, -1, 87, -1, -1};
 	Node* root = construct(arr);
 	display(root);

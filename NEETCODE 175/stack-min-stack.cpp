@@ -21,9 +21,9 @@ public:
 		else if (val >= minVal) { //case 2
 			st.push(val);
 		}
-		else { //case 3
-			st.push(val + (val - minVal)); //(val + val - minVal)--> fake value is always less than minVal, this help us to detect that minVal is changed here
-			minVal = val; //original val stored in minVal.
+		else { //case 3 --> val < minval, we found a new min
+			st.push(val + (val - minVal)); //(val + val - minVal)--> fake value is always less than minVal, this help us to detect that minVal is changed here/fake value is pushed in stack.
+			minVal = val; //original value stored in minVal.
 		}
 	}
 

@@ -121,7 +121,7 @@ int solve(Node* node, int &k) {
 
 	//right call.
 	int right = solve(node->right, k);
-	return right; //think right vale case me if nhi lgaya but above left me if check lgaya tha.
+	return right; //think right vale case me "if" nhi lgaya but above left me "if" check lgaya tha.
 }
 
 int kthSmallestElementRecursive(Node* root, int k) {

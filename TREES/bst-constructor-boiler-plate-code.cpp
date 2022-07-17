@@ -47,6 +47,17 @@ int size(Node* node) {
 	return ans;
 }
 
+class UtilPair {
+public:
+	Node* node;
+	int state;
+
+	UtilPair(Node* node, int state) {
+		this->node = node;
+		this->state = state;
+	}
+};
+
 Node* constructorForLeetcode(vector<int> arr) {
 	// state = 1 means left me node add krna hai
 	// state = 2 means right me node add krna hai

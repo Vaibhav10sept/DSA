@@ -30,7 +30,7 @@ public:
 		tail->prev = head;
 	}
 
-	void addnode(node* newnode) {
+	void addNodeAtHead(node* newnode) {
 		// add at the head, most recently used
 		node* temp = head->next;
 		newnode->next = temp;
@@ -39,7 +39,7 @@ public:
 		temp->prev = newnode;
 	}
 
-	void deletenode(node* delnode) {
+	void deleteNode(node* delnode) {
 		node* delprev = delnode->prev;
 		node* delnext = delnode->next;
 		delprev->next = delnext;
@@ -51,8 +51,8 @@ public:
 			node* resnode = m[key_];
 			int res = resnode->val;
 			m.erase(key_);
-			deletenode(resnode);
-			addnode(resnode); //add at head, so it become the most recently used
+			deleteNode(resnode);
+			addNodeAtHead(resnode); //add at head, so it become the most recently used
 			m[key_] = head->next;
 			return res;
 		}
@@ -64,14 +64,14 @@ public:
 		if (m.find(key_) != m.end()) { //key found
 			node* existingnode = m[key_];
 			m.erase(key_);
-			deletenode(existingnode);
+			deleteNode(existingnode);
 		}
 		if (m.size() == cap) {
-			m.erase(tail->prev->key); // delete the node at tail from the map
-			deletenode(tail->prev); //delete the node at tail, least recently used node
+			m.erase(tail->prev->key); // delete the node(from map) at tail(from DLL) from the map
+			deleteNode(tail->prev); //delete the node at tail(from DLL), least recently used node
 		}
 
-		addnode(new node(key_, value)); //add at head
+		addNodeAtHead(new node(key_, value)); //add at head
 		m[key_] = head->next; // adding in map
 	}
 };

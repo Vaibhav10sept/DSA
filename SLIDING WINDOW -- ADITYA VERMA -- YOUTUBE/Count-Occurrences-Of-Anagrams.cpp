@@ -18,7 +18,7 @@ int CountOccurrencesOfAnagrams(string pattern, string str) {
 	int count = mp.size(); //represent total no. of distinct character in pattern
 
 	while (j < str.size()) {
-		if (mp.find(str[j]) != mp.end()) {
+		if (mp.find(str[j]) != mp.end()) { //found
 			//str[j] present h map me
 			mp[str[j]]--;
 			if (mp[str[j]] == 0) {
@@ -32,7 +32,7 @@ int CountOccurrencesOfAnagrams(string pattern, string str) {
 			}
 
 			//now, slide the window
-			if (mp.find(str[i]) != mp.end()) {
+			if (mp.find(str[i]) != mp.end()) { //found
 				//means str[i] is there in the map
 				if (mp[str[i]] == 0) {
 					count++;

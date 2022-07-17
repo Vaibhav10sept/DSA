@@ -18,8 +18,8 @@ bool operator< (const Util one, const Util two) {
 }
 
 string reorganizeString(string str) {
-	//creating map
-	map<char, int> mp;
+	//creating freq map
+	map<char, int> mp; // char, frequency
 	for (char ele : str) {
 		mp[ele]++;
 	}

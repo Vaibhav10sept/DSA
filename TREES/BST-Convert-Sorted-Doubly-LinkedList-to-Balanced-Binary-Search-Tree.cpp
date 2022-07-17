@@ -1,0 +1,284 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Node {
+public:
+	int data;
+	Node* left;
+	Node* right;
+	Node(int data) {
+		this->data = data;
+		this->left = NULL;
+		this->right = NULL;
+	}
+	Node(int data, Node* left, Node* right) {
+		this->data = data;
+		this->left = left;
+		this->right = right;
+	}
+
+	Node() {
+		left = NULL;
+		right = NULL;
+	}
+};
+
+class UtilPair {
+public:
+	Node* node;
+	int state;
+
+	UtilPair(Node* node, int state) {
+		this->node = node;
+		this->state = state;
+	}
+	UtilPair() {
+
+	}
+};
+
+Node* construct(vector<int> arr) {
+	// state = 1 means left me node add krna hai
+	// state = 2 means right me node add krna hai
+	// state = 3 means stack se node ko pop krna hai
+	stack<UtilPair> st;
+	Node* root = new Node(arr[0]);
+	UtilPair newPair(root, 1);
+	st.push(newPair);
+
+	int i = 0;
+	while (!st.empty()) {
+		UtilPair top = st.top();
+		// cout << "top " << top.node->data << endl;
+		if (top.state == 1) {
+			// means left me node add krni hai
+			i++;
+			st.top().state++;
+			if (arr[i] != -1) {
+				Node* newNode = new Node(arr[i]);
+				st.top().node->left = newNode;
+				UtilPair newPair(newNode, 1);
+				st.push(newPair);
+			}
+			else {
+				st.top().node->left = NULL;
+			}
+		}
+		else if (top.state == 2) {
+			// means right me node add krna hai
+			i++;
+			st.top().state++;
+			if (arr[i] != -1) {
+				Node* newNode = new Node(arr[i]);
+				st.top().node->right = newNode;
+				UtilPair newPair(newNode, 1);
+				st.push(newPair);
+			}
+			else {
+				st.top().node->right = NULL;
+			}
+		}
+		else {
+			// means stack se node ko pop krna hai
+			st.pop();
+		}
+	}
+	return root;
+
+}
+
+Node* constructorForLeetcode(vector<int> arr) {
+	// state = 1 means left me node add krna hai
+	// state = 2 means right me node add krna hai
+	// state = 3 means stack se node ko pop krna hai
+	queue<UtilPair> q;
+	Node* root = new Node(arr[0]);
+	UtilPair newPair(root, 1);
+	q.push(newPair);
+
+	int i = 1;
+	while (!q.empty() and i < arr.size()) {
+		UtilPair front = q.front();
+
+		if (front.state == 1) {
+			// means left me node add krni hai
+			q.front().state++;
+			if (arr[i] != -1) {
+				Node* newNode = new Node(arr[i]);
+				q.front().node->left = newNode;
+				UtilPair newPair(newNode, 1);
+				q.push(newPair);
+			}
+			else {
+				q.front().node->left = NULL;
+			}
+			i++;
+		}
+		else if (front.state == 2) {
+			// means right me node add krna hai
+			q.front().state++;
+			if (arr[i] != -1) {
+				Node* newNode = new Node(arr[i]);
+				q.front().node->right = newNode;
+				UtilPair newPair(newNode, 1);
+				q.push(newPair);
+			}
+			else {
+				q.front().node->right = NULL;
+			}
+			i++;
+		}
+		else {
+			// state = 3 --> means queue se node ko pop krna hai
+			q.pop();
+		}
+	}
+	return root;
+}
+
+int size(Node* node) {
+	if (node == NULL) return 0;
+
+	int ans = 0;
+	ans += size(node->left);
+	ans += size(node->right);
+
+	ans++;
+	return ans;
+}
+
+void display(Node* node) {
+	if (node == NULL) return;
+	string str = "";
+	str += node->left ? to_string(node->left->data) : "." ;
+	str += " <- " + to_string(node->data) + " -> ";
+	str += node->right ? to_string(node->right->data) : "." ;
+	cout << str << endl;
+	display(node->left);
+	display(node->right);
+}
+
+Node* getRightMostNode(Node* leftNode, Node* curr) {
+	while (leftNode->right != NULL and leftNode->right != curr) {
+		//think for, leftNode->right != curr, watch video
+		leftNode = leftNode->right;
+	}
+	return leftNode;
+}
+
+Node* bstToDoublyLinkedList(Node* root) {
+	//watch video recommended.
+
+	Node* dummy = new Node(-1);
+	Node* curr = root;
+	Node* prev = dummy;
+	while (curr) {
+		Node* leftNode = curr->left;
+		if (leftNode == NULL) {
+			//inorder phase
+			//create doubly linked list links
+			prev->right = curr;
+			curr->left = prev;
+			//move prev.
+			prev = curr;
+			//move curr
+			curr = curr->right;
+		}
+		else { //node.left != NULL
+			//now, find the right most node.
+			Node* rightMostNode = getRightMostNode(leftNode, curr);
+			if (rightMostNode->right == NULL) { //create thread.
+				rightMostNode->right = curr;
+				curr = curr->left;
+			}
+			else { //rightMostNode->right != NULL, means right most node ka right curr ko point krra hoga, toh ye link break kro
+				// break the thread.
+				rightMostNode->right = NULL;
+
+				//inorder phase
+				//create doubly linked list links
+				prev->right = curr;
+				curr->left = prev;
+				//move prev.
+				prev = curr;
+				//move curr
+				curr = curr->right;
+			}
+		}
+	}
+	Node* head = dummy->right;
+	dummy->right = head->left = NULL;
+
+
+	//create circular doubly linked list(commented becoz can't test if uncommented)
+	// prev->right = head;
+	// head->left = prev;
+	return head;
+}
+
+printDoublyLinkedList(Node* head) {
+	Node* temp = head;
+	while (temp) {
+		cout << temp->data << " ";
+		temp = temp->right;
+	}
+}
+
+Node* getMidNode(Node* node) {
+	if (node == NULL || node->right == NULL) {
+		return node;
+	}
+
+	Node* slow = node;
+	Node* fast = node;
+	while (fast->right != NULL and fast->right->right != NULL) {
+		//NOTE: WHY?  fast->right->right != NULL, bcoz when size is even then there would be two mid we want to consider the left one, think, dry run, watch video
+		fast = fast->right->right;
+		slow = slow->right;
+	}
+	return slow;
+}
+
+// left : prev, right : next
+Node* sortedDoublyLinkedListToBST(Node* head) {
+	//BASE CASE
+	if (head == NULL || head->right == NULL) {
+		return head;
+	}
+
+	Node* midNode = getMidNode(head);
+	Node* prev = midNode->left;
+	Node* next = midNode->right;
+
+	midNode->right = midNode->left = next->left = NULL;
+
+	if (prev != NULL) {
+		prev->right = NULL;
+	}
+	midNode->left = sortedDoublyLinkedListToBST(prev == NULL ? NULL : head);
+	midNode->right = sortedDoublyLinkedListToBST(next);
+	return midNode;
+}
+
+
+int main()
+{
+	/*
+	NOTE: inorder me sab kuch hoga.
+	PREREQUISITE: morris traversal inorder.
+	SPACE: constant.
+	TIME: O(3n), coz on an average har node 3 baar visit hoti hai, watch video
+	NOTE: using morris traversal means we can traverse BT without using any extra space(stack or recursive stack).
+	VIDEO LINK: https://www.youtube.com/watch?v=2f76aliGNBw&list=PL-Jc9J83PIiHgjQ9wfJ8w-rXU368xNX4L&index=49
+	*/
+	vector<int> arr = {50, 25, 12, -1, -1, 37, 30, -1, -1, -1, 75, 62, -1, 70, -1, -1, 87, -1, -1};
+	Node* root = construct(arr);
+	display(root);
+	root = bstToDoublyLinkedList(root);
+	cout << "print doubly linked list" << endl;
+	printDoublyLinkedList(root);
+	cout << endl;
+	cout << "print tree" << endl;
+	root = sortedDoublyLinkedListToBST(root);
+	display(root);
+}
