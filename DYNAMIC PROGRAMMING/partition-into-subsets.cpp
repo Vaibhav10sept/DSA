@@ -20,6 +20,8 @@ int partitionIntoSubsetsDP(int n, int k) {
 	for (int i = 0; i < dp.size(); i++) {
 		for (int j = 0; j < dp[0].size(); j++) {
 			//initialization or base cases starts
+			// NOTE: i --> k(no of teams)
+			//       j --> n(no of people)
 			if (i == 0 || j == 0) { //1st point
 				dp[i][j] = 0;
 			}
@@ -32,7 +34,10 @@ int partitionIntoSubsetsDP(int n, int k) {
 			else if (i == j) { // 4th point
 				dp[i][j] = 1;
 			}
+			//initialization ends
 			else {// for every other cell
+				// NOTE: i --> k(no of teams)
+				//       j --> n(no of people)
 				dp[i][j] = i * dp[i][j - 1] + dp[i - 1][j - 1];
 			}
 		}
@@ -105,11 +110,12 @@ int main()
 	// the approach used to solve it is similar to knapsack problem.
 	// NOTE: there is also a recursive ques "printFriendsPairingRecursion" similar to this one
 	//**************************************************
-	string n = "12345"; //no of people for recursive code
 	int count = 5; //no of people
 	int k = 4; //no of teams
 	cout << "no of ways in which " << k << " teams can be formed using " << count << " people: " << partitionIntoSubsetsDP(count, k);
 	cout << endl;
+
+	string n = "12345"; //no of people for recursive code
 	vector<vector<string>> ans = printPartitionsIntoSubsetsRecursion(n, k);
 	cout << "Teams are:" << endl;
 	for (vector<string> ele : ans) {

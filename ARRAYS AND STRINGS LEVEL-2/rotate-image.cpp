@@ -30,6 +30,9 @@ void rotateImage(vector<vector<int>> arr) {
 		}
 	}
 
+	cout << "after transpose " << endl;
+	displayMatrix(arr);
+
 	//step2. reverse every row
 	for (int i = 0; i < arr.size(); i++) {
 		reverse(arr[i].begin(), arr[i].end());
@@ -52,17 +55,17 @@ int main() {
 	//*********************************
 	//****************************
 // NOTE: INPUT FOR CONSTRUCT MATRIX.
-// 3
-// 3
-// 11
-// 12
-// 13
-// 21
-// 22
-// 23
-// 31
-// 32
-// 33
+	// 3
+	// 3
+	// 11
+	// 12
+	// 13
+	// 21
+	// 22
+	// 23
+	// 31
+	// 32
+	// 33
 //*******************************
 	vector<vector<int>> arr;
 	arr = constructMatrix();

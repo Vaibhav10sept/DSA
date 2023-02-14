@@ -1,35 +1,35 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int searchInRotateSortedArrayWithDistinctElements(vector<int> arr, int target) {
-	//please watch the video(link below) for better understanding.
-	int low = 0;
-	int high = arr.size() - 1;
-	while (low <= high) {
-		// int mid = low + (high - low) / 2;
-		int mid = (low + high) / 2;
-		if (arr[mid] == target) return mid;
+int searchInRotateSortedArrayWithDistinctElements(vector<int>& arr, int k) {
+	int n = arr.size();
+	int start = 0;
+	int end = n - 1;
 
-		//if the left part of array is sorted
-		if (arr[low] <= arr[mid]) {
-			// check if target is in range of left sorted array
-			if (target >= arr[low] and target <= arr[mid]) {
-				//move to left
-				high = mid - 1;
+	while (start <= end) {
+		int mid = start + (end - start) / 2;
+		if (k == arr[mid]) return mid;
+
+		//check if we are in left sorted portion
+		if (arr[mid] >= arr[start]) {
+			if (k > arr[mid] or k < arr[start]) {
+				//move right
+				start = mid + 1;
 			}
-			else { //move to right
-				low = mid + 1;
+			else { //else, k is less than mid and greater than start element(arr[start])
+				//move left
+				end = mid - 1;
 			}
 		}
-		//left half is not sorted, that means right half is sorted
+		//else, we are in right sorted portion
 		else {
-			//check if target is in range of right sorted array
-			if (target >= arr[mid] and target <= arr[high]) {
-				//move to right
-				low = mid + 1;
+			if (k < arr[mid] or k > arr[end]) {
+				//move left
+				end = mid - 1;
 			}
-			else {  //move to left
-				high = mid - 1;
+			else {//else, k is greater than mid value and k is less than end value
+				//move right
+				start = mid + 1;
 			}
 		}
 	}

@@ -17,15 +17,14 @@ string orderlyQueue(string str, int k) {
 		sort(str.begin(), str.end());
 		return str;
 	}
-	else {
+	else { // k = 1
 		string ans = str;
 		for (int i = 0; i < str.size(); i++) {
 			put0thOnBack(str);
-			// int diff = (int)ans - (int)str;
-			if (ans > str) { // diff is -ve means str is smaller than ans, so update ans.
+
+			if (ans > str) {
 				ans = str;
 			}
-
 		}
 		return ans;
 	}

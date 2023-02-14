@@ -10,8 +10,6 @@ void allIndices(vector<int> arr, int i, int data, vector<int> &ans) {
 
 }
 
-
-
 int main()
 {
 	vector<int> arr = {100, 20, 3, 4, 3, 6, 8, 3, 8, 500, 8};

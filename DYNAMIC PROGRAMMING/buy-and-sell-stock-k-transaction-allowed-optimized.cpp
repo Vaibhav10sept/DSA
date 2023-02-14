@@ -9,7 +9,6 @@ void displayMatrix(vector<vector<int>> arr) {
 		cout << endl;
 	}
 }
-
 int buyAndSellStockKTransactionsAllowedOptimized(vector<int> arr, int k) {
 	vector<vector<int>> dp(k + 1, vector<int>(arr.size()));
 	// row -> no of transactions(k)
@@ -29,7 +28,7 @@ int buyAndSellStockKTransactionsAllowedOptimized(vector<int> arr, int k) {
 			}
 		}
 	}
-	displayMatrix(dp);
+	// displayMatrix(dp);
 	return dp[k][arr.size() - 1];
 }
 

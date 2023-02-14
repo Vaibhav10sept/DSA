@@ -2,6 +2,7 @@
 using namespace std;
 
 int partitionArrayIntoDisjointIntervalsSpaceOptimized(vector<int> arr) {
+	// WV recommended, hard to understand the logic, there is another solution with O(n) space jo smjh ata h
 	int ans = 0;
 	int leftMax = arr[0];
 	int greater = arr[0];

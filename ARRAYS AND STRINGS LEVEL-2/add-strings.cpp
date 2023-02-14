@@ -1,19 +1,19 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-string (string n1, string n2) {
+string addStrings(string n1, string n2) {
 	int i1 = n1.size() - 1;
 	int i2 = n2.size() - 1;
 	int carry = 0;
 	string res = "";
 	while (i1 >= 0 and i2 >= 0) {
-		int firstDigit = n1[i1] - '0';
+		int firstDigit = n1[i1] - '0'; //char to int
 		int secondDigit = n2[i2] - '0';
 
 		int sum = firstDigit + secondDigit + carry;
 		int remainder = sum % 10;
 		carry = sum / 10;
-		char remainderCh = remainder + '0';
+		char remainderCh = remainder + '0'; //int to char
 		res = remainderCh + res;
 		i1--;
 		i2--;

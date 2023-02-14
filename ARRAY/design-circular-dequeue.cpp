@@ -19,7 +19,8 @@ public:
 
 	bool insertLast(int value) {
 		if (isFull()) return false;
-		q[tail++] = value;
+		q[tail] = value;
+		tail++;
 		tail %= capacity;
 		size++;
 		return true;
@@ -43,7 +44,8 @@ public:
 		return isEmpty() ? -1 : q[head];
 	}
 
-	int getRear() { //ye doubtfull hai.(think, exceptional case)
+	int getRear() { //think, tail hmesa ek step age rhta as compared to head jo head vali value pe hi hota h
+		//so, to get the tail value hm tail ke ek peeche dekhte h.
 		return isEmpty() ? -1 : tail == 0 ? q[capacity - 1] : q[tail - 1];
 	}
 
@@ -60,10 +62,19 @@ public:
 int main()
 {
 	/*
-	NOTE: cannot run this question submit it on leetcode to run
-	NOTE: this code is copied from leetcode discussion
+	NOTE: tail or head me ek diff h or vo diff kyo rhka gya h iske bare me sochna
+	//diff ye h ki head, head vali value pe hi hota h balki tail, tail vali value se ek age hota h, islie getTail() me hm tail ko ek peeche krke tail value find krte h
 	LEETCODE: https://leetcode.com/problems/design-circular-deque/
 	*/
-	vector<int> arr = {1, 2, 3, 4, 5, 6};
-	print(arr);
+	MyCircularDeque obj(3);
+	cout << obj.insertLast(1) << endl;
+	cout << obj.insertLast(2) << endl;
+	cout << obj.insertFront(3) << endl;
+	cout << obj.insertFront(4) << endl;
+	cout << obj.getRear() << endl;
+	cout << obj.isFull() << endl;
+	cout << obj.deleteLast() << endl;
+	cout << obj.insertFront(4) << endl;
+	cout << obj.getFront() << endl;
+
 }

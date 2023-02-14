@@ -29,8 +29,8 @@ vector<int> smallestRangeInKLists(vector<vector<int>> arr) {
 	vector<int> ans = { -100000, 100000};
 	int k = arr.size();
 	int maxRange = INT_MIN;
-	// priority_queue<Util, vector<Util>, CompareAge> pq;
 	priority_queue<Util> pq; //this is min heap
+
 	//insert an object for every vector in array of vector
 	for (int i = 0; i < k; i++) {
 		pq.push(Util(arr[i][0], i, 0));

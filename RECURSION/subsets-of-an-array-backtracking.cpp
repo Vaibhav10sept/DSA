@@ -10,9 +10,9 @@ void printSubsetsRecursive(vector<int> arr, vector<int> ans, int idx) {
 	}
 	ans.push_back(arr[idx]);
 	printSubsetsRecursive(arr, ans, idx + 1);
+	//backtrack(think)
 	ans.pop_back();
 	printSubsetsRecursive(arr, ans, idx + 1);
-
 }
 
 int main()

@@ -2,6 +2,7 @@
 using namespace std;
 
 vector<int> twoSum(vector<int> arr, int target) {
+	// NOTE: in two sum 2 the given array is sorted
 	int i = 0;
 	int j = arr.size() - 1;
 	vector<int> ans;

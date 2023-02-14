@@ -52,7 +52,7 @@ int maximumGoldPath(vector<vector<int>> arr) {
 	}
 	displayMatrix(dp);
 	int ans = INT_MIN;
-	for (int i = 0; i < n; i++) {
+	for (int i = 0; i < n; i++) { //first column me ka max ans hoga
 		ans = std::max(ans, dp[i][0]);
 	}
 	return ans;
@@ -61,7 +61,7 @@ int maximumGoldPath(vector<vector<int>> arr) {
 int main()
 {
 	//***************************
-	// https: https://www.youtube.com/watch?v=hs0lilfJ7C0&list=PL-Jc9J83PIiFj7YSPl2ulcpwy-mwj1SSk&index=440
+	// VIDEO LINK: https://www.youtube.com/watch?v=hs0lilfJ7C0&list=PL-Jc9J83PIiFj7YSPl2ulcpwy-mwj1SSk&index=440
 	//********************************
 	//STEPS TO SOLVE DP PROBLEMS(TABULATION):
 	//1. THINK ABOUT STORAGE AND MEANING
@@ -69,14 +69,14 @@ int main()
 	//3. FINALLY TRAVEL AND SOLVE
 	//**************************************************
 	//input:
-	// 6
-	// 6
-	// 0 1 4 2 8 2
-	// 4 3 6 5 0 4
-	// 1 2 4 1 4 6
-	// 2 0 7 3 2 2
-	// 3 1 5 9 2 4
-	// 2 7 0 8 5 1
+// 6
+// 6
+// 0 1 4 2 8 2
+// 4 3 6 5 0 4
+// 1 2 4 1 4 6
+// 2 0 7 3 2 2
+// 3 1 5 9 2 4
+// 2 7 0 8 5 1
 	vector<vector<int>> arr;
 	arr = constructMatrix();
 	displayMatrix(arr);

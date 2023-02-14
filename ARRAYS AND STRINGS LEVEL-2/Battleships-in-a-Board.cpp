@@ -20,7 +20,7 @@ int battleshipsInABoard(vector<vector<char>> arr) {
 						ans++;
 					}
 				}
-				else {
+				else { // i!='X' and j!='X'
 					if (arr[i][j - 1] != 'X' and arr[i - 1][j] != 'X') {
 						ans++;
 					}

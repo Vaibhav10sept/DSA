@@ -44,8 +44,10 @@ void PrintEncoding(string ques, string ans) {
 
 int main()
 {
-	//********************************
-	//QUESTION LINK: https://www.youtube.com/watch?v=jUo0Qis4FKU&list=PL-Jc9J83PIiFj7YSPl2ulcpwy-mwj1SSk&index=415
-	//***********************************
+	//***************************
+	// there is a question "COUNT ENCODINGS" which counts all possible encodings
+	// (you can search it using ctrl + p)
+	// "print encoding" is recursive while "count encodings" is DP.
+	//**************************************************
 	PrintEncoding("1012", "");
 }

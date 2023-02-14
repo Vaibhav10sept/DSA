@@ -12,7 +12,7 @@ int partition(vector<int> &arr, int low, int high) {
 		if (arr[i] > pivot) {
 			i++;
 		}
-		else { //arr[i] < pivot
+		else { //arr[i] <= pivot
 			swap(arr[i], arr[j]);
 			i++;
 			j++;
@@ -29,10 +29,10 @@ void quickSelect(vector<int> &arr,  int low, int high, int k) {
 		cout << "kth smallest elements is: " << arr[k] << endl;
 		return;
 	}
-	else if (k < pivot) {
+	else if (k < pivot) { //left me jaoge
 		quickSelect(arr, low, pivot - 1, k);
 	}
-	else { // k > pivot
+	else { // k > pivot, right me jaoge
 		quickSelect(arr, pivot + 1, high, k);
 	}
 
@@ -40,6 +40,8 @@ void quickSelect(vector<int> &arr,  int low, int high, int k) {
 
 int main() {
 	//**************************************
+	// PREREQUISITE: quick sort
+	// NOTE: this is an application for quick sort.
 	//video link: https://www.youtube.com/watch?v=fnbImb8lo88&list=PL-Jc9J83PIiFj7YSPl2ulcpwy-mwj1SSk&index=503
 	//*******************************************
 	vector<int> arr = {5, 3, 2, 8, 3, 6, 9, 0, 2, 56};

@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+//APPROACH: question, answer vali approach
+
 void PrintPermutations(string ques, string ans) {
 	if (ques.size() == 0) {
 		cout << ans << endl;
@@ -16,12 +18,11 @@ void PrintPermutations(string ques, string ans) {
 
 }
 
-
-
 int main()
 {
 	//********************************
+	// NOTE: there is a backtracking problem "backtracking-premutations"
 	// NO OF PERMUTATIONS = N!
 	//***********************************
-	PrintPermutations("abc", "");
+	PrintPermutations("01", "");
 }

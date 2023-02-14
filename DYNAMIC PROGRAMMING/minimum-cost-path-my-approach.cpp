@@ -26,6 +26,8 @@ int minimumCostPath(vector<vector<int>> arr) {
 	int n = arr.size();
 	int m = arr[0].size();
 	vector<vector<int>> dp(n, vector<int>(m));
+	// every cell at DP stores the min cost path from destination to dp[i][j]
+	// DIRECTION OF PROBLEM: bottom right cell to top left cell
 	dp[n - 1][m - 1] = arr[n - 1][m - 1];
 	//filling the last row
 	for (int j = m - 2; j >= 0; j--) {
@@ -51,7 +53,7 @@ int minimumCostPath(vector<vector<int>> arr) {
 int main()
 {
 	//***************************
-	// https://www.youtube.com/watch?v=BzTIOsC0xWM&list=PL-Jc9J83PIiFj7YSPl2ulcpwy-mwj1SSk&index=439
+	// VIDEO LINK: https://www.youtube.com/watch?v=BzTIOsC0xWM&list=PL-Jc9J83PIiFj7YSPl2ulcpwy-mwj1SSk&index=439
 	//********************************
 	//STEPS TO SOLVE DP PROBLEMS(TABULATION):
 	//1. THINK ABOUT STORAGE AND MEANING
@@ -59,14 +61,14 @@ int main()
 	//3. FINALLY TRAVEL AND SOLVE
 	//**************************************************
 	//input:
-	// 6
-	// 6
-	// 0 1 4 2 8 2
-	// 4 3 6 5 0 4
-	// 1 2 4 1 4 6
-	// 2 0 7 3 2 2
-	// 3 1 5 9 2 4
-	// 2 7 0 8 5 1
+// 6
+// 6
+// 0 1 4 2 8 2
+// 4 3 6 5 0 4
+// 1 2 4 1 4 6
+// 2 0 7 3 2 2
+// 3 1 5 9 2 4
+// 2 7 0 8 5 1
 	vector<vector<int>> arr;
 	arr = constructMatrix();
 	displayMatrix(arr);

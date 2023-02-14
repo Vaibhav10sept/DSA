@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
-void fun(vector<int> arr) {
+
+void fun(vector<int> arr)
+{
 	stack<pair<int, int> > st;
 	vector<int> ans;
 	int n = arr.size();

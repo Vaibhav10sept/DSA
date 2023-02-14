@@ -18,7 +18,7 @@ void countSort(vector<int> &arr, int exp) {
 
 	//filling up the ans array by iterating the arr backward(to make it stable sorting algo)
 	for (int i = arr.size() - 1; i >= 0; i--) {
-		ans[freq[(arr[i] / exp) % 10] - 1] = arr[i];
+		ans[freq[(arr[i] / exp) % 10] - 1] = arr[i]; //-1 kyo kia uske lie count sort vali video dekho
 		freq[(arr[i] / exp) % 10]--;
 	}
 
@@ -32,7 +32,7 @@ void countSort(vector<int> &arr, int exp) {
 void radixSort(vector<int> &arr) {
 	int maxElement = *max_element(arr.begin(), arr.end());
 	int exp = 1;
-	while (exp < maxElement) {
+	while (exp < maxElement) { //while me '<=' hona chahiye for one test case, ie. is max element is 1000, think dry run, not in video, my logic
 		countSort(arr, exp);
 		exp *= 10;
 	}
@@ -40,7 +40,7 @@ void radixSort(vector<int> &arr) {
 
 int main() {
 	//**************************************
-	//NOTE: dependency on count sort(with some modifications)
+	//PREREQUISITE: dependency on count sort(with some modifications)
 	//VIDEO LINK: https://www.youtube.com/watch?v=a5e7RgCdel0&list=PL-Jc9J83PIiFj7YSPl2ulcpwy-mwj1SSk&index=510
 	//radix sort is an stable sorting algorithm as count sort
 	//*******************************************

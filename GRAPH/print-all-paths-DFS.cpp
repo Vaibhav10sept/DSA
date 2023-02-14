@@ -44,6 +44,9 @@ void printAllPaths(vector<vector<Edge>> graph, int src, int dest, vector<bool> &
 		}
 	}
 	//backtrack(think, same logic as in "floodFill"(recursion))
+	//WV recommended why we backtrack here, in video there is a comparison of "haspath" and "print all paths" question.
+	//like kyo has path me hm backtrack nhi krte or print all paths me backtrack krte h
+	//reason: has path me hme sirf ye dekhna hota tha ki path h ya nhi or print all paths me
 	visited[src] = false;
 }
 
@@ -52,7 +55,6 @@ int main() {
 	//VIDEO LINK: https://www.youtube.com/watch?v=DrQ-eTN2v3A&list=PL-Jc9J83PIiFj7YSPl2ulcpwy-mwj1SSk&index=523
 	//NOTE: prerequisite is "has path"
 	//************************************************************
-
 	// INPUT:
 	// 7
 	// 8

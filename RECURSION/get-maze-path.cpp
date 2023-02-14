@@ -49,5 +49,6 @@ int main()
 	// QUESTION VIDEO LINK: https://www.youtube.com/watch?v=hMJAlbJIS7E&list=PL-Jc9J83PIiFj7YSPl2ulcpwy-mwj1SSk&index=399
 	//***********************************
 
-	getMazePath(1, 1, 3, 3, "");
+	vector<string> ans = getMazePath(1, 1, 3, 3);
+	for (string ele : ans)cout << ele << endl;
 }

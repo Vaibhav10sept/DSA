@@ -7,7 +7,7 @@ bool comparator(vector<int> &a, vector<int> &b) {
 
 int minArrowToBurstBalloon(vector<vector<int>> arr) {
 	//sorting with respect to the end point
-	sort(arr.begin(), arr.end(), comparator);
+	sort(arr.begin(), arr.end(), comparator); //sorting on the basis of inc endpoitn
 	int arrowCount = 1;
 	int endPoint = arr[0][1];
 	for (int i = 1; i < arr.size(); i++) {

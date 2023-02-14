@@ -6,19 +6,19 @@ int farthestBuildingYouCanReach(vector<int> heights, int bricks, int ladders) {
 	priority_queue<int, vector<int>, greater<int> > pq; //min heap
 	for (int i = 0; i < heights.size() - 1; i++) {
 		int diff = heights[i + 1] - heights[i];
-		if (diff > 0) {
+		if (diff > 0) { //diff is positive, means brick/ladder is required
 			pq.push(diff);
 		}
 		if (pq.size() > ladders) {
 			//ham bricks minimum height diff ke lie hi use krege(logic)
 			bricks -= pq.top();
 			pq.pop();
-		}
-		if (bricks < 0) {
-			return i;
+			if (bricks < 0) { //means above brick ko minus krne ke baad bricks negative ho gae means brick kam pd gae,to hm "i" index ke age nhi ja skte, return "i"
+				return i;
+			}
 		}
 	}
-	return heights.size() - 1;
+	return heights.size() - 1; //means pahuch gae to last index return krdo
 }
 
 int main() {

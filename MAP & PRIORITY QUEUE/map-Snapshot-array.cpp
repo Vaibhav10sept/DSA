@@ -18,7 +18,7 @@ public:
 
 	int snap() {
 		snapShotID++;
-		return snapShotID;
+		return snapShotID - 1;
 	}
 
 	int get(int index, int snap_id) {

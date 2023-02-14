@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
 void printSubsets(vector<int> arr) {
 	int limit = pow(2, arr.size()); // no. of subset = 2 raise to the power arr.size()
 	for (int i = 0; i < limit; i++) {
@@ -25,6 +24,8 @@ void printSubsets(vector<int> arr) {
 
 int main()
 {
+	//NOTE: count of all subarray --> n(n+1)/2
+	//NOTE: count of all subsets --> 2^n
 	vector<int> arr = {1, 2, 3};
 	printSubsets(arr);
 }

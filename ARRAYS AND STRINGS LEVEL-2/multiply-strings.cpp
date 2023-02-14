@@ -39,7 +39,7 @@ int main() {
 	// 2. Return the product of num1 and num2, also represented as a string.
 	// 3. Note: You must not use any built-in BigInteger library or convert the inputs to integer directly.
 	//*********************************
-	string	n1 = "10";
-	string n2 = "2";
+	string	n1 = "100";
+	string n2 = "12";
 	cout << multiplyStrings(n1, n2);
 }

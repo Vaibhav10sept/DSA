@@ -41,6 +41,7 @@ public:
 bool breadthFirstTraversal(vector<vector<Edge>> graph, int src, vector<bool> &visited) {
 	queue<UtilPair> q;
 	q.push(UtilPair(src, to_string(src)));
+
 	while (!q.empty()) {
 		//step 1. remove
 		UtilPair removed = q.front();
@@ -80,6 +81,7 @@ bool isGraphCyclic(vector<vector<Edge>> graph) {
 
 int main() {
 	//************************************************************
+	//NOTE/REM: breadth first search is used to detect cycle(think, rem)
 	//VIDEO LINK: https://www.youtube.com/watch?v=qbQq-k75bcY&list=PL-Jc9J83PIiFj7YSPl2ulcpwy-mwj1SSk&index=530
 	//NOTE: prerequisite is "bredth first traversal" and "get connected components"
 	//************************************************************

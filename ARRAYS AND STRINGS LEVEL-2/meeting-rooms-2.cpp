@@ -37,7 +37,7 @@ int main() {
 	// NOTE: we use priority queue here
 	// VIDEO LINK: https://www.youtube.com/watch?v=NKf1OJhEZj0&list=PL-Jc9J83PIiE-TR27GB7V5TBLQRT5RnSl&index=69
 	// QUESTION:
-// 	1. Question will be provided with "n" meeting-schedules. A meeting-schedule is defined as (sp,ep) i.e. sp --> starting point &  ep --> ending point of an meeting. Some meeting-schedules may or maynot overlap each other.
+// 1. Question will be provided with "n" meeting-schedules. A meeting-schedule is defined as (sp,ep) i.e. sp --> starting point &  ep --> ending point of an meeting. Some meeting-schedules may or maynot overlap each other.
 // 2. MeetingIntervals[i] = [startingPointi,endingPointi]
 // 3. A meeting-schedule represents meeting time(i.e. starting time & ending time).
 

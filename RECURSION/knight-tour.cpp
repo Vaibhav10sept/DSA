@@ -10,6 +10,7 @@ void displayMatrix(vector<vector<int>> arr) {
 	}
 }
 void knightTour(vector<vector<int>> chess, int row, int col, int move) {
+	//base cases starts
 	if (row >= chess.size() || col >= chess[0].size() || row < 0 || col < 0 || chess[row][col] > 0) {
 		return;
 	}
@@ -17,9 +18,12 @@ void knightTour(vector<vector<int>> chess, int row, int col, int move) {
 		chess[row][col] = move;
 		displayMatrix(chess);
 		cout << endl;
+
+		//backtrack(rem,important)
 		chess[row][col] = 0;
 		return;
 	}
+	//base cases over
 	//total 8 moves are possible think and watch the video
 	//video link: https://www.youtube.com/watch?v=SP880DBRJ_8&list=PL-Jc9J83PIiFj7YSPl2ulcpwy-mwj1SSk&index=424
 
@@ -45,5 +49,4 @@ int main()
 	int n = 5;
 	vector<vector<int>> chess(n, vector<int>(n, 0));
 	knightTour(chess, 0, 2, 1);
-
 }

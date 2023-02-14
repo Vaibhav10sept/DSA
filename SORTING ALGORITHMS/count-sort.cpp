@@ -20,7 +20,7 @@ void countSort(vector<int> &arr) {
 
 	//filling up the ans array. by iterating the arr backward(to make it stable sorting algo)
 	for (int i = arr.size() - 1; i >= 0; i--) {
-		ans[freq[arr[i] - minElement] - 1] = arr[i];
+		ans[freq[arr[i] - minElement] - 1] = arr[i]; //-1 kyo kia iske lie WV.
 		freq[arr[i] - minElement]--;
 	}
 

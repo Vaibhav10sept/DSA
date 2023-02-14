@@ -12,13 +12,17 @@ void maxSumSubsetOfNonAdjacentElements(vector<int> arr, string ans, int idx, boo
 		maxSumSubsetOfNonAdjacentElements(arr, ans + " " + to_string(arr[idx]), idx + 1, false, sum + arr[idx], maxSum);
 		maxSumSubsetOfNonAdjacentElements(arr, ans, idx + 1, true, sum, maxSum); //think about it.
 	}
-	else { //exclude krna hai
+	else { //include = false --> means exclude krna hai
 		maxSumSubsetOfNonAdjacentElements(arr, ans, idx + 1, true, sum, maxSum);
 	}
 }
 
 int main()
 {
+	/********************************************
+	SIMILAR: there is also a similar quest for DP ie. max sum non adjacent element
+	recusion vale question me hm sare non adjacent subsets print krte h + max sum bhi nikalte h, or isme hm max sum print krte h non adjacent subset ka
+	****************************************/
 	vector<int> arr = {5, 10, 10, 100, 5, 6};
 	int maxSum = INT_MIN;
 	cout << "the non adjacent subsets are:" << endl;

@@ -35,7 +35,7 @@ vector<int> mergeTwoSortedArray(vector<int> leftSortedHalf, vector<int> rightSor
 }
 
 vector<int> mergeSort(vector<int> arr,  int low, int high) {
-	if (low == high) {
+	if (low == high) { //single value array is sorted, think
 		vector<int> baseArray;
 		baseArray.push_back(arr[low]);
 		return baseArray;

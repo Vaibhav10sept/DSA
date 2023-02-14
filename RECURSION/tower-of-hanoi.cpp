@@ -13,6 +13,5 @@ void towerOfHanoi(int a, int b, int c, int n) {
 
 int main()
 {
-
 	towerOfHanoi(1, 2, 3, 3);
 }

@@ -9,6 +9,7 @@ int countSubsequencesOfTheFormABC(string str) {
 	int abc = 0;
 	for (char ch : str) {
 		if (ch == 'a') {
+			//how this formula comes, think/ please watch video for that
 			a = 2 * a + 1;
 		}
 		else if (ch == 'b') {
@@ -22,8 +23,7 @@ int countSubsequencesOfTheFormABC(string str) {
 }
 
 void printSubsequencesOfTheFormABCRecursive(string ans, string ques) {
-
-	if (ques.size() == 0) {
+	if (ques.size() == 0) { //now we have a valid, here we are checking that the subset is of the form a+b+c+ or not.
 		bool b = false;
 		bool c = false;
 		bool pass = true;
@@ -59,15 +59,16 @@ void printSubsequencesOfTheFormABCRecursive(string ans, string ques) {
 	//remove 0th from ques
 	string restOfQuestion = ques.substr(1);// bc
 	string s(1, ch);
+	//here, we are simply creating subsequences/subsets as we used to do earlier, only the base is changing, see the base conditions
+	//LOGIC: for creating subsequences --> ham first char ko question se niklte h, fir ke baar char ko include krke recursive call krte h and ek baar include na krke recursive call krte h
 	printSubsequencesOfTheFormABCRecursive(ans , restOfQuestion);
 	printSubsequencesOfTheFormABCRecursive(ans + s, restOfQuestion);
-
 }
 
 int main()
 {
 	//***************************
-	// video link: https://www.youtube.com/watch?v=IV9pbZsi5cc&list=PL-Jc9J83PIiFj7YSPl2ulcpwy-mwj1SSk&index=487
+	//VIDEO LINK: https://www.youtube.com/watch?v=IV9pbZsi5cc&list=PL-Jc9J83PIiFj7YSPl2ulcpwy-mwj1SSk&index=487
 	//NOTE: SUBSEQUENCE AND SUBSET BOTH ARE SAME THING
 	//NOTE: SO TOTAL THERE ARE: 2^N SUBSEQUENCES/SUBSETS
 

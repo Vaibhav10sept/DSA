@@ -15,7 +15,6 @@ void markAllConnected(vector<vector<bool>> &visited,
 	markAllConnected(visited, grid, i, j - 1); //left
 	markAllConnected(visited, grid, i + 1, j); //top
 	markAllConnected(visited, grid, i - 1, j); //bottom
-
 }
 
 int maxAreaOfIsland(vector<vector<int>> grid) {

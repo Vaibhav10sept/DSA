@@ -2,14 +2,14 @@
 using namespace std;
 
 void printFibonacci(int n) {
-	vector<int> arr(n + 1);
-	arr[0] = 0;
-	arr[1] = 1;
-	for (int i = 2; i < arr.size(); i++) {
-		arr[i] = arr[i - 1] + arr[i - 2];
+	vector<int> dp(n + 1);
+	dp[0] = 0;
+	dp[1] = 1;
+	for (int i = 2; i < dp.size(); i++) {
+		dp[i] = dp[i - 1] + dp[i - 2];
 	}
 
-	for (auto ele : arr) cout << ele << " ";
+	for (auto ele : dp) cout << ele << " ";
 }
 
 int main()

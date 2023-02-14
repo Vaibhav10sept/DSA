@@ -10,19 +10,16 @@ void displayMatrix(vector<vector<int>> arr) {
 	}
 }
 
-vector<vector<int>> targetSumUniqueTriplet(vector<int> num) {
+vector<vector<int> > threeSum(vector<int> &num) {
 	vector<vector<int> > res;
-
 	std::sort(num.begin(), num.end());
 
 	for (int i = 0; i < num.size(); i++) {
-
 		int target = -num[i];
 		int front = i + 1;
 		int back = num.size() - 1;
 
 		while (front < back) {
-
 			int sum = num[front] + num[back];
 
 			// Finding answer which start from number num[i]
@@ -46,15 +43,11 @@ vector<vector<int>> targetSumUniqueTriplet(vector<int> num) {
 			}
 
 		}
-
 		// Processing duplicates of Number 1
 		while (i + 1 < num.size() && num[i + 1] == num[i])
 			i++;
-
 	}
-
 	return res;
-
 }
 
 int main() {
@@ -69,7 +62,7 @@ int main() {
 	// vector<int> arr = { -2, -1, 1, 2};
 	vector<int> arr = { -1, 0, 1, 2, -1, -4};
 	// vector<int> arr = {0, 0, 0};
-	vector<vector<int>> ans = targetSumUniqueTriplet(arr);
+	vector<vector<int>> ans = threeSum(arr);
 	cout << "ans" << endl;
 	displayMatrix(ans);
 }

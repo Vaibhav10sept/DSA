@@ -9,9 +9,8 @@ vector<int> whereWillBallFall(vector<vector<int>> arr) {
 
 	for (int j = 0; j < m; j++) { //columns
 		int currPosition = j;
-		int newPosition = -1;
 		for (int i = 0; i < n; i++) {
-			newPosition = currPosition + arr[i][j];
+			int newPosition = currPosition + arr[i][currPosition];
 			if (newPosition < 0 || newPosition >= m
 			        || arr[i][currPosition] != arr[i][newPosition]) {
 				currPosition = -1;
@@ -38,7 +37,7 @@ int main() {
 
 // Return an array answer of size n where answer[i] is the column that the ball falls out of at the bottom after dropping the ball from the ith column at the top, or -1 if the ball gets stuck in the box.
 	//*********************************
-	vector<vector<int>> grid = {{1, 1, 1, -1, -1}, {1, 1, 1, -1, -1}, { -1, -1, -1, 1, 1}, {1, 1, 1, 1, -1}, { -1, -1, -1, -1, -1}};
+	vector<vector<int>> grid = {{1, -1, -1, 1, -1, 1, 1, 1, 1, 1, -1, 1, 1, 1, 1, 1, 1, -1, -1, -1, -1, -1, -1, 1, -1, 1, -1, 1, -1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, 1}, { -1, 1, 1, 1, -1, -1, -1, -1, 1, 1, 1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1, -1, -1, 1, 1, -1, 1, 1}, {1, -1, -1, -1, -1, 1, -1, 1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, -1, 1, -1}};
 
 	vector<int> ans = whereWillBallFall(grid);
 	for (auto ele : ans) cout << ele << " ";

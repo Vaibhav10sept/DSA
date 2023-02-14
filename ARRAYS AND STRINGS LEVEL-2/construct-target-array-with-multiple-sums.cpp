@@ -17,15 +17,13 @@ bool constructTargetArrayWithMultipleSums(vector<int> arr) {
 	while (pq.top() != 1) {
 		long maxValue = pq.top();
 		pq.pop();
-		// cout << "mav " << maxValue << endl;
 		int remainingSum = sum - maxValue;
-		// cout << "mav " << remainingSum << endl;
 
 		//think, WV
 		if (remainingSum <= 0 or remainingSum >= maxValue) return false;
 
 		int newValue = maxValue % remainingSum;
-		sum = remainingSum + newValue;
+		sum = remainingSum + newValue; //this is new sum(or previous sum)
 		pq.push(newValue > 0 ? newValue : sum);
 	}
 

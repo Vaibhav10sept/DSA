@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int countClimbStairPaths(int n, vector<int> helperArray) {
+int countClimbStairPaths(int n, vector<int> &helperArray) {
 	if (n == 0) {
 		return 1;
 	}

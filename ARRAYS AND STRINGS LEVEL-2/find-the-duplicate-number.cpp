@@ -16,6 +16,7 @@ int findTheDuplicateNumber(vector<int> &arr) {
 
 int main() {
 	//*********************************
+	// PREREQUISITE: first missing positive.(ye question same index marking vala method use krta h)
 	// VIDEO LINK: https://www.youtube.com/watch?v=32Ll35mhWg0
 	// LEETCODE LINK: https://leetcode.com/problems/find-the-duplicate-number/
 	//*********************************

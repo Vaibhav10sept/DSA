@@ -39,13 +39,12 @@ string MinimumWindowSubstring(string s, string t) {
 					mp[s[i]]++;
 					if (mp[s[i]] == 1) {
 						count++;
-						// ans=min(ans,j-i+1);
-						if (ans > j - i + 1) {
-							ans = j - i + 1;
-							start = i;
-						}
 					}
 
+				}
+				if (ans > j - i + 1) {
+					ans = j - i + 1;
+					start = i;
 				}
 				i++;
 			}
@@ -66,7 +65,7 @@ int main() {
 	LINK: https://leetcode.com/problems/minimum-window-substring/
 	VIDEO LINK: https://www.youtube.com/watch?v=iwv1llyN6mo&list=PL_z_8CaSLPWeM8BDJmIYDaoQ5zuwyxnfj&index=13
 	*/
-	string s = "ADOBECODEBANC";
-	string t = "ABC";
+	string s = "timetopractice";
+	string t = "toc";
 	cout << MinimumWindowSubstring(s, t);
 }

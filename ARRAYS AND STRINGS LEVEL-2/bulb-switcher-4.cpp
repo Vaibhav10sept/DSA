@@ -7,6 +7,7 @@ int buldSwitcher4(string str) {
 	for (char ch : str) {
 		int curr = ch - '0';
 		if (futureBulbState == curr) continue;
+		//agr future bulb state, curr ke equal nhi h, then ans++(flip count) and change toggle future bulb state.
 		ans++;
 		futureBulbState = futureBulbState == 1 ? 0 : 1;
 	}

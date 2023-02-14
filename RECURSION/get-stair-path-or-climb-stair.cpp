@@ -38,6 +38,6 @@ int main()
 	// QUESTION VIDEO LINK: https://www.youtube.com/watch?v=hMJAlbJIS7E&list=PL-Jc9J83PIiFj7YSPl2ulcpwy-mwj1SSk&index=399
 	//***********************************
 	vector<string> ans;
-	ans = getStairPath(3);
+	ans = getStairPath(5);
 	for (auto val : ans) cout << val << endl;
 }

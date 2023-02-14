@@ -2,15 +2,16 @@
 using namespace std;
 
 int buyAndSellStockInfiniteTransactionAllowed(vector<int> arr) {
-	int buy = 0; //this hold is index not value
-	int sell = 0; //this hold is index not value
+	// nice question, WV
+	int buy = 0; //this hold the index not value
+	int sell = 0; //this hold the index not value
 	int profit = 0;
 
 	for (int i = 1; i < arr.size(); i++) {
-		if (arr[i] >= arr[i - 1]) {
+		if (arr[i] >= arr[i - 1]) { //upstroke, means price is increasing
 			sell = i;
 		}
-		else {
+		else { //arr[i] < arr[i-1] --> dip found, so sell and add the profit, and keep on moving buy and sell to i.
 			profit += arr[sell] - arr[buy];
 			buy = sell = i;
 		}

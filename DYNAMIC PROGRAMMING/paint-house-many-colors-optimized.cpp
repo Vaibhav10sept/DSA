@@ -16,7 +16,7 @@ int paintHouseManyColorsOptimized(vector<vector<int>> arr) {
 	int firstMin = INT_MAX;
 	int secondMin = INT_MAX;
 	//initialization
-	for (int j = 0; j < dp[0].size(); j++) {
+	for (int j = 0; j < dp[0].size(); j++) { //traversing frist row, initialization
 		dp[0][j] = arr[0][j];
 
 		// finding first min and second min using known logic
@@ -30,9 +30,9 @@ int paintHouseManyColorsOptimized(vector<vector<int>> arr) {
 
 	}
 
-	for (int i = 1; i < dp.size(); i++) {
-		int nfirstMin = INT_MAX;
-		int nsecondMin = INT_MAX;
+	for (int i = 1; i < dp.size(); i++) {//from 1th row to end
+		int nfirstMin = INT_MAX; //new first min
+		int nsecondMin = INT_MAX; //new second min
 
 		for (int j = 0; j < dp[i].size(); j++) {
 			if (dp[i - 1][j] == firstMin) {
@@ -56,8 +56,7 @@ int paintHouseManyColorsOptimized(vector<vector<int>> arr) {
 		firstMin = nfirstMin;
 		secondMin = nsecondMin;
 	}
-
-	return firstMin;
+	return firstMin; //returning the min from the last row
 }
 
 int main()

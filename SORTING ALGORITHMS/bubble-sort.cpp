@@ -2,7 +2,7 @@
 using namespace std;
 
 void bubbleSort(vector<int> &arr) {
-	for (int i = 1; i <= arr.size() - 1; i++) { // n-1 phases hote hai
+	for (int i = 1; i < arr.size(); i++) { // n-1 phases hote hai
 		for (int j = 0; j < arr.size() - i; j++) {
 			if (arr[j] > arr[j + 1]) {
 				swap(arr[j + 1], arr[j]);
@@ -10,8 +10,6 @@ void bubbleSort(vector<int> &arr) {
 		}
 	}
 }
-
-
 
 int main() {
 	//**************************************

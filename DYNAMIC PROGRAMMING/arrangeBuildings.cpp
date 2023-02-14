@@ -4,6 +4,7 @@ using namespace std;
 
 int arrangeBuildings(int n) {
 	//Please watch attached video(link) for more understanding.
+	//please see count binary string for better understanding.
 	int countBuildings = 1;
 	int countSpaces = 1;
 	for (int i = 2; i <= n; i++) {
@@ -18,6 +19,7 @@ int arrangeBuildings(int n) {
 int main()
 {
 	//***************************
+	// PREREQUISITE: count binary strings
 	// NOTE: similar to before question "COUNT BINARY STRINGS"
 	// video link: https://www.youtube.com/watch?v=0nF-BMYy7tc&list=PL-Jc9J83PIiFj7YSPl2ulcpwy-mwj1SSk&index=485
 	//**************************************************

@@ -34,6 +34,6 @@ int main() {
 	// VIDEO LINK: https://www.youtube.com/watch?v=W8bpOKpPtPA
 	// LINK: https://leetcode.com/contest/weekly-contest-286/problems/find-palindrome-with-fixed-length/
 	//*********************************
-	int n = 3;
+	int n = 5;
 	printAllPallindromeOfN(n);
 }

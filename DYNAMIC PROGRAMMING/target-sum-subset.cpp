@@ -3,7 +3,10 @@ using namespace std;
 
 bool targetSumSubsetDP(vector<int> arr, int target) {
 	vector<vector<bool>> dp(arr.size() + 1, vector<bool> (target + 1, false));
-	for (int i = 0; i < dp.size() ; i++) {
+	// row --> array ke element hote h, means subsets hote h
+	// col --> target hota h
+	// dp[i][j] --> store bool value --> if it is possible to create a subset using values till arr[i-1](bcoz array index is one less than the row(i) in dp) and target as j.
+	for (int i = 0; i < dp.size() ; i++) { // row --> array ke elements
 		for (int j = 0; j < dp[0].size(); j++) {
 			//first row and first column means 0 sum and empty subset
 			if (i == 0 and j == 0) {
@@ -22,7 +25,7 @@ bool targetSumSubsetDP(vector<int> arr, int target) {
 				if (dp[i - 1][j] == true) {
 					dp[i][j] = true;
 				}
-				else {
+				else { //dp[i-1][j] == false
 					int val = arr[i - 1]; // bcoz array index is 1 less than the row no(i). think
 					if (val <= j) {
 						if (dp[i - 1][j - val]) {
@@ -47,5 +50,7 @@ int main()
 	//**************************************************
 	vector<int> arr = {2, 3, 5};
 
-	cout << targetSumSubsetDP(arr, 7);
+	bool ans = targetSumSubsetDP(arr, 7);
+	if (ans) cout << "true";
+	else cout << "false";
 }

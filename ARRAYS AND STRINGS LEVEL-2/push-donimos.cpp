@@ -58,11 +58,13 @@ string pushDonimos(string str) {
 	}
 
 	//finding out the segments and solving each segment
-	int j = 0;
+	int j = 0; //always 'L' hoga j==0 me coz hmne rhkha h arr ke 0th index me 'L' and n-1th index me 'R'
 	int k = 1;
+	//'j' and 'k' ek segment define kr rhe h, in the range of 'j' and 'k'
 	while (k < arr.size()) {
 		while (arr[k] == '.') k++;
-		if (k - j > 1)
+		//ab 'k' '.' ko point nhi kr rha.
+		if (k - j > 1) //coz 1 size me kuch solve krne ko h nhi(think, WV)
 			solveConfiguration(arr, j, k);
 
 		j = k;

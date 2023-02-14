@@ -5,10 +5,8 @@ int gcdRecusive(int a, int b) {
 	if (a == 0) return b;
 	else if (b == 0) return a;
 
-	gcdRecusive(b, a % b);
+	return gcdRecusive(b, a % b);
 }
-
-
 
 int main()
 {

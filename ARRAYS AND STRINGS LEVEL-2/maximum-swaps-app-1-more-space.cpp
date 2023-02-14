@@ -15,8 +15,8 @@ string maximumSwaps(string str) {
 		rightMaxIdx[i] = rightMax;
 	}
 
-	for (auto ele : rightMaxIdx) cout << ele << " ";
-	cout << endl;
+	// for (auto ele : rightMaxIdx) cout << ele << " ";
+	// cout << endl;
 	for (int i = 0; i < str.size(); i++) {
 		if (str[i] != str[rightMaxIdx[i]]) {
 			swap(str[i], str[rightMaxIdx[i]]);
@@ -25,7 +25,6 @@ string maximumSwaps(string str) {
 		}
 	}
 	return str;
-
 }
 
 int main() {

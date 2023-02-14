@@ -9,15 +9,15 @@ int boatsToSavePeople(vector<int> arr, int limit) {
 	while (left < right) {
 		//now, there would be 3 cases same as in "target sum unique pair"
 		int sum = arr[left] + arr[right];
-		if (limit >= sum) {
+		if (sum <= limit) {
 			//pair found
 			countOfBoat++;
 			left++;
 			right--;
 		}
-		else {
+		else { // sum > limit
 			countOfBoat++;
-			right--;
+			right--; //to reduce the sum as in target sum pair
 		}
 	}
 	return countOfBoat;

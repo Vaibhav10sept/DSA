@@ -3,7 +3,7 @@ using namespace std;
 
 int countClimbStairPathsWithMinMoves(int n, vector<int> jumpArray) {
 	vector<int> dp(n + 1, -1);
-	dp[n] = 0; //rem: destination pe path 1 hota hai par step/move 0 hote hai(think)
+	dp[n] = 0; //rem: destination tk jane ka path 1 hota hai, par step/move 0 hote hai(think)
 
 	for (int i = n - 1; i >= 0; i--) {
 		if (jumpArray[i] > 0) {

@@ -5,8 +5,8 @@ int friendsPairingDP(int n) {
 	//please refer to the video link below for better understanding.
 
 	vector<int> dp(n + 1);
-	dp[1] = 1;
-	dp[2] = 2; //2 friends hai, to ya to dono sath me aega ya dono alag.
+	dp[1] = 1; // 1 friend hai, to ek hi tareeka hoga, akele rho
+	dp[2] = 2; // 2 friends hai, to do tareeke hoge, ya to dono sath me rhege ya dono alag.
 
 	for (int i = 3; i < dp.size(); i++) {
 		dp[i] = dp[i - 1] + (i - 1) * dp[i - 2];

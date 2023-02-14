@@ -3,7 +3,7 @@ using namespace std;
 
 int countClimbStairPathsWithVariableJumpsDp(int n, vector<int> jumpArray) {
 	vector<int> dp(n + 1, 0);
-	dp[n] = 1;
+	dp[n] = 1; // means n se n jane ke 1 raste/path h, rem. the difference between paths and moves
 	for (int i = n - 1; i >= 0; i--) {
 		int ans = 0;
 		for (int j = 1; j <= jumpArray[i]; j++) {

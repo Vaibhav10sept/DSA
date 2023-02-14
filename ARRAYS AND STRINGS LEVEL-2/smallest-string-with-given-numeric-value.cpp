@@ -28,8 +28,8 @@ string smallestStringGivenNumericValue(int n, int k) {
 
 int main() {
 	//*********************************
-	// VIDEO LINK: https://leetcode.com/problems/smallest-string-with-a-given-numeric-value/
-	// QUESTION:
+	// VIDEO LINK:
+	// QUESTION: https://leetcode.com/problems/smallest-string-with-a-given-numeric-value/
 	// The numeric value of a lowercase character is defined as its position (1-indexed) in the alphabet, so the numeric value of a is 1, the numeric value of b is 2, the numeric value of c is 3, and so on.
 
 	// The numeric value of a string consisting of lowercase characters is defined as the sum of its characters' numeric values. For example, the numeric value of the string "abe" is equal to 1 + 2 + 5 = 8.

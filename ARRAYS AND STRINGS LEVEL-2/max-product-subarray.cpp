@@ -32,9 +32,6 @@ int main() {
 	//*********************************
 	// VIDEO LINK: https://www.youtube.com/watch?v=jzQ-f2uU0UU&list=PL-Jc9J83PIiE-TR27GB7V5TBLQRT5RnSl&index=49
 	// QUESTION:
-// 1. You are given an array(arr) of integers.
-// 2. You have to find maximum subarray sum in the given array.
-// 3. The subarray must have at least one element.
 	//*********************************
 	vector<int> arr = { -2, 3, 0};
 	cout << maxProductSubarray(arr);

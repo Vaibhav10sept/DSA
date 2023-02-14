@@ -28,7 +28,7 @@ int main() {
 	// IMPORTANT: this partitioning algorithm work only if we select last index as
 	// pivot element.
 	// NOTE: here we are selecting arr[arr.size()-1] as pivot element
-	// VARIOUS OTHER QUESTIONS BASED ON PARTITIONING:
+	// OTHER QUESTIONS BASED ON PARTITIONING:
 	// 1. seperate array odd and even
 	// 2. seperate array of 0 and 1
 	// 3. seperate array of 0 and non zero

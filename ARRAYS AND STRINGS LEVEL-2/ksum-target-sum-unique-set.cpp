@@ -41,7 +41,7 @@ vector<vector<int>> targetSumUniqueSetHelper(vector<int> arr, int target, int k,
 	// bc
 	int n = arr.size();
 	vector<vector<int>> ans;
-	if (n - startIndex < k) {
+	if (n - startIndex < k) { //n - startIndex -->  size of array, and if size of array is less than k then return an empty array
 		return ans;
 	}
 

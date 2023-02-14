@@ -48,11 +48,13 @@ bool breadthFirstTraversal(vector<vector<Edge>> graph, int src, vector<int> &vis
 		UtilPair removed = q.front();
 		q.pop();
 
-		//check if already visited. if yes, That means it has cycle(think)
-		if (visited[removed.vertix] != -1) {//means visit ho chuka hai
-			//now, check for even/odd cycle.
+		//check if already visited. if yes, That means it has cycle(think, WV)
+		if (visited[removed.vertix] != -1) {//means visit ho chuka hai, or cycle hai
+			// now, check for even/odd cycle.
 			// if odd cycle -> not bipartite
 			// if even cycle -> bipartite
+			// agr same level pe nhi revisit hua to odd lenght cycle h, means bipartite nhi h(WV recommended)
+			// agr same level pe revisit hua to even lenght cycle h, means bipartite hai(WV recommended)
 			if (removed.level != visited[removed.vertix]) { //means odd cycle hai
 				return false;
 			}
@@ -93,8 +95,8 @@ int main() {
 	// exhaustive sets such that all edges are across sets, then the graph
 	// is bipartite.
 	// LOGIC: 1) acyclic graph -> bipartite
-	// 2) acyclic graph, even size cycle -> bipartite (division is possible)
-	// 3) acyclic graph, odd size cycle -> not bipartite (division is not possible)
+	// 2) cyclic graph, even size cycle -> bipartite (division is possible)
+	// 3) cyclic graph, odd size cycle -> not bipartite (division is not possible)
 	// NOTE: prerequisite is "is graph cyclic", used "BST" here
 	//************************************************************
 	// INPUT:

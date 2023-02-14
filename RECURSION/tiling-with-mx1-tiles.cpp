@@ -10,7 +10,7 @@ int tilingWithMx1TilesRecursive(int m, int n) {
 	}
 	//Bc ends
 
-	return tilingWithMxNTilesRecursive(m, n - 1) + tilingWithMxNTilesRecursive(m, n - m);
+	return tilingWithMx1TilesRecursive(m, n - 1) + tilingWithMx1TilesRecursive(m, n - m);
 }
 
 

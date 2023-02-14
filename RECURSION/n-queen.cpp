@@ -26,7 +26,7 @@ void nQueen(vector<vector<int>> chess, string ans, int row) {
 		return;
 	}
 
-	//column ka loop hoga
+	//column ka loop
 	for (int col = 0; col < chess[0].size(); col++) {
 		if (isItSafePlaceForaQueen(chess, row, col))
 		{

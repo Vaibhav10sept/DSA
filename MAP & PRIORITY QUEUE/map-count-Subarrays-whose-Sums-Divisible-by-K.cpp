@@ -14,7 +14,7 @@ int SubarraysSumsDivisiblebyK(vector<int> arr, int k) {
 		if (rem < 0) rem += k; //convert negative rem to positive rem.
 
 		if (mp.find(rem) != mp.end()) { //found
-			int count += mp[rem];
+			count += mp[rem];
 			mp[rem]++;
 		}
 		else {

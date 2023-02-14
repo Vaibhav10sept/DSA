@@ -17,7 +17,8 @@ vector<int> onlineStockSpan(vector<int> arr) {
 			ans.push_back(i - st.top().second);
 		}
 		else { //st is empty
-			ans.push_back(1);
+			if (i == 0) ans.push_back(1);
+			else ans.push_back(i);
 		}
 
 		st.push({arr[i], i});
@@ -31,7 +32,8 @@ int main() {
 	VIDEO LINK: https://www.youtube.com/watch?v=Givpwgu9IIc&list=PL-Jc9J83PIiE1_SifBEWRsD-fzxrvkja9&index=14
 	LEETCODE LINK:
 	*/
-	vector<int> arr = {100, 80, 60, 70, 60, 75, 80};
+	// vector<int> arr = {100, 80, 60, 70, 60, 75, 85};
+	vector<int> arr = {31, 41, 48, 59, 79};
 
 	vector<int> ans = onlineStockSpan(arr);
 	for (int ele : ans)cout << ele << " ";

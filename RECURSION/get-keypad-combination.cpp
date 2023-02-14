@@ -15,10 +15,6 @@ vector<string> getKeypadCombination(string str, vector<string> codes) {
 	vector<string> myResult;
 	for (string val : recursionResult) {
 		for (char code : pattern) {
-			// string c;
-			// string v;
-			// c = code;
-			// v = val;
 			myResult.push_back(code + val);
 		}
 	}
@@ -30,7 +26,7 @@ vector<string> getKeypadCombination(string str, vector<string> codes) {
 int main()
 {
 	//********************************
-	// QUESTION VIDEO LINK: https://www.youtube.com/watch?v=hMJAlbJIS7E&list=PL-Jc9J83PIiFj7YSPl2ulcpwy-mwj1SSk&index=399
+	// VIDEO LINK: https://www.youtube.com/watch?v=hMJAlbJIS7E&list=PL-Jc9J83PIiFj7YSPl2ulcpwy-mwj1SSk&index=399
 	//***********************************
 	vector<string> ans;
 	vector<string> codes = {".;", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tu", "vws", "yz"};

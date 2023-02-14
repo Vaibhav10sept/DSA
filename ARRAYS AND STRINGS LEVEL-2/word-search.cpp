@@ -1,31 +1,21 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int di[] = { -1, 0, 1, 0}; //{up,left,down,right} --> for i
-int dj[] = {0, -1, 0, 1}; //{up,left,down,right} --> for j
-
 bool recursiveExplore(vector<vector<char>> arr, int i, int j, int idx, string word) {
 	//base cases starts
 	if (idx == word.size()) return true;
 	if (i<0 or j<0 or i >= arr.size() or j >= arr[0].size()) return false;
 	if (word[idx] != arr[i][j]) return false;
+	if (arr[i][j] == '@') return false;
 	//base cases over
 
 	char myChar = arr[i][j];
 	arr[i][j] = '@'; //this will work as a visited array, '@' represent that this cell is visited
 
-	//recursively call in all four directions
-	for (int d = 0; d < 4; d++) {
-		bool res = recursiveExplore(arr, i + di[d], j + dj[d], idx + 1, word);
-		if (res) {
-			//backtrack
-			arr[i][j] = myChar;
-			return true;
-		}
-	}
+	bool res = recursiveExplore(arr, i + 1, j, idx + 1, word) or recursiveExplore(arr, i - 1, j, idx + 1, word) or recursiveExplore(arr, i, j + 1, idx + 1, word) or recursiveExplore(arr, i, j - 1, idx + 1, word);
 	//backtrack
 	arr[i][j] = myChar;
-	return false;
+	return res;
 }
 
 bool wordSearch(vector<vector<char>> arr, string word) {
@@ -35,7 +25,9 @@ bool wordSearch(vector<vector<char>> arr, string word) {
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < m; j++) {
 			if (arr[i][j] == word[0]) {
-				return recursiveExplore(arr, i, j, 0, word);
+				if (recursiveExplore(arr, i, j, 0, word)) {
+					return true;
+				}
 			}
 		}
 	}

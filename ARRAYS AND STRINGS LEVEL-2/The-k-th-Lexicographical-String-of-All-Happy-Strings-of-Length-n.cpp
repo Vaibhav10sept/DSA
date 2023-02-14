@@ -2,6 +2,7 @@
 using namespace std;
 
 void printAllHappyStringOfN(int n, string ans, vector<string> &vecAns) {
+	//this is base condition
 	if (n == 0) {
 		vecAns.push_back(ans);
 		// cout << ans << endl;

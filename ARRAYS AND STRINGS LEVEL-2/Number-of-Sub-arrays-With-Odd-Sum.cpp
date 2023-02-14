@@ -6,7 +6,11 @@ int noOfSubarrayWithOddSum(vector<int> arr) {
 	int evenCount = 0;
 	int oddCount = 0;
 	int prefixSum = 0;
+	//LOGIC:
+	// even = even + even
+	// even = odd + odd
 
+	// odd = even + odd
 	for (int ele : arr) {
 		prefixSum += ele;
 

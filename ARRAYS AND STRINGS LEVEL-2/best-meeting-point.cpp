@@ -26,8 +26,8 @@ int bestMeetingPoint(vector<vector<int>> &arr) {
 	}
 
 	// column wise travesal to get the y-coordinates in sorted order
-	for (int i = 0; i < arr[0].size(); i++) {
-		for (int j = 0; j < arr.size(); j++) {
+	for (int i = 0; i < arr[0].size(); i++) { //column as i<arr[0].size()
+		for (int j = 0; j < arr.size(); j++) { //this is loop for row
 			if (arr[j][i] == 1) {
 				yCoordinates.push_back(i);
 			}

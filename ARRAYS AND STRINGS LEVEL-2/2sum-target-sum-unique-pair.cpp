@@ -39,7 +39,7 @@ int main() {
 	// 3. Return Pair of target sum in which all pairs are unique, for example : [1, 2], [2, 1] are consider as same pair.
 	// 4. If array have repeated element then return only unique pair, for example : if array is arr = [2, 2, 4, 4], and target = 6 then res have only one pair, i.e. [2, 4]
 	//*********************************
-	vector<int> arr = {10, 10, 30, 40, 50, 20};
-	int target = 60;
+	vector<int> arr = {3, 2, 4};
+	int target = 6;
 	TargetSumUniquePair(arr, target);
 }

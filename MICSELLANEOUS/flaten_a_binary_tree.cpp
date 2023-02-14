@@ -28,7 +28,9 @@ void flatten(Node* node) {
 		node->right = node->left;
 		node->left = NULL;
 		Node* tail = node->right;
+
 		while (tail->right != NULL) tail = tail->right;
+
 		tail->right = temp;
 
 	}

@@ -24,11 +24,12 @@ int firstMissingPositive(vector<int> arr) {
 		if (arr[i] > 0) return i + 1;
 	}
 
-	return arr.size() + 1;
+	return arr.size() + 1; //rem.
 }
 
 int main() {
 	//*********************************
+	// PREREQUISITE: find the duplicate number.(ye question same index marking vala method use krta h)
 	// VIDEO LINK: https://www.youtube.com/watch?v=QeBvfH1dpOU&list=PL-Jc9J83PIiE-TR27GB7V5TBLQRT5RnSl&index=43
 	// QUESTION:
 	// Given an unsorted integer array nums, return the smallest missing positive integer.

@@ -10,15 +10,15 @@ int noOfSubarrayWithBoundedMaximum(vector<int> arr, int left, int right) {
 	int prevCount = 0; //no. of subarray ending at endIdx
 	while (endIdx < arr.size()) {
 		//there can be 3 cases.
-		if (left <= arr[endIdx] and right >= arr[endIdx]) {
+		if (left <= arr[endIdx] and arr[endIdx] <= right) {
 			prevCount = startIdx - endIdx + 1; //no. of element in between two indexes(logic)
 			totalCount += prevCount;
 		}
-		else if (left > arr[endIdx]) {
+		else if (arr[endIdx] < left) {
 			//in this case, prevcount no. of subarrays can be formed(think)
 			totalCount += prevCount;
 		}
-		else if (right < arr[endIdx]) {
+		else if (arr[endIdx] > right) {
 			//in this case no subarray can be formed(think)
 			//reset
 			startIdx = endIdx + 1;
@@ -36,7 +36,7 @@ int main() {
 	// COM: O(n)
 	// VIDEO LINK: https://www.youtube.com/watch?v=My3pobBPtbA&list=PL-Jc9J83PIiE-TR27GB7V5TBLQRT5RnSl&index=34
 	// QUESTION:
-	// 	1. We have an array 'arr' of positive integers, and two positive integers left and right (left is smaller than right).
+	// 1. We have an array 'arr' of positive integers, and two positive integers left and right (left is smaller than right).
 	// 2. Return the number of (contiguous, non-empty) subarrays such that the value of the maximum array element in that subarray is at least left and at most right.
 	//*********************************
 

@@ -3,7 +3,7 @@ using namespace std;
 
 int countClimbStairPathsDP(int n) {
 	vector<int> dp(n + 1, -1);
-	dp[0] = 1;
+	dp[0] = 1; // initialization
 	for (int i = 1; i < dp.size(); i++) {
 		int ans = 0;
 		ans += dp[i - 1];
@@ -15,7 +15,6 @@ int countClimbStairPathsDP(int n) {
 		}
 		dp[i] = ans;
 	}
-	// for (auto ele : dp) cout << ele << " ";
 	return dp[n];
 }
 

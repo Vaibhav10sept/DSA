@@ -43,10 +43,10 @@ void getConnectedComponents(vector<vector<Edge>> graph, vector<vector<int>> &com
 
 	for (int vertix = 0; vertix < graph.size(); vertix++) {
 		if (visited[vertix] == false) { //visit nahi hue hai
-			vector<int> comp;
+			vector<int> comp;   //comp --> component
 
 			getSingleConnectedComponent(graph, vertix, comp, visited);
-			comps.push_back(comp);
+			comps.push_back(comp);  // comps --> components
 		}
 	}
 
@@ -58,13 +58,13 @@ int main() {
 	//NOTE: prerequisite is "print all path(DFS)"
 	//************************************************************
 	// INPUT:
-	// 7
-	// 5
-	// 0 1 10
-	// 2 3 10
-	// 4 5 10
-	// 5 6 10
-	// 4 6 10
+// 7
+// 5
+// 0 1 10
+// 2 3 10
+// 4 5 10
+// 5 6 10
+// 4 6 10
 
 	vector<vector<Edge>> graph = constructGraphFromInput();
 	vector<vector<int>> ans;

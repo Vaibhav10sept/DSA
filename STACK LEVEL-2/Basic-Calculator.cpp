@@ -17,7 +17,7 @@ int basicCalculator(string str) {
 				val = val * 10 + (str[i] - '0');
 				i++;
 			}
-			i--;//coz, i ab ek no digit pe aa gya, or outer for loop se vo ek age or bdh jaega, ek char miss kr dega islie i-- kia
+			i--;//coz, i ab ek no digit(symbol) pe aa gya, or outer for loop se vo ek age or bdh jaega, ek char miss kr dega islie i-- kia
 			val = val * sign; //val me sign lgaya
 			sign = 1;//sign ko reset kia
 			sum += val;

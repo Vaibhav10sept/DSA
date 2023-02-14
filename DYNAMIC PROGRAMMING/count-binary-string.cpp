@@ -4,8 +4,10 @@ using namespace std;
 
 int countBinaryString(int n) {
 	//Please watch attached video(link) for more understanding.
-	int countZeros = 1;
-	int countOnes = 1;
+	//QUESTION: no two zeros can come together.
+
+	int countZeros = 1; //count of possible binary string(with no consecutive zeros) ending at zero
+	int countOnes = 1; //count of possible binary string(with no consecutive zeros) ending at one
 	for (int i = 2; i <= n; i++) {
 		int temp = countOnes;
 		countOnes = countOnes + countZeros;

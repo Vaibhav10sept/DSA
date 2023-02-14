@@ -13,6 +13,7 @@ void seiveOfEratosthenes(int n) {
 		if (isPrime[i] == true) {
 			//making the multiples of i false(not prime)
 			for (int j = i; j * i <= isPrime.size(); j++) {
+				// for me = nhi hona chahie tha, mere hisab se, check krna pdega(think)
 				isPrime[j * i] = false;
 			}
 		}

@@ -11,7 +11,7 @@ static bool compare(vector<int>& a, vector<int> & b)
 	if (a[0] == b[0]) //if same height, then sort in inc. order of k
 		return a[1] < b[1];
 
-	return a[0] > b[0]; //sort in dec. order of height.
+	return a[0] > b[0]; //otherwise, sort in dec. order of height.
 }
 
 vector<vector<int>> reconstructQueue(vector<vector<int>>& arr) {

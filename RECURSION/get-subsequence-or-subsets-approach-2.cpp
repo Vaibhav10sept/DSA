@@ -9,7 +9,7 @@ void getSubsequenceApproach2(string ans, string ques) {
 	int ch = ques[0];
 	//remove 0th from ques
 	string restOfQuestion = ques.substr(1);// bc
-	string s(1, ch);
+	string s(1, ch); //best way to make string from single char.
 	getSubsequenceApproach2(ans + "_", restOfQuestion);
 	getSubsequenceApproach2(ans + s, restOfQuestion);
 

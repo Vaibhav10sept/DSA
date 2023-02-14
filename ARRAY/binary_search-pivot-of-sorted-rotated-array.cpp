@@ -3,17 +3,22 @@ using namespace std;
 
 int findPivotSortedRotatedArray(vector<int> arr) {
 	//please watch the video(link below) for better understanding.
+	//NOTE: hm array ko do parts me divide krege --> low to mid and mid+1 to high
 	int low = 0;
 	int high = arr.size() - 1;
-	while (low < high) {
+	while (low < high) { //not low<=high coz, low==high means 1 size array or 1 size array me pivot vo value hi hogi
 		int mid = ( low + high) / 2;
-		if (arr[mid] < arr[high]) { //left half me jao
+		if (arr[mid] < arr[high]) { //mid se high ki trf value gir rhi h, toh pivot left me hoga, left half me jao
+			//NOTE: hm array ko do parts me divide krege --> low to mid and mid+1 to high
 			high = mid;
 		}
-		else {	//right half me jao
+		else { // arr[mid] >= arr[high]
+			//NOTE: hm array ko do parts me divide krege --> low to mid and mid+1 to high
+			//right half me jao
 			low = mid + 1;
 		}
 	}
+	//ab yha pe, low and high dono same h, to arr[high] ya arr[low] kuch bhi return kro
 	return arr[high];
 }
 

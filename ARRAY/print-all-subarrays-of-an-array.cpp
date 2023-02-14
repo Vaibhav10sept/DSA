@@ -20,6 +20,8 @@ void printSubarrays(vector<int> arr) {
 
 int main()
 {
+	//NOTE: count of all subarray --> n(n+1)/2
+	//NOTE: count of all subsets --> 2^n
 	vector<int> arr = {10, 20, 30};
 	printSubarrays(arr);
 }

@@ -31,6 +31,6 @@ int main()
 {
 	vector<int> arr = {1, 2, 3, 4, 5, 6};
 	print(arr);
-	rotateArray(arr, 2);
+	rotateArray(arr, 1);
 	print(arr);
 }

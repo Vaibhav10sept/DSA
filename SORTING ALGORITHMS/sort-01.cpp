@@ -18,6 +18,7 @@ void sort01(vector<int> &arr) {
 
 int main() {
 	//**************************************
+	//NOTE: the algo used here is same as partitioning algo used in quick sort.
 	//VIDEO LINK: https://www.youtube.com/watch?v=jFrUwjx4eoA&list=PL-Jc9J83PIiFj7YSPl2ulcpwy-mwj1SSk&index=505
 	//followed a similar logic as partition algo(used in quick sort)
 	//*******************************************

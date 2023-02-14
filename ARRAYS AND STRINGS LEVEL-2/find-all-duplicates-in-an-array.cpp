@@ -2,17 +2,19 @@
 using namespace std;
 
 vector<int> findAllDuplicates(vector<int> arr) {
+	//build your knowledge
 	vector<int> ans;
 
 	for (int i = 0; i < arr.size(); i++) {
-		int idx = abs(arr[i]) - 1;
+		int idx = abs(arr[i]) - 1; //abs() kyo kia think, WV
 		int val = arr[idx];
 
-		if (val < 0) {
+		if (val < 0) {// means this is duplicate number
+			//or idx + 1 push kia coz, ques me arr ne number in in range 1 to n but index is in range 0 to n-1(think, WV)
 			ans.push_back(idx + 1);
 		}
 		else {
-			arr[idx] = arr[idx] * -1;
+			arr[idx] = arr[idx] * -1; //this(making it negative) marks that this value is already found in the array
 		}
 	}
 	return ans;

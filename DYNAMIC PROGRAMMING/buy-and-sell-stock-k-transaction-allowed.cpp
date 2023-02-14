@@ -14,17 +14,17 @@ int buyAndSellStockKTransactionsAllowed(vector<int> arr, int k) {
 	vector<vector<int>> dp(k + 1, vector<int>(arr.size()));
 	// row -> no of transactions(k)
 	// col -> no of days
-	// cell -> max profit
+	// cell -> max profit you can make with ith transaction and jth day
 
 	for (int i = 0; i < dp.size(); i++) {
 		for (int j = 0; j < dp[0].size(); j++) {
-			if (i == 0 || j == 0) { //initialization
+			if (i == 0 || j == 0) { //initialization(this is the step of solving DP questions)
 				dp[i][j] = 0;
 			}
 			else {
-				dp[i][j] = dp[i][j - 1];
+				dp[i][j] = dp[i][j - 1]; //dp[i][j-1] --> one day before, same no of transaction
 				int currPrice = arr[j];
-				int maxResult = INT_MIN; //for i-1 candidates
+				int maxResult = INT_MIN; //for i-1(means transaction - 1) candidates
 				for (int k = j - 1; k >= 0; k--) {
 					maxResult = std::max(maxResult, dp[i - 1][k] + currPrice - arr[k]);
 				}

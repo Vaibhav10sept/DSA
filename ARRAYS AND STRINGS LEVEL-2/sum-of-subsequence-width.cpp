@@ -3,6 +3,7 @@ using namespace std;
 
 int sumOfSubsequenceWidth(vector<int> arr) {
 	//leetcode hard question
+	// CLAIN(WV): sorted array ka subsequence width nikalu ya given array(without sorting) ka subsequence width nikalu dono ka ans same aega.
 	sort(arr.begin(), arr.end());
 	long ans = 0;
 	long mod = 1000000007;
@@ -27,7 +28,7 @@ int main() {
 // Subset = 2^n
 	//*********************************
 	// VIDEO LINK: https://www.youtube.com/watch?v=kSo8W6ZGYqw&list=PL-Jc9J83PIiE-TR27GB7V5TBLQRT5RnSl&index=50
-	// QUESTION:
+// QUESTION:
 // The width of a sequence is the difference between the maximum and minimum elements in the sequence.
 
 // Given an array of integers nums, return the sum of the widths of all the non-empty subsequences of nums. Since the answer may be very large, return it modulo 109 + 7.

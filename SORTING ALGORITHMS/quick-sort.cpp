@@ -12,13 +12,13 @@ int partition(vector<int> &arr, int low, int high) {
 		if (arr[i] > pivot) {
 			i++;
 		}
-		else { //arr[i] < pivot
+		else { //arr[i] <= pivot
 			swap(arr[i], arr[j]);
 			i++;
 			j++;
 		}
 	}
-	return j - 1;
+	return j - 1; //we are returning the index where pivot element is placed
 }
 
 
