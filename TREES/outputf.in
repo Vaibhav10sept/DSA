@@ -1,1 +1,2 @@
--1
+inorder: 4 2 5 1 3 
+after flatten inorder(which will be the preorder traversal): 1 2 4 5 3 

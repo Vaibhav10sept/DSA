@@ -2,8 +2,8 @@
 using namespace std;
 
 int distinctSubsequenceRecursiveHelper(int i, int j, string s, string t, vector<vector<int>> &memo) {
-	if (j < 0) return 1; //one subsequence found
-	if (i < 0) return 0;
+	if (j < 0) return 1; //string t is exhausted one subsequence found so return 1.(CS, think)
+	if (i < 0) return 0; //not found string s is exhausted, so return 0(think, CS)
 	//BC ends
 
 	//memoization
@@ -30,6 +30,7 @@ int main() {
 	 * this will give you TLE, a dp solution is also there.
 	 * //THIS is recursive memo solution dp is also there
 	LEETCODE: https://leetcode.com/problems/distinct-subsequences/
+	VIDEO LINK(STRIVER TAKE PRIORITY): https://www.youtube.com/watch?v=nVG7eTiD2bY&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=34
 	VIDEO LINK: https://www.youtube.com/watch?v=nVG7eTiD2bY
 	*********************************/
 	string s = "rabbbit";

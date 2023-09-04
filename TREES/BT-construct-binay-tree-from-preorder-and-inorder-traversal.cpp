@@ -162,9 +162,10 @@ Node* HelperFunction(vector<int> preorder, int preorderStartIdx, int preorderEnd
                      vector<int> inorder, int inorderStartIdx, int inorderEndIdx) {
 	if (inorderStartIdx > inorderEndIdx) return NULL;
 
-	int idx = inorderStartIdx; //coz, pre ka start idx hi root hota hai, so we are searching for root in order array
-	//here, we are searching for inorder start val in preorder array
+	int idx = inorderStartIdx; //coz, pre ka start idx hi root hota hai, so we are searching for root inorder array
+	//NOTE: preorder[preorderStartIdx] is the root for this subtree
 	while (inorder[idx] != preorder[preorderStartIdx]) idx++;
+	//now, idx is at the root in inorder array
 	int countOfElements = idx - inorderStartIdx;
 
 	Node* node = new Node(preorder[preorderStartIdx]);

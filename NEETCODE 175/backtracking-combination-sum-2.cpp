@@ -2,6 +2,7 @@
 using namespace std;
 
 void combinationSum2Backtracking(vector<int> arr, int idx, int target, vector<int> ans, vector<vector<int>> &res) {
+	//STRONG PREERQUISITE: backtracking-subsets-2(basically almost same code)
 	//BC
 	if (idx >= arr.size()) {
 		if (target == 0) {
@@ -12,6 +13,7 @@ void combinationSum2Backtracking(vector<int> arr, int idx, int target, vector<in
 	//BC ends.
 
 	//subsets bnane h, to ek call arr[idx] ko include krke hogi or doosri call arr[idx] ko remove krke hogi(backtrack)
+	//NOTE: here in the below call we are doing idx+1 but in combination sum we were not doing idx+1 coz, here in this question one no can be used only once.
 	ans.push_back(arr[idx]);
 	combinationSum2Backtracking(arr, idx + 1, target - arr[idx], ans, res);
 
@@ -40,7 +42,7 @@ int main() {
 	/*********************************
 	 * NOTE: this solution is giving TLE in leetcode. there is a optimized solution also check that.
 	 * PREERQUISITE: backtracking-combination-sum
-	 * PREERQUISITE: backtracking-subsets-2
+	 * STRONG PREERQUISITE: backtracking-subsets-2(basically almost same code)
 	 * NOTE: here, the only diff from "backtracking-combination-sum" is the result should be unique
 	 * NOTE: there is one more diff i.e., each no can be used once, but in backtracking-combination-sum each no can be used multiple times.
 	VIDEO LINK: https://www.youtube.com/watch?v=Vn2v6ajA7U0

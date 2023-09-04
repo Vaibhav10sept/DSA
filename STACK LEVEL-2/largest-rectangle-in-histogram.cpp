@@ -3,10 +3,10 @@ using namespace std;
 
 vector<int> leftnextsmallerindex(vector<int> arr) {
 	vector<int> ans(arr.size());
-	ans[0] = -1;
+	// ans[0] = -1;
 	stack<int> st;
-	st.push(0);
-	for (int i = 1; i < arr.size(); i++) {
+	// st.push(0);
+	for (int i = 0; i < arr.size(); i++) {
 		while (st.size() > 0 and arr[st.top()] >= arr[i]) st.pop();
 		if (st.empty()) {
 			ans[i] = -1;
@@ -21,10 +21,10 @@ vector<int> leftnextsmallerindex(vector<int> arr) {
 
 vector<int> rightnextsmallerindex(vector<int> arr) {
 	vector<int> ans(arr.size());
-	ans[arr.size() - 1] = arr.size();
+	// ans[arr.size() - 1] = arr.size();
 	stack<int> st;
-	st.push(arr.size() - 1);
-	for (int i = arr.size() - 2; i >= 0; i--) {
+	// st.push(arr.size() - 1);
+	for (int i = arr.size() - 1; i >= 0; i--) {
 		while (st.size() > 0 and arr[st.top()] >= arr[i]) st.pop();
 		if (st.empty()) {
 			ans[i] = arr.size();

@@ -59,12 +59,12 @@ int nextGreaterElement3(string str) {
 	while (str[i] >= str[k]) {
 		k--;
 	}
-
+	//now, k us index me ith index se just greater h
 	//swap i and k index values
 	swap(str[i], str[k]);
 
 	// reverse the string after the dip.(think)
-	if (i >= 0)
+	if (i >= 0)w
 		reverse(str.begin() + i + 1, str.end());
 
 
@@ -86,8 +86,8 @@ int main() {
 	// 2. Find the smallest number which has exactly the same digits existing in the number 'n' and is greater in value than 'n'.
 	// 3. If no such positive number exists, return -1 as string.
 	//*********************************
-	// string num = "2147483486";
-	string num = "1200000";
+	string num = "2147483486";
+	// string num = "1200000";
 
 	cout << "answer " << nextGreaterElement3(num);
 }

@@ -11,9 +11,9 @@ int maximumSumNonAdjacentElement(vector<int> arr) {
 	// include --> means for a particular index must end at arr[i](include), non adjacent subsets till arr[i] ka max sum kitna hoga vo store kroge.
 	// exclude/include --> me max sum store hota h
 	for (int i = 1; i < arr.size(); i++) {
-		int temp = include;
+		int tempInclude = include;
 		include = exclude + arr[i];
-		exclude = std::max(temp, exclude);
+		exclude = std::max(tempInclude, exclude);
 	}
 
 	return std::max(include, exclude);
@@ -23,6 +23,7 @@ int main()
 {
 	/***********************************************
 	SIMILAR PROB: house robber
+	SIMILAR PROB: ninja training
 	NOTE: house robber is the use case of this question.
 	video link: https://www.youtube.com/watch?v=VT4bZV24QNo&list=PL-Jc9J83PIiFj7YSPl2ulcpwy-mwj1SSk&index=494
 	SIMILAR: there is also a similar quest for recursion ie. max sum subset of non adjacent element

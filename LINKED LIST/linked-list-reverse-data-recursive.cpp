@@ -205,16 +205,17 @@ public:
 	 * LINKED LIST BOILER PLATE CODE ENDS
 	 * *******************************************/
 
-	void utilReverse(Node* head, int flr) {
-		static Node* left = head;
+	void utilReverse(Node* node, int flr) {
+		static Node* left = node;
 
 		// BASE CONDITION
-		if (head == NULL) return;
+		if (node == NULL) return;
 
-		utilReverse(head->next, flr + 1);
-		if (flr < size / 2) {
-			int temp = head->data;
-			head->data = left->data;
+		utilReverse(node->next, flr + 1);
+		//post recursive phase
+		if (flr < size / 2) { //swap the data of node and left
+			int temp = node->data;
+			node->data = left->data;
 			left->data = temp;
 		}
 		left = left->next;

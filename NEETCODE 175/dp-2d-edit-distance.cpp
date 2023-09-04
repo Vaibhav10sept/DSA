@@ -1,63 +1,43 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int editDistance(string word1, string word2) {
-	//WV highly recommended
-	vector<vector<int>> dp(word1.size() + 1, vector<int>(word2.size() + 1));
-	//STORAGE: dp[i][j] stores the min no of operations requires to convert word1 to word2 for the substring from ith to end for word1 and jth to end for word2.
-	//NOTE: the last row and last col are for base cases(initialization)(that's why the size of dp is one more than the word1 and word2 size)
+int editDistance(string str1, string str2) {
+	// WV highly recommended
+	int n = str1.size();
+	int m = str2.size();
+	vector<vector<int>> dp(n + 1, vector<int>(m + 1, 0));
+	//storage: dp[i][j] --> min no of operation(replace, insert, remove/delete) to convert str2 to str1
 
-	//initialization(WV)
-	int n = word1.size();
-	int m = word2.size();
-	// for last row
-	int tempm = m;
-	for (int j = 0; j < m; j++) {
-		dp[dp.size() - 1][j] = tempm;
-		tempm--;
-	}
-
-	//for last col
-	int tempn = n;
-	for (int i = 0; i < n; i++) {
-		dp[i][dp[0].size() - 1 ] = tempn;
-		tempn--;
-	}
+	//initialization
+	//if str1 is exhausted we need to insert the chars for str2
+	for (int i = 1; i <= n; i++) dp[i][0] = i;
+	//if str2 is exhausted we need to delete the chars of str1 to make str2
+	for (int j = 1; j <= m; j++) dp[0][j] = j;
 	//initialization ends
 
-	//this is bottom-up dp
-	for (int i = dp.size() - 2; i >= 0; i--) {
-		for (int j = dp[0].size() - 2; j >= 0; j--) {
-			if (word1[i] == word2[j]) {
-				dp[i][j] = dp[i + 1][j + 1];
+	for (int i = 1; i <= n; i++) {
+		for (int j = 1; j <= m; j++) {
+			if (str1[i - 1] == str2[j - 1]) {
+				dp[i][j] = 0 + dp[i - 1][j - 1];
 			}
-			else { // wv, there can be three things that we can do
-				// insert,delete, replace(jo bhi hme min no of operations dega)
-				// +1 becoz hm uper teen me ek operation krege
-				// insert --> i, j+1
-				// delete --> i+1, j
-				// replace --> i+1, j+1   (think,WV)
-
-				dp[i][j] = 1 + min(dp[i][j + 1], min(dp[i + 1][j], dp[i + 1][j + 1]));
+			else { //str1[i-1] != str2[j-1]
+				int deleteOperation = dp[i - 1][j];
+				int replaceOperation = dp[i - 1][j - 1];
+				int insertOperation = dp[i][j - 1];
+				dp[i][j] = 1 + min(min(deleteOperation, replaceOperation), insertOperation);
+				//+1 coz, think CS WV
 			}
 		}
 	}
-	// cout << "print" << endl;
-	// for (auto vec : dp) {
-	// 	for (auto ele : vec) {
-	// 		cout << ele << " ";
-	// 	}
-	// 	cout << endl;
-	// }
-	return dp[0][0];
+	return dp[n][m];
 }
 
 int main() {
 	/*********************************
-	 * STRONG PREREQUISITE: longest common subsequence
-	 * NOTE: this question is the application of longest common subsequence.
+	 * PREREQUISITE: distinct subsequence
+	 * NOTE: this question is the application of distinct subsequence.
 	LEETCODE: https://leetcode.com/problems/edit-distance/
-	VIDEO LINK: https://www.youtube.com/watch?v=XYi2-LPrwm4
+	VIDEO LINK: https://www.youtube.com/watch?v=fJaKO8FbDdo&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=34
 	*********************************/
 	string word1 = "horse";
 	string word2 = "ros";

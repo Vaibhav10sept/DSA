@@ -16,8 +16,7 @@ void rec(string ques, string ans) {
 
 }
 int main() {
-	string str;
-	cin >> str;
+	string str = "abc";
 	rec(str, "");
 	return 0;
 

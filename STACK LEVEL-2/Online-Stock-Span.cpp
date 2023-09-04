@@ -28,9 +28,9 @@ vector<int> onlineStockSpan(vector<int> arr) {
 
 int main() {
 	/*
-	PREREQUISITE:
+	PREREQUISITE: code blueprint is similar to next greater element
 	VIDEO LINK: https://www.youtube.com/watch?v=Givpwgu9IIc&list=PL-Jc9J83PIiE1_SifBEWRsD-fzxrvkja9&index=14
-	LEETCODE LINK:
+	LEETCODE LINK: https://leetcode.com/problems/online-stock-span/
 	*/
 	// vector<int> arr = {100, 80, 60, 70, 60, 75, 85};
 	vector<int> arr = {31, 41, 48, 59, 79};

@@ -2,7 +2,7 @@
 using namespace std;
 
 int pallindromePartitioning2(string str) {
-	// WV highly recommended
+	// WV highly recommended --> gap strategy is used here.
 	// STORAGE:
 	// row --> represent the start of substring
 	// col --> represent the end of substring
@@ -36,7 +36,7 @@ int pallindromePartitioning2(string str) {
 
 	vector<vector<int>> dpInt(str.size(), vector<int>(str.size(), 0));
 	//STORAGE: har cell storage the min cuts to make the substring starting at ith index and ending at jth index pallidrome, so we will get the ans at the top right corner of the dp(think,wv)
-	//NOTE: here we are doing upper diagonal wise traversal(WV)
+	//NOTE: here we are doing upper diagonal wise traversal(WV), following gap strategy
 
 	for (int gap = 0; gap < dpInt.size(); gap++) {
 		for (int i = 0, j = gap; i < dpInt.size() and j < dpInt.size(); i++, j++) {

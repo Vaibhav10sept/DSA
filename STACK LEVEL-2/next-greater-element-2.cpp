@@ -8,6 +8,7 @@ vector<int> nextGreaterElement2(vector<int> arr) {
 	//pehle sare element ko stack me daal do, think
 	//this step is different think, watch video
 	for (int i = n - 1; i >= 0; i--) {
+		//NOTE: if you remove the below while loop then also it will submit, think, try krle submit krke
 		while (!st.empty() and st.top() <= arr[i]) st.pop();
 		//yha hm ans ko calculate vala step nhi krre(think)
 		st.push(arr[i]);
@@ -19,7 +20,7 @@ vector<int> nextGreaterElement2(vector<int> arr) {
 		while (!st.empty() and st.top() <= arr[i]) st.pop();
 		if (st.empty()) ans[i] = -1;
 		else ans[i] = st.top();
-		st.push(arr[i]);
+		st.push(arr[i]); `
 	}
 	return ans;
 }

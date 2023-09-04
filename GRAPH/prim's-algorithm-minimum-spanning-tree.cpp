@@ -42,6 +42,7 @@ public:
 
 //we are doing operator overloading so that we can implement priority queue.
 bool operator<(const UtilPair p1, const UtilPair p2) {
+	//min heap
 	return p1.weight > p2.weight;
 }
 
@@ -69,6 +70,7 @@ void PrimsAlgorithm(vector<vector<Edge>> graph) {
 		//step 4. add its unvisited neighbour
 		for (Edge edge : graph[removed.vertix]) {
 			if (visited[edge.neighbour] == false) {
+				//below line me observe the difference between the prim and dijsktra's algorithm
 				q.push(UtilPair(edge.neighbour, removed.vertix, edge.weight));
 			}
 		}
@@ -76,14 +78,18 @@ void PrimsAlgorithm(vector<vector<Edge>> graph) {
 }
 
 int main() {
-	//************************************************************
+	/************************************************************
+	 * STRONG PREREQUISITE: dijkstra's algorithm
+	 * NOTE: the code is almost same as dijkstra's algo, do observe the difference between the dijkstra's algo and prims algo.
 	//VIDEO LINK: https://www.youtube.com/watch?v=Vw-sktU1zmc&list=PL-Jc9J83PIiFj7YSPl2ulcpwy-mwj1SSk&index=534
 	//NOTE: spanning tree -> tree(connected acyclic graph), spanning
 	//(all vertices are there)
 	//NOTE: minimum spanning tree -> out of many spanning trees that are possible
 	//the one whose weight is least is MST.
-	//NOTE: prerequisite is "dijsktra's algorithm"
-	//************************************************************
+	A Spanning Tree is a tree which have V vertices and V-1 edges. All nodes in a spanning tree are reachable from each other.
+
+	A Minimum Spanning Tree(MST) or minimum weight spanning tree for a weighted, connected, undirected graph is a spanning tree having a weight less than or equal to the weight of every other possible spanning tree. The weight of a spanning tree is the sum of weights given to each edge of the spanning tree. In short out of all spanning trees of a given graph, the spanning tree having minimum weight is MST.
+	//************************************************************/
 	// INPUT:
 // 7
 // 8

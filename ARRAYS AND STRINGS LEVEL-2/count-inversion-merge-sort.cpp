@@ -1,6 +1,10 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+//*********************
+//STRONG PREREQUISITE: merge sort(jo miscellaneous me hai, not the merge sort in sorting-algorithm.
+//**********************
+
 int mergeWithInversionCount(vector<int> arr, int low, int mid, int high) {
 	int inversionsCount = 0;
 	int n1 = mid - low + 1; //size of left sorted array
@@ -38,7 +42,7 @@ int mergeWithInversionCount(vector<int> arr, int low, int mid, int high) {
 		}
 	}
 
-	//below code is for remaining ele, as in merge sort nothing new.
+	//below code is for remaining element, as in merge sort nothing new.
 	while (i < n1) {
 		arr[k] = leftSortedHalf[i];
 		i++;
@@ -67,15 +71,13 @@ int mergeSort(vector<int> &arr, int low, int high) {
 
 int main() {
 	/*
-	HARD PREREQUISITE: merge sort
+	STRONG PREREQUISITE: merge-sort(jo miscellaneous me hai, not the merge sort in sorting-algorithm.
 	NOTE: two elements a[i] and a[j] form an inversion if a[i] > a[j] and i < j
 	NOTE: this is question is an application of merge sort
 	VIDEO LINK: https://www.youtube.com/watch?v=sV4RhDIIKO0
 	QUESTION: https://www.geeksforgeeks.org/counting-inversions/
-
 	*/
-	vector<int> arr = {8, 2, 4, 1};
-	// vector<int> arr = {3, 2, 1};
 
+	vector<int> arr = {8, 2, 4, 1};
 	cout << mergeSort(arr, 0, arr.size() - 1) << endl;
 }

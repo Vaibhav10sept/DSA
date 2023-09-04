@@ -38,6 +38,7 @@ int main() {
 	/*********************************
 	 * this is dp solution, a memo solution is also there
 	LEETCODE: https://leetcode.com/problems/distinct-subsequences/
+	VIDEO LINK(STRIVER TAKE PRIORITY): https://www.youtube.com/watch?v=nVG7eTiD2bY&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=34
 	VIDEO LINK: https://www.youtube.com/watch?v=nVG7eTiD2bY
 	*********************************/
 	string s = "rabbbit";

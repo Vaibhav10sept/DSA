@@ -207,6 +207,10 @@ public:
 
 int main()
 {
+	/*
+	VIDEO LINK:
+	QUESTION LINK:
+	*/
 	LinkedList ll;
 	ll.addFirst(3);
 	ll.addFirst(2);

@@ -50,6 +50,6 @@ int main()
 	LEETCODE: https://leetcode.com/problems/longest-palindromic-substring/
 	VIDEO LINK: https://www.youtube.com/watch?v=WpYHNHofwjc
 	*/
-	string str = "babad";
+	string str = "abb";
 	cout << longestPallindromicSubstrings(str);
 }

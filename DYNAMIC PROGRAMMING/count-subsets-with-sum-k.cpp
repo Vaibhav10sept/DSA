@@ -1,35 +1,39 @@
 #include <bits/stdc++.h>
 using namespace std;
+int mod = 1e9 + 7;
 
-int countSubsetsWithSumK(vector<int> arr, int target) {
-	vector<vector<int>> dp(arr.size() + 1, vector<int> (target + 1, false));
-	// row --> array ke element hote h, means subsets hote h
-	// col --> target hota h
-	// dp[i][j] --> store count of subsets using values till arr[i-1](bcoz array index is one less than the row(i) in dp) and target as j.
-	for (int i = 0; i < dp.size() ; i++) { // row --> array ke elements
-		for (int j = 0; j < dp[0].size(); j++) {
-			//first row and first column means 0 sum and empty subset
-			if (i == 0 and j == 0) {
-				dp[i][j] = 1;
-			}
-			//first row means no data in the subset(empty subset)
-			else if (i == 0) {
-				dp[i][j] = 0;
-			}
-			//initialization ends
 
-			//for every other cells
-			else {
-				dp[i][j] += dp[i - 1][j]; //not pick
-				int val = arr[i - 1]; // bcoz array index is 1 less than the row no(i). think
-				if (val <= j) {
-					dp[i][j] += dp[i - 1][j - val]; //pick
-				}
+int countSubsetsWithSumKStriverSolution(vector<int> arr, int target) {
+	//this can handle if the element of arr is zero
+	int n = arr.size();
+	vector<vector<int>> dp(n, vector<int>(target + 1, 0));
+
+	//initialization
+	if (arr[0] == 0) dp[0][0] = 2; //if sum=0 and at index=0, 0 is present then there are two cases with which we can get 0 sum ie. including 0 or excluding 0, WV recommended
+	else dp[0][0] = 1; //else if 0th index is not 0 then only one case ie. we need to exclude it to become 0 sum other we get negative sum, WV recommended
+
+
+	// for (int i = 1; i < arr.size(); i++) {
+	// 	dp[i][0] = 1;
+	// }
+	//why above code is commented, dry run recommended maene krke dekha tha sb smjh aya tha
+
+
+	if (arr[0] != 0 and arr[0] <= target) dp[0][arr[0]] = 1; //pay attention to this "arr[0] != 0" agr arr[0] 0 hoga to dp[0][0] 1 hojaegi lekin upr to hmne dp[0][0] ko 2 kia h if arr[0] == 0, so ye contradiciting hoga islie arr[0] != 0 vali condition jruri hai(WV recommended)
+	//initialization ends
+
+	for (int i = 1; i < n; i++) {
+		for (int j = 0; j <= target; j++) {
+			int notTake = dp[i - 1][j];
+			int take = 0;
+			if (arr[i] <= j) {
+				take = dp[i - 1][j - arr[i]];
 			}
+
+			dp[i][j] = (take + notTake) % mod;
 		}
 	}
-
-	return dp[arr.size()][target];
+	return dp[n - 1][target];
 }
 
 int main()
@@ -37,14 +41,14 @@ int main()
 	/***************************
 
 	 * NOTE: there is a recursive solution also.
-	VIDEO LINK: https://www.youtube.com/watch?v=ZHyb-A2Mte4&t=46s
+	VIDEO LINK: https://www.youtube.com/watch?v=zoilQD1kYSg&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=19
 	QUESTION LINK: https://www.geeksforgeeks.org/count-of-subsets-with-sum-equal-to-x/
 	subset/subsequence: 2^n; har element ke pass 2 option hai ya toh subset me aae
 	ya na aae
 	subarray: N*(N+1)/2; subarray continuous hote hai
 	//**************************************************/
-	vector<int> arr =  {0, 0, 1};
-	int target = 1;
+	vector<int> arr =  {9, 7, 0, 3 , 9, 8, 6, 5, 7, 6};
+	int target = 31;
 
-	cout << "result " << countSubsetsWithSumK(arr, target);
+	cout << "result " << countSubsetsWithSumKStriverSolution(arr, target);
 }

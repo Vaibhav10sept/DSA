@@ -22,7 +22,7 @@ public:
 	node* tail = new node(-1, -1); //least recently used
 
 	int cap; //capacity
-	unordered_map<int, node*> m;
+	unordered_map<int, node*> m; //key->DLL node pointer
 
 	LRUCache(int capacity) {
 		cap = capacity;
@@ -32,6 +32,7 @@ public:
 
 	void addNodeAtHead(node* newnode) {
 		// add at the head, most recently used
+		//time: o(1)
 		node* temp = head->next;
 		newnode->next = temp;
 		newnode->prev = head;
@@ -40,6 +41,7 @@ public:
 	}
 
 	void deleteNode(node* delnode) {
+		//time: o(1)
 		node* delprev = delnode->prev;
 		node* delnext = delnode->next;
 		delprev->next = delnext;
@@ -47,7 +49,9 @@ public:
 	}
 
 	int get(int key_) {
-		if (m.find(key_) != m.end()) {
+		if (m.find(key_) != m.end()) { //means found
+			//note: is this case we have delete the node form map and doubly linked list both
+			//and then add in the head of DLL(to make it most recently used) and also in the map
 			node* resnode = m[key_];
 			int res = resnode->val;
 			m.erase(key_);
@@ -63,15 +67,17 @@ public:
 	void put(int key_, int value) {
 		if (m.find(key_) != m.end()) { //key found
 			node* existingnode = m[key_];
+			//delete krna h kyoki, hme ab iss node ko most recently used bnana pdega so delete and add at the head of DLL
 			m.erase(key_);
 			deleteNode(existingnode);
 		}
 		if (m.size() == cap) {
-			m.erase(tail->prev->key); // delete the node(from map) at tail(from DLL) from the map
+			//here, we are deleting the least recently used node
+			m.erase(tail->prev->key); // delete the node(from map) and at tail(from DLL) from the map
 			deleteNode(tail->prev); //delete the node at tail(from DLL), least recently used node
 		}
 
-		addNodeAtHead(new node(key_, value)); //add at head
+		addNodeAtHead(new node(key_, value)); //add at head(most recently used)
 		m[key_] = head->next; // adding in map
 	}
 };
@@ -79,6 +85,7 @@ public:
 int main()
 {
 	/*
+	SIMILAR: LFU caching
 	VIDEO LINK: https://www.youtube.com/watch?v=xDEuM5qa0zg
 	LEETCODE LINK: https://leetcode.com/problems/lru-cache/
 	*/

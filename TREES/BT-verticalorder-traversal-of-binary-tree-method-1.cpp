@@ -208,6 +208,7 @@ vector<vector<int>> verticalOrderTraversal(Node* root) {
 int main()
 {
 	/*
+	NOTE: here are using map and queue(queue for the line wise traversal)
 	PREREQUISITE: line wise traversal of BT
 	NOTE: we use map here.
 	VIDEO LINK: https://www.youtube.com/watch?v=LscPXvD1N1A&list=PL-Jc9J83PIiHgjQ9wfJ8w-rXU368xNX4L&index=25

@@ -50,13 +50,13 @@ void gameOfLife(vector<vector<int>> &arr) {
 		for (int j = 0; j < m; j++) {
 			int noOfLiveNeighbour = countLiveNeighbour(arr, i, j);
 			if (arr[i][j] == 1) { // originally cell is living
-				if (noOfLiveNeighbour == 2 or noOfLiveNeighbour == 3) {
+				if (noOfLiveNeighbour == 2 or noOfLiveNeighbour == 3) { //it will remain live
 					arr[i][j] = 3; // point 4)
 
 				}
 			}
 			else { //originally cell is dead
-				if (noOfLiveNeighbour == 3) {
+				if (noOfLiveNeighbour == 3) { //it dies
 					arr[i][j] = 2; //point 3)
 				}
 			}

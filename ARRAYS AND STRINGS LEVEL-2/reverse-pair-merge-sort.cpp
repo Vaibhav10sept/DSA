@@ -13,7 +13,7 @@ int merge(vector<int>& arr, int lo, int mid, int hi)
 		{
 			temp[k++] = arr[i++];
 		}
-		else
+		else // arr[i] > 2LL * arr[j]
 		{
 			temp[k++] = arr[j++];
 			count += (mid - i + 1);

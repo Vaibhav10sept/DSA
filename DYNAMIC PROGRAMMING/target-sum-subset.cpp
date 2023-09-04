@@ -17,7 +17,7 @@ bool targetSumSubsetDP(vector<int> arr, int target) {
 				dp[i][j] = false;
 			}
 			//first column means 0 sum
-			else if (j == 0) {
+			else if (j == 0) { //true coz, zero sum vala subset hota h, which is empty subset
 				dp[i][j] = true;
 			}
 			//for every other cells

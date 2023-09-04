@@ -67,14 +67,17 @@ int main()
 	LEETCODE: https://leetcode.com/problems/design-circular-deque/
 	*/
 	MyCircularDeque obj(3);
-	cout << obj.insertLast(1) << endl;
+	cout << obj.insertFront(1) << endl;
 	cout << obj.insertLast(2) << endl;
-	cout << obj.insertFront(3) << endl;
-	cout << obj.insertFront(4) << endl;
 	cout << obj.getRear() << endl;
-	cout << obj.isFull() << endl;
-	cout << obj.deleteLast() << endl;
-	cout << obj.insertFront(4) << endl;
 	cout << obj.getFront() << endl;
+	// cout << obj.insertLast(2) << endl;
+	// cout << obj.insertFront(3) << endl;
+	// cout << obj.insertFront(4) << endl;
+	// cout << obj.getRear() << endl;
+	// cout << obj.isFull() << endl;
+	// cout << obj.deleteLast() << endl;
+	// cout << obj.insertFront(4) << endl;
+	// cout << obj.getFront() << endl;
 
 }

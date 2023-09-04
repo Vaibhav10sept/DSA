@@ -14,35 +14,30 @@ int longestCommonSubsequence(string str1, string str2) {
 	//NOTE: this is not 2d DP solution, recursive solution is also there
 	int n = str1.size();
 	int m = str2.size();
-	vector<vector<int>> dp(str1.size(), vector<int>(str2.size()));
-	//STORAGE: dp[i][j] --> stores the max length of common subsequence using the str1 from ith idx to end and str2 from jth idx to end.
-	for (int i = n - 1; i >= 0; i--) {
-		for (int j = m - 1; j >= 0; j--) {
-			if (str1[i] == str2[j]) {
+	vector<vector<int>> dp(n + 1, vector<int>(m + 1));
+	//STORAGE: dp[i][j] --> stores the max length of common subsequence using the str1 from 0th index to (i-1)th index and str2 from 0th index to (j-1)th index
+	for (int i = 1; i < dp.size(); i++) {
+		for (int j = 1; j < dp[0].size(); j++) {
+			if (str1[i - 1] == str2[j - 1]) {
 				dp[i][j] += 1; // + 1 think, crucial
-				dp[i][j] += (i + 1 < n and j + 1 < m) ? dp[i + 1][j + 1] : 0;
+				dp[i][j] += dp[i - 1][j - 1];
 			}
-			else { // str1[i] != str2[j]
-				if (i + 1 < n) {
-					dp[i][j] = dp[i + 1][j];
-				}
-				if (j + 1 < m) {
-					dp[i][j] = max(dp[i][j], dp[i][j + 1]);
-				}
+			else { // str1[i-1] != str2[j-1]
+				dp[i][j] = max( dp[i - 1][j], dp[i][j - 1]);
 			}
 		}
 	}
-	cout << "sdf";
-	displayMatrix(dp);
 
-	return dp[0][0];
+	return dp[n][m];
 }
 
 int main() {
 	/*********************************
+	 * APPLICATION QUESTION: minimum insertion to make string pallindromic
+	 * APPLICATION QUESTION: minimum Deletions and Insertions to convert string a to b.
 	 * NOTE: a recursive code is also there.
 	LEETCODE: https://leetcode.com/problems/longest-common-subsequence/
-	VIDEO LINK: https://www.youtube.com/watch?v=9UEHPiK53BA
+	VIDEO LINK: https://www.youtube.com/watch?v=NPZn9jBrX8U&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=26
 	*********************************/
 	string text1 = "aa";
 	string text2 = "aa";

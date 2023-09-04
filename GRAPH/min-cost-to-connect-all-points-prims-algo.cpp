@@ -42,7 +42,7 @@ public:
 
 //we are doing operator overloading so that we can implement priority queue.
 bool operator<(const UtilPair p1, const UtilPair p2) {
-	return p1.weight > p2.weight;
+	return p1.weight > p2.weight; //min heap
 }
 
 int PrimsAlgorithm(vector<vector<Edge>> graph) {
@@ -52,7 +52,7 @@ int PrimsAlgorithm(vector<vector<Edge>> graph) {
 	q.push(UtilPair(0, -1, 0));
 	vector<bool> visited(graph.size());
 	while (!q.empty()) {
-		//step 1. remove
+		//step 1. removes
 		UtilPair removed = q.top();
 		q.pop();
 

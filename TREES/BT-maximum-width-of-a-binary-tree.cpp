@@ -174,7 +174,7 @@ public:
 };
 
 int maxWidth(Node* root) {
-	/*LOGIC: agr BT array me hota to kisi node ka left child-> 2*idx + 1
+	/*LOGIC: agr BT array(0 indexed) me hota to kisi node ka left child-> 2*idx + 1
 	and right child -> 2*idx + 2.
 	yhi logic use krke ham solve krege
 	watch video recommended
@@ -193,7 +193,7 @@ int maxWidth(Node* root) {
 			q.pop();
 			int rightMostNodeIdx = rightMostNode.idx;
 
-
+			maxWidth = max(maxWidth, rightMostNodeIdx - leftMostNodeIdx + 1);
 
 			//left child ko push kro, left child ka idx --> 2*idx + 1
 			if (rightMostNode.node->left != NULL) q.push(HelperClass(rightMostNode.node->left, 2 * rightMostNodeIdx + 1));
@@ -204,7 +204,7 @@ int maxWidth(Node* root) {
 			// cout << "rightMostNodeIdx " << rightMostNodeIdx << " " << rightMostNode.node->data << endl;
 			// cout << "leftMostNodeIdx " << leftMostNodeIdx << " " << rightMostNode.node->data << endl;
 
-			maxWidth = max(maxWidth, rightMostNodeIdx - leftMostNodeIdx + 1);
+
 
 		}
 		// maxWidth = max(maxWidth, rightMostNodeIdx - leftMostNodeIdx + 1);
@@ -215,9 +215,10 @@ int maxWidth(Node* root) {
 int main()
 {
 	/*
+	NOTE: max width and shadow/widht of a BT is diff(WV)
 	LEETCODE LINK: https://leetcode.com/problems/maximum-width-of-binary-tree/
 	PREREQUISITE:
-	VIDEO LINK: https://www.youtube.com/watch?v=rRBD5mS-N80&list=PL-Jc9J83PIiHgjQ9wfJ8w-rXU368xNX4L&index=25
+	VIDEO LINK: https://www.youtube.com/watch?v=R9qiY7OK9JQ
 	*/
 	vector<int> arr = {1, 3, 2, 5, 3, -1, 9};
 	Node* root = constructorForLeetcode(arr);

@@ -34,6 +34,6 @@ int main() {
 	// LEETCODE: https://leetcode.com/problems/maximum-product-subarray/
 	// VIDEO LINK: https://www.youtube.com/watch?v=jzQ-f2uU0UU&list=PL-Jc9J83PIiE-TR27GB7V5TBLQRT5RnSl&index=49
 	//*********************************
-	vector<int> arr = { -2, 3, 0};
+	vector<int> arr = {6, -3, -10, 0, 2};
 	cout << maxProductSubarray(arr);
 }

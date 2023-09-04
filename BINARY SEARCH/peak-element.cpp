@@ -21,6 +21,7 @@ int peakElement(vector<int> &arr) {
 int main() {
 
 	/*
+	NOTE: one more easier to understand solution also present, just search for it.
 	PREREQUITE: same code as in question: no of times arrays is rotated
 	NOTE: given arr is unsorted, So here we are using a concept "binary search on answer"
 	VIDEO LINK: https://www.youtube.com/watch?v=B4t3NB0478k

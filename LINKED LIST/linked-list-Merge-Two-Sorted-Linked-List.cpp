@@ -207,6 +207,8 @@ public:
 };
 
 LinkedList MergeTwoSortedLinkedList(LinkedList left, LinkedList right) {
+	//this merge function will take space
+	//NOTE: there is another merge function which take constant space, please refer to merge function in linked-list-merge-sort.
 	LinkedList res;
 	Node* l = left.head;
 	Node* r = right.head;

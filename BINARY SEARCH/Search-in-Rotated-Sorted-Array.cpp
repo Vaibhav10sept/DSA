@@ -2,6 +2,7 @@
 using namespace std;
 
 int NumberOfTimesASortedArrayIsRotated(vector<int> &num) {
+	//iska code with explaination ye alg question me kia hua h, search and go through the code to understand the approach used.
 	int start = 0, end = num.size() - 1;
 
 	while (start < end) {
@@ -48,6 +49,7 @@ int FindanElementInRotatedSortedArray(vector<int> &arr, int k) {
 
 int main() {
 	/*
+	NOTE: more better solution is also there check, search: search in rotated sorted array
 	PREREQUISITE:
 	VIDEO LINK:
 	*/

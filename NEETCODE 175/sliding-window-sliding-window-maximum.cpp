@@ -8,7 +8,7 @@ vector<int> slidingWindowMax(vector<int> arr, int k) {
 	int i = 0;
 	while (j < arr.size()) {
 
-		while (q.size() > 0 and arr[j] > q.back())q.pop_back(); //sare chote "q" ke back se hta do
+		while (q.size() > 0 and arr[j] > q.back()) q.pop_back(); //sare chote "q" ke back se hta do
 
 		q.push_back(arr[j]); //sare chote htane ke baad jo bda hai use push back krdo
 		if (j - i + 1 == k) { //window's size hit.
@@ -25,7 +25,8 @@ vector<int> slidingWindowMax(vector<int> arr, int k) {
 
 int main() {
 	/*
-	NOTE: leecode hard problem
+	VIDEO LINK: https://www.youtube.com/watch?v=xFJXtB5vSmM&t=1421s
+	NOTE: leetcode hard problem
 	*/
 	vector<int> arr = {1, 3, -1, -3, 5, 3, 6, 7};
 	int k = 3;

@@ -12,7 +12,7 @@ int LongestSubarraywithSumDivisiblebyK(vector<int> arr, int k) {
 		sum += arr[i];
 
 		int rem = sum % k;
-		if (rem < 0) rem += k; //convert negative rem to positive rem.
+		if (rem < 0) rem += k; //convert negative rem to positive rem(WV, CS). NOTE: this is very important step otherwise you'll get wrong answer.
 
 		if (mp.find(rem) != mp.end()) { //found
 			int idx = mp[rem];

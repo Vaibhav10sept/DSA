@@ -4,7 +4,7 @@ using namespace std;
 int countSubarrayWith0Sum(vector<int> arr) {
 	//LOGIC: agr sum repeat hota h, to uss range me sum zero hua hoga tbhi sum repeat hua hai,think WV
 	//WV: watch video
-	map<int, int> mp; //sum,freq of that sum.`
+	map<int, int> mp; //sum,freq of that sum.
 	int sum = 0;
 	int count = 0;
 

@@ -35,7 +35,7 @@ int main() {
 	VIDEO LINK: https://www.youtube.com/watch?v=QKkHCS5bq0I
 	LEETCODE LINK: https://leetcode.com/problems/permutations/
 	*********************************/
-	vector<int> arr = {0, 1};
+	vector<int> arr = {1, 1, 2};
 	vector<vector<int>> ans = permutations(arr);
 	for (auto vec : ans) {
 		for (auto ele : vec) {
