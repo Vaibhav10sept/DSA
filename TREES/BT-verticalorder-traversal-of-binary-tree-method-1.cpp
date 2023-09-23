@@ -213,8 +213,8 @@ int main()
 	NOTE: we use map here.
 	VIDEO LINK: https://www.youtube.com/watch?v=LscPXvD1N1A&list=PL-Jc9J83PIiHgjQ9wfJ8w-rXU368xNX4L&index=25
 	*/
-	vector<int> arr = {50, 25, 12, -1, -1, 37, 30, -1, -1, -1, 75, 62, -1, 70, -1, -1, 87, -1, -1};
-	Node* root = construct(arr);
+	vector<int> arr = {1, 2, 3, 4, 6, 5, 7};
+	Node* root = constructorForLeetcode(arr);
 	display(root);
 	cout << "res " << endl;
 	vector<vector<int>> res = verticalOrderTraversal(root);

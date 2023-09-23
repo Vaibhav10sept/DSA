@@ -4,20 +4,20 @@ using namespace std;
 int minAddToMakeParenthesesValid(string str) {
 	//this is my own logic and code
 	stack<char> st;
-	int ans = 0;
+	int minRemove = 0;
 	for (char ele : str) {
 		if (ele == '(') {
 			st.push(ele);
 		}
 		else { // ele == ')'
-			if (st.empty()) ans++; //means, ele == ) hai or stack khali hai mtlb ) ke lie ( hona chahie to ans++ kra
+			if (st.empty()) minRemove++; //means, ele == ) hai or stack khali hai mtlb ) ke lie ( hona chahie to ans++ kra
 
-			if (!st.empty() and st.top() == '(') {
+			if (!st.empty()) {
 				st.pop();
 			}
 		}
 	}
-	return st.size() + ans;
+	return st.size() + minRemove;
 }
 
 int main() {

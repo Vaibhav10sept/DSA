@@ -159,7 +159,7 @@ void display(Node* node) {
 }
 
 int isHeigthBalanced(Node* root) { //NOTE: this function return the height
-	if (root == NULL) return 0;
+	if (root == NULL) return 0; //height is in terms of edges that's why return 0(think, cs, dry run)
 
 	int leftHeight = isHeigthBalanced(root->left);
 	if (leftHeight == -1) return -1;

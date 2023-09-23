@@ -166,34 +166,58 @@ Node* newNode(int data)
 	return (node);
 }
 
-int findMaxPathSum(Node* root, int & maxi) {
+// int findMaxPathSum(Node* root, int & maxi) {
+// 	if (root == NULL) return 0;
+
+// 	//NOTE: below agr leftmaxpath ki value -ve aegi to 0 bn jegi, same for rightmaxpath(think, CS)
+// 	int leftMaxPath = max(0, findMaxPathSum(root -> left, maxi));
+// 	int rightMaxPath = max(0, findMaxPathSum(root -> right, maxi));
+// 	int val = root -> data;
+// 	maxi = max(maxi, (leftMaxPath + rightMaxPath) + val);
+// 	return max(leftMaxPath, rightMaxPath) + val;
+
+// }
+
+// int maxPathSum(Node* root) {
+// 	int maxi = INT_MIN;
+// 	findMaxPathSum(root, maxi);
+// 	return maxi;
+
+// }
+
+int solve(Node* root, int &ans) {
 	if (root == NULL) return 0;
+	//BC ends
 
-	//NOTE: below agr leftmaxpath ki value -ve aegi to 0 bn jegi, same for rightmaxpath(think, CS)
-	int leftMaxPath = max(0, findMaxPathSum(root -> left, maxi));
-	int rightMaxPath = max(0, findMaxPathSum(root -> right, maxi));
-	int val = root -> data;
-	maxi = max(maxi, (leftMaxPath + rightMaxPath) + val);
-	return max(leftMaxPath, rightMaxPath) + val;
+	int leftMaxRootToNodePath = solve(root->left, ans);
+	int rightMaxRootToNodePath = solve(root->right, ans);
 
+	int myMaxRootToNodePath = max(max(leftMaxRootToNodePath, rightMaxRootToNodePath) + root->data, root->data);
+
+	//ek path root se hote hue bhi ja skta h, to ans ko update kro with all the cases(paths)
+	int sumOfPathGoingThroughMe = leftMaxRootToNodePath + root->data + rightMaxRootToNodePath;
+	ans = max(ans, max(sumOfPathGoingThroughMe, myMaxRootToNodePath));
+
+	return myMaxRootToNodePath;
 }
 
 int maxPathSum(Node* root) {
-	int maxi = INT_MIN;
-	findMaxPathSum(root, maxi);
-	return maxi;
+	int ans = INT_MIN;
 
+	solve(root, ans);
+	return ans;
 }
 
 int main()
 {
 	/*
 	PREREQUISITE: max path sum between two leafs
-	VIDEO LINK: https://www.youtube.com/watch?v=WszrfSwMz58
+	VIDEO LINK: https://www.youtube.com/watch?v=Osz-Vwer6rw
 	LEETCODE: https://leetcode.com/problems/binary-tree-maximum-path-sum/description/
 	*/
 	// vector<int> arr = { -10, 9, 20, -1, -1, 15, 7};
-	vector<int> arr = {1, 2, 3};
+	// vector<int> arr = {1, 2, 3};
+	vector<int> arr = {1};
 	Node* root = constructorForLeetcode(arr);
 
 	display(root);

@@ -56,7 +56,7 @@ void gameOfLife(vector<vector<int>> &arr) {
 				}
 			}
 			else { //originally cell is dead
-				if (noOfLiveNeighbour == 3) { //it dies
+				if (noOfLiveNeighbour == 3) { //it lives
 					arr[i][j] = 2; //point 3)
 				}
 			}

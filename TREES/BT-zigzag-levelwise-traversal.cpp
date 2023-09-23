@@ -88,6 +88,8 @@ Node* construct(vector<int> arr) {
 }
 
 Node* constructorForLeetcode(vector<int> arr) {
+	//edge case if arr is empty
+	if (arr.size() == 0) return NULL;
 	// state = 1 means left me node add krna hai
 	// state = 2 means right me node add krna hai
 	// state = 3 means stack se node ko pop krna hai
@@ -159,6 +161,7 @@ void display(Node* node) {
 }
 
 vector<vector<int>> zigzagTraversal(Node* root) {
+	if (root == NULL) return vector<vector<int>>(); //edge case for leetcode
 	vector<vector<int>> ans;
 	queue<Node*> q;
 	q.push(root);
@@ -191,9 +194,9 @@ int main()
 	VIDEO LINK:
 
 	*/
-	vector<int> arr = {50, 25, 12, -1, -1, 37, 30, -1, -1, -1, 75, 62, -1, 70, -1, -1, 87, -1, -1};
-	Node* root = construct(arr);
-	display(root);
+	vector<int> arr = {};
+	Node* root = constructorForLeetcode(arr);
+	// display(root);
 	cout << "res " << endl;
 	vector<vector<int>> ans = zigzagTraversal(root);
 	for (auto vec : ans) {

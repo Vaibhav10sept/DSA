@@ -34,7 +34,7 @@ int basicCalculator(string str) {
 			//stack se sign nikalo or use sum se multiply krdo
 			sum *= st.top();
 			st.pop();
-			//sum me stack ka top add krdo
+			//ab stack ke top pe sum hoga jo ki hmne '(' milne pr dala tha(see above else if)
 			sum += st.top();
 			st.pop();
 		}

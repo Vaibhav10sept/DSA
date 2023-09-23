@@ -123,28 +123,81 @@ public:
 
 };
 
-void iterativeInorderTraversal(Node* root) {
-	stack<Node*> todo;
-	while (root || !todo.empty()) {
-		while (root) {
-			todo.push(root);
-			root = root -> left;
+Node* constructorForLeetcode(vector<int> arr) {
+	// state = 1 means left me node add krna hai
+	// state = 2 means right me node add krna hai
+	// state = 3 means stack se node ko pop krna hai
+	queue<UtilPair> q;
+	Node* root = new Node(arr[0]);
+	UtilPair newPair(root, 1);
+	q.push(newPair);
+
+	int i = 1;
+	while (!q.empty() and i < arr.size()) {
+		UtilPair front = q.front();
+
+		if (front.state == 1) {
+			// means left me node add krni hai
+			q.front().state++;
+			if (arr[i] != -1) {
+				Node* newNode = new Node(arr[i]);
+				q.front().node->left = newNode;
+				UtilPair newPair(newNode, 1);
+				q.push(newPair);
+			}
+			else {
+				q.front().node->left = NULL;
+			}
+			i++;
 		}
-		root = todo.top();
-		todo.pop();
-		cout << root->data << " ";
-		root = root -> right;
+		else if (front.state == 2) {
+			// means right me node add krna hai
+			q.front().state++;
+			if (arr[i] != -1) {
+				Node* newNode = new Node(arr[i]);
+				q.front().node->right = newNode;
+				UtilPair newPair(newNode, 1);
+				q.push(newPair);
+			}
+			else {
+				q.front().node->right = NULL;
+			}
+			i++;
+		}
+		else {
+			// state = 3 --> means queue se node ko pop krna hai
+			q.pop();
+		}
+	}
+	return root;
+}
+
+void iterativeInorderTraversal(Node* node) {
+	stack<Node*> st;
+	while (true) {
+		while (node != NULL) {
+			st.push(node);
+			node = node->left;
+		}
+		if (st.empty()) break;
+		node = st.top();
+		st.pop();
+		cout << node->data;
+		//move to right
+		node = node->right;
 	}
 }
 
 int main()
 {
 	/*
-	NOTE: this code is copied from leetcode no need for video.
+	NOTE: i wrote this after WV.
+	VIDEO: https://www.youtube.com/watch?v=lxTGsVXjwvM
 	*/
-	vector<int> arr = {50, 25, 12, -1, -1, 37, 30, -1, -1, -1, 75, 62, -1, 70, -1, -1, 87, -1, -1};
-	Node* root = construct(arr);
-	// display(root);
+	// vector<int> arr = {50, 25, 12, -1, -1, 37, 30, -1, -1, -1, 75, 62, -1, 70, -1, -1, 87, -1, -1};
+	vector<int> arr = {1, -1, 2, 3};
+	Node* root = constructorForLeetcode(arr);
+	display(root);
 	iterativeInorderTraversal(root);
 	// inorder 12 25 30 37 50 62 70 75 87
 }

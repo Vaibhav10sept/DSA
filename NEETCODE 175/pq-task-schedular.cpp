@@ -24,19 +24,19 @@ int taskSchedular(vector<char> arr, int n) {
 	// }
 
 	int time = 0;
-	queue<pair<int, int>> q; //pair --> freq, available time.
+	queue<pair<int, int>> q; //pair --> freq, available time(at what time this freq task is available to us).
 
 	while (!pq.empty() or !q.empty()) {
 		time++;
 
 		if (!pq.empty()) {
-			int newFreq = pq.top() - 1;
+			int newFreq = pq.top() - 1; //why -1: coz, ab hmne ek use kr lia na to count km krdo
 			pq.pop();
 			if (newFreq > 0) q.push(make_pair(newFreq, time + n));
 		}
 
-		if (!q.empty() and q.front().second == time) {
-			pq.push(q.front().first);
+		if (!q.empty() and q.front().second == time) { //means, iss time me kya queue me koi aesa task h jo available h, to usse use krlo
+			pq.push(q.front().first); //q.front().first-> we are adding the freq in priority queue
 			q.pop();
 		}
 	}

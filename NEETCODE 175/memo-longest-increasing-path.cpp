@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int longestIncreasingPathRecursive(int i, int j, vector<vector<int>> arr, map<pair<int, int>, int> &memo) {
+int longestIncreasingPathRecursive(int i, int j, vector<vector<int>> &arr, map<pair<int, int>, int> &memo) {
 	//BC
 	// if (i<0 or j<0 or i >= arr.size() or j >= arr[0].size()) return 0;
 	// if (arr[i][j] <= prev) return 0;
@@ -26,7 +26,7 @@ int longestIncreasingPath(vector<vector<int>> arr) {
 	int ans = 1;
 	for (int i = 0; i < arr.size(); i++) {
 		for (int j = 0; j < arr[0].size(); j++) {
-			longestIncreasingPathRecursive(i, j,  arr, memo);
+			memo[ {i, j}] = longestIncreasingPathRecursive(i, j,  arr, memo);
 			ans = max(ans, memo[ {i, j}]);
 		}
 	}

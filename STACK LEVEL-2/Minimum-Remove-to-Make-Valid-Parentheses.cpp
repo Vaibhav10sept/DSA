@@ -2,6 +2,7 @@
 using namespace std;
 
 string minimumRemovetoMakeValidParentheses(string str) {
+	//NOTE: nice question good logic, see the preq question also.
 	stack<int> st; //index store hoge isme
 
 	for (int i = 0; i < str.size(); i++) {
@@ -15,13 +16,13 @@ string minimumRemovetoMakeValidParentheses(string str) {
 				str[i] = '.';
 			}
 			else { //stack not empty
-				st.pop(); // ye "(" pop krega
+				st.pop(); // "(" ka index pop hoga stack se
 			}
 		}
 	}
 	//handle the remaining '(' in stack
 	//coz, stack me bache hue '(' bhi invalid hote hai
-	while (!st.empty()) {
+	while (!st.empty()) { //NOTE: rem stack me index of "(" store hai
 		str[st.top()] = '.';
 		st.pop();
 	}

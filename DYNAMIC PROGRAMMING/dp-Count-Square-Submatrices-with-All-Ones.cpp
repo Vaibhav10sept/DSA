@@ -32,6 +32,7 @@ int countSquareSubmatricesWithAllOnes(vector<vector<int>> arr) {
 int main()
 {
 	/***************************
+	 * STRONG PREQ: maximal squares
 	VIDEO LINK: https://www.youtube.com/watch?v=auS1fynpnjo&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=57
 	LEETCODE LINK: https://leetcode.com/problems/count-square-submatrices-with-all-ones/description/
 	*****************************/

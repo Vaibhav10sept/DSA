@@ -27,6 +27,7 @@ int LongestSubarraywithSumDivisiblebyK(vector<int> arr, int k) {
 
 int main() {
 	/*
+	APPLICATION: Continuous Subarray Sum
 	PREREQUISITE: check if array pair are divisible by k
 	PREREQUISITE: format is similar to "subarray sum equals k"
 	QUESTION LINK: https://www.geeksforgeeks.org/longest-subarray-sum-divisible-k/

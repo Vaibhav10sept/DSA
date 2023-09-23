@@ -29,8 +29,7 @@ int main()
 	// LEETCODE: https://leetcode.com/problems/letter-combinations-of-a-phone-number/
 	// VIDEO LINK: https://www.youtube.com/watch?v=hMJAlbJIS7E&list=PL-Jc9J83PIiFj7YSPl2ulcpwy-mwj1SSk&index=399
 	//***********************************
-	vector<string> ans;
 	vector<string> codes = {".;", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tu", "vws", "yz"};
-	ans = getKeypadCombination("735", codes);
+	vector<string> ans = getKeypadCombination("735", codes);
 	for (auto val : ans) cout << val << endl;
 }

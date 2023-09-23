@@ -82,24 +82,14 @@ bool nodeToRootPath(Node* node, int data, vector<int> &ans) {
 	}
 }
 
-int lowestCommonAncestor(Node* node, int val1, int val2) {
-	vector<int> nodeToRootPathVec1;
-	vector<int> nodeToRootPathVec2;
-
-	nodeToRootPath(node, val1, nodeToRootPathVec1);
-	nodeToRootPath(node, val2, nodeToRootPathVec2);
-
-	int i = 0;
-	int j = 0;
-	while (i < nodeToRootPathVec1.size() and j < nodeToRootPathVec2.size()) {
-		if (nodeToRootPathVec1[i] == nodeToRootPathVec2[j]) {
-			break;
-		}
-		i++;
-		j++;
+int lowestCommonAncestor(Node* root, int val1, int val2) {
+	if ((root -> data > val1) && (root -> data > val2)) {
+		return lowestCommonAncestor(root -> left, val1, val2);
 	}
-
-	return nodeToRootPathVec1[i];
+	if ((root -> data < val1) && (root -> data < val2)) {
+		return lowestCommonAncestor(root -> right, val1, val2);
+	}
+	return root -> data;
 }
 
 int main()

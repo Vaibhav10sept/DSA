@@ -12,7 +12,7 @@ int editDistance(string str1, string str2) {
 	//if str1 is exhausted we need to insert the chars for str2
 	for (int i = 1; i <= n; i++) dp[i][0] = i;
 	//if str2 is exhausted we need to delete the chars of str1 to make str2
-	for (int j = 1; j <= m; j++) dp[0][j] = j;
+	for (int j = 1; j <= m; j++) dp[0][]j = j;
 	//initialization ends
 
 	for (int i = 1; i <= n; i++) {

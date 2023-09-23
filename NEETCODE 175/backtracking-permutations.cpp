@@ -15,6 +15,7 @@ void permutationsBacktracking(vector<int> arr, int idx, vector<int> ans, vector<
 			permutationsBacktracking(arr, idx + 1, ans, res, visited);
 
 			//backtrack
+			//think kyo ans[i] ko backtrack nhi kre(smjh aa gya) -> logic: see visited ko to backtrack kr rhe haina to visited false hojaege to obvisouly kbhi na kbhi ans[i] fill hoga, visited ko false krne pr ans[i] ko rewrite kia ja skta h(think, cs)
 			visited[i] = false;
 		}
 	}
@@ -35,7 +36,7 @@ int main() {
 	VIDEO LINK: https://www.youtube.com/watch?v=QKkHCS5bq0I
 	LEETCODE LINK: https://leetcode.com/problems/permutations/
 	*********************************/
-	vector<int> arr = {1, 1, 2};
+	vector<int> arr = {1, 2, 3};
 	vector<vector<int>> ans = permutations(arr);
 	for (auto vec : ans) {
 		for (auto ele : vec) {

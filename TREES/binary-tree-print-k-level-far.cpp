@@ -109,19 +109,19 @@ void display(Node* node) {
 	display(node->right);
 }
 
-bool nodeToRootPath(Node* node, vector<Node*> *ans, int data) {
+bool nodeToRootPath(Node* node, vector<Node*> &ans, int data) {
 	if (node == NULL) return false;
 
 	if (data == node->data) {
-		ans->push_back(node);
+		ans.push_back(node);
 		return true;
 	}
 	if (nodeToRootPath(node->left, ans, data) ) {
-		ans->push_back(node);
+		ans.push_back(node);
 		return true;
 	}
 	if (nodeToRootPath(node->right, ans, data) ) {
-		ans->push_back(node);
+		ans.push_back(node);
 		return true;
 	}
 
@@ -138,7 +138,7 @@ void printklevelsdown(Node* node, int k, Node* blocker) {
 
 void printKNodesFar(Node* node, int data, int k) {
 	vector<Node*> nodeToRootPathv;
-	nodeToRootPath(node, &nodeToRootPathv, data);
+	nodeToRootPath(node, nodeToRootPathv, data);
 	for (int i = 0; i < nodeToRootPathv.size(); i++) {
 		printklevelsdown(nodeToRootPathv[i], k - i, i == 0 ? NULL : nodeToRootPathv[i - 1]);
 	}

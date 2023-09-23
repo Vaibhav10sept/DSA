@@ -44,6 +44,7 @@ void topologicalSort(vector<vector<Edge>> graph) {
 			topologicalSortHelper(graph, i, visited, st);
 		}
 	}
+
 	while (!st.empty()) {
 		cout << st.top() << endl;
 		st.pop();

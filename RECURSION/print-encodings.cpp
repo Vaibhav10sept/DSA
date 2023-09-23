@@ -45,8 +45,8 @@ void PrintEncoding(string ques, string ans) {
 int main()
 {
 	//***************************
-	//we are using ques, ans approach here, same is used ini prnt permutations
-	// there is a question "COUNT ENCODINGS" which counts all possible encodings
+	//we are using ques, ans approach here, same is used in print permutations
+	// there is a DP question "COUNT ENCODINGS" which counts all possible encodings
 	// (you can search it using ctrl + p)
 	// "print encoding" is recursive while "count encodings" is DP.
 	//**************************************************

@@ -200,14 +200,7 @@ int maxWidth(Node* root) {
 
 			//right child ko push kro, right child ka idx --> 2*idx + 2
 			if (rightMostNode.node->right != NULL) q.push(HelperClass(rightMostNode.node->right, 2 * rightMostNodeIdx + 2));
-
-			// cout << "rightMostNodeIdx " << rightMostNodeIdx << " " << rightMostNode.node->data << endl;
-			// cout << "leftMostNodeIdx " << leftMostNodeIdx << " " << rightMostNode.node->data << endl;
-
-
-
 		}
-		// maxWidth = max(maxWidth, rightMostNodeIdx - leftMostNodeIdx + 1);
 	}
 	return maxWidth;
 }

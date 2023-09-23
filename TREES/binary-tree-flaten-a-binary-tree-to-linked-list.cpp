@@ -36,10 +36,10 @@ struct Node {
 // 	flatten(node-> right);
 // }
 
-Node* flatten(Node* node) {
+void flatten(Node* node) {
 	//NOTE: i wrote this code, no need for video
-	if (node == NULL) return NULL;
-	if (node->left == NULL and node->right == NULL) return node; //leaf node
+	if (node == NULL) return;
+	if (node->left == NULL and node->right == NULL) return; //leaf node
 
 	flatten(node->left);
 	flatten(node->right);
@@ -56,8 +56,6 @@ Node* flatten(Node* node) {
 		tail->right = tempRight;
 	}
 
-
-	return node;
 }
 
 void inorder ( Node* node) {
@@ -78,7 +76,7 @@ int main() {
 	cout << "inorder: ";
 	inorder(root);
 	cout << endl;
-	root = flatten(root);
+	flatten(root);
 	cout << "after flatten inorder(which will be the preorder traversal): ";
 	inorder(root);
 
