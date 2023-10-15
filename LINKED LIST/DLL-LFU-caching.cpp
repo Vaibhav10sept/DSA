@@ -8,7 +8,7 @@ struct Node {
 	Node(int _key, int _value) {
 		key = _key;
 		value = _value;
-		freq = 1; //this is freq of this node
+		freq = 1; //this is the default freq of this node
 	}
 };
 struct List {
@@ -42,26 +42,28 @@ struct List {
 };
 
 class LFUCache {
-	map<int, Node*> keyNode;
-	map<int, List*> freqListMap;
+	map<int, Node*> keyNode; // key --> Node*
+	map<int, List*> freqListMap; // frequency --> doubly linked list(same as in LRU caching)
 	int maxSizeCache;
-	int minFreq;
-	int curSize;
+	int leastFreq;
+
 public:
 	LFUCache(int capacity) {
 		maxSizeCache = capacity;
-		minFreq = 0;
-		curSize = 0;
+		leastFreq = 0;
 	}
+
 	void updateFreqListMap(Node *node) {
+		//remove from the keyNode and freqListMap
 		keyNode.erase(node->key);
 		freqListMap[node->freq]->removeNode(node);
-		if (node->freq == minFreq && freqListMap[node->freq]->size == 0) {
-			minFreq++;
+
+		if (node->freq == leastFreq && freqListMap[node->freq]->size == 0) {
+			leastFreq++;
 		}
 
 		List* nextHigherFreqList = new List();
-		if (freqListMap.find(node->freq + 1) != freqListMap.end()) {
+		if (freqListMap.find(node->freq + 1) != freqListMap.end()) { //found
 			nextHigherFreqList = freqListMap[node->freq + 1];
 		}
 		node->freq += 1;
@@ -84,32 +86,36 @@ public:
 		if (maxSizeCache == 0) {
 			return;
 		}
-		if (keyNode.find(key) != keyNode.end()) { //found
+		if (keyNode.find(key) != keyNode.end()) { //found --> update krdo
 			Node* node = keyNode[key];
 			node->value = value;
 			updateFreqListMap(node);
 		}
-		else {  //not found
-			if (curSize == maxSizeCache) { //now, remove the min freq + LRU node
-				List* list = freqListMap[minFreq];
+		else {  //not found --> insert krdo, agr capacity full hogae toh LFU ko remove krke isko insert krdo
+			if (keyNode.size() == maxSizeCache) { //now, remove the min freq + LRU node
+				List* list = freqListMap[leastFreq];
 				keyNode.erase(list->tail->prev->key); //DLL ki last node hi LRU node hoti h, to use remove krre from keyNode map
-				freqListMap[minFreq]->removeNode(list->tail->prev);
-				curSize--;
+				freqListMap[leastFreq]->removeNode(list->tail->prev);
 			}
-			curSize++;
 			// new value has to be added who is not there previously
-			minFreq = 1;
+			leastFreq = 1; //rem: agr new node add ho rhi to least freq 1 hojaegi, ise update krna mt bhulna
 			List* listFreq = new List();
-			if (freqListMap.find(minFreq) != freqListMap.end()) { //found
-				listFreq = freqListMap[minFreq];
+			if (freqListMap.find(leastFreq) != freqListMap.end()) { //found
+				listFreq = freqListMap[leastFreq];
 			}
 			Node* node = new Node(key, value);
 			listFreq->addFront(node);
 			keyNode[key] = node;
-			freqListMap[minFreq] = listFreq;
+			freqListMap[leastFreq] = listFreq; //here, leastFreq is 1(upper code dekho, cs)
 		}
 	}
 };
+/*
+STRONG PREQ: LRU caching
+VIDEO: https://www.youtube.com/watch?v=0PSB9y8ehbk
+LEETCODE: https://leetcode.com/problems/lfu-cache/
+*/
+
 
 /**
  * Your LFUCache object will be instantiated and called as such:

@@ -23,7 +23,7 @@ int AllocateMinimumNumberOfPages(vector<int> arr, int k) {
 	//start --> max in array(for some optimization)(we can start with 0 also)
 	//end --> sum of all element
 	int n = arr.size();
-	int start = 0;
+	int start = *max_element(arr.begin(), arr.end());
 	int sum = 0;
 	for (auto ele : arr) sum += ele;
 	int end = sum;
@@ -37,7 +37,7 @@ int AllocateMinimumNumberOfPages(vector<int> arr, int k) {
 
 	while (start <= end) {
 		int mid = start + (end - start) / 2;
-		//mid --> is the max no pages that we can give me a student, and we need to minimize this(max no of pages) ie. mid
+		//mid --> is the max no pages that we can give to a student, and we need to minimize this(max no of pages) ie. mid
 
 		if (isValid(arr, n, k, mid)) {
 			ans = mid; //always minimum hi hoga, std::min() ki jrurt nhi, lga bhi doge toh koi farak nhi pdega

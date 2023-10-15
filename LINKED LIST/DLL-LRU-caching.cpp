@@ -61,7 +61,7 @@ public:
 			return res;
 		}
 
-		return -1;
+		return -1; //not found so return -1
 	}
 
 	void put(int key_, int value) {
@@ -72,7 +72,7 @@ public:
 			deleteNode(existingnode);
 		}
 		if (m.size() == cap) {
-			//here, we are deleting the least recently used node
+			//here, we are deleting the least recently used node(tail node)
 			m.erase(tail->prev->key); // delete the node(from map) and at tail(from DLL) from the map
 			deleteNode(tail->prev); //delete the node at tail(from DLL), least recently used node
 		}

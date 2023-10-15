@@ -34,7 +34,6 @@ int longestsubstringwithoutrepeatingcharacters(string str, int k) {
 				if (freqMap.find(str[i]) != freqMap.end()) {
 					freqMap[str[i]]--;
 				}
-				maxFreq = maxValue(freqMap);
 				i++;
 			}
 		}

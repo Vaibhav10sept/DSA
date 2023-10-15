@@ -1,39 +1,56 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-double multiplyNTimes(double mid, int n) {
-	double ans = 1;
-	for (int i = 0; i < n; i++) {
-		ans *= mid;
+
+// return 1 -> if mid^n == m
+// return 0 -> if mid^n < m
+// return 2 -> if mid^n > m
+int multiplyNTimes(int mid, int n, int m) {
+	long long ans = 1;
+	for (int i = 1; i <= n; i++) {
+		ans = ans * mid;
+		if (ans > m) return 2; //overflow se bchane ke liye aesa kia gya h(wv)
 	}
-	return ans;
+
+	if (ans == m) return 1;
+	return 0;
 }
 
-double nthRootOfANumber(int m, int n) {
+int nthRootOfANumber(int m, int n) {
 	//WV highly recommended
 	//we are using binary search here
-	double start = 1;
-	double end = m;
-	double mid;
-	double eps = 1e-7; //this is precision, for understanding WV recommended.
-	//10 to the power -7 which is equal to 1/10^7 -> 0.0000001 -> means upto 6 decimal places tk ka shi result aega
-	//NOTE: 1e-7 --> upto 6 decimal places ke lie ke liye, similar 1e-6 upto 5 decimal places ke liye, observe the pattern here.
-	while ((end - start) > eps) {
-		mid = (start + end) / 2.0;
-		if (multiplyNTimes(mid, n) < m) {
-			start = mid;
+	int start = 1;
+	int end = m;
+	int mid;
+
+	while (start <= end) {
+		mid = (start + end) / 2;
+
+		int midMultiplyN = multiplyNTimes(mid, n, m);
+		// return 1 -> if mid^n == m
+		// return 0 -> if mid^n < m
+		// return 2 -> if mid^n > m
+		if (midMultiplyN == 1) { // return 1 -> if mid^n == m
+			//this is the answer
+			return mid;
 		}
-		else {
-			end = mid;
+		else if (midMultiplyN == 2) { // return 2 -> if mid^n > m
+			//move left
+			end = mid - 1;
+		}
+		else { // return 0 -> if mid^n < m
+			//move right
+			start = mid + 1;
+
 		}
 	}
-	return start; //you can also return end, coz both holds the same value.
+	return -1; //not found
 }
 
 int main() {
 	/*
 	QUESTION: https://takeuforward.org/data-structure/nth-root-of-a-number-using-binary-search/
-	VIDEO LINK: https://www.youtube.com/watch?v=WjpswYrS2nY&list=PLgUwDviBIf0p4ozDR_kJJkONnb1wdx2Ma&index=63
+	VIDEO LINK: https://www.youtube.com/watch?v=rjEJeYCasHs&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=12
 	*/
 	int m = 16;
 	int n = 2;

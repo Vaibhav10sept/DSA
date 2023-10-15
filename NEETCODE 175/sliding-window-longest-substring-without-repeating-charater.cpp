@@ -14,7 +14,7 @@ int longestsubstringwithoutrepeatingcharacters(string str) {
 		//think for below condition.
 		else if (freqMap.size() < j - i + 1) {
 			while (freqMap.size() < j - i + 1) {
-				if (freqMap.find(str[i]) != freqMap.end()) {
+				if (freqMap.find(str[i]) != freqMap.end()) { //found
 					freqMap[str[i]]--;
 					if (freqMap[str[i]] == 0) {
 						freqMap.erase(str[i]);

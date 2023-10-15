@@ -52,6 +52,7 @@ public:
 
 int main() {
 	/*********************************
+	 * NOTE: this is pq sol a set sol is also there
 	LOGIC: we use two priority queue here
 	1. small heap --> this is max heap
 	2. large heap --> this is min heap

@@ -42,7 +42,7 @@ public:
 
 //we are doing operator overloading so that we can implement priority queue.
 bool operator<(const UtilPair p1, const UtilPair p2) {
-	//min heap
+	//min heap --> min element top me rhega
 	return p1.weight > p2.weight;
 }
 

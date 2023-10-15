@@ -6,246 +6,104 @@ class Node
 public:
 	Node* next;
 	int data;
-};
 
-class LinkedList
-{
-	/*********************************************
-	 * LINKED LIST BOILER PLATE CODE STARTS
-	 * *******************************************/
-public:
-	Node* head;
-	Node* tail;
-	int size;
-
-	LinkedList() {
-		head = NULL;
-		tail = NULL;
-		size = 0;
-	}
-
-	int getSize() {
-		Node* temp = head;
-		int res = 0;
-		while (temp) {
-			temp = temp->next;
-			res++;
-		}
-		return res;
-	}
-
-	void removeFirst() {
-		if (size == 0) {
-			cout << "list is empty" << endl;
-			return;
-		}
-		else if (size == 1) {
-			free(head);
-			head = tail = NULL;
-		}
-		else {
-			Node* temp = head;
-			head = head->next;
-			free(temp);
-		}
-		size--;
-	}
-
-	int getFirst() {
-		if (size == 0 || head == NULL) {
-			cout << "list is empty" << endl;
-			return -1;
-		}
-		else {
-			return head->data;
-		}
-	}
-
-	int getLast() {
-		if (size == 0 || head == NULL) {
-			cout << "list is empty" << endl;
-			return -1;
-		}
-		else {
-			return tail->data;
-		}
-	}
-
-	int getAtIdx(int idx) {
-		if (idx < 0 || idx >= size) {
-			cout << "not a valid index" << endl;
-			return -1;
-		}
-		else if (size == 0 || head == NULL) {
-			cout << "list is empty" << endl;
-		}
-		else if ( idx == 0 ) {
-			return getFirst();
-		}
-		else {
-			Node* temp = head;
-			for (int i = 0; i < idx; i++) {
-				temp = temp->next;
-			}
-			return temp->data;
-		}
-
-	}
-
-	void addLast(int data) {
-		Node* newNode = new Node();
-		newNode->data = data;
-		newNode->next = NULL;
-
-		if (size == 0) {
-			head = tail = newNode;
-		}
-		else {
-			tail->next = newNode;
-			tail = newNode;
-		}
-		size++;
-	}
-
-	void addFirst(int data) {
-		Node* newNode = new Node();
-		newNode->data = data;
-		newNode->next = NULL;
-
-		if (size == 0) {
-			head = tail = newNode;
-		}
-		else {
-			newNode->next = head;
-			head = newNode;
-		}
-		size++;
-	}
-
-	void addAtIdx(int data, int idx) {
-		Node* newNode = new Node();
-		newNode->data = data;
-		newNode->next = NULL;
-		if (idx < 0 || idx >= size) {
-			cout << "not a valid index" << endl;
-			return;
-		}
-		else if (idx == 0) {
-			addFirst(data);
-		}
-		else {
-			Node* temp = head;
-			for (int i = 0; i < idx - 1; i++) {
-				temp = temp->next;
-			}
-			newNode->next = temp->next;
-			temp->next = newNode;
-		}
-		size++;
-	}
-
-	void removeLast() {
-		if (size == 0) {
-			cout << "nothing to be removed" << endl;
-			return;
-		}
-		else if (size == 1) {
-			head = tail = NULL;
-		}
-		else {
-			Node* temp = head;
-			for (int i = 0; i < size - 2; i++) {
-				temp = temp->next;
-			}
-			free(tail);
-			temp->next = NULL;
-			tail = temp;
-		}
-
-		size--;
-
-	}
-
-	void removeAtIdx(int idx) {
-		if (idx < 0 || idx >= size) {
-			cout << "not a valid index" << endl;
-			return;
-		}
-		else if (size == 0) {
-			cout << "nothing to be removed" << endl;
-			return;
-		}
-		else if (size == 1) {
-			head = tail = NULL;
-		}
-		else if (idx == 0) {
-			head = head->next;
-		}
-		else {
-			Node* temp = head;
-			for (int i = 0; i < idx - 1; i++) {
-				temp = temp->next;
-			}
-			Node* tobefreed = temp->next;
-			temp->next = temp->next ? temp->next->next : NULL;
-			free(tobefreed);
-		}
-		size--;
-	}
-
-	void printLinkedList() {
-		Node* temp = head;
-		while (temp) {
-			cout << temp->data << " ";
-			temp = temp->next;
-		}
-		cout << endl;
-	}
-	/*********************************************
-	 * LINKED LIST BOILER PLATE CODE ENDS
-	 * *******************************************/
-	bool utilIsPallindrome(Node * head, int flr) {
-		//static variable
-		static Node* left = head;
-
-		//base case
-		if (head == NULL) return true;
-
-		bool ans = utilIsPallindrome(head->next, flr + 1);
-
-		//POST RECURSION PHASE
-		if (ans == false) {
-			return false;
-		}
-		else { //ans false nhi hai, toh check kro
-			if (flr >= size / 2) {
-				if (head->data != left->data) {
-					return false;
-				}
-				else ans = true;
-				left = left->next;
-			}
-		}
-		return ans;
-	}
-
-	bool isPallindrome() {
-		return utilIsPallindrome(head, 0);
+	Node(int data) {
+		this->data = data;
+		this->next = NULL;
 	}
 };
+
+void printLinkedList(Node* head) {
+	Node* temp = head;
+	while (temp) {
+		cout << temp->data << " ";
+		temp = temp->next;
+	}
+	cout << endl;
+}
+
+Node* findMidNode(Node* head) {
+	Node* slow = head;
+	Node* fast = head;
+
+	while (fast->next and fast->next->next) {
+		slow = slow->next;
+		fast = fast->next->next;
+	}
+	return slow;
+}
+
+Node* reverseLinkedListIterative(Node* head) {
+	Node* curr = head;
+	Node* prev = NULL;
+	Node* next = NULL;
+
+	while (curr) {
+		next  = curr->next;
+		curr->next = prev;
+		prev = curr;
+		curr = next;
+	}
+
+	return prev;
+}
+
+bool isPallindrome(Node* head) {
+	// STEPS:
+	// 1. find the mid node of linked list
+	// 2. reverse the list after the mid node(mid->next)
+	// 3. now since the right of half of the LL is reverse you can traverse it in reverse order(think, wv)
+	// 4. one pointer at the head and one pointer at the end of LL traverse it and see for the condition of LL.
+
+
+	//edges case
+	if (head == NULL or head->next == NULL) return true; //empty or one size LL is always pallindrome, so return true
+	Node* midNode = findMidNode(head);
+	cout << "mid " << midNode->data << endl;
+	Node* last = reverseLinkedListIterative(midNode->next);
+
+	Node* first = head;
+	while (last) {
+		if (last->data != first->data) return false;
+		last = last->next;
+		first = first->next;
+	}
+
+	return true;
+}
 
 
 int main()
 {
-	LinkedList ll;
-	ll.addFirst(0);
-	ll.addFirst(1);
-	ll.addFirst(2);
-	ll.addFirst(2);
-	ll.addFirst(1);
-	ll.addFirst(0);
-	ll.printLinkedList();
-	if (ll.isPallindrome()) {
+	/*
+	VIDEO: https://www.youtube.com/watch?v=ee-DuKtRNGw
+	LEETCODE: https://leetcode.com/problems/palindrome-linked-list/description/
+	// STEPS:
+	// 1. find the mid node of linked list
+	// 2. reverse the list after the mid node(mid->next)
+	// 3. now since the right of half of the LL is reverse you can traverse it in reverse order(think, wv)
+	// 4. one pointer at the head and one pointer at the end of LL traverse it and see for the condition of LL.
+	*/
+	Node* head = new Node(0);
+	Node* newNode;
+
+	newNode = new Node(1);
+	head->next = newNode;
+
+	newNode = new Node(2);
+	head->next->next = newNode;
+
+	newNode = new Node(2);
+	head->next->next->next = newNode;
+
+	newNode = new Node(1);
+	head->next->next->next->next = newNode;
+
+	newNode = new Node(0);
+	head->next->next->next->next->next = newNode;
+
+	// printLinkedList(head);
+	if (isPallindrome(head)) {
 		cout << "yes" << endl;
 	}
 	else {

@@ -9,36 +9,40 @@ void removeInMap(map<char, int> &mp, char ch) {
 int solutionForK1(string str) {
 	int ans = 0;
 	map<char, int> mp;
-	int i = -1;
-	int j = -1;
+	int i = 0;
+	int j = 0;
 	while (true) {
 		//ye flags hme above while se bahar nikalne me help krege
 		bool f1 = false;
 		bool f2 = false;
 
 		// acquire
-		while (i < str.size() - 1) {
+		while (i < (int)str.length()) {
+			cout << "her " << i << endl;
 			f1 = true;
-			i++;
+
 			mp[str[i]]++;
 
 			if (mp.size() > 1) {
 				removeInMap(mp, str[i]);
-				i--;
+
 				break;
 			}
+			i++;
 		}
 
 		// release
 		while (j < i) {
 			f2 = true;
 			if (mp.size() == 1) {
+				cout << "tes " << j << " " << i << endl;
 				ans += i - j;
 			}
 
-			j++;
+
 			removeInMap(mp, str[j]);
-			if (mp.size() == 0) break;
+			j++;
+			if (mp.size() < 1) break;
 		}
 
 		if (f1 == false and f2 == false) break;
@@ -46,6 +50,7 @@ int solutionForK1(string str) {
 	cout << "ans " << ans << endl;
 	return ans;
 }
+
 
 int CountSubstringswithKDistinctCharacters(string str, int k) {
 	//edge case
@@ -76,7 +81,7 @@ int CountSubstringswithKDistinctCharacters(string str, int k) {
 			iBada++;
 			bada[str[iBada]]++;
 
-			if (bada.size() > k) {
+			if (bada.size() == k + 1) {
 				removeInMap(bada, str[iBada]);
 				iBada--;
 				break;
@@ -116,10 +121,12 @@ int CountSubstringswithKDistinctCharacters(string str, int k) {
 
 int main() {
 	/*
+	SAME QUESTION: subarray with k different integers
+	NOTE: this is pepcoding video(below link) code with some modification of my own
 	VIDEO LINK: https://www.youtube.com/watch?v=CBSeilNvZHs&list=PL-Jc9J83PIiEp9DKNiaQyjuDeg3XSoVMR&index=14
 	*/
 	// string str = "abcabdabbcfa";
-	string str = "aa";
+	string str = "ab";
 	int k = 1;
 	cout << "count " << CountSubstringswithKDistinctCharacters(str, k);
 }

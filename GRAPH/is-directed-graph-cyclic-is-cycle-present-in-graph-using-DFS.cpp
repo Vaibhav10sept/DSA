@@ -28,15 +28,7 @@ vector<vector<Edge>> constructDirectedGraphFromInput() {
 }
 
 bool DepthFirstTraversal(vector<vector<Edge>> graph, int vertex, vector<bool> isPathVisited, vector<bool> visited) {
-	//WV recommended
-
-	if (visited[vertex] == true) {
-		//check if it's path visited also
-		if (isPathVisited[vertex] == true) { //so the vertex is visited but here we are checking that if it path visited also, if yes then return true(has cycle) otherwise
-			return true; // has cycle
-		}
-		return false; //already visited h to age ki call lgane ka fyada ni, return false(coz don't has cycle)
-	}
+	//NOTE: base case(jo for loop ke 'if' me kia hai) vo hm yha pe bhi kr skte hai, in this question, but undirected graph cycle detection using dfs me ni kr skte think, cs, wv, dry run
 
 	//mark visited
 	visited[vertex] = true;
@@ -44,8 +36,19 @@ bool DepthFirstTraversal(vector<vector<Edge>> graph, int vertex, vector<bool> is
 	isPathVisited[vertex] = true;
 
 	for (auto edge : graph[vertex]) {
-		if (DepthFirstTraversal(graph, edge.neighbour, isPathVisited, visited)) {
-			return true;
+		if (visited[edge.neighbour]) {
+			if (isPathVisited[edge.neighbour]) {
+				return true; //visited and path visited also so has cycle return true;
+			}
+			else {
+				return false; //visited but no cycle -> no need to move further as this node is already visited,
+			}
+		}
+		else {
+			if (DepthFirstTraversal(graph, edge.neighbour, isPathVisited,
+			                        visited)) {
+				return 1;
+			}
 		}
 	}
 

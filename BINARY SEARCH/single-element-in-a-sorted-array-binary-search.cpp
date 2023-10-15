@@ -3,8 +3,6 @@ using namespace std;
 
 int singleElementInSortedArray(vector<int> arr) {
 	//WV recommended
-	int start = 0;
-	int end = arr.size() - 1;
 	int n = arr.size();
 	int mid;
 
@@ -14,6 +12,10 @@ int singleElementInSortedArray(vector<int> arr) {
 	//boundary check, checking if 0 or size-1 index is the single element or not
 	if (arr[0] != arr[1]) return arr[0];
 	if (arr[n - 1] != arr[n - 2]) return arr[n - 1];
+
+	//kyoki hmne last and first index ka check kr liya h isliye start 1 se and end n-2 se initialize krre think, wv
+	int start = 1;
+	int end = n - 2;
 
 	while (start <= end) {
 		mid = start + (end - start) / 2;
@@ -31,7 +33,7 @@ int singleElementInSortedArray(vector<int> arr) {
 		//iss logic se hm decide krege ki left jana h right
 
 		if ((mid % 2 == 0 and arr[mid + 1] == arr[mid]) or
-		        (mid % 2 == 1 and arr[mid - 1] == arr[mid])) { //move to right
+		        (mid % 2 == 1 and arr[mid - 1] == arr[mid])) { //you're at the left half, move to right
 			start = mid + 1;
 		}
 		else { //move to left
@@ -45,6 +47,7 @@ int main() {
 	/*
 	NOTE: WV highly recommended
 	QUESTION: https://takeuforward.org/data-structure/search-single-element-in-a-sorted-array/
+	VIDEO LINK: https://www.youtube.com/watch?v=AZOmHuHadxQ&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=9
 	VIDEO LINK: https://www.youtube.com/watch?v=nMGL2vlyJk0
 	*/
 	vector<int> arr = {1, 1, 2, 3, 3, 4, 4, 8, 8};

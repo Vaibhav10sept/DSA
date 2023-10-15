@@ -20,8 +20,8 @@ int aggresiveCows(vector<int> arr, int k) {
 	//start --> 0
 	//end --> diff of min and max postion of stalls in the given arr.
 	sort(arr.begin(), arr.end());
-	int start = 1;
-	int end = arr[arr.size() - 1] - arr[0];  //max - min
+	int start = 1; //min distance between two stalls
+	int end = arr[arr.size() - 1] - arr[0];  //max - min --> max distance between two stalls
 	int ans = 0;
 	while (start <= end) {
 		int mid = (start + end) / 2;
@@ -41,6 +41,11 @@ int aggresiveCows(vector<int> arr, int k) {
 
 int main() {
 	/*
+	SAME PATTERN PROBLEMS:
+	1. aggresive cows
+	2. allocate minimum number of pages
+	3. painter's partition problem
+	4. split array largest sum
 	MUST PREREQUISITE: allocate minimum number of pages
 	NOTE: array can be unsorted.
 	QUESTION: https://takeuforward.org/data-structure/aggressive-cows-detailed-solution/

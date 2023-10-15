@@ -30,7 +30,7 @@ public:
 		int pu = findParent(u); //pu --> parent of u
 		int pv = findParent(v); //pv --> parent of v
 
-		if (pu == pv) {
+		if (pu == pv) { //dono ke parent same h, mtlb already connected(indirectly)(belongs to same component)
 			//already union ho chuka h to return kr  jao
 			return;
 		}
@@ -54,10 +54,11 @@ int main() {
 	/************************************************************
 	NOTE: this is the prerequisite for kruskal algo to find the minimum spanning tree.
 	NOTE: do check kruskal algo to find the minimum spanning tree after this question
-	VIDEO: https://www.youtube.com/watch?v=aBxjDBC4M1U&list=PLgUwDviBIf0rGEWe64KWas0Nryn7SCRWw&index=26
-	SECOND VIDEO: https://www.youtube.com/watch?v=KxLtIrCyXwE
+	VIDEO(imp): https://www.youtube.com/watch?v=aBxjDBC4M1U&list=PLgUwDviBIf0rGEWe64KWas0Nryn7SCRWw&index=26
+	VIDOE(hindi, anuj bhaiya): https://www.youtube.com/watch?v=Kptz-NVA2RE
+	SECOND VIDEO(hindi, love babbar): https://www.youtube.com/watch?v=KxLtIrCyXwE
 	//************************************************************/
-	DisjointSet obj(7);
+	DisjointSet obj(8);
 	obj.unionByRank(1, 2);
 	obj.unionByRank(2, 3);
 	obj.unionByRank(4, 5);
