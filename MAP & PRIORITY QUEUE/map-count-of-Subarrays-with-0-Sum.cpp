@@ -20,7 +20,7 @@ int countSubarrayWith0Sum(vector<int> arr) {
 		else { //mil gya
 			//WV for below logic
 			count += mp[sum];
-			mp[sum]++; //freq dba do
+			mp[sum]++; //freq bda do
 		}
 	}
 	return count;

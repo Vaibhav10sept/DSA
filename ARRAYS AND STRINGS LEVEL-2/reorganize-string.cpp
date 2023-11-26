@@ -11,11 +11,18 @@ public:
 	}
 };
 
-bool operator< (const Util one, const Util two) {
-	//always <(less than operator) hi overload krna.
-	// this is max heap
-	return one.freq < two.freq;
-}
+// bool operator< (const Util one, const Util two) {
+// 	//always <(less than operator) hi overload krna.
+// 	// this is max heap
+// 	return one.freq < two.freq;
+// }
+
+struct Comparator {
+	bool operator()(const Util one, const Util two) {
+		// this is max heap
+		return one.freq < two.freq;
+	}
+};
 
 string reorganizeString(string str) {
 	//creating freq map
@@ -25,7 +32,7 @@ string reorganizeString(string str) {
 	}
 
 	//filling up the priority queue
-	priority_queue<Util> pq;
+	priority_queue<Util, vector<Util>, Comparator> pq;
 	for (auto it : mp) {
 		// cout << it.first << " " << it.second << endl;
 		pq.push(Util(it.first, it.second));

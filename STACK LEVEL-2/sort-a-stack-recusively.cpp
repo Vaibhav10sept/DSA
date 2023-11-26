@@ -10,6 +10,8 @@ void DisplayStack(stack<int> s) {
 }
 
 void sortInsert(stack<int> &st, int ele) {
+	// Base case: Either stack is empty or newly inserted
+	// item is greater than top (more than all existing)
 	if (st.empty() or ele >= st.top()) {
 		st.push(ele);
 		return;
@@ -23,8 +25,6 @@ void sortInsert(stack<int> &st, int ele) {
 }
 
 void sortStackUsingRecusion(stack<int> &st) {
-	// Base case: Either stack is empty or newly inserted
-	// item is greater than top (more than all existing)
 	if (st.empty()) return;
 
 	int num = st.top();

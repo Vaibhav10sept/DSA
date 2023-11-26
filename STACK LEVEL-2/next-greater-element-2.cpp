@@ -20,7 +20,7 @@ vector<int> nextGreaterElement2(vector<int> arr) {
 		while (!st.empty() and st.top() <= arr[i]) st.pop();
 		if (st.empty()) ans[i] = -1;
 		else ans[i] = st.top();
-		st.push(arr[i]); `
+		st.push(arr[i]);
 	}
 	return ans;
 }

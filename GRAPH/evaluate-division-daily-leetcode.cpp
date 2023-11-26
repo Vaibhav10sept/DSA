@@ -34,14 +34,14 @@ double dfs(string src, string dest, set<string> &visited, map<string, vector<Nod
 		return 1;
 	}
 
-	if (visited.find(src) != visited.end()) return -1;
+	if (visited.find(src) != visited.end()) return -1; //already visited
 	//base conditions ends
 
 	//add to the visited set.
 	visited.insert(src);
 	//iterate through the vertices connect to src and make recursive call to dfs
 	for (Node node : graph[src]) {
-		if (visited.find(node.dest) == visited.end()) { //node.dest is not visited, call dfs
+		if (visited.find(node.dest) == visited.end()) { //not found -> node.dest is not visited, call dfs
 			double ans = dfs(node.dest, dest, visited, graph);
 			if (ans != -1) {
 				return node.weight * ans;

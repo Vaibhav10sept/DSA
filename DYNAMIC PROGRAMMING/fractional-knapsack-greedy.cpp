@@ -10,6 +10,8 @@ bool comparator(vector<int> v1, vector<int> v2) {
 }
 
 double fractionalKnapsack(vector<int> value, vector<int> weight, int capacity) {
+	//no need to wv khud padh ke smjh aa jaega
+
 	vector<vector<int>> arr; //0-> value, 1-> weight
 	for (int i = 0; i < value.size(); i++) {
 		arr.push_back({value[i], weight[i]});

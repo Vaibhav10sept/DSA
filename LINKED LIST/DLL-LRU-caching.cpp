@@ -22,7 +22,7 @@ public:
 	node* tail = new node(-1, -1); //least recently used
 
 	int cap; //capacity
-	unordered_map<int, node*> m; //key->DLL node pointer
+	unordered_map<int, node*> m; //key->DLL node pointer(address)
 
 	LRUCache(int capacity) {
 		cap = capacity;

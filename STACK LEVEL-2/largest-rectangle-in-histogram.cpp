@@ -12,8 +12,8 @@ vector<int> leftnextsmallerindex(vector<int> arr) {
 			ans[i] = -1;
 		} else {
 			ans[i] = st.top();
-
 		}
+
 		st.push(i);
 	}
 	return ans;
@@ -30,8 +30,8 @@ vector<int> rightnextsmallerindex(vector<int> arr) {
 			ans[i] = arr.size();
 		} else {
 			ans[i] = st.top();
-
 		}
+
 		st.push(i);
 	}
 	return ans;

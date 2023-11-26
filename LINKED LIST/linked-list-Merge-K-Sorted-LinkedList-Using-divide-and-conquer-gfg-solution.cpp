@@ -6,6 +6,15 @@ class Node
 public:
 	Node* next;
 	int data;
+
+	Node(int val) {
+		data = val;
+		next = NULL;
+	}
+
+	Node() {
+		next = NULL;
+	}
 };
 
 class LinkedList
@@ -206,63 +215,101 @@ public:
 	 * *******************************************/
 };
 
-struct CmpNodePtrs
-{
-	bool operator()(Node* first,  Node* second)
-	{
-		return first->data > second->data; //min priority queue;
-	}
-};
+Node* MergeTwoSortedLinkedList(Node* left, Node* right) {
+	//NOTE: this merge function will take constant space, use this instead of any other merge approach
+	// in LL this take constant space, but in array this function takes n space
+	//that is why space of merge sort in array is n and in LL is logn(this logn is due to the stack/auxilliary space of recursion)
+	Node* temp = new Node();
+	temp->data = -1;
+	temp->next = NULL;
+	Node* head = temp;
+	Node* l = left;
+	Node* r = right;
 
-LinkedList MergeKSortedLinkedList(vector<LinkedList> lists) {
-	priority_queue<Node*, vector<Node*>, CmpNodePtrs> pq; //min priority queue
-
-	LinkedList res;
-
-	//push the head of all linked list from lists
-	for (int i = 0; i < lists.size(); i++) {
-		pq.push(lists[i].head);
-	}
-
-	while (!pq.empty()) {
-		Node* temp = pq.top(); //min value top me hogi
-		pq.pop();
-		res.addLast(temp->data);
-
-		if (temp->next != NULL) pq.push(temp->next);
+	while (l != NULL && r != NULL) {
+		if (l->data < r->data) {
+			temp->next = l;
+			l = l->next;
+			temp = temp->next;
+		}
+		else {
+			temp->next = r;
+			r = r->next;
+			temp = temp->next;
+		}
 	}
 
-	return res;
+	while (l) {
+		temp->next = l;
+		l = l->next;
+		temp = temp->next;
+	}
+	while (r) {
+		temp->next = r;
+		r = r->next;
+		temp = temp->next;
+	}
+	return head->next;
+}
+
+Node* MergeKSortedLinkedListHelper(vector<Node*> lists, int startIdx, int endIdx) {
+	//BASE COND
+	if (startIdx == endIdx) return lists[startIdx];
+
+	int mid = (startIdx + endIdx) / 2;
+
+	Node* l1 = MergeKSortedLinkedListHelper(lists, startIdx, mid);
+	Node* l2 = MergeKSortedLinkedListHelper(lists, mid + 1, endIdx);
+
+	return MergeTwoSortedLinkedList(l1, l2);
+}
+
+Node* MergeKSortedLinkedList(vector<Node*> lists) {
+	//the code pattern is very much similar to mergesort linked list
+	return MergeKSortedLinkedListHelper(lists, 0, lists.size() - 1);
 }
 
 int main()
 {
 	/*
-	NOTE: here are using user defined priority queue(min)
-	SIMILAR QUESTION: merge sort linked list using divide and conquer
-	PREREQUISITE:
-	VIDEO LINK: https://www.youtube.com/watch?v=jhWT8qal1SI&list=PL-Jc9J83PIiGRqcfZxxgOKovgLVd3znnq&index=8
+	NOTE: the steps are similar to merge sort in linked list
+	PREREQUISITE: merge sort in linked list
+	QUESTION: https://practice.geeksforgeeks.org/problems/merge-k-sorted-linked-lists/1
+	VIDOE LINK: https://www.youtube.com/watch?v=Q64u-W3l3mA
+	VIDEO LINK: https://www.youtube.com/watch?v=wugaUVZ8PVw&list=PL-Jc9J83PIiGRqcfZxxgOKovgLVd3znnq&index=7
 	*/
-	LinkedList ll1;
-	ll1.addFirst(6);
-	ll1.addFirst(5);
-	ll1.addFirst(4);
-	ll1.addFirst(3);
-	ll1.addFirst(2);
-	ll1.addFirst(1);
+	Node* ll1 = new Node(1);
+	ll1->next = new Node(3);
+	ll1->next->next = new Node(5);
 
-	LinkedList ll2;
-	ll2.addFirst(12);
-	ll2.addFirst(11);
-	ll2.addFirst(10);
-	ll2.addFirst(9);
-	ll2.addFirst(8);
-	ll2.addFirst(7);
 
-	vector<LinkedList> lists;
+	Node* ll2 = new Node(2);
+	ll2->next = new Node(4);
+
+
+	// LinkedList ll1;
+	// ll1.addFirst(6);
+	// ll1.addFirst(5);
+	// ll1.addFirst(4);
+	// ll1.addFirst(3);
+	// ll1.addFirst(2);
+	// ll1.addFirst(1);
+
+	// LinkedList ll2;
+	// ll2.addFirst(12);
+	// ll2.addFirst(11);
+	// ll2.addFirst(10);
+	// ll2.addFirst(9);
+	// ll2.addFirst(8);
+	// ll2.addFirst(7);
+
+	vector<Node*> lists;
 	lists.push_back(ll1);
 	lists.push_back(ll2);
-	LinkedList res = MergeKSortedLinkedList(lists);
+	Node* res = MergeKSortedLinkedList(lists);
 	cout << "after merging" << endl;
-	res.printLinkedList();
+	while (res != NULL) {
+		cout << res->data << " ";
+		res = res->next;
+	}
 }

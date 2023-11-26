@@ -61,6 +61,8 @@ bool mColoringProblem(vector<vector<Edge>> graph, int node, vector<int> colorsTr
 int main()
 {
 	/*
+	PREQ: soduko solver
+	SAME PATTERN QUESTION: soduko solver
 	NOTE: ye code mene likha, video dekhne ke baad. approach smjhli and then khud se code likh dia.
 	QUESTION: https://takeuforward.org/data-structure/m-coloring-problem/
 	VIDEO: https://www.youtube.com/watch?v=wuVwUK25Rfc&list=PLgUwDviBIf0p4ozDR_kJJkONnb1wdx2Ma&index=60

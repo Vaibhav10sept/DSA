@@ -12,12 +12,10 @@ void pss(string ques, string ans) {
 
 	pss(ros, ans + "");
 	pss(ros, ans + ch);
-
-
 }
 
 int main() {
-	string str;
+	string str = "abc";
 	cin >> str;
 	pss(str, "");
 

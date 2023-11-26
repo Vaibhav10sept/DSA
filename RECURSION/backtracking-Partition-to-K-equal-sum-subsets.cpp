@@ -60,8 +60,8 @@ int main()
 	VIDEO: https://www.youtube.com/watch?v=mBk4I0X46oI
 	LEETCODE: https://leetcode.com/problems/partition-to-k-equal-sum-subsets/description/
 	*/
-	vector<int> arr = {10, 6, 9, 5, 8, 7, 10, 4, 3, 7, 7, 7, 2, 1, 6, 6};
-	int k = 7;
+	vector<int> arr =  {2, 1, 5, 5, 6};
+	int k = 3;
 	if (partitionKEqualSumSubsets(arr, k)) {
 		cout << "true" << endl;
 	}

@@ -60,6 +60,7 @@ int main() {
 	2. allocate minimum number of pages
 	3. painter's partition problem
 	4. split array largest sum
+	5. roti prata problem
 	NOTE: array can be unsorted.
 	QUESTION: https://www.codingninjas.com/studio/problems/painter-s-partition-problem_1089557?utm_source=youtube&utm_medium=affiliate&utm_campaign=codestudio_Striver_BinarySeries
 	VIDEO LINK: https://www.youtube.com/watch?v=thUd_WJn6wk&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=20

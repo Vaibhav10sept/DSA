@@ -7,7 +7,7 @@ string KPermutationSequence(int n, int k) {
 	for (int i = 1; i <= n; i++) arr.push_back(i);
 
 
-	//precomputation: craete an array which stores the factorial of 0 to 9;
+	//precomputation: create an array which stores the factorial of 0 to 9;
 	vector<int> factorialArray(10);
 	factorialArray[0] = 1;
 	factorialArray[1] = 1;

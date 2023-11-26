@@ -14,8 +14,10 @@ void subsetsWithoutDuplicatesBacktracking(vector<int> arr, int idx, vector<int> 
 	ans.push_back(arr[idx]);
 	subsetsWithoutDuplicatesBacktracking(arr, idx + 1, ans, res, sum + arr[idx]);
 
-	//backtrack --> second call after removing the arr[idx]
+	//backtrack--> second call after removing the arr[idx]
 	ans.pop_back();
+
+	//CRUCIAL PART(REM, WV):
 	//but here we have to stop the generation of duplicate subsets
 	while (idx + 1 < arr.size() and arr[idx] == arr[idx + 1]) {
 		idx++;

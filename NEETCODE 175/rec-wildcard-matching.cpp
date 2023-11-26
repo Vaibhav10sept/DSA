@@ -53,7 +53,7 @@ int main() {
 	 * PREREQUISITE: edit distance and distinct subsequence
 	 * NOTE: this question is the application of edit distance and distinct subsequence.
 	LEETCODE: https://www.codingninjas.com/studio/problems/wildcard-pattern-matching_701650?source=youtube&campaign=striver_dp_videos&utm_source=youtube&utm_medium=affiliate&utm_campaign=striver_dp_videoshttps://www.youtube.com/watch?v=ZmlQ3vgAOMo&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=35
-	VIDEO LINK: https://www.youtube.com/watch?v=fJaKO8FbDdo&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=34
+	VIDEO LINK: https://www.youtube.com/watch?v=ZmlQ3vgAOMo&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=35
 	*********************************/
 	string pattern = "ab*cd";
 	string str = "abdefcd";

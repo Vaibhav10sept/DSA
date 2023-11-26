@@ -39,6 +39,8 @@ bool solveSudoku(vector < vector < char >> & board) {
 }
 int main() {
 	/*
+	SAME PATTERN QUESTION: m coloring problem
+	PREQ: m coloring problem
 	VIDEO: https://www.youtube.com/watch?v=FWAIf_EVUKE&list=PLgUwDviBIf0p4ozDR_kJJkONnb1wdx2Ma&index=59
 	QUESTION: https://takeuforward.org/data-structure/sudoku-solver/
 	*/

@@ -51,6 +51,7 @@ int main() {
 	LOGIC: here "k" is the size of pattern(think)
 	NOTE: here we use map
 	VIDEO LINK: https://www.youtube.com/watch?v=MW4lJ8Y0xXk&list=PL_z_8CaSLPWeM8BDJmIYDaoQ5zuwyxnfj&index=5
+	LEETCODE: https://leetcode.com/problems/find-all-anagrams-in-a-string/description/
 	*/
 	string str = "aabaabaa";
 	string pattern = "aaba";

@@ -50,10 +50,11 @@ public:
 			if (size % 2 == 0) { //even h, move mid by one
 				mid = mid->next;
 			}
-			else {
+			else { //odd h
 				//mid will stay where it was.
 			}
 		}
+		cout << "head " << head->data << " " << mid->data << endl;
 	}
 
 	void pop() {

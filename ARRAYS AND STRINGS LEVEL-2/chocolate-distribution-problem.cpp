@@ -14,6 +14,7 @@ int chocolateDistributionProblem(vector<int> arr, int m) {
 
 int main() {
 	//**************************************
+	// NOTE: good qeustion nice logic
 	//VIDEO LINK: https://www.youtube.com/watch?v=T_2CATt_XyQ
 	// QUESTION LINK: https://www.geeksforgeeks.org/chocolate-distribution-problem/
 	//*******************************************

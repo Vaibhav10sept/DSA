@@ -26,7 +26,7 @@ void insertAtBottom(stack<int> &st, int num) {
 }
 
 void reverseUsingRecursion(stack<int> &st) {
-	//I DID THIS QUESTION MYSELF, STRONG PREREQUISITE IS SORT A STACK USING RECURSION
+	//I DID THIS QUESTION MYSELF, STRONG PREREQUISITE IS ORT A STACK recusively
 	if (st.empty()) return;
 
 	int num = st.top();
@@ -40,7 +40,7 @@ void reverseUsingRecursion(stack<int> &st) {
 
 int main() {
 	/*
-	STRONG PREREQUISITE: IS SORT A STACK USING RECURSION
+	STRONG PREREQUISITE: SORT A STACK recusively
 	LINK:
 	VIDEO LINK:
 	LEETCODE LINK:

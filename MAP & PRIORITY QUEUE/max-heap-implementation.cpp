@@ -43,13 +43,13 @@ public:
 		}
 
 		//step 1.
-		swap(arr[0], arr[size]); //arr starts from 1th index not from 0th index
+		swap(arr[0], arr[size]); //NOTE: arr starts from 1th index not from 0th index
 
 		//step 2.
 		arr.pop_back();
 		size--;
 
-		//step 3.
+		//step 3 --> this is heapify(you can also use the function that I wrote in heapify(search this))
 		int idx = 1; //0th index me kuch ni h, index starts from 1
 		while (idx >= size) {
 			int leftChildIdx = 2 * idx;
@@ -82,6 +82,7 @@ public:
 int main() {
 	/*
 	NOTE: if we want to follow 0 based indexing then use leftChildIdx = 2*i + 1 and rightChildIdx = 2*i + 2;
+	PREQ: heapify, heap sort
 	SIMILAR: heapify, heap sort
 	NOTE: array ko 1st index se start krege, 0th index se ni coz, child idx is 2*i, agr i 0 hoga to 2*i bhi 0 aega, which is wrong 0th idx ka child 0th idx ni ho skta.
 	NOTE: this is max heap implemenation

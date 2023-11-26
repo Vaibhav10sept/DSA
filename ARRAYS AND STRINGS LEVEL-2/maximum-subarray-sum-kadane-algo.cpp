@@ -15,8 +15,21 @@ int maxSubarray(vector<int> arr) {
 	return maxsum;
 }
 
+// int maxSubarray(vector<int> arr) {
+// 	int maxsum = arr[0];
+// 	int currsum = arr[0];
+
+// 	for (int i = 1; i < arr.size(); i++) {
+// 		int ele = arr[i];
+// 		currsum = max(currsum + ele, ele);
+// 		maxsum = max(currsum, maxsum);
+// 	}
+// 	return maxsum;
+// }
+
 int main() {
 	//*********************************
+	// NOTE: there is one more way to solve this question(code commented)
 	// NOTE: kadane's algo
 	// VIDEO LINK: https://www.youtube.com/watch?v=Lmv6wi9WuBQ&list=PL-Jc9J83PIiE-TR27GB7V5TBLQRT5RnSl&index=62
 	// LEETCODE LINK:

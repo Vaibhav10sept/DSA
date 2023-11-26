@@ -13,7 +13,7 @@ void combinationSum2Backtracking(vector<int> arr, int idx, int target, vector<in
 	//BC ends.
 
 	//subsets bnane h, to ek call arr[idx] ko include krke hogi or doosri call arr[idx] ko remove krke hogi(backtrack)
-	//NOTE: here in the below call we are doing idx+1 but in combination sum we were not doing idx+1 coz, here in this question one no can be used only once.
+	//NOTE: here in the below call we are doing idx+1 but in combination sum we were not doing idx+1 coz, here in this question one number can be used only once.
 	ans.push_back(arr[idx]);
 	combinationSum2Backtracking(arr, idx + 1, target - arr[idx], ans, res);
 
