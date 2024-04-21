@@ -29,7 +29,7 @@ int meetingRoom2(vector<vector<int>> &arr) {
 		}
 	}
 	return minEndTime.size();
-}
+} 
 
 int main() {
 	//*********************************

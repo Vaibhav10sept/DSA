@@ -48,7 +48,6 @@ int meetingRoom2(vector<vector<int>> &vec) {
 int main() {
 	//*********************************
 	// PREREQUISITE: "min number of platforms"
-	// NOTE: we use priority queue here
 	// NOTE: this is a non-intuitive approach
 	// VIDEO LINK: https://www.youtube.com/watch?v=qHmAwknX6OY&list=PL-Jc9J83PIiE-TR27GB7V5TBLQRT5RnSl&index=70
 	// QUESTION:
