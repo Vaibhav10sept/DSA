@@ -23,11 +23,11 @@ public:
 // we are doing operator overloading through this, bcoz we are implement priority queue for "Util" class
 bool operator<(const Util& p1, const Util& p2)
 {
-	return p1.val > p2.val;
+	return p1.val > p2.val; //min heap
 }
 
 vector<int> mergeKSortedLists(vector<vector<int>> arr) {
-	priority_queue<Util> pq;
+	priority_queue<Util> pq;  //min heap
 	vector<int> ans;
 	for (int i = 0; i < arr.size(); i++) {
 		pq.push(Util(i, 0, arr[i][0]));

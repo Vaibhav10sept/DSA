@@ -166,7 +166,7 @@ Node* HelperFunction(vector<int> postorder, int leftRange, int rightRange) {
 	Node* node = new Node(postorder[idx]);
 	idx--;
 	//recursive calls
-	//NOTE: isme pehli call right ki hoti fir left ki, preorder me pehli call left ki hoti hai fir right ki
+	//NOTE/REM: isme pehli call right ki hoti fir left ki, preorder me pehli call left ki hoti hai fir right ki
 	node->right = HelperFunction(postorder, node->data, rightRange);
 	node->left = HelperFunction(postorder, leftRange, node->data);
 

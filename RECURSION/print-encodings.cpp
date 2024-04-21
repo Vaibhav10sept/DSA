@@ -18,7 +18,7 @@ void PrintEncoding(string ques, string ans) {
 	}
 	//basecases over
 
-	else {
+	else { //means ques.size() > 1
 		char ch = ques[0];
 		int chv = ch - '0';// chv = character value; character to int conversion
 		string restOfString = ques.substr(1);
@@ -45,7 +45,8 @@ void PrintEncoding(string ques, string ans) {
 int main()
 {
 	//***************************
-	// there is a question "COUNT ENCODINGS" which counts all possible encodings
+	//we are using ques, ans approach here, same is used in print permutations
+	// there is a DP question "COUNT ENCODINGS" which counts all possible encodings
 	// (you can search it using ctrl + p)
 	// "print encoding" is recursive while "count encodings" is DP.
 	//**************************************************

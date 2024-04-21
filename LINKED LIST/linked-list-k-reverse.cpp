@@ -224,10 +224,10 @@ Node* reverseRecursive(Node* head, int k) {
 	Node* current = head;
 	Node* next = NULL;
 	Node* prev = NULL;
-	int count = 0;
+	int count = 1;
 
-	/*reverse first k nodes of the linked list */
-	while (current != NULL && count < k) {
+	/*reverse first k nodes of the linked list, using the iterative linked list reverse method already done before do check if you have doubts */
+	while (current != NULL && count <= k) {
 		next = current->next;
 		current->next = prev;
 		prev = current;
@@ -236,10 +236,11 @@ Node* reverseRecursive(Node* head, int k) {
 	}
 
 	/* next is now a pointer to (k+1)th node
+	   NOTE: next and current both are in same node, so use can also use current instead of next.
 	Recursively call for the list starting from current.
 	And make rest of the list as next of first node */
 	if (next != NULL) {
-		//head will be the new last so, head->next pe jo result aega recursize call ke baad
+		//head will be the new last so, head->next pe lagega jo result aega recursize call ke baad
 		head->next = reverseRecursive(next, k);
 	}
 
@@ -283,6 +284,11 @@ Node* reverseIterative(Node* node, int k) {
 
 int main()
 {
+	// 	blueprint of recursive method:
+	// 1. check if there are "k" nodes to be reversed using a while loop if count is less then k then don't reverse just return the head(passed as argument).
+	// 2. reverse first k nodes of the linked list, using the iterative linked list reverse method already done before do check if you have doubts
+	// 3. now, k length list is reversed, next is now a pointer to (k+1)th node, so do the recursive call passing next and take the result in head->next(as head has now become the tail of k sized linked list).
+	// 4. return the prev pointer as it will be the next head of k size reversed linked list.
 	int k = 3;
 	cout << "original linked list:" << endl;
 	LinkedList ll;

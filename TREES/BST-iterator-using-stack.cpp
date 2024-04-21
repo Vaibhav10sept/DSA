@@ -134,13 +134,13 @@ public:
 	}
 
 	int next() {
-		auto top = st.top(); st.pop();
+		Node* top = st.top(); st.pop();
 		push_in_stack(top->right);
 		return top->data;
 	}
 
 	bool hasNext() {
-		return st.size();
+		return st.empty();
 	}
 };
 

@@ -6,6 +6,14 @@ class Node
 public:
 	Node* next;
 	int data;
+
+	Node(int ele) {
+		data = ele;
+		next = NULL;
+	}
+	Node() {
+		next = NULL;
+	}
 };
 
 class LinkedList
@@ -221,12 +229,33 @@ public:
 		//slow(double pointer) ko uss node pe lao jise remove krna hai,
 		*slow = (*slow)->next;
 	}
+
+	Node* kthElementFromEnd2(int k) {
+		//this code is from the video(link below)
+		Node* start = new Node(-1);
+		start->next = head;
+		Node* slow = start;
+		Node* fast = start;
+
+		for (int i = 1; i <= k; i++) fast = fast->next;
+
+		while (fast->next != NULL) {
+			fast = fast->next;
+			slow = slow->next;
+		}
+
+		slow->next = slow->next->next;
+
+		return start->next;
+	}
 };
 
 
 int main()
 {
 	/*
+	NOTE: two functions are written as the solutions for this question
+	VIDEO LINK: https://www.youtube.com/watch?v=Lhu3MsXZy-Q&list=PLgUwDviBIf0p4ozDR_kJJkONnb1wdx2Ma&index=31
 	LEETCODE SOLUTION LINK: https://leetcode.com/problems/remove-nth-node-from-end-of-list/discuss/8812/My-short-C%2B%2B-solution
 	*/
 	LinkedList ll;
@@ -238,6 +267,7 @@ int main()
 	// ll.addFirst(0);
 	ll.printLinkedList();
 	cout << "result" << endl;
-	ll.kthElementFromEnd(2);
+	// ll.kthElementFromEnd(1);
+	ll.head = ll.kthElementFromEnd2(1);
 	ll.printLinkedList();
 }

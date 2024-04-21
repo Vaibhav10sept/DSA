@@ -10,23 +10,26 @@
 using namespace std;
 
 void fun (std::vector<int> arr, int k , int n ) {
-	int zerocnt = 0;
-	int ans = INT_MIN;
+	//this is my code.
 	int i = 0;
-	//sliding window where i marks the beginning of window and
-	// j marks the ending of window.
-	for (int j = 0; j < n; j++) {
-		if (arr[j] == 0)zerocnt++;
-		while (zerocnt > k) {
-			if (arr[i] == 0) zerocnt--;
-			i++;
+	int j = 0;
+	int countOfZeros = 0;
+	int ans = INT_MIN;
+
+	while (j < arr.size()) {
+		if (arr[j] == 0) countOfZeros++;
+		if (countOfZeros <= k) ans = max(ans, j - i + 1);
+		if (countOfZeros > k) {
+			while (countOfZeros > k) {
+				if (arr[i] == 0) countOfZeros--;
+				i++;
+			}
 		}
-		//zerocnt <= k
-		// j-i+1 is the window size.
-		ans = max(ans, j - i + 1);
+		j++;
 	}
-	cout << ans;
+	return ans == INT_MIN ? 0 : ans;
 }
+
 int main() {
 	std::vector<int> arr = {1, 1, 0, 0, 1, 1, 1, 1};
 	int k = 0;

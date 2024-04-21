@@ -34,7 +34,7 @@ vector<int> validCandidate(vector<int> arr) {
 	}
 
 	ans.push_back(val1);
-	if (val1 != val2) {
+	if (val1 != val2) { //rem: remember this part, its easy that I forget to add this check
 		ans.push_back(val2);
 	}
 	return ans;

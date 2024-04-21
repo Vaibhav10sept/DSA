@@ -20,9 +20,9 @@ int getSize(Node* head) {
 
 int getIntesectionNode(Node* head1, Node* head2) {
 	/*
-	STEP:
+	STEPS:
 	1. pehle first and second ko barabar le aao, means jiska size jyada hai usko diff jitna chla do
-	2. fir, first and second ke ek step chlao jab tak dono equal nhi ho jate, equal hone par answer mil jaega
+	2. first and second ko ek step chlao jab tak dono equal nhi ho jate, equal hone par answer mil jaega
 	*/
 	Node* first = head1;
 	Node* second = head2;
@@ -42,26 +42,18 @@ int getIntesectionNode(Node* head1, Node* head2) {
 		}
 	}
 
-	Node* ans = NULL;
-
 	while (first && second) {
 		if (first == second) {
-			ans = first;
-			break;
+			return first->data; //intersection found, return the val(data) of the intersection point
 		}
 		first = first->next;
 		second = second->next;
 	}
-	return ans->data;
+	return -1; //no intersection found return -1
 }
 
 int main()
 {
-	//*********************************
-	// NOTE: YOU CANNOT TEST THIS ONE ONLY FUNCTION IS WRITTEN
-	// DON'T RUN IT CAUSE THE CODE TO RUN THIS FUNCTION IS
-	// NOT WRITTEN.
-	//************************************
 	/*
 	    Create two linked lists
 

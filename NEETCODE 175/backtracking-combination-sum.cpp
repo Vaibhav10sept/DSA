@@ -37,13 +37,13 @@ vector<vector<int>> combinationSum(vector<int>& arr, int target) {
 
 int main() {
 	/*********************************
-	STRONG NOTE: there is DP problem "coin change combination" which given the no of possible ways
+	STRONG NOTE: there is DP problem "coin change combination" which gives the no of possible ways
 	             in this problem(backtracking) you have to print those possible ways.
 	VIDEO LINK: https://www.youtube.com/watch?v=GBKI9VSKdGg
 	LEETCODE LINK: https://leetcode.com/problems/subsets/
 	*********************************/
-	vector<int> candidates = {1, 2, 5};
-	int target = 5;
+	vector<int> candidates = {8, 1, 8, 6, 8};
+	int target = 12;
 	vector<vector<int>> ans = combinationSum(candidates, target);
 	for (auto vec : ans) {
 		for (auto ele : vec) {

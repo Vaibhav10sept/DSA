@@ -1,27 +1,26 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool wordBreak(string str, vector<string> arr) {
+bool wordBreak(string str, vector<string> dict) {
 	// WV recommended
 	//this is my own solution
 	//you can watch video, for logic but this solution is written by me only
 	vector<bool> dp(str.size() + 1, false);
-	//LOGIC: dp[i] --> contains boolean which represent that a substring from ith index to end vali substring se kya word dictionary ke words ko use krte hue bnae ja skti h
-	set<string> st(arr.begin(), arr.end());
+	//LOGIC: dp[i] --> contains boolean which represent that a substring from ith index to end vali substring se kya word dictionary ke words ko use krte hue bnae ja skta h
 
 	//initialization
 	dp[str.size()] = true; //means str.size() pe to true hi hoga kyoki hm str ke end pe pahunch gae h.(think, WV)
 
 	for (int i = str.size() - 1; i >= 0; i--) {
 
-		for (string ele : arr) {
-			int stringSize = ele.size();
+		for (string word : dict) {
+			int stringSize = word.size();
 			// string subString = stringSize <= str.size() ? str.substr(i, stringSize) : "";
 			string subString = str.substr(i, stringSize);
 			// cout << "sub " << subString << endl;
 			// cout << "siz " << stringSize << endl;
-			// cout << "ele " << ele << endl;
-			if (ele == subString) {
+			// cout << "word " << word << endl;
+			if (word == subString) {
 				// cout << "i " << dp[i + subString.size()] << endl;
 				if (i + subString.size() < dp.size()) {
 					if (dp[i + subString.size()]) {
@@ -32,6 +31,7 @@ bool wordBreak(string str, vector<string> arr) {
 				else {
 					dp[i] = true;
 				}
+
 			}
 
 		}

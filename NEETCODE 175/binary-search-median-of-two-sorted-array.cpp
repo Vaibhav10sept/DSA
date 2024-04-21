@@ -14,8 +14,10 @@ double MedianOfTwoSortedArrays(vector<int> arr1, vector<int> arr2) {
 	while (low <= high) {
 		int cut1 = (low + high) / 2;
 		int cut2 = (n1 + n2 + 1) / 2 - cut1;
-		//(n1+n2+1) / 2 --> define the size of left half
-
+		//(n1+n2+1) / 2 --> define the size of left half, +1 coz, odd and even sum(n1+n2) ko handle kr lega easily
+		//if even(n1+n2) like 10, to 10+1/2 is 5 or agr +1 ni kroge for example 10/2 is 5, means +1 kro ya na kro ans 5 hi aega in case of even length
+		//if odd(n1+n2) like 11, to 11+1/2 is 6 -> so left me 6 hoge and right me 5 that will make left larger then right is case of odd lenght, to neeche code me dekho odd length ke liye median kese nikal rhe smjh aa jaega
+		cout << "cut1 " << cut1 << " cut2 " << cut2 << endl;
 		int left1 = cut1 == 0 ? INT_MIN : arr1[cut1 - 1];
 		int left2 = cut2 == 0 ? INT_MIN : arr2[cut2 - 1];
 
@@ -46,10 +48,13 @@ double MedianOfTwoSortedArrays(vector<int> arr1, vector<int> arr2) {
 
 int main() {
 	/*
-	PREREQUISITE:
+	PREREQUISITE: kth element of two sorted arrays
 	VIDEO LINK: https://www.youtube.com/watch?v=NTop3VTjmxk
 	*/
-	vector<int> arr1 = {1, 2};
-	vector<int> arr2 = {3, 4};
-	cout << MedianOfTwoSortedArrays(arr1, arr2);
+	// vector<int> arr1 = {1, 2};
+	// vector<int> arr2 = {3, 4};
+
+	vector<int> arr1 = {1, 3};
+	vector<int> arr2 = {2};
+	cout << "result " << MedianOfTwoSortedArrays(arr1, arr2);
 }

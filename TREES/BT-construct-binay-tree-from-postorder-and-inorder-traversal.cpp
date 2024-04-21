@@ -163,15 +163,16 @@ Node* HelperFunction(vector<int> postorder, int postorderStartIdx, int postorder
 	if (inorderStartIdx > inorderEndIdx) return NULL;
 
 	int idx = inorderStartIdx; //coz, post ka end idx hi root hota hai, so we are searching for root in order array
-	//here, we are searching for inorder start val in postorder array
+	//NOTE: postorder[postorderEndIdx] is the root for this subtree
 	while (inorder[idx] != postorder[postorderEndIdx]) idx++;
-	int countOfElements = idx - inorderStartIdx;
+	//now, idx is at the root in inorder array
+	int countOfLeftTreeElements = idx - inorderStartIdx;
 
 	Node* node = new Node(postorder[postorderEndIdx]);
 
 	//recursive calls
-	node->left = HelperFunction(postorder, postorderStartIdx, postorderStartIdx + countOfElements - 1, inorder, inorderStartIdx, idx - 1);
-	node->right = HelperFunction(postorder, postorderStartIdx + countOfElements, postorderEndIdx - 1, inorder, idx + 1, inorderEndIdx);
+	node->left = HelperFunction(postorder, postorderStartIdx, postorderStartIdx + countOfLeftTreeElements - 1, inorder, inorderStartIdx, idx - 1);
+	node->right = HelperFunction(postorder, postorderStartIdx + countOfLeftTreeElements, postorderEndIdx - 1, inorder, idx + 1, inorderEndIdx);
 
 	return node;
 }

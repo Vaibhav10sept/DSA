@@ -25,9 +25,10 @@ Node* newNode(int key)
 
 void removeCyle(Node* meet, Node* head) {
 	/*
-	LOGIC: 1. ek pointer head(head) pe hoga
-	2. doosra pointer intersection pointer pe hoga
+	LOGIC: 1. ek pointer head pe hoga
+	2. doosra pointer intersection junction(jis node pr hme pta chlta h ki cycle h vo node(refer to detect cycle method)) pe hoga
 	3. fir dono pointer ek step se move krege, jab ye dono pointers meet krege vo intersecting node hoga
+	4. we are keeping this prev pointer, to jb hm intersecting node dhundh lege, tb prev pointer points to the prev node of the intersecting node, so prev->next = NULL krne se cycle/loop khtm ho jega
 	*/
 	//this is confirm that ll has cycle, kyoki iss function ko call hi cycle detect hone pr kia hai
 	Node* prev = meet;
@@ -37,7 +38,7 @@ void removeCyle(Node* meet, Node* head) {
 		meet = meet->next;
 	}
 	//here, head == meet.
-	prev->next = NULL;
+	prev->next = NULL; //this will break the cycle
 	return;
 }
 
@@ -55,6 +56,7 @@ void detectAndRemoveCycle(Node* head) {
 	Node* fast = head;
 
 	while (fast->next != NULL and fast->next->next != NULL) {
+		// while (fast != NULL and fast->next != NULL) {
 		fast = fast->next->next;
 		slow = slow->next;
 		if (fast == slow) { //cycle found
@@ -67,7 +69,7 @@ void detectAndRemoveCycle(Node* head) {
 Node* findIntersectingNodeInCycle(Node* meet, Node* start) {
 	/*
 	LOGIC: 1. ek pointer head(start) pe hoga
-	2. doosra pointer intersection pointer pe hoga
+	2. doosra pointer intersection junction(jis node pr hme pta chlta h ki cycle h vo node(refer to detect cycle method)) pe hoga
 	3. fir dono pointer ek step se move krege, jab ye dono pointers meet krege vo intersecting node hoga
 	*/
 	//this is confirm that ll has cycle, kyoki iss function ko call hi cycle detect hone pr kia hai

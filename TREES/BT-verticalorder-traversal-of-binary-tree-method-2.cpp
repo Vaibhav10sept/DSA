@@ -199,10 +199,10 @@ vector<vector<int>> verticalOrderTraversal(Node* root) {
 	queue<UtilClass> q;
 
 	q.push(UtilClass(abs(minHorizontalLevel), root)); //think(why abs(minhorizontallevel)), all logic lies here, watch video
-
+	//why abs(minhorizontallevel) coz, indexes are positive, think WV
 	while (!q.empty()) {
 		int size = q.size();
-		//this is line wise traversal technique
+		//this is line/level wise traversal technique
 		while (size--) {
 			UtilClass removedObj = q.front();
 			q.pop();

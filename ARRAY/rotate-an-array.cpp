@@ -15,7 +15,6 @@ void rotateArray(vector<int> &arr, int r) {
 	// handling rotations more than the size of array.
 	r = r % arr.size();
 
-
 	// 3 step process
 	// divide array in two parts
 	// 1. reverse first part
@@ -29,8 +28,10 @@ void rotateArray(vector<int> &arr, int r) {
 
 int main()
 {
-	vector<int> arr = {1, 2, 3, 4, 5, 6};
+	vector<int> arr = {1, 2, 3, 4, 5, 6, 7};
+	cout << "before rotation:" << endl;
 	print(arr);
-	rotateArray(arr, 1);
+	rotateArray(arr, 500);
+	cout << "after rotation:" << endl;
 	print(arr);
 }

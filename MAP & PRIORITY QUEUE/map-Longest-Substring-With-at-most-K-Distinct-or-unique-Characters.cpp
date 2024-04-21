@@ -6,26 +6,20 @@ int LongestSubarrayOfSumk(string str, int k) {
 	int i = 0, j = 0;
 	int ans = INT_MIN;
 	map<char, int> freqMap;
-	int cnt = 0;
 
 	while (j < n) {
 		freqMap[str[j]]++;
-		cnt++;
-		if (freqMap.size() <= k) {
-			ans = max(ans, cnt);
+		if (freqMap.size() <= k) { //this is the only diff, from longest substring with exactly k unique characters
+			ans = max(ans, j - i + 1);
 		}
-		else if (freqMap.size() > k) {
-			while (freqMap.size() > k) {
-				if (freqMap.find(str[i]) != freqMap.end()) {
-					freqMap[str[i]]--;
-					if (freqMap[str[i]] == 0) {
-						freqMap.erase(str[i]);
-					}
-					cnt--;
-					i++;
-				}
+		while (freqMap.size() > k) {
+			freqMap[str[i]]--;
+			if (freqMap[str[i]] == 0) {
+				freqMap.erase(str[i]);
 			}
+			i++;
 		}
+
 		j++;
 	}
 	if (ans == INT_MIN) {
@@ -40,7 +34,7 @@ int main() {
 	PREREQUISITE: longest substring with exactly k distinct charaters.
 	NOTE: this is variable size sliding window question.
 	NOTE: we use map here.
-	LINK: https://www.geeksforgeeks.org/find-the-longest-substring-with-k-unique-characters-in-a-given-string/
+	LINK: https://www.codingninjas.com/studio/problems/longest-substring-with-at-most-k-distinct-characters_2221410?leftPanelTab=1
 	VIDEO LINK: https://www.youtube.com/watch?v=Lav6St0W_pQ&list=PL_z_8CaSLPWeM8BDJmIYDaoQ5zuwyxnfj&index=10
 	OUTPUT: length of longest subString with "k" no. of unique character.
 	*/

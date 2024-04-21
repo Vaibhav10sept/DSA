@@ -42,13 +42,15 @@ public:
 
 //we are doing operator overloading so that we can implement priority queue.
 bool operator<(const UtilPair p1, const UtilPair p2) {
+	//min heap --> min element top me rhega
 	return p1.weight > p2.weight;
 }
 
 void dijsktrasAlgorithm(vector<vector<Edge>> graph, int src) {
-	priority_queue<UtilPair> q;
+	priority_queue<UtilPair> q; //min heap
 	q.push(UtilPair(src, to_string(src), 0));
 	vector<bool> visited(graph.size());
+
 	while (!q.empty()) {
 		//step 1. remove
 		UtilPair removed = q.top();
@@ -76,11 +78,12 @@ void dijsktrasAlgorithm(vector<vector<Edge>> graph, int src) {
 
 int main() {
 	//************************************************************
+	// NOTE: dijsktra algo is not applicable for negative weights.
 	//VIDEO LINK: https://www.youtube.com/watch?v=sD0lLYlGCJE&list=PL-Jc9J83PIiFj7YSPl2ulcpwy-mwj1SSk&index=533
 	//NOTE: we use priority queue data structure here
 	//NOTE: dijkstra's algo -> shortest path in terms of weight
-	//NOTE: to find shortest path in terms of edge use BST.
-	//NOTE: the only diff betweeen dijkstra's algo and BST is we use
+	//NOTE: to find shortest path in terms of edge use BFS.
+	//NOTE: the only diff betweeen dijkstra's algo and BFS is we use
 	//priority queue in dijkstra's algo
 	//STEPS: remove, mark(visited), work(print), add
 	//************************************************************

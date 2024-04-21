@@ -5,7 +5,7 @@ int calculatePowerLogarithmic(int n, int p) {
 	if (p == 0) return 1;
 	int res = calculatePowerLogarithmic(n, p / 2);
 	int ans = res * res;
-	if (n % 2 == 1) { // n is odd, then do one extra multiplication of 'n'.
+	if (p % 2 == 1) { // p(power) is odd, then do one extra multiplication of 'n'.
 		ans *= n;
 	}
 	return ans;

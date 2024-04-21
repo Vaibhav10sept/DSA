@@ -163,7 +163,7 @@ int main()
 	/*
 	VIDEO LINK:
 	*/
-	vector<int> arr = {50, 25, 12, -1, -1, 37, 30, -1, -1, -1, 75, 62, -1, 70, -1, -1, 87, -1, -1};
-	Node* root = construct(arr);
+	vector<int> arr = {4, 2, 7, 1, 3, 6, 9};
+	Node* root = constructorForLeetcode(arr);
 	display(root);
 }

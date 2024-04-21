@@ -41,7 +41,7 @@ int basicCalculator2(string str) {
 			operand.push(val);
 		}
 		else if (ch == '+' or ch == '-' or ch == '*' or ch == '/') { //opertor hoga +,-,*,/
-			//koi operator apse higher ya barabar precedence vale operator ko solve kra deta hai, and then khud push ho jata hai
+			//koi operator apne se higher ya barabar precedence vale operator ko solve kra deta hai, and then khud push ho jata hai
 			while (!opertor.empty() and precedence(opertor.top()) >= precedence(ch)) {
 				int val2 = operand.top();
 				operand.pop();
@@ -75,6 +75,7 @@ int basicCalculator2(string str) {
 int main() {
 	/*
 	PREREQUISITE:
+	NOTE: isko ek or better solution bhi h(search for it)
 	VIDEO LINK: https://www.youtube.com/watch?v=gmy6L9vHTbo&list=PL-Jc9J83PIiE1_SifBEWRsD-fzxrvkja9&index=25
 	LEETCODE LINK:
 	*/

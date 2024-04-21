@@ -29,6 +29,7 @@ int minNumberOfplatforms(vector<int> arr, vector<int> dep) {
 int main() {
 	//*********************************
 	// PREREQUISITE: "merge-intervals" and "meeting-rooms-2-chronogical-order"
+	// SAME CODE: meeting-rooms-2-chronogical-order
 	// ACTUAL VIDEO LINK: https://www.youtube.com/watch?v=qHmAwknX6OY&list=PL-Jc9J83PIiE-TR27GB7V5TBLQRT5RnSl&index=71
 	// VIDEO LINK: https://www.youtube.com/watch?v=FkJZlZHWUyk&list=PL-Jc9J83PIiE-TR27GB7V5TBLQRT5RnSl&index=68
 	// QUESTION:

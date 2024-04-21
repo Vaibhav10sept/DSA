@@ -26,23 +26,46 @@ int binarySearch(vector<int> arr, int k, int start, int end) {
 }
 
 int peakElement(vector<int> &arr) {
+	//edge case
+	if (arr.size() == 1) return 0; //we are returning index of the peak element, one size array me ek hi element hoga or vohi peak element hoga.
 	int start = 0, end = arr.size() - 1, mid;
 
-	while (start < end) {
+	while (start <= end) {
 		mid = start + (end - start) / 2;
+		if (mid > 0 and mid < arr.size() - 1) {
+			if (arr[mid] > arr[mid - 1] and arr[mid] > arr[mid + 1]) {
+				return mid;
+			}
+			//kidhar move krna h
+			else if (arr[mid - 1] > arr[mid]) { //move left
+				end = mid - 1;
+			}
+			else { //move right
+				start = mid + 1;
+			}
+		}
 
-		if (arr[mid] < arr[mid + 1]) //move to right, think ki kaese mid+1 kbhi out of bound nhi jaega
-			start = mid + 1;
-
-		else end = mid; //move to left or end = mid kia
-		//end = mid -1 nhi kia coz arr[mid] bhi answer ho skta hai, coz condition hi yahi hai iss else ki arr[mid]>=arr[mid+1]
+		//check for 0th and last index
+		else if (mid == 0) {
+			if (arr[mid] > arr[mid + 1]) {
+				return mid;
+			}
+			else
+				return 1;
+		}
+		else if (mid ==  arr.size() - 1) {
+			if (arr[mid] > arr[mid - 1]) {
+				return mid;
+			}
+			else
+				return arr.size() - 1;
+		}
 	}
-
-	return start;
 }
 
+
 int SearchAnElementinBitonicArray(vector<int> &arr, int k) {
-	//1. find peak element ka index, coz peak element ke left vala increseing sorted hoga
+	//1. find peak element ka index, coz peak element ke left vala increasing sorted hoga
 	//or right vala decreasing sorted hoga
 	int peakIndex = peakElement(arr);
 

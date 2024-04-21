@@ -3,6 +3,7 @@ using namespace std;
 
 int largestRectangleHistogramEfficient(vector<int> arr) {
 	//watch video recommended.
+	//NOTE: main logic is stack me hmesa increasing order me values(ke indexes) hoge.
 	stack<int> st; //store the index
 	int n = arr.size();
 	st.push(-1);
@@ -27,7 +28,8 @@ int largestRectangleHistogramEfficient(vector<int> arr) {
 int main() {
 	/*
 	PREREQUISITE:
-	VIDEO LINK: https://www.youtube.com/watch?v=41VuLYR0btE&list=PL-Jc9J83PIiE1_SifBEWRsD-fzxrvkja9&index=6
+	VIDEO LINK 1: https://www.youtube.com/watch?v=X0X6G-eWgQ8&list=PLgUwDviBIf0p4ozDR_kJJkONnb1wdx2Ma&index=82
+	VIDEO LINK 2: https://www.youtube.com/watch?v=jC_cWLy7jSI&list=PLgUwDviBIf0p4ozDR_kJJkONnb1wdx2Ma&index=83
 	LEETCODE LINK: https://leetcode.com/problems/largest-rectangle-in-histogram/submissions/
 	*/
 	vector<int> arr = {2, 1, 5, 6, 2, 3};

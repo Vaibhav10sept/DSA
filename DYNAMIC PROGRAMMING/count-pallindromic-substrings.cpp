@@ -11,15 +11,17 @@ int countPallindromicSubstrings(string str) {
 	//          ie., substring start from ith index and ends at jth index is pallindromic or not.
 
 	vector<vector<bool>> dp(str.size(), vector<bool>(str.size(), false));
-	int count = 0;
-	//NOTE: here we are doing upper diagonal wise traversal(WV
+	int countOfPallindromicSubString = 0;
+	//NOTE: here we are doing upper diagonal wise traversal(WV, CS)
 
 	for (int gap = 0; gap < dp.size(); gap++) {
 		for (int i = 0, j = gap; i < dp.size() and j < dp.size(); i++, j++) {
 			if (gap == 0) { //means str.size() = 1, one size ki substring pallindrome hoti h
+				//initialization
 				dp[i][j] = true;
 			}
 			else if (gap == 1) { //means str.size() = 2, two size ki substring ko easy check kr skte h ki vo pallindrome hai ya nhi
+				//initialization
 				if (str[i] == str[j]) {
 					dp[i][j] = true;
 				}
@@ -30,10 +32,10 @@ int countPallindromicSubstrings(string str) {
 					dp[i][j] = true;
 				}
 			}
-			if (dp[i][j] == true) count++;
+			if (dp[i][j] == true) countOfPallindromicSubString++;
 		}
 	}
-	return count;
+	return countOfPallindromicSubString;
 }
 
 int main()

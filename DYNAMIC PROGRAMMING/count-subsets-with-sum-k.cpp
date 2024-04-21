@@ -1,50 +1,79 @@
 #include <bits/stdc++.h>
 using namespace std;
+int mod = 1e9 + 7;
 
-int countSubsetsWithSumK(vector<int> arr, int target) {
-	vector<vector<int>> dp(arr.size() + 1, vector<int> (target + 1, false));
-	// row --> array ke element hote h, means subsets hote h
-	// col --> target hota h
-	// dp[i][j] --> store count of subsets using values till arr[i-1](bcoz array index is one less than the row(i) in dp) and target as j.
-	for (int i = 0; i < dp.size() ; i++) { // row --> array ke elements
-		for (int j = 0; j < dp[0].size(); j++) {
-			//first row and first column means 0 sum and empty subset
-			if (i == 0 and j == 0) {
-				dp[i][j] = 1;
-			}
-			//first row means no data in the subset(empty subset)
-			else if (i == 0) {
-				dp[i][j] = 0;
-			}
-			//initialization ends
+void displayMatrix(vector<vector<int>> arr) {
+	for (int i = 0; i < arr.size(); i++) {
+		for (int j = 0; j < arr[i].size(); j++) {
+			cout << arr[i][j] << " ";
+		}
+		cout << endl;
+	}
+}
 
-			//for every other cells
-			else {
-				dp[i][j] += dp[i - 1][j]; //not pick
-				int val = arr[i - 1]; // bcoz array index is 1 less than the row no(i). think
-				if (val <= j) {
-					dp[i][j] += dp[i - 1][j - val]; //pick
-				}
+int perfectSum(int arr[], int n, int target)
+{
+	vector<vector<int>> dp(n + 1, vector<int>(target + 1, 0));
+
+	int cnt = 1;
+	dp[0][0] = 1;
+	for (int i = 0; i < n; ++i)
+	{
+		// Explanation:- They have also included zeroes hence the first column ie t[i][0] which signifies
+		// no. of elements whose sum is 0 increases with every entry of 0 in the input array by a factor of 2.
+		// Eg-> for no zero element we have {} empty subset whose sum is 0. So, for 1 zero element 0 sum
+		// count is 2. For 2 zeroes element in the array we have 0 sum count as 4 [{}, {first zero},
+		// {second zero}, {both zeroes}]. So, we are counting zeroes and initialising first column
+		// accordingly.
+		if (arr[i] == 0)
+		{
+			cnt *= 2;
+			dp[i + 1][0] = cnt;
+		}
+		else
+		{	//element is non zero, so only one count ie. empty set
+			dp[i + 1][0] = 1;
+		}
+
+	}
+
+	int mod = (int)1e9 + 7;
+	for (int i = 1; i < n + 1; ++i)
+	{
+		for (int j = 1; j < target + 1; ++j)
+		{
+			if (arr[i - 1] <= j)
+			{
+				dp[i][j] = (dp[i - 1][j] + dp[i - 1][j - arr[i - 1]]) % mod;
+			}
+			else
+			{
+				dp[i][j] = dp[i - 1][j];
 			}
 		}
 	}
+	displayMatrix(dp);
 
-	return dp[arr.size()][target];
+	return dp[n][target];
+
 }
 
 int main()
 {
 	/***************************
-
+	 * STRONG PREQ: subset sum dp
+	NOTE: this sol also contains the code to handle 0 element in array(copied from a comment of the attached video, but pura smjh me aa gya)
 	 * NOTE: there is a recursive solution also.
-	VIDEO LINK: https://www.youtube.com/watch?v=ZHyb-A2Mte4&t=46s
-	QUESTION LINK: https://www.geeksforgeeks.org/count-of-subsets-with-sum-equal-to-x/
+	VIDEO LINK: https://www.youtube.com/watch?v=F7wqWbqYn9g
+	QUESTION LINK: https://www.geeksforgeeks.org/problems/perfect-sum-problem5633/1
 	subset/subsequence: 2^n; har element ke pass 2 option hai ya toh subset me aae
 	ya na aae
 	subarray: N*(N+1)/2; subarray continuous hote hai
 	//**************************************************/
-	vector<int> arr =  {0, 0, 1};
-	int target = 1;
-
-	cout << "result " << countSubsetsWithSumK(arr, target);
+	vector<int> arr = {9, 6, 1, 2, 6, 8, 5};
+	int arr1[] =  {9, 6, 1, 2, 6, 8, 5};
+	int target = 7;
+	int n = 7;
+	cout << perfectSum(arr1, n, target) << endl;
+	cout << "result " << countSubsetsWithSumKStriverSolution(arr, target);
 }

@@ -138,6 +138,7 @@ void iterativeTraversal(Node* node) {
 			pre += to_string(temp.node->data) + " ";
 
 			st.top().state++;
+
 			if (temp.node->left) {
 				UtilPair newPair(temp.node->left, 1);
 				st.push(newPair);

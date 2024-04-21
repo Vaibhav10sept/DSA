@@ -5,6 +5,8 @@ using namespace std;
 int longestIncreasingSubsequence(vector<int> arr) {
 	//Please watch attached video(link) for more understanding.
 	int n = arr.size();
+	//edge case
+	if (n == 1) return 1; //agr one size ka array h to vo apne app me hi 1 size ka longest increasing subsequence hoga, hence return 1.
 	int maxLenghtLongestIncresingSubsequence = 0;
 	vector<int> dp(n);
 	dp[0] = 1; //initialization --> means one size ka subarray to apne app me longest inc subsequence hota h(think), islie 1 store krege coz dp me hm lenght store kr rhe h

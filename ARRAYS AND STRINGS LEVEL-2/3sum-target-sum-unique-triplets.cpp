@@ -29,7 +29,7 @@ vector<vector<int> > threeSum(vector<int> &num) {
 			else if (sum > target)
 				back--;
 
-			else {
+			else { // sum == target
 				vector<int> triplet = {num[i], num[front], num[back]};
 				res.push_back(triplet);
 

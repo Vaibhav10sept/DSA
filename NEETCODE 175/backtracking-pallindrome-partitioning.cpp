@@ -44,6 +44,8 @@ vector<vector<string>> pallindromePartitioning(string str) {
 
 int main() {
 	/*********************************
+	 * APPLICATION QUESTION: minimum insertion to make string pallindromic
+	 * PREREQUISITE: backtracking combination sum 2 optimized
 	VIDEO LINK: https://www.youtube.com/watch?v=WBgsABoClE0
 	LEETCODE LINK: https://leetcode.com/problems/palindrome-partitioning/
 	*********************************/

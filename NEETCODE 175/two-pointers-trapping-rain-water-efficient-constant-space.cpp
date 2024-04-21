@@ -2,7 +2,7 @@
 using namespace std;
 
 int trappingRainWater(vector<int> arr) {
-	//here we use two pointers.
+	//here we use two pointers, WV recommended
 	int n = arr.size();
 	int i = 0;
 	int j = n - 1;
@@ -35,8 +35,8 @@ int trappingRainWater(vector<int> arr) {
 
 int main() {
 	/*
-	VIDEO LINK:
-
+	NOTE: this is the most efficient solution, one less eff solution is also there(which is very intuitive). but please stick to this one,
+	VIDEO LINK: https://www.youtube.com/watch?v=m18Hntz4go8&list=PLgUwDviBIf0p4ozDR_kJJkONnb1wdx2Ma&index=43
 	*/
 	vector<int> arr = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
 	cout << trappingRainWater(arr);

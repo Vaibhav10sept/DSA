@@ -5,7 +5,7 @@ using namespace std;
 LOGIC:
 1.min variable me ham min val store krte h
 2.min se bdi val ati h to use direct push krte h
-3.agr min se choti val ati h to stack me fake val(val + val - min), jo ki min se choti hoti h, vo store krte hai or original val min me jati h
+3.agr min se choti val ati h to stack me fake val(val + (val - min)), jo ki min se choti hoti h, vo store krte hai or original val min me jati h
 4.agr kisi moment me stack ko top pe min se choti val h, means case 3 hua h, we get original val from min and new min from stack top
 */
 
@@ -22,7 +22,7 @@ public:
 			st.push(val);
 		}
 		else { //case 3
-			st.push(val + (val - minVal)); //(val + val - minVal)--> fake value is always less than minVal, this help us to detect that minVal is changed here
+			st.push(val + (val - minVal)); //(val + (val - minVal))--> fake value is always less than minVal, this help us to detect that minVal is changed here
 			minVal = val; //original val stored in minVal.
 		}
 	}

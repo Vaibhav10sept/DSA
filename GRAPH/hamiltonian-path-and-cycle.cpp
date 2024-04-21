@@ -50,7 +50,7 @@ void printHamiltonianPathAndCycle(vector<vector<Edge>> graph, int src, set<int> 
 
 	visited.insert(src);
 	for (Edge edge : graph[src]) {
-		if (visited.find(edge.neighbour) == visited.end()) {
+		if (visited.find(edge.neighbour) == visited.end()) { //not found
 			printHamiltonianPathAndCycle(graph, edge.neighbour, visited, path + to_string(edge.neighbour), originalSource);
 		}
 	}
@@ -59,11 +59,13 @@ void printHamiltonianPathAndCycle(vector<vector<Edge>> graph, int src, set<int> 
 }
 
 int main() {
-	//************************************************************
+	/************************************************************
+	HAMILTONIAN PATH: A Hamiltonian path or traceable path is a path that visits each vertex of the graph exactly once.
+	HAMILTONIAN CYCLE: Hamiltonian Path in an undirected graph is a path that visits each vertex exactly once. A Hamiltonian cycle (or Hamiltonian circuit) is a Hamiltonian Path such that there is an edge (in the graph) from the last vertex to the first vertex of the Hamiltonian Path.
 	//VIDEO LINK: https://www.youtube.com/watch?v=nUgp0RG57wQ&list=PL-Jc9J83PIiFj7YSPl2ulcpwy-mwj1SSk&index=528
 	//NOTE: similar to "print all paths"
 	//we need to backtrack in this question similar to "print all paths"
-	//************************************************************
+	//************************************************************/
 	// INPUT:
 // 7
 // 9

@@ -27,7 +27,7 @@ int main() {
 	/**************************
 	NOTE: THIS IS THE DP SOLUTION MORE SOLUTION ARE ALSO THERE
 	 * LEETCODE LINK: https://leetcode.com/problems/jump-game/
-	 VIDEO LINK: https://www.youtube.com/watch?v=muDPTDrpS28
+	 VIDEO LINK: https://www.youtube.com/watch?v=Yan0cv2cLy8
 	 * ******************************/
 	vector<int> nums = {2, 3, 1, 1, 4};
 	bool ans = jumpGame(nums);

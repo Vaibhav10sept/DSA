@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool recursiveExplore(vector<vector<char>> arr, int i, int j, int idx, string word) {
+bool recursiveExplore(vector<vector<char>> &arr, int i, int j, int idx, string word) {
 	//base cases starts
 	if (idx == word.size()) return true;
 	if (i<0 or j<0 or i >= arr.size() or j >= arr[0].size()) return false;
@@ -42,8 +42,7 @@ int main() {
 	//*********************************
 	vector<vector<char>> board = {{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}};
 	string word = "ABCCED";
-	bool ans = wordSearch(board, word);
-	if (ans) {
+	if (wordSearch(board, word)) {
 		cout << "true";
 	}
 	else cout << "false";

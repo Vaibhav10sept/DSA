@@ -33,8 +33,12 @@ int main()
 	// ya "COIN CHANGE PERMUTATIONS" both will give the same answer(think)
 	// here, we have used "COIN CHANGE COMBINATION"
 	//**************************************************
-	vector<int> value = {15, 14, 10, 45, 30};
-	vector<int> weight = {2, 5, 1, 3, 4};
-	int capacity = 7;
+	// vector<int> value = {15, 14, 10, 45, 30};
+	// vector<int> weight = {2, 5, 1, 3, 4};
+	// int capacity = 7;
+
+	vector<int> value = {60, 100, 120};
+	vector<int> weight = {10, 20, 30};
+	int capacity = 50;
 	cout << "maximum profit is: " << unboundedZeroOneKnapsack(value, weight, capacity);
 }

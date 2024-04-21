@@ -14,7 +14,7 @@ int longestConsecutiveSubsequence(vector<int> arr) {
 			//find the length of that subsequence;
 			int len = 1;
 			int nextNumber = ele + 1;
-			while (st.find(nextNumber) != st.end()) {
+			while (st.find(nextNumber) != st.end()) { //jb tk nextNumber milta jae
 				len++;
 				nextNumber++;
 			}

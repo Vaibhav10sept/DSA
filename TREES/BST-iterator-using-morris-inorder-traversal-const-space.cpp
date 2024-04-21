@@ -193,6 +193,7 @@ public:
 					curr = curr->left;
 				}
 				else { //rightMostNode->right != NULL, means right most node ka right curr ko point krra hoga, toh ye link break kro
+					//this also means that the left subtree is processed so inorder me left subtree process krne ke baad print krte so do that
 					// break the thread.
 					rightMostNode->right = NULL;
 					//inorder phase

@@ -18,7 +18,7 @@ int partition(vector<int> &arr, int low, int high) {
 			j++;
 		}
 	}
-	return j - 1;
+	return j - 1; //we are returning the index where pivot element is placed
 }
 
 
@@ -35,7 +35,6 @@ void quickSelect(vector<int> &arr,  int low, int high, int k) {
 	else { // k > pivot, right me jaoge
 		quickSelect(arr, pivot + 1, high, k);
 	}
-
 }
 
 int main() {

@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int targetSumPair(vector<int> arr, int target) {
+void targetSumPair(vector<int> arr, int target) {
 	int left = 0;
 	int right = arr.size() - 1;
 	sort(arr.begin(), arr.end());

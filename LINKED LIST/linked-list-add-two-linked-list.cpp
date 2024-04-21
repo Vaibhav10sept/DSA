@@ -235,7 +235,6 @@ int add(Node* l1, Node* l2, int f1, int f2, LinkedList *res) {
 		res->addFirst(rem);
 		return sum;
 	}
-
 }
 
 
@@ -243,6 +242,9 @@ int add(Node* l1, Node* l2, int f1, int f2, LinkedList *res) {
 
 int main()
 {
+	/*
+	VIDEO LINK: https://www.youtube.com/watch?v=tK4eez3syAQ&t=264s
+	*/
 	LinkedList ll;
 	ll.addLast(9);
 	ll.addLast(7);

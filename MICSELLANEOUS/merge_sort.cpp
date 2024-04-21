@@ -12,7 +12,8 @@ void merge(int arr[], int l, int r, int mid) {
 	for (int i = mid + 1; i <= r; i++) {
 		b[i - (mid + 1)] = arr[i];
 	}
-//merging part
+
+	//merging part
 	int i = 0, j = 0, k = l;
 	while (i < n1 and j < n2) {
 		if (a[i] < b[j]) {
@@ -22,6 +23,7 @@ void merge(int arr[], int l, int r, int mid) {
 			arr[k++] = b[j++];
 		}
 	}
+	//for the remaining items of array 'a' and 'b'
 	while (i < n1)  {
 		arr[k++] = a[i++];
 	}

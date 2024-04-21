@@ -21,6 +21,9 @@ void fun(vector<int> arr)
 	for (auto i : ans)cout << i << " ";
 }
 int main() {
+	/*
+	QUESTION: https://leetcode.com/problems/online-stock-span/
+	*/
 	vector<int> arr = {100, 80, 60, 70, 60, 75, 80};
 
 

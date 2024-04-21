@@ -25,8 +25,8 @@ int main()
 	//       the backtracking prob will print all those ways.
 	// video link: https://www.youtube.com/watch?v=l_nR5X9VmaI&list=PL-Jc9J83PIiFj7YSPl2ulcpwy-mwj1SSk&index=479
 	//**************************************************
-	vector<int> coins = {1, 2, 5};
-	int amount = 11;
+	vector<int> coins = {2, 3, 6, 7};
+	int amount = 7;
 
 	cout << coinChangeCombination(coins, amount);
 }

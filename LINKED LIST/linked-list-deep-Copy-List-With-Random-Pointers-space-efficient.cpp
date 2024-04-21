@@ -248,18 +248,18 @@ ListNode* CopyListWithRandomPointers(ListNode* head) {
 
 	//extract copied list and restore the original list.
 	ListNode* dummy = new ListNode(-1);
-	ListNode* prev = dummy;
+	ListNode* temp = dummy;
 	curr = head;
 
 	while (curr) {
 		//deep copied list bnae
-		prev->next = curr->next;
+		temp->next = curr->next;
 
 		//original ko restore kia
 		curr->next = curr->next->next;
 
-		//move prev and curr
-		prev = prev->next;
+		//move temp and curr
+		temp = temp->next;
 		curr = curr->next;
 	}
 

@@ -209,7 +209,7 @@ vector<int> topView(Node* root) {
 			Node* tempNode = removedObj.node;
 
 			//ans vector me horizontal level ko as a index use krke push kro
-			if (ans[removedObj.horizontalLevel] == INT_MIN)
+			if (ans[removedObj.horizontalLevel] == INT_MIN) //agr iss index me kuch nhi h means INT_MIN h tbhi add kro other wise mt kro(to make top view)(think CS)
 				//this is the only difference in bottom view and top view
 				ans[removedObj.horizontalLevel] = tempNode->data;
 

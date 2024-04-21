@@ -144,6 +144,7 @@ public:
 			Node* newNode = new Node(val);
 			tail->next = newNode;
 			newNode->prev = tail;
+			tail = newNode;
 		}
 		size++;
 	}

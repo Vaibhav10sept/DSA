@@ -7,7 +7,7 @@ int longestConsecutiveSubsequence(vector<int> arr) {
 
 	for (int ele : arr) {
 		//check if ele is the start of a subsequence(logic)
-		if (st.find(ele - 1) != st.end()) { //found, no this ele cannot be the start of a subsequence
+		if (st.find(ele - 1) != st.end()) { //found, that means no this ele cannot be the start of a subsequence
 
 		}
 		else { //ele can be the start of a subsequence

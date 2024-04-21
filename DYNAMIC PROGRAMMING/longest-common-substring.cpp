@@ -42,6 +42,9 @@ int main()
 	/***************************
 	 * VIDEO LINK: https://www.youtube.com/watch?v=NvmJBCn4eQI
 	 LEETCODE LINK: https://www.geeksforgeeks.org/longest-common-substring-dp-29/
+	 NOTE:  the main difference between a substring and a subsequence lies in the continuity of the elements. Substrings are continuous subsequences, whereas subsequences do not have to be contiguous.\
+	 NOTE: count of substring: n(n+1)/2
+	 NOTE: count of subsequence: 2^n
 	 * *****************************/
 	string x = "adac";
 	string y = "adadac";

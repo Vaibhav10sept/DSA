@@ -45,6 +45,7 @@ int countEncodings(string str) {
 int main()
 {
 	//***************************
+	// LEETCODE: https://leetcode.com/problems/decode-ways/
 	// video link: https://www.youtube.com/watch?v=jFZmBQ569So&list=PL-Jc9J83PIiFj7YSPl2ulcpwy-mwj1SSk&index=486
 	// there is a question "PRINT ENCODINGS" which prints all possible encodings
 	// (you can search it using ctrl + p)

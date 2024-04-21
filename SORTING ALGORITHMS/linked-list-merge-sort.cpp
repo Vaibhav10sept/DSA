@@ -263,6 +263,11 @@ LinkedList mergeSort(Node * head, Node * tail) {
 
 int main()
 {
+	/*
+	NOTE: search again more optimized solution is there.
+	SPACE: O(logn)
+	TIME: O(nlogn)
+	*/
 	LinkedList ll1;
 	ll1.addFirst(0);
 	ll1.addFirst(9);

@@ -46,7 +46,7 @@ void knightTour(vector<vector<int>> chess, int row, int col, int move) {
 int main()
 {
 	//video link: https://www.youtube.com/watch?v=SP880DBRJ_8&list=PL-Jc9J83PIiFj7YSPl2ulcpwy-mwj1SSk&index=424
-	int n = 5;
+	int n = 6;
 	vector<vector<int>> chess(n, vector<int>(n, 0));
-	knightTour(chess, 0, 2, 1);
+	knightTour(chess, 3, 4, 1);
 }

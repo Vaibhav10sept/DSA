@@ -204,18 +204,18 @@ public:
 	/*********************************************
 	 * LINKED LIST BOILER PLATE CODE ENDS
 	 * *******************************************/
-	void utilReverseRecursive(Node* head) {
-		if (!head) return; //BASE COND
+	void utilReverseRecursive(Node* node) {
+		if (!node) return; //BASE COND
 
-		utilReverseRecursive(head->next);
+		utilReverseRecursive(node->next);
 
 		//POST RECURSIVE PHASE
-		//REM: this head->next->next = head; (think, logic)
-		if (head == tail) {
+		//REM: node->next->next = node; (think, logic)
+		if (node == tail) {
 
 		}
 		else {
-			head->next->next = head;
+			node->next->next = node;
 		}
 
 	}

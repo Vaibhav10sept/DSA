@@ -6,10 +6,9 @@ int uniquePaths2(vector<vector<int>> arr) {
 	int m = arr[0].size();
 	vector<vector<int>> dp(n, vector<int>(m, 0));
 
-	// dp[n - 1][m - 1] = 1; //initialization
 	for (int i = n - 1; i >= 0; i--) {
 		for (int j = m - 1; j >= 0; j--) {
-			if (i == n - 1 and j == m - 1 and arr[i][j] != 1) {
+			if (i == n - 1 and j == m - 1 and arr[i][j] != 1) { //initialization
 				dp[i][j] = 1;
 			}
 			else if (arr[i][j] == 1) {

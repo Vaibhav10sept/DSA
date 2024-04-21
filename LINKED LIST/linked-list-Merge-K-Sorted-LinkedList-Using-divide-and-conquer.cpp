@@ -207,6 +207,9 @@ public:
 };
 
 LinkedList MergeTwoSortedLinkedList(LinkedList left, LinkedList right) {
+	//this merge two sorted linkedlist is not optimized, it is using extra space
+	//in merge two sorted linkedlist the merge function is optimized, constant space
+	//use the function used in merge two sorted list not this one.
 	LinkedList res;
 	Node* l = left.head;
 	Node* r = right.head;
@@ -254,6 +257,7 @@ int main()
 	/*
 	NOTE: the steps are similar to merge sort in linked list
 	PREREQUISITE: merge sort in linked list
+	VIDOE LINK: https://www.youtube.com/watch?v=Q64u-W3l3mA
 	VIDEO LINK: https://www.youtube.com/watch?v=wugaUVZ8PVw&list=PL-Jc9J83PIiGRqcfZxxgOKovgLVd3znnq&index=7
 	*/
 	LinkedList ll1;

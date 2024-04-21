@@ -20,6 +20,12 @@ void reverseArray(vector<int> &arr) {
 
 int main()
 {
+	/*
+	PREQ:
+	NOTE:
+	VIDEO:
+	QUESTION:
+	*/
 	vector<int> arr = {1, 2, 3, 4, 5, 6};
 	print(arr);
 }

@@ -162,7 +162,7 @@ Node* HelperFunction(vector<int> preorder, int preorderStartIdx, int preorderEnd
                      vector<int> postorder, int postorderStartIdx, int postorderEndIdx) {
 	if (preorderStartIdx > preorderEndIdx) return NULL;
 
-	Node* node = new Node(postorder[postorderEndIdx]);
+	Node* node = new Node(preorder[preorderStartIdx]);
 	//edge case
 	if (preorderStartIdx == preorderEndIdx) return node;
 

@@ -33,6 +33,7 @@ string multiplyStrings(string n1, string n2) {
 
 int main() {
 	//*********************************
+	// NOTE: one more my written solution is there
 	// VIDEO LINK: https://www.youtube.com/watch?v=5NdhK3tZViQ&list=PL-Jc9J83PIiE-TR27GB7V5TBLQRT5RnSl&index=29
 	// QUESTION:
 	// 1. Given two non-negative integers num1 and num2 represented as strings.

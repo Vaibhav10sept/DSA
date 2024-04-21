@@ -34,7 +34,7 @@ int main() {
 	VIDEO LINK: https://www.youtube.com/watch?v=s9fokUqJ76A
 	LEETCODE LINK: https://leetcode.com/problems/generate-parentheses/
 	*/
-	int n = 5;
+	int n = 2;
 	vector<string> arr =  generateParentheses(n);
 	for (auto ele : arr) cout << ele << endl;
 }

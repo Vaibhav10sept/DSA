@@ -175,7 +175,7 @@ void leftSideViewRecursionHelper(Node* node, int level, vector<int> &res) {
 	if (node == NULL) return;
 
 	//this is the tricky part all logic lie here(watch video)
-	//NOTE: if i travel left to right then first node in every level will be my node for right side view
+	//NOTE: if i travel left to right then first node in every level will be my node for left side view
 	if (res.size() == level) res.push_back(node->data);
 
 	leftSideViewRecursionHelper(node->left, level + 1, res);

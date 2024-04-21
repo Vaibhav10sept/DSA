@@ -62,7 +62,6 @@ int main()
 {
 	/*****************************
 	 * NOTE: this code is copied from leetcode, no vidoe, smjh aa gya hai
-	 * NOTE: this rec + backtracking solution will give you TLE, a DP solution is also there.
 	 * LEETCODE LINK: https://leetcode.com/problems/unique-paths-ii/
 	 * VIDEO LINK: https://www.youtube.com/watch?v=XNKCkX_tHhM
 	 * **************************************/

@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+
 vector<int> mergeTwoSortedArray(vector<int> leftSortedHalf, vector<int> rightSortedHalf) {
 	vector<int> ans(leftSortedHalf.size() + rightSortedHalf.size());
 	int i = 0;
@@ -49,6 +50,7 @@ vector<int> mergeSort(vector<int> arr,  int low, int high) {
 
 int main() {
 	//**************************************
+	//NOTE: there is another more better approach available which is more better coz usme mergeSort and merge function ka return type void hota hai, so have a look please
 	//video link: https://www.youtube.com/watch?v=aiUHB-3EOg8&list=PL-Jc9J83PIiFj7YSPl2ulcpwy-mwj1SSk&index=500
 	//*******************************************
 	vector<int> arr = {5, 9, 8, 2, 1, 4, 3};

@@ -9,6 +9,7 @@ int lastOccurenceOfAnElement(vector<int> arr, int k) {
 		int mid = start + (end - start) / 2; //we are not using (start + end) / 2, to prevent int overflow
 		if (k == arr[mid]) {
 			//move right coz we are searching for the last occurence
+			//this is only change as compared to normal binary search code.
 			start = mid + 1;
 			ans = mid;
 		}
@@ -30,6 +31,7 @@ int firstOccurenceOfAnElement(vector<int> arr, int k) {
 		int mid = start + (end - start) / 2; //we are not using (start + end) / 2, to prevent int overflow
 		if (k == arr[mid]) {
 			//move left coz we are searching for the first occurence
+			//this is only change as compared to normal binary search code.
 			end = mid - 1;
 			ans = mid;
 		}

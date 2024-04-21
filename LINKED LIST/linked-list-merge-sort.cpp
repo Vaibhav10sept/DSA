@@ -205,64 +205,80 @@ public:
 	 * LINKED LIST BOILER PLATE CODE ENDS
 	 * *******************************************/
 };
-Node* midNode(Node* head, Node* tail) {
-	// cout << "MID" << endl;
-	Node* s = head;
-	Node* f = head;
-	while (f->next != tail && f->next->next != tail) {
-		f = f->next->next;
-		s = s->next;
+Node* midNode(Node* head) {
+	Node* slow = head;
+	Node* fast = head;
+	while (fast->next != NULL && fast->next->next != NULL) { //the same type of while condition we use in find the loop/cycle in linked list
+		fast = fast->next->next;
+		slow = slow->next;
 	}
-	return s;
+	return slow;
 }
 
-LinkedList merge(LinkedList left, LinkedList right) {
-	LinkedList res;
-	Node* l = left.head;
-	Node* r = right.head;
+Node* merge(Node* left, Node* right) {
+	//NOTE: this merge function will take constant space, use this instead of any other merge approach
+	// in LL this take constant space, but in array this function takes n space
+	//that is why space of merge sort in array is n and in LL is logn(this logn is due to the stack/auxilliary space of recursion)
+	Node* temp = new Node();
+	temp->data = -1;
+	temp->next = NULL;
+	Node* head = temp;
+	Node* l = left;
+	Node* r = right;
 
 	while (l != NULL && r != NULL) {
 		if (l->data < r->data) {
-			res.addLast(l->data);
+			temp->next = l;
 			l = l->next;
+			temp = temp->next;
 		}
 		else {
-			res.addLast(r->data);
+			temp->next = r;
 			r = r->next;
+			temp = temp->next;
 		}
 	}
 
 	while (l) {
-		res.addLast(l->data);
+		temp->next = l;
 		l = l->next;
+		temp = temp->next;
 	}
 	while (r) {
-		res.addLast(r->data);
+		temp->next = r;
 		r = r->next;
+		temp = temp->next;
 	}
-	return res;
+	return head->next;
 }
 
 
-LinkedList mergeSort(Node * head, Node * tail) {
+Node* mergeSort(Node * head) {
 	//base condition
-	if (head == tail ) { //one size linked list, this is the base condition
-		LinkedList newll;
-		newll.addLast(head->data);
-		return newll; //single linked list ko return kia hai
+	if (head == NULL or head->next == NULL ) { //empty or one sized linked list, this is the base condition
+		return head;
 	}
 
-	Node* mid = midNode(head, tail);
+	Node* mid = midNode(head);
 
-	LinkedList left = mergeSort(head, mid);
-	LinkedList right = mergeSort(mid->next, tail);
-	LinkedList merged = merge(left, right);
+	Node* left = head;
+	Node* right = mid->next;
+	mid->next = NULL; //think, CS
+
+	left = mergeSort(left);
+	right = mergeSort(right);
+	Node* merged = merge(left, right);
 
 	return merged;
 }
 
 int main()
 {
+	/*
+	VIDEO LINK: https://www.youtube.com/watch?v=rM5EEA_rbNY
+	SPACE: O(logn)
+	TIME: O(nlogn)
+	*/
 	LinkedList ll1;
 	ll1.addFirst(0);
 	ll1.addFirst(9);
@@ -271,7 +287,7 @@ int main()
 	ll1.addFirst(4);
 	ll1.addFirst(10);
 	ll1.printLinkedList();
-	LinkedList mergedList = mergeSort(ll1.head, ll1.tail);
+	ll1.head = mergeSort(ll1.head);
 	cout << "after merge sort" << endl;
-	mergedList.printLinkedList();
+	ll1.printLinkedList();
 }

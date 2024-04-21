@@ -42,7 +42,11 @@ vector<vector<int>> getSkyline(vector<vector<int>>& arr) {
 	}
 
 	sort(list.begin(), list.end(), comparator());
-	set<int> pq; //max heap(default in cpp,java me opposite h)
+	multiset<int> pq; //max heap(default in cpp,java me opposite h)
+	cout << "input" << endl;
+	for (auto ele : list) {
+		cout << ele.xCoordinate << " " << ele.height << endl;
+	}
 
 	int currHeight = 0;
 	pq.insert(0); //means 0 height push hue h pq me
@@ -67,15 +71,24 @@ vector<vector<int>> getSkyline(vector<vector<int>>& arr) {
 		else {
 			//NOTE: +ve height --> means that it is the ending point for that building
 			//So, we need to find that height in pq and then remove it
-			pq.erase(height);
+			// Erase one instance of the element height
+			auto it = pq.find(height);
+			if (it != pq.end()) {
+				pq.erase(it);
+			}
 			cout << "erase " << height << endl;
 			for (auto itr = pq.begin(); itr != pq.end(); itr++) {
-				cout << *itr << " ";
+				cout << *itr << " ";	auto it = pq.find(height);
+				if (it != pq.end()) {
+					pq.erase(it);
+				}
 			}
 			cout << endl;
 		}
 
 		if (currHeight != *--pq.end()) { //means height change hue h, pq ke end me max height hogi
+			cout << "push" << endl;
+			cout << xCoordinate << " " << *--pq.end() << endl;
 			ans.push_back({xCoordinate, *--pq.end()});
 			currHeight = *--pq.end();
 		}
@@ -85,7 +98,6 @@ vector<vector<int>> getSkyline(vector<vector<int>>& arr) {
 
 int main() {
 	/*
-	NOTE: not submitting on leetcode, need to check
 	PREREQUISITE:
 	VIDEO LINK: https://www.youtube.com/watch?v=EPD3Or5xtNg&list=PL-Jc9J83PIiEp9DKNiaQyjuDeg3XSoVMR&index=54
 	QUESTION LINK: https://leetcode.com/problems/encode-and-decode-tinyurl/

@@ -15,7 +15,7 @@ int jumpGame2(vector<int> arr) {
 		int minValue = INT_MAX;
 		for (int j = 1; j <= arr[i]; j++) {
 			if (i + j < arr.size()) {
-				if (dp[i + j] != INT_MAX and dp[i + j] < minValue) {
+				if (dp[i + j] < minValue) {
 					minValue = dp[i + j];
 				}
 			}
@@ -33,7 +33,7 @@ int main() {
 	 * STRONG PREREQUSITE: jump game dp solution
 	NOTE: THIS IS THE DP SOLUTION MORE SOLUTION ARE ALSO THERE
 	 * LEETCODE LINK: https://leetcode.com/problems/jump-game-ii/
-	 VIDEO LINK: https://www.youtube.com/watch?v=phgjL7SbsWs
+	 VIDEO LINK: https://www.youtube.com/watch?v=dJ7sWiOoK7g&t=25s
 	 * ******************************/
 	// vector<int> nums = {3, 3, 0, 2, 1, 2, 4, 2, 0, 0};
 	vector<int> nums = {2, 3, 0, 1, 4};

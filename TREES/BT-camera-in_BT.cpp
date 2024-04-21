@@ -188,6 +188,20 @@ int cameraInBinaryTree(Node* node, int &cameraCount) {
 	return -1; //I need camera
 }
 
+class TestPair {
+public:
+	int exclude;
+	int include;
+
+	TestPair(int e, int in) {
+		exclude = e;
+		include = in;
+	}
+	TestPair() {
+
+	}
+};
+
 int main()
 {	/*
 	NOTE: postorder me sara kaam hoga.

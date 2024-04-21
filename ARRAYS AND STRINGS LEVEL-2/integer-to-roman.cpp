@@ -24,6 +24,8 @@ string integerToRoman(int num) {
 		while (num > 0 and num >= it.first) {
 			int qout = num / it.first;
 			cout << "ques " << qout << endl;
+			cout << "it.first " << it.first << " it.second " << it.second << endl;
+			cout << "num " << num % it.first << endl;
 			num = num % it.first;
 			while (qout--) {
 				ans += it.second;
@@ -39,6 +41,6 @@ int main() {
 	// VIDEO LINK: https://www.youtube.com/watch?v=Rsq1ObYg6ak
 	// LEETCODE LINK: https://leetcode.com/problems/integer-to-roman/solutions/2681343/c-using-map/
 	//*********************************/
-	int num = 23;
+	int num = 94;
 	cout << integerToRoman(num) << endl;
 }

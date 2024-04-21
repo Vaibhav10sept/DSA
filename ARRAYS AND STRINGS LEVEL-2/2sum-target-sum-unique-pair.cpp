@@ -1,10 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void TargetSumUniquePair(vector<int> arr, int target) {
+vector<vector<int>> TargetSumUniquePair(vector<int> arr, int target) {
 	sort(arr.begin(), arr.end());
 	int left = 0;
 	int right = arr.size() - 1;
+	vector<vector<int>> ans;
 	while (left < right) {
 		//this will ensure that the pair are unique(think)(remember)
 		if (left != 0 and arr[left - 1] == arr[left]) {
@@ -16,7 +17,10 @@ void TargetSumUniquePair(vector<int> arr, int target) {
 		int sum = arr[left] + arr[right];
 		if (target == sum) {
 			//pair found
-			cout << arr[left] << " " << arr[right] << endl;
+			vector<int> temp;
+			temp.push_back(arr[left]);
+			temp.push_back(arr[right]);
+			ans.push_back(temp);
 			left++;
 			right--;
 		}
@@ -27,6 +31,7 @@ void TargetSumUniquePair(vector<int> arr, int target) {
 			right--;
 		}
 	}
+	return ans;
 }
 
 int main() {
