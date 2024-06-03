@@ -12,7 +12,7 @@ double MedianOfTwoSortedArrays(vector<int> arr1, vector<int> arr2) {
 	int low = 0, high = n1;
 
 	while (low <= high) {
-		int cut1 = (low + high) / 2;
+		int cut1 = (low + high) / 2; //aka mid
 		int cut2 = (n1 + n2 + 1) / 2 - cut1;
 		//(n1+n2+1) / 2 --> define the size of left half, +1 coz, odd and even sum(n1+n2) ko handle kr lega easily
 		//if even(n1+n2) like 10, to 10+1/2 is 5 or agr +1 ni kroge for example 10/2 is 5, means +1 kro ya na kro ans 5 hi aega in case of even length

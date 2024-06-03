@@ -15,10 +15,10 @@ int rottenOranges(vector<vector<int>> arr) {
 	//traverse through entire arr and push the coordinate for rotten  oranges
 	for (int i = 0; i < arr.size(); i++) {
 		for (int j = 0; j < arr[0].size(); j++) {
-			if (arr[i][j] == 2) {
+			if (arr[i][j] == 2) { //means rotten orange
 				q.push({i, j, 0});
 			}
-			if (arr[i][j] == 1) {
+			if (arr[i][j] == 1) {//means fresh orange
 				totalFresh++;
 			}
 		}

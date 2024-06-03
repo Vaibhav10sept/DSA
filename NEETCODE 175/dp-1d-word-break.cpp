@@ -44,6 +44,7 @@ bool wordBreak(string str, vector<string> dict) {
 
 int main() {
 	/*********************************
+	NOTE: this is dp sol, a rec sol is also there that gives TLE
 	LEETCODE: https://leetcode.com/problems/word-break/
 	VIDEO LINK: https://www.youtube.com/watch?v=Sx9NNgInc3A
 	*********************************/

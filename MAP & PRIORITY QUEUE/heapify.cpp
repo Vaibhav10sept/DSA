@@ -28,7 +28,7 @@ int main() {
 	USED IN: heap sort
 	TIME of 1 heapify operation: logn
 	TIME of building the array to heap using heapify: n
-	NOTE: heapify: means converts and array to heap.
+	NOTE: heapify: means converts an array to heap.
 	NOTE: array ko 1st index se start krege, 0th index se ni coz, child idx is 2*i, agr i 0 hoga to 2*i bhi 0 aega, which is wrong 0th idx ka child 0th idx ni ho skta.
 	NOTE: this is max heap implemenation
 	VIDEO LINK: https://www.youtube.com/watch?v=UVW0NfG_YWA

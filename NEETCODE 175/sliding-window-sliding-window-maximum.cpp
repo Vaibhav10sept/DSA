@@ -27,6 +27,7 @@ vector<int> slidingWindowMax(vector<int> arr, int k) {
 int main() {
 	/*
 	VIDEO LINK: https://www.youtube.com/watch?v=xFJXtB5vSmM&t=1421s
+	LEETCODE: https://leetcode.com/problems/sliding-window-maximum/description/
 	NOTE: leetcode hard problem
 	*/
 	vector<int> arr = {1, 3, -1, -3, 5, 3, 6, 7};

@@ -26,6 +26,6 @@ int main()
 	VIDEO:
 	QUESTION:
 	*/
-	vector<int> arr = {1, 2, 3, 4, 5, 6};
+	vector<int> arr = {18, 2, 3, 4, 5, 6};
 	print(arr);
 }

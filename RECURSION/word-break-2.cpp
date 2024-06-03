@@ -1,48 +1,51 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool subStringIsFoundInDictionary(string sub, set<string> dictionary) {
-	if (dictionary.find(sub) == dictionary.end()) { //not found, return false
-		return false;
-	}
-	return true;
+void recHelper(int idx, vector<string> ans, string& str, set<string>& st, vector<string> &res ) {
+    if(idx == str.size()) {
+        string fin = "";
+        for(int i=0;i<ans.size();i++) {
+            fin += ans[i];
+            if(i == ans.size()-1) {
+
+            }
+            else {
+                fin += " ";
+            }
+        }
+        res.push_back(fin);
+    }
+    //BC over
+
+    for(int i=idx; i<str.size(); i++) {
+        string sub = str.substr(idx, i-idx+1);
+        
+        if(st.find(sub) != st.end()) { //found
+            // ans += " " + sub;
+            ans.push_back(sub);
+            recHelper(i+1, ans, str, st, res);
+            ans.pop_back();
+        }
+    }
 }
-
-void helperRecursive(int idx, string str, set<string> dictionary, vector<string> ans) {
-	if (idx == str.size()) {
-		//base case
-		for (auto ele : ans) {
-			cout << ele << " ";
-		}
-		cout << endl;
-	}
-
-	for (int i = idx; i < str.size(); i++) {
-		string sub = str.substr(idx, i - idx + 1); //str.substr(starting index, length)
-		if (subStringIsFoundInDictionary(sub, dictionary)) {
-			ans.push_back(sub);
-			helperRecursive(i + 1, str, dictionary, ans);
-			//backtrack
-			ans.pop_back();
-		}
-	}
-}
-
-void wordBreak2(string str, set<string> dictionary) {
-	vector<string> ans;
-	helperRecursive(0, str , dictionary, ans);
+vector<string> wordBreak2(string str, vector<string>& arr) {
+    vector<string> res;
+    set<string> st(arr.begin(), arr.end());
+    vector<string> ans;
+    recHelper(0, ans, str, st, res);
+    return res;
 }
 
 int main()
 {
 	/*
-	NOTE:
-	QUESTION: https://www.codingninjas.com/codestudio/problems/983635?topList=striver-sde-sheet-problems&utm_source=striver&utm_medium=website
-	VIDEO:
+	NOTE: my code, i wrote it, no video, no reading
+	QUESTION: https://leetcode.com/problems/word-break-ii/
 	*/
 	vector<string> dictionary =  {"god", "is", "now", "no", "where", "here"};
-	set<string> dict(dictionary.begin(), dictionary.end());
 	string str = "godisnowherenowhere";
-	wordBreak2(str, dict);
+	vector<string> ans = wordBreak2(str, dictionary);
+	for(string str: ans) cout<<str<<endl;
+
 
 }
