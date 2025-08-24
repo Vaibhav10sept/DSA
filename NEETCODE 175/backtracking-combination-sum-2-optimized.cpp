@@ -21,6 +21,7 @@ void combinationSum2Backtracking(vector<int> arr, int idx, vector<int> ans, vect
 	//backtrack --> second call after removing the arr[idx]
 	ans.pop_back();
 	//but here we have to stop the generation of duplicate subsets
+	//same logic is used in backtracking subset sum 2
 	while (idx + 1 < arr.size() and arr[idx] == arr[idx + 1]) {
 		idx++;
 	}

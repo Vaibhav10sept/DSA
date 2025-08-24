@@ -17,7 +17,7 @@ bool comparator(vector<int> v1, vector<int> v2) {
 int meetingRoom2(vector<vector<int>> &arr) {
 	sort(arr.begin(), arr.end(), comparator);
 	priority_queue<int, vector<int>, greater<int>> minEndTime; //min heap, hold the ending time for room allocated
-	int rooms = 1;
+	// int rooms = 1;
 	minEndTime.push(arr[0][1]);
 	for (int i = 1; i < arr.size(); i++) {
 		if (arr[i][0] < minEndTime.top()) { //new room is created
