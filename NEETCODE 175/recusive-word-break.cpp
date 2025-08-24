@@ -13,11 +13,13 @@ bool wordBreakRecursive(string str, set<string> st) {
 			// cout << "curr " << curr << endl;
 			string restOfQuestion = i + 1 < str.size() ? str.substr(i + 1) : "";
 			// cout << "rest " << restOfQuestion << endl;
-			return wordBreakRecursive(restOfQuestion, st);
+			if(wordBreakRecursive(restOfQuestion, st)) 
+				return true;
+
 		}
 	}
 
-	if (i == str.size()) return false;
+	return false;
 }
 
 bool wordBreak(string str, vector<string> arr) {
@@ -27,11 +29,12 @@ bool wordBreak(string str, vector<string> arr) {
 
 int main() {
 	/*********************************
+	NOTE: this rec sol will give TLE, there is dp sol also, that is submitted
 	LEETCODE: https://leetcode.com/problems/word-break/
 	VIDEO LINK: https://www.youtube.com/watch?v=Sx9NNgInc3A
 	*********************************/
-	string str = "catsandog";
-	vector<string> wordDict = {"cats", "dog", "sand", "and", "cat"};
+	string str = "aaaaaaa";
+	vector<string> wordDict = {"aaaa","aaa"};
 	bool ans = wordBreak(str, wordDict);
 	if (ans) cout << "true";
 	else cout << "false";

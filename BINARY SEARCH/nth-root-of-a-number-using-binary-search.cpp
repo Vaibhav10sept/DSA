@@ -54,6 +54,6 @@ int main() {
 	*/
 	int m = 16;
 	int n = 2;
-	//means 27 ka cube root kya hoga
+	//means 16 ka square root kya hoga
 	cout << nthRootOfANumber(m, n);
 }

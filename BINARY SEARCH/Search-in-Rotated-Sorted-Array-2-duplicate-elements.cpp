@@ -20,7 +20,7 @@ bool searchInARotatedSortedArrayII(vector<int>&arr, int k) {
 
 		//if left part is sorted:
 		if (arr[low] <= arr[mid]) {
-			if (arr[low] <= k && k <= arr[mid]) {
+			if (arr[low] <= k && k < arr[mid]) {
 				//element exists:
 				high = mid - 1;
 			}
@@ -30,7 +30,7 @@ bool searchInARotatedSortedArrayII(vector<int>&arr, int k) {
 			}
 		}
 		else { //if right part is sorted:
-			if (arr[mid] <= k && k <= arr[high]) {
+			if (arr[mid] < k && k <= arr[high]) {
 				//element exists:
 				low = mid + 1;
 			}

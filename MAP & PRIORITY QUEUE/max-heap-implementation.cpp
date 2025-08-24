@@ -43,7 +43,7 @@ public:
 		}
 
 		//step 1.
-		swap(arr[0], arr[size]); //NOTE: arr starts from 1th index not from 0th index
+		swap(arr[1], arr[size]); //NOTE: arr starts from 1th index not from 0th index
 
 		//step 2.
 		arr.pop_back();

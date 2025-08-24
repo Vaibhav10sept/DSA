@@ -13,7 +13,7 @@ int FindanElementInRotatedSortedArray(vector<int> &arr, int k) {
 
 		//check which half of the array is sorted
 		if (arr[start] <= arr[mid]) { //left half of the array is sorted
-			if (k >= arr[start] and k <= arr[mid]) { //k < arr[mid] coz -> k == arr[mid] hm upr line 12 me check kr chuke h
+			if (k >= arr[start] and k < arr[mid]) { //k < arr[mid] coz -> k == arr[mid] hm upr line 12 me check kr chuke h
 				//move to left half coz k lie in the left half;
 				end = mid - 1;
 			}
@@ -22,7 +22,7 @@ int FindanElementInRotatedSortedArray(vector<int> &arr, int k) {
 			}
 		}
 		else { //right half of the array is sorted
-			if (k >= arr[mid] and k <= arr[end]) { //k < arr[mid] coz -> k == arr[mid] hm upr line 12 me check kr chuke h
+			if (k > arr[mid] and k <= arr[end]) { //k < arr[mid] coz -> k == arr[mid] hm upr line 12 me check kr chuke h
 				//move to right half coz k lie in the right half;
 				start = mid + 1;
 			}
@@ -40,7 +40,7 @@ int FindanElementInRotatedSortedArray(vector<int> &arr, int k) {
 int main() {
 	/*
 	NOTE: one more solution is also there, but i think this one is better, search: search in rotated sorted array
-	QUESTION: https://leetcode.com/problems/search-in-rotated-sorted-array/description/:
+	QUESTION: https://leetcode.com/problems/search-in-rotated-sorted-array/description/
 	VIDEO LINK: https://www.youtube.com/watch?v=5qGrJbHhqFs&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=5
 	*/
 	vector<int> arr = {3, 1};

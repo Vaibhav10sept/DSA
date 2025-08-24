@@ -4,7 +4,7 @@ using namespace std;
 void pascalTriangle2(int i) {
 	//*********FORMULA*************
 	// don't memorize formula,calculate it
-	// ncr = factor * ncr-1
+	// nCr * factor = nCr+1
 	// after putting the ncr formula and solving for factor we get,
 	// FACTOR = n-r/r+1
 	// in terms of i and j
